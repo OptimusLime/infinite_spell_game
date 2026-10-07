@@ -24,6 +24,7 @@ Paul is building a game and, at the same time, the tools to make it and the vide
 - Agents: "only these two agents, make sure they dont collide too much, and lets make sure we are commiting and pushing where appropraite."
 - Research: "use AGENTS TONDO THISNWORK why the fuck are you doing it yoursled and not coordianteng ... 10 fucking web aearche sis that a fucking joke"
 - Judging: "send it to a NAIVE AGNET tell them not to read ANYHTING other than your messages, and then react and attempt to reconstruct your point EXACTLY" / "i need red-to-green refactors here ... You can't be changing till you see the reds"
+- AI engine: "do not commit videos to ai-engine. basically commit nothing to ai-egnien without my sayos. app engine you can modify thx."
 - Hand-offs: "i dont watn to lose your knowledge of whats going on to poorly written slop"
 
 ## How to work (rules learned this session)
@@ -59,11 +60,11 @@ Paul is building a game and, at the same time, the tools to make it and the vide
 | 5 | Editor performance round 1: host no longer pins a core (99% → 11%) | 🟢 engine 994e881 |
 | 6 | Perf round 2 (agent running, uncommitted in crates/editor, crates/host: damage.rs, meter.rs, present.rs): partial repaints, honest meter, fixed-size Claude button, storyboard loaded by the editor itself | 🟡 |
 | 7 | Bugs Paul hit, queued to the perf agent: main window (boats scene) wraps ~200 px after resize; scrolling broken (Screenplay, maybe everywhere); 77–129 ms per frame; console error "editor: render: runtime error store path parts are strings, got nil" | 🔴 |
-| 8 | World next (waiting for Paul's go): a real town instead of the island, a bigger hero, moon periods that drift (alignments now every 4 days at the same hour), a second shadow map so each moon casts its own coloured shadow, the forecast UI | ⚪ |
+| 8 | World round 2 (agent running, Paul said go): a real town instead of the island, a bigger hero, moon periods that drift (alignments now every 4 days at the same hour), a second shadow map so each moon casts its own coloured shadow, the forecast UI | 🟡 |
 | 9 | Several Claude sessions per project, one per window/tab | ⚪ after perf |
-| 10 | Spell core decision: engine `crates/items` vs creature studio `crates/spellcraft` (recommended: spellcraft, it has mana and Lua brains) | 🔴 Paul's call |
+| 10 | Spell core: creature studio `crates/spellcraft` (decided 2026-10-07; mana + Lua brains); port it into the engine and point item-synthesis fusion at its format | ⚪ next |
 | 11 | Collaboration server (Rust, websockets, persistent state; start from creature studio's Yrs + coordinator design) | ⚪ |
-| 12 | Duplicate cut files `talks/vc.cut.toml` and `docs/vc-conversation/vc.cut.toml` load into the same place; one is now refused. Keep the docs/ one? | 🔴 Paul's call |
+| 12 | Duplicate cut files `talks/vc.cut.toml` and `docs/vc-conversation/vc.cut.toml` load into the same place; fixed: the deck's cut is now `talks/vc-deck.cut.toml` (engine 55b5302) | 🟢 |
 
 ## Concept so far (input, not spec)
 Judged best across rounds: the town's buildings cast working shadows on the dangerous side (a lamp becomes a beacon, a watchtower a turret, the bakery a healing shrine); the frozen ink dusk ("the baker caught mid-wave"); fusion by cast order (first spell gives the shape, second the element; no menu); a glowing leash to the nearest beacon that snaps and spills your light. Every judge: prototype one street, 3 shapes × 3 elements, 4 buildings, one tileset with an ink shader, a week-6 kill test.
