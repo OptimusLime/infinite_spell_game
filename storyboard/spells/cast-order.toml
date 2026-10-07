@@ -1,0 +1,5 @@
+title = "Order matters"
+spoken = "Fire then wind makes a wall of flame. Wind then fire makes a fireball."
+shown = "Two spell icons cast in order fuse into one; the same pair reversed fuses into a different spell."
+status = "todo"
+sketch = "sketches/cast-order.png"

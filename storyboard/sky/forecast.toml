@@ -1,0 +1,5 @@
+title = "The forecast"
+spoken = "The moons run on different clocks, so you can see when they will line up."
+shown = "Two rings, one per moon, turning at different speeds; the next overlap marked: tonight, fire in snow."
+status = "todo"
+sketch = "sketches/forecast.png"
