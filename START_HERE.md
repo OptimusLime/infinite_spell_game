@@ -47,3 +47,7 @@ One lane per session, separate files, separate port, one lock per shared resourc
 6. ⚪ Lanes C–E start once 1–2 are done.
 
 Git: work on branches, normal commits and merges, no force-push or rebase, main only via PR.
+
+## Scheduled (Paul, 2026-10-07)
+- After the editor performance fix: several Claude sessions per project, each focused on its own window or tab (as AI game devs run "a session per window"). Needs a look at the host/agent backend (crates/agent, crates/host) first.
+- In progress: world shading (3D pixel world, cel-shaded anime world, day/night with two coloured moons) and a storyboard tab (cards from concept groups, linear path, slideshow) in the engine repo; storyboard content lives in this repo under `storyboard/`.
