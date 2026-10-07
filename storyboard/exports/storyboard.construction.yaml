@@ -1,0 +1,125 @@
+title: Infinite Spell Game
+storyboard: /Users/paul/coding/infinite_spell_game/storyboard
+estimate_s: 51.5
+shots:
+- step: 1
+  id: world/pixel/night-town
+  file: /Users/paul/coding/infinite_spell_game/storyboard/world/pixel/night-town.toml
+  group: world/pixel
+  title: A town at night
+  shot: 'One continuous move. Start low and cinematic, looking up at the night sky: the purple moon and the orange moon big in the skybox. Pan down without a cut to the game''s own camera, the high isometric view over the cosy pixel town, snow on the roofs and lamps lit. Then the character starts walking through the town.'
+  spoken: 'A small town at night, under two moons: one purple, one orange.'
+  estimate_s: 5.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/world/cinematic-sky.png
+  sketch_note: 'The opening frame: sketches/world/cinematic-sky.png (low, up at the two moons). It pans to sketches/world/player-view.png (the isometric player view); the move itself is sketches/world/pan.mp4.'
+  status: doing
+- step: 2
+  id: town/seed-planted
+  file: /Users/paul/coding/infinite_spell_game/storyboard/town/seed-planted.toml
+  group: town
+  title: Planting the seed
+  shot: The player presses a glowing seed into open ground; the first houses grow up around it.
+  spoken: Every town starts as a seed you plant, anywhere in the world.
+  estimate_s: 5.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/seed-planted.png
+  sketch_note: ''
+  status: todo
+- step: 3
+  id: sky/forecast
+  file: /Users/paul/coding/infinite_spell_game/storyboard/sky/forecast.toml
+  group: sky
+  title: The forecast
+  shot: 'Two rings, one per moon, turning at different speeds; the next overlap marked: tonight, fire in snow.'
+  spoken: The moons run on different clocks, so you can see when they will line up.
+  estimate_s: 6.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/forecast.png
+  sketch_note: ''
+  status: todo
+- step: 4
+  id: world/cel/frozen-ink
+  file: /Users/paul/coding/infinite_spell_game/storyboard/world/cel/frozen-ink.toml
+  group: world/cel
+  title: The world freezes
+  shot: Hard cut from warm pixels to flat cel-shaded ink; people stopped mid-step, lamps gone cold.
+  spoken: When they line up, the world changes and the townsfolk freeze.
+  estimate_s: 4.5
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/frozen-ink.png
+  sketch_note: ''
+  status: doing
+- step: 5
+  id: sky/fire-in-snow
+  file: /Users/paul/coding/infinite_spell_game/storyboard/sky/fire-in-snow.toml
+  group: sky
+  title: Fire in the snow
+  shot: A snowfield in the ink world; burning flakes come down and hiss into steam where they land.
+  spoken: 'Purple and orange together: fire falls into the snow.'
+  estimate_s: 4.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/fire-in-snow.png
+  sketch_note: ''
+  status: todo
+- step: 6
+  id: sky/monsters-rise
+  file: /Users/paul/coding/infinite_spell_game/storyboard/sky/monsters-rise.toml
+  group: sky
+  title: Monsters from the ground
+  shot: Orange-lit ground cracks open; ink creatures pull themselves up and turn toward the seed.
+  spoken: The colour of the moon decides what climbs out of the ground.
+  estimate_s: 5.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/monsters-rise.png
+  sketch_note: ''
+  status: todo
+- step: 7
+  id: spells/cast-order
+  file: /Users/paul/coding/infinite_spell_game/storyboard/spells/cast-order.toml
+  group: spells
+  title: Order matters
+  shot: Two spell icons cast in order fuse into one; the same pair reversed fuses into a different spell.
+  spoken: Fire then wind makes a wall of flame. Wind then fire makes a fireball.
+  estimate_s: 6.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/cast-order.png
+  sketch_note: ''
+  status: todo
+- step: 8
+  id: town/shadow-defence
+  file: /Users/paul/coding/infinite_spell_game/storyboard/town/shadow-defence.toml
+  group: town
+  title: Shadows that fight
+  shot: Moonlight behind a tower; its long shadow lies across the frozen side and burns a creature that steps in.
+  spoken: Buildings throw shadows onto the dark side, and the shadows defend.
+  estimate_s: 4.5
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/shadow-defence.png
+  sketch_note: ''
+  status: todo
+- step: 9
+  id: town/hold-the-seed
+  file: /Users/paul/coding/infinite_spell_game/storyboard/town/hold-the-seed.toml
+  group: town
+  title: Hold until the moons part
+  shot: The seed glowing under attack; spells, shadows and walls holding the creatures back; the moons sliding apart.
+  spoken: If the seed breaks, the town is gone. Hold it until the moons part.
+  estimate_s: 6.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/hold-the-seed.png
+  sketch_note: ''
+  status: todo
+- step: 10
+  id: world/pixel/morning-after
+  file: /Users/paul/coding/infinite_spell_game/storyboard/world/pixel/morning-after.toml
+  group: world/pixel
+  title: The morning after
+  shot: Back to warm pixels at dawn; townsfolk move again; the rings show the next overlap.
+  spoken: The moons drift apart, the town wakes, and the next forecast comes in.
+  estimate_s: 5.5
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/morning-after.png
+  sketch_note: ''
+  status: todo
+off_path: []
