@@ -2,13 +2,16 @@
 title = "Infinite Spell Game"
 cards = [
   "world/pixel/night-town",
+  "making/parts",
   "town/seed-planted",
+  "making/agents",
   "sky/forecast",
   "world/cel/frozen-ink",
   "sky/fire-in-snow",
   "sky/monsters-rise",
-  "spells/cast-order",
   "town/shadow-defence",
+  "spells/cast-order",
+  "spells/fuse-building",
   "town/hold-the-seed",
   "world/pixel/morning-after",
 ]

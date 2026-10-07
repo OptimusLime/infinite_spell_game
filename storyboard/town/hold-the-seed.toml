@@ -1,5 +1,5 @@
-title = "Hold until the moons part"
-spoken = "If the seed breaks, the town is gone. Hold it until the moons part."
-shown = "The seed glowing under attack; spells, shadows and walls holding the creatures back; the moons sliding apart."
+title = "The seed holds"
+spoken = "The last wave reaches the seed; its ring is almost empty. They cross the tower's shadow and burn. The moons part, and the seed holds."
+shown = "Creatures pile onto the seed; its health ring drains to a sliver. The creatures still coming must cross the tower's burning shadow, and go up in flames. Above, the moons slide apart; the ring stops at its last sliver."
 status = "todo"
 sketch = "sketches/hold-the-seed.png"

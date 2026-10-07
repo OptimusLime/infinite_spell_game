@@ -1,6 +1,6 @@
 # Infinite Spell Game
 
-*A screenplay from the storyboard: 10 scenes, about 52 s.*
+*A screenplay from the storyboard: 13 scenes, about 140 s.*
 
 ## 1. A TOWN AT NIGHT
 
@@ -11,86 +11,125 @@ One continuous move. Start low and cinematic, looking up at the night sky: the p
 *Sketch: The opening frame: sketches/world/cinematic-sky.png (low, up at the two moons). It pans to sketches/world/player-view.png (the isometric player view); the move itself is sketches/world/pan.mp4.*
 
 > **NARRATOR**  
-> A small town at night, under two moons: one purple, one orange.
+> A town under two moons, one purple, one orange. At nine this morning, it didn't exist.
 
-## 2. PLANTING THE SEED
+## 2. PARTS, NOT CODE
+
+*The working day · not started · `making/parts.toml`*
+
+A clock in the corner: 9:00. The Atelico editor with one Claude pane. Typed: "a cosy pixel town under two moons, purple and orange". The marketplace panel opens; Claude ticks Pixel world, Moon town, Sky, Ink world and Camera path, and each installs. The scene view starts: the camera cranes down from the moons onto the town.
+
+*Sketch: Capture on the shoot day: the editor with one Claude pane, the marketplace panel, five parts installing, the scene view starting. Needs the install flow from the marketplace (not built yet).*
+
+> **NARRATOR**  
+> Nine a.m. I'm Paul, and I make the Atelico editor. I ask Claude for a pixel town under two moons. It doesn't write a renderer: it installs five parts from the Atelico marketplace that are built to fit together, so adding the camera doesn't break the sky.
+
+## 3. PLANTING THE SEED
 
 *Town seed · not started · `town/seed-planted.toml`*
 
-The player presses a glowing seed into open ground; the first houses grow up around it.
+Clock: 10:00. Claude's pane shows one new file, seed.luau, being written. Then in the game: the player presses a glowing seed into open ground; the first houses grow up around it. The seed keeps pulsing at the town's centre with a ring that shows its health.
 
 > **NARRATOR**  
-> Every town starts as a seed you plant, anywhere in the world.
+> The one rule no part has, Claude writes: you plant a seed, and the town grows around it. If the seed breaks, the town is gone.
 
-## 3. THE FORECAST
+## 4. THREE SESSIONS, ONE BUG
 
-*Weather & moons · not started · `sky/forecast.toml`*
+*The working day · not started · `making/agents.toml`*
 
-Two rings, one per moon, turning at different speeds; the next overlap marked: tonight, fire in snow.
+Clock: 12:00. The Claude pane splits into three, labelled Monsters, Spells, Weather, each docked beside its own editor window. A creature walks straight through a house wall; one line changes in monsters.luau, highlighted; the next run, it walks around. The other two panes keep working.
+
+*Sketch: Capture on the shoot day: three Claude sessions, one per editor window (engine item 9, not built yet); a real wall-clipping bug and its one-line fix.*
 
 > **NARRATOR**  
-> The moons run on different clocks, so you can see when they will line up.
+> Noon. Three jobs left: monsters, spells, weather. I split Claude into three sessions, one per editor window, each changing only its own files. The first build lets monsters walk through walls; the monsters session fixes its own file, and nothing else changes.
 
-## 4. THE WORLD FREEZES
+## 5. THE FORECAST
+
+*Weather & moons · in progress · `sky/forecast.toml`*
+
+Clock: 15:00. Typed to Claude: "when do the moons line up next?" The forecast panel opens: a ring per moon and a bar per moon's hours in the sky, the alignment four days ahead highlighted. The game skips forward through four nights in a few seconds.
+
+*Sketch: The real forecast panel from packages/sky (moon-forecast --seed 22).*
+
+> **NARRATOR**  
+> The sky part runs each moon on its own clock, so I ask it when they next line up: in four game days. I skip ahead.
+
+## 6. THE WORLD FREEZES
 
 *The world › Cel world · in progress · `world/cel/frozen-ink.toml`*
 
-Hard cut from warm pixels to flat cel-shaded ink; people stopped mid-step, lamps gone cold.
+The two moons touch in the sky. Hard cut from warm pixels to flat ink: two or three tones, hard black lines, purple and orange the only colours. People stopped mid-step, lamps gone cold. From here the picture stays in the game through the night; the corner clock and any editor beat are small overlays.
+
+*Sketch: The look switch exists on the island: sketches/world/switch-pixel-to-ink.png and switch-pixel-to-ink.mp4; the town version waits on world round 2.*
 
 > **NARRATOR**  
-> When they line up, the world changes and the townsfolk freeze.
+> The moons meet. The ink-world part restyles every house, tree and townsperson in one pass. Nothing is redrawn, so nothing comes out off-style. The townsfolk freeze.
 
-## 5. FIRE IN THE SNOW
+## 7. FIRE IN THE SNOW
 
 *Weather & moons · not started · `sky/fire-in-snow.toml`*
 
 A snowfield in the ink world; burning flakes come down and hiss into steam where they land.
 
 > **NARRATOR**  
-> Purple and orange together: fire falls into the snow.
+> Both moons at once: fire falls into the snow.
 
-## 6. MONSTERS FROM THE GROUND
+## 8. MONSTERS FROM THE GROUND
 
 *Weather & moons · not started · `sky/monsters-rise.toml`*
 
-Orange-lit ground cracks open; ink creatures pull themselves up and turn toward the seed.
+The ground cracks under both moons' light; purple and orange ink creatures pull themselves up and walk toward the glowing seed.
 
 > **NARRATOR**  
-> The colour of the moon decides what climbs out of the ground.
+> Each moon raises its own creatures. Tonight both are up, so purple ones and orange ones climb out together and head for the seed.
 
-## 7. ORDER MATTERS
-
-*Spells · not started · `spells/cast-order.toml`*
-
-Two spell icons cast in order fuse into one; the same pair reversed fuses into a different spell.
-
-> **NARRATOR**  
-> Fire then wind makes a wall of flame. Wind then fire makes a fireball.
-
-## 8. SHADOWS THAT FIGHT
+## 9. SHADOWS THAT FIGHT
 
 *Town seed · not started · `town/shadow-defence.toml`*
 
-Moonlight behind a tower; its long shadow lies across the frozen side and burns a creature that steps in.
+The watchtower in the ink night with its spell beside it: sensor "creature in my shadow", effect "slow". Each moon throws its own coloured shadow from the tower; a creature steps into the purple one and drags to a crawl.
+
+*Sketch: One shadow per moon is in progress (world round 2): sketches/world/two-shadows.png. The sensor/effect spell needs the spell core port (not started).*
 
 > **NARRATOR**  
-> Buildings throw shadows onto the dark side, and the shadows defend.
+> The spells session made everything a spell: a sensor and an effect. The watchtower is one. Sensor: a creature in my shadow. Effect: slow it.
 
-## 9. HOLD UNTIL THE MOONS PART
+## 10. ORDER MATTERS
+
+*Spells · not started · `spells/cast-order.toml`*
+
+Clock: 18:00. A small overlay in the corner: the Fusion tile installs, while the picture stays in the ink night. The player casts fire then wind (two icons pop above the head in order): a wall of flame rises across the street and stops a line of creatures. Then wind then fire: a fireball arcs into a crowd and bursts. Each result's name writes in as it is invented.
+
+> **NARRATOR**  
+> Six p.m.: Claude installs the last part, fusion. Its small AI model runs on the player's machine and invents what two spells make. Fire then wind: a wall of flame. Wind then fire: a fireball.
+
+## 11. FIRE INTO THE TOWER
+
+*Spells · not started · `spells/fuse-building.toml`*
+
+The player casts fire at the watchtower; its spell gains a second effect, "burn", and a new name writes in; the shadows get burning edges. A creature steps in, slows, and catches fire.
+
+*Sketch: Needs the spell core and on-device fusion (the LoRA) before the shoot; nothing to capture yet.*
+
+> **NARRATOR**  
+> The tower is a spell too, so I cast fire into it. The model invents a new tower: slow, then burn.
+
+## 12. THE SEED HOLDS
 
 *Town seed · not started · `town/hold-the-seed.toml`*
 
-The seed glowing under attack; spells, shadows and walls holding the creatures back; the moons sliding apart.
+Creatures pile onto the seed; its health ring drains to a sliver. The creatures still coming must cross the tower's burning shadow, and go up in flames. Above, the moons slide apart; the ring stops at its last sliver.
 
 > **NARRATOR**  
-> If the seed breaks, the town is gone. Hold it until the moons part.
+> The last wave reaches the seed; its ring is almost empty. They cross the tower's shadow and burn. The moons part, and the seed holds.
 
-## 10. THE MORNING AFTER
+## 13. THE MORNING AFTER
 
 *The world › Pixel world · not started · `world/pixel/morning-after.toml`*
 
-Back to warm pixels at dawn; townsfolk move again; the rings show the next overlap.
+Dawn: back to warm pixels, the townsfolk moving again. Pull back into the editor, clock 19:00: today's six parts highlighted in the marketplace (Pixel world, Moon town, Sky, Ink world, Camera path, Fusion) beside the four files Claude wrote (seed, monsters, spells, weather); a small line "fusion: on-device · no server · $0 per fusion"; the game's name, Infinite Spell Game.
 
 > **NARRATOR**  
-> The moons drift apart, the town wakes, and the next forecast comes in.
+> Today: six parts installed, four files written by Claude. Every part, fusion included, is in the Atelico marketplace. Ask your agent for it.
 

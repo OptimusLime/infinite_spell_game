@@ -1,5 +1,6 @@
 title = "The world freezes"
-spoken = "When they line up, the world changes and the townsfolk freeze."
-shown = "Hard cut from warm pixels to flat cel-shaded ink; people stopped mid-step, lamps gone cold."
+spoken = "The moons meet. The ink-world part restyles every house, tree and townsperson in one pass. Nothing is redrawn, so nothing comes out off-style. The townsfolk freeze."
+shown = "The two moons touch in the sky. Hard cut from warm pixels to flat ink: two or three tones, hard black lines, purple and orange the only colours. People stopped mid-step, lamps gone cold. From here the picture stays in the game through the night; the corner clock and any editor beat are small overlays."
 status = "doing"
 sketch = "sketches/frozen-ink.png"
+sketch_note = "The look switch exists on the island: sketches/world/switch-pixel-to-ink.png and switch-pixel-to-ink.mp4; the town version waits on world round 2."

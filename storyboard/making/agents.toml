@@ -1,0 +1,5 @@
+title = "Three sessions, one bug"
+spoken = "Noon. Three jobs left: monsters, spells, weather. I split Claude into three sessions, one per editor window, each changing only its own files. The first build lets monsters walk through walls; the monsters session fixes its own file, and nothing else changes."
+shown = "Clock: 12:00. The Claude pane splits into three, labelled Monsters, Spells, Weather, each docked beside its own editor window. A creature walks straight through a house wall; one line changes in monsters.luau, highlighted; the next run, it walks around. The other two panes keep working."
+status = "todo"
+sketch_note = "Capture on the shoot day: three Claude sessions, one per editor window (engine item 9, not built yet); a real wall-clipping bug and its one-line fix."

@@ -1,5 +1,5 @@
 title = "Order matters"
-spoken = "Fire then wind makes a wall of flame. Wind then fire makes a fireball."
-shown = "Two spell icons cast in order fuse into one; the same pair reversed fuses into a different spell."
+spoken = "Six p.m.: Claude installs the last part, fusion. Its small AI model runs on the player's machine and invents what two spells make. Fire then wind: a wall of flame. Wind then fire: a fireball."
+shown = "Clock: 18:00. A small overlay in the corner: the Fusion tile installs, while the picture stays in the ink night. The player casts fire then wind (two icons pop above the head in order): a wall of flame rises across the street and stops a line of creatures. Then wind then fire: a fireball arcs into a crowd and bursts. Each result's name writes in as it is invented."
 status = "todo"
 sketch = "sketches/cast-order.png"
