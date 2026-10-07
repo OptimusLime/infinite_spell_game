@@ -1,0 +1,31 @@
+# What a window is for: the parts it shows, where, and whether the editor's chrome shows. A window's mode is
+# editor.ui.mode (windows.<name>.editor.ui.mode for a window other than main); its documents stay open when it
+# changes. Slots: toolbar, left, center, bottom, right, status. A part a mode does not place goes to its own slot.
+
+[game]
+title = "Game"
+
+[video]
+title = "Video"
+hide = ["project", "scene-tree", "console"]
+left = 460
+
+[video.slots]
+left = ["node-graph"]
+center = ["video-viewer", "cut-timeline", "shader-preview", "scene-view", "timeline", "slides"]
+right = ["inspector"]
+
+[slides]
+title = "Slides"
+bare = true
+
+[slides.slots]
+center = ["slides"]
+
+[play]
+title = "Play"
+bare = true
+fill = true
+
+[play.slots]
+center = ["scene-view"]

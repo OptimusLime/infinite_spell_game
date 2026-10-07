@@ -1,0 +1,31 @@
+[host]
+port = 7890
+width = 1600
+height = 960
+app = "app/main.luau"
+
+[agent]
+session = "atelico-infinite_spell_game"
+command = "claude"
+resume = "new"
+drawer = 520
+
+[registry]
+sources = []
+index = "file:///Users/paul/.atelico/remote/index.git"
+
+[components.layout]
+path = "components/layout"
+source = "/Users/paul/.atelico/registry/store/7e0a6865d069dccaab3d5eada3b2a0f8073103a021743307b45ee442c85b0156"
+
+[components.ui-kit]
+path = "components/ui-kit"
+source = "/Users/paul/.atelico/registry/store/af06f4116e96b920d12c01f107764481f8fca9ee37f933fc9db19f24d6a0ee78"
+
+[apps]
+
+[settings]
+
+[editor]
+dir = "editor"
+requires = ["layout", "ui-kit", "shader-forge"]

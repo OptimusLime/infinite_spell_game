@@ -1,0 +1,16 @@
+# Written by `app install`: the exact packages this project runs. Do not edit.
+version = 1
+
+[[package]]
+name = "layout"
+kind = "component"
+version = "0.1.0"
+hash = "7e0a6865d069dccaab3d5eada3b2a0f8073103a021743307b45ee442c85b0156"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+
+[[package]]
+name = "ui-kit"
+kind = "component"
+version = "0.1.0"
+hash = "af06f4116e96b920d12c01f107764481f8fca9ee37f933fc9db19f24d6a0ee78"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"

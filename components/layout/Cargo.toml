@@ -1,0 +1,11 @@
+[package]
+name = "component-layout"
+edition = "2021"
+version = "0.1.0"
+license = "Commercial"
+
+[dependencies]
+atelico-component.workspace = true
+fontdue = "0.9"
+taffy = "0.10"
+serde_json = "1"

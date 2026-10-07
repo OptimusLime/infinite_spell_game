@@ -1,0 +1,16 @@
+lua = """
+Pure Luau over the layout component: ui.node/column/row/text/button/input/image/face/action/merge,
+the Portal themes (require("theme"), require("phone.theme")), editorial page layouts, a chat transcript
+(phone.scenes.conversation) and `shell`, which frames an app's render in the themed page.
+Fonts and icons live under themes/atelico/."""
+name = "ui-kit"
+provides = ["ui", "ui.editorial", "ui.form", "ui.scene", "graphics", "theme", "phone.theme", "phone.avatar", "phone.scenes.conversation", "shell"]
+requires = ["layout"]
+
+[package]
+data_types = ["theme (luau)", "icons (png)", "fonts (ttf)"]
+description = "Pure-Luau widget kit over layout: themed rows, columns, buttons, inputs, editorial page layouts, a chat transcript, the Portal themes and an app shell that frames any app in a themed page."
+keywords = ["ui", "widgets", "theme", "design system", "chat transcript", "shell"]
+permissions = []
+tests = []
+version = "0.1.0"
