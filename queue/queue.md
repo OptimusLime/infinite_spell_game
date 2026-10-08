@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T12:29:39. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T15:08:26. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -119,7 +119,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-13 open / 23 total · 0 doing · 3 review · 9 done · 1 ready todos
+13 open / 23 total · 1 doing · 3 review · 9 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -174,14 +174,14 @@ Render the authored cut with source footage, titles, narration, music and captio
 
 ### Reference and Concept Board (`engine.references`)
 
-1 open / 1 total · 0 doing · 0 review · 0 done · 1 ready todos
+1 open / 1 total · 1 doing · 0 review · 0 done · 0 ready todos
 
 A reusable comparison/review workspace for reference inputs, concept revisions and compatibility decisions across projects.
 Planned after: engine.tracker
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 107 | ⚪ todo | Build reusable concept/reference-board review and comparison tooling |  |  |
+| 107 | 🟡 doing | Build reusable concept/reference-board review and comparison tooling | codex-coordinator |  |
 
 ### r/AIGameDev posts (`content.aigamedev`)
 
@@ -230,7 +230,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-23 open / 42 total · 0 doing · 9 review · 18 done · 0 ready todos
+23 open / 49 total · 0 doing · 9 review · 25 done · 0 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -359,7 +359,7 @@ Creature simulation, visibility, animation and polish across looks.
 
 ### Reference and moodboard decisions (`game.references`)
 
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
+1 open / 8 total · 0 doing · 0 review · 7 done · 0 ready todos
 
 Review existing candidate inputs and concept revisions into explicit In/Maybe/No/Future decisions, separate from storyboard and film production.
 Planned after: engine.references, engine.review
@@ -367,6 +367,62 @@ Planned after: engine.references, engine.review
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 110 | ⚪ todo | Review reference and moodboard decisions with existing candidate inputs | paul |  |
+
+#### Research pixel towns and battlefield environments (`game.references.pixel`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 116 | 🟢 done | Research pixel towns and battlefield environments | codex-references |  |
+
+#### Research anime cel shading and Dragon Ball visual treatment (`game.references.cel`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 117 | 🟢 done | Research anime cel shading and Dragon Ball visual treatment | codex-coordinator |  |
+
+#### Research spell crafting, aiming and casting interaction (`game.references.casting`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 118 | 🟢 done | Research spell crafting, aiming and casting interaction | codex-coordinator |  |
+
+#### Research spell shapes, motion and impact effects (`game.references.effects`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 119 | 🟢 done | Research spell shapes, motion and impact effects | codex-coordinator |  |
+
+#### Research inventory, equipment, power and spell HUD interfaces (`game.references.ui`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 120 | 🟢 done | Research inventory, equipment, power and spell HUD interfaces | codex-coordinator |  |
+
+#### Research tilt-shift miniature scale and battlefield framing (`game.references.lens`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 121 | 🟢 done | Research tilt-shift miniature scale and battlefield framing | codex-coordinator |  |
+
+#### Research dark moonlit worlds and day-night variants (`game.references.moon`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 122 | 🟢 done | Research dark moonlit worlds and day-night variants | codex-references |  |
 
 ### Playable interaction proof (`game.proof`)
 
@@ -381,7 +437,7 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-12 open / 27 total · 0 doing · 4 review · 15 done · 2 ready todos
+11 open / 27 total · 0 doing · 4 review · 16 done · 1 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
@@ -439,7 +495,7 @@ Shared editor interaction correctness.
 
 ### Data Layer (`engine.data`)
 
-1 open / 1 total · 0 doing · 0 review · 0 done · 1 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Shared typed state and reactive binding infrastructure, adapted from ai-battleground. Data schemas define fields; the store validates writes and revisions; typed script proxies bind UI reads to changes.
 
@@ -457,13 +513,13 @@ Store, ObjRef and per-field revisions provide one checked mutation path, typed r
 
 #### Typed Lua bindings (`data.bindings`)
 
-1 open / 1 total · 0 doing · 0 review · 0 done · 1 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 data.object returns a userdata proxy. Field reads record render dependencies; field writes go through the checked store. Only render units affected by changed fields need to run again.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 115 | ⚪ todo | Extend typed UI records to remaining storyboard and session consumers |  |  |
+| 115 | 🟢 done | Extend typed UI records to remaining storyboard and session consumers | codex-data |  |
 
 ### Graph Canvas (`engine.graph`)
 
