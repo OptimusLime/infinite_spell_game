@@ -1,4 +1,4 @@
-# Infinite Spell Game: start here (updated 2026-10-07)
+# Infinite Spell Game: start here (updated 2026-10-07 evening)
 
 ## The thrust
 Paul is building a game and, at the same time, the tools to make it and the video about it, all inside the Atelico app engine (Rust + Luau, hot reload, Claude in rmux panes). The game has two celestial cycles (two moons, or a sun and a moon) at different frequencies. Their forecast overlap makes the weather and decides which monsters rise from the ground. The world has two looks: a cosy 3D pixel-art town and a frozen, cel-shaded ink "other side". You plant a town seed anywhere in an infinite world and defend it. Everything (spells, buildings, NPCs, towns) is a spell made of sensors, effectors and an action, and spells and buildings fuse. The first deliverable is the AI game dev "day in the life" video, sketched in the engine's own Storyboard tab, and built from engine parts (the marketplace in use).
@@ -26,6 +26,25 @@ Paul is building a game and, at the same time, the tools to make it and the vide
 - Judging: "send it to a NAIVE AGNET tell them not to read ANYHTING other than your messages, and then react and attempt to reconstruct your point EXACTLY" / "i need red-to-green refactors here ... You can't be changing till you see the reds"
 - AI engine: "do not commit videos to ai-engine. basically commit nothing to ai-egnien without my sayos. app engine you can modify thx."
 - Hand-offs: "i dont watn to lose your knowledge of whats going on to poorly written slop"
+
+## The queue (source of truth for all work)
+Every task, owner, status, commit and note lives in `queue/queue.db` (SQLite). Read and change it only through `python3 queue/q.py` (`list`, `show ID`, `add`, `set`, `note`); `queue/queue.md` is a readable snapshot. Agents set their own tasks to doing/review/blocked; the coordinator checks and marks done. Nothing exists only in chat.
+
+## More of Paul's words (2026-10-07 afternoon)
+- Agents: "what the heck, are you not using agents to do this work? didy ou read anything about how we work? my verbatim comments?"
+- Screens: "LOOK AT A FUCKING SCREENSHOT OF A FUCKING SINGEL FUCKING THING AND YOU SHOULD SEE THIS SHIT" (use real `screencapture`, not `app shot`)
+- Meter: "just say teh FUCKIGN frames per second ... FUCKING CONDENSE IT"
+- Screenplay: "It needs to be a fuckknng SCREENPLAY ... you are about to get a fucking BUDGET on what you allow on this screen, and you need to JUSTIFY THAT FUCKING BUDGET"
+- Looks: "it looks WORSE than the pixel world we could isntall from the plugins ... did you start from scratch" / "shadows that fight looks TERRIBLE"
+- Renderer: "The only way to code this is the right way." / "the backend for the UI should be swappable" / "1/3 of the FPS being A COPY OPERATION. how is that not a total red flag?"
+- Decisions: "please stop coming back to me for nonsense approvals ... If you need to make irreversible decisions, then come to me, otheriwse ... make good choices and document"
+- Game UI: "why would the forecast panel be in the editor? thats part of the game bud." / "We are missing in game UI elements, which is why the game looks so baren and werid."
+- Queue: "organize into some type of queue thats more resilient and organized like on device sql or something you read from" / "i am tired of your hshit dropping"
+
+## Rules added today
+- Agents test only on `atelico-host --hidden` hosts; never open windows on Paul's editor (port 7878) or send OS mouse/keyboard events.
+- Shared files: each agent stages only its own hunks (`git apply --cached`); never `git stash`.
+- Renderer: Skia Ganesh on wgpu's Metal device behind a swappable cpu/gpu backend (docs/perf/render-backend.md, docs/perf/research/recommendation.md in the engine).
 
 ## How to work (rules learned this session)
 - Research = several agents in parallel, one lane each, 30+ sourced searches, written to files. Then synthesise.
