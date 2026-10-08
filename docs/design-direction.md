@@ -36,6 +36,8 @@ This is a proposed acceptance procedure for the requested behavior, not invented
 
 This procedure has not been run. The engine port has mana and lifecycle execution, but [the port record](spells.md) explicitly excludes the source project's Rapier, history/review and collaboration implementation. Do not infer end-to-end crafting from the presence of mana code.
 
+The current town entry point makes the missing supply connection concrete: `packages/spellcraft/src/town.rs::start_definition` supplies `definition.mana.allocation` afresh to `runtime::cast`, without debiting a finite player reservoir there. `runtime::cast` then initializes and meters the funded instance. Instance accounting and player battery admission are separate requirements; the former does not establish the latter.
+
 ## Compare current frames with references
 
 The off-path `storyboard/design-review/` cards show two frames from reel v5, three official reference candidates, the historical moon-clearing target, and the battery/camera review questions. They have empty narration and are not film shots. `storyboard/path.toml` and the cut stay unchanged. The existing Board includes off-path cards; Slideshow follows only the active path. Markdown/HTML exports append off-path cards under “Not on the path”; construction export lists them separately, not as shots.
@@ -53,7 +55,7 @@ Media provenance and copyright attribution are in [design-review sources](../sto
 
 [concepts/library](../concepts/library) uses the existing applets `atelico_concepts::Concept` and `ConceptRef` formats. IDs are stable; the existing Store generated SHA-256 revisions and immutable snapshots. Parent/world/link references pin exact revisions. [pins.json](../concepts/pins.json) lists those existing-format references.
 
-`traits["decision.state"]`, `decision.basis` and `decision.date` carry the design decision. `variant.phase` and `variant.look` identify comparisons. This uses the existing string-trait extension point; it is **not** a new typed decision UI. Asset reviews remain `draft/selected/rejected`. Pinned links state which inputs belong together; **compatibility remains unverified** until the comparison is performed. The four scene baselines bind day/night environment, one visual style, wand/battery and camera revisions without changing the old film or old concept library.
+`traits["decision.state"]`, `decision.basis` and `decision.date` carry the design decision. `variant.phase` and `variant.look` identify comparisons. This uses the existing string-trait extension point; it is **not** a new typed decision UI. Asset reviews remain `draft/selected/rejected`. Pinned links state which inputs belong together; **compatibility remains unverified** until the comparison is performed. The four scene baselines bind day/night environment, one visual style, wand/battery and camera revisions without changing the old film or old concept library. They are comparison variants toward the requested pixel-plus-anime direction; they do not approve separate worlds or a gameplay look-switch mechanic.
 
 ## Sources and open decisions
 
