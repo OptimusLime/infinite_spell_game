@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T02:40:05. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T02:56:18. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -15,11 +15,12 @@ Snapshot of queue.db, 2026-10-08T02:40:05. Edit through `app queue` (or `queue/q
 | 77 | ⚪ todo | Engine: weather gives embers only in daylight (no orange-moon night embers, no heat haze at night); reel shot 'embers' needs night embers |  | weather |  | 20 |  |
 | 6 | 🔵 review | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | ca43e28 (game 15e4edd) |
 | 83 | ⚪ todo | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) |  | spells | game-ui-agent | 12 |  |
-| 68 | 🟡 doing | Creatures visible in both looks: climbers and diggers modelled/sprited, animated, rising from the ground per moon (card 7) |  | creatures | weather-agent | 14 | f895f87 9a3b465 1271d7e a7b196d (game 30615be) |
 | 64 | 🔵 review | Play keys drive casting (today the town auto-casts every 8 s) |  | spells | game-ui-agent | 15 | 873a3aa |
+| 88 | ⚪ todo | Moon-town seed plinth reads as a layer cake with noisy pillars; cel 10:00 grass murky with no sun shadow |  | shader-graphs | shader-graph-agent | 15 |  |
 | 16 | 🟡 doing | Storyboard: real sketches for the 10 cards without engine pictures |  | storyboard | storyboard-agent | 16 |  |
-| 69 | 🟡 doing | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 | 6b5c988 1271d7e a7b196d (game 30615be) |
+| 69 | 🔵 review | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 | 2e47283 1ec8aac (game e0a31e2) |
 | 79 | ⚪ todo | Engine: pixel town and ink town have different layouts, so the same camera does not line up across the pixel->ink cut; ink look reads sepia not two-tone purple/orange |  | world |  | 20 |  |
+| 87 | ⚪ todo | Creatures polish: bigger pixel stalker sprite; beetle hidden behind the well in brood camera; steam swirl over the hero's face; flat night grade |  | creatures | weather-agent | 25 |  |
 | 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
 | 45 | 🔵 review | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 | dc2b48b |
@@ -37,6 +38,7 @@ Snapshot of queue.db, 2026-10-08T02:40:05. Edit through `app queue` (or `queue/q
 | 10 | 🟢 done | In-game UI spec docs/game-ui.md (seed ring, moon clock, spell slots, prompts, wave counter...) judged |  | game-ui | game-ui-agent | 10 | ee111f0 |
 | 11 | 🟢 done | packages/game-ui kit in both looks, placed in the moon town scenes |  | game-ui | game-ui-agent | 12 | 4113b01 |
 | 53 | 🟢 done | HUD bugs: stub 'Night 3' vs schedule day 30; ink chip says align in 4h40m while moons aligned; ink fire icon reads as water drop; spell bar touches bottom edge |  | game-ui | game-ui-agent | 12 | 067a25b |
+| 68 | 🟢 done | Creatures visible in both looks: climbers and diggers modelled/sprited, animated, rising from the ground per moon (card 7) |  | creatures | weather-agent | 14 | d98a122 2e47283 1ec8aac |
 | 7 | 🟢 done | In-game forecast panel (game UI, not editor), drawn with the game-ui kit |  | weather | weather-agent | 15 | 00ac59d d30d790 9f36134 |
 | 4 | 🟢 done | Continuous crane opening: sky -> crane -> player view -> hero walking (pixel town drawable in perspective) |  | shader-graphs | shader-graph-agent | 20 | 856549f |
 | 8 | 🟢 done | Card 5 and card 7 sketches (forecast in-game, fire in the snow) |  | weather | weather-agent | 20 | 00ac59d d30d790 9f36134 |
