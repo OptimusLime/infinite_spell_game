@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T23:13:44. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T23:24:49. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -9,15 +9,18 @@ Snapshot of queue.db, 2026-10-07T23:13:44. Edit through `app queue` (or `queue/q
 | 51 | ⚪ todo | Changing screens: the live switch between the pixel town and the ink world (dusk flip) in the town scene |  | shader-graphs | shader-graph-agent | 9 |  |
 | 54 | ⚪ todo | Ink town in Paul's window looks foggy/washed sepia and soft (vs crisp cel sketches): fix the look |  | shader-graphs | shader-graph-agent | 10 |  |
 | 6 | 🔵 review | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | ca43e28 (game 15e4edd) |
+| 68 | ⚪ todo | Creatures visible in both looks: climbers and diggers modelled/sprited, animated, rising from the ground per moon (card 7) |  | creatures | weather-agent | 14 |  |
 | 64 | ⚪ todo | Play keys drive casting (today the town auto-casts every 8 s) |  | spells | game-ui-agent | 15 |  |
+| 16 | ⚪ todo | Storyboard: real sketches for the 10 cards without engine pictures |  | storyboard | storyboard-agent | 16 |  |
+| 70 | ⚪ todo | Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor |  | storyboard | storyboard-agent | 18 |  |
+| 69 | ⚪ todo | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 |  |
 | 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
 | 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 30 |  |
 | 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes |  | storyboard | paul | 30 | 56eb78b |
-| 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells |  | 30 |  |
-| 16 | ⚪ todo | Storyboard: real sketches for the 10 cards without engine pictures |  | storyboard |  | 40 |  |
-| 45 | ⚪ todo | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard |  | 45 |  |
+| 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
+| 45 | ⚪ todo | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 |  |
 | 19 | 🟡 doing | On-device fusion (cards 10-11 can't be filmed without it) |  | spells | game-ui-agent | 50 |  |
-| 56 | ⚪ todo | Ink HUD: spell slot key numbers still tiny |  | game-ui |  | 60 |  |
+| 56 | ⚪ todo | Ink HUD: spell slot key numbers still tiny |  | game-ui | game-ui-agent | 60 |  |
 | 48 | 🟢 done | Buildings float: base shading/shadow doesn't touch the ground (both looks) |  | shader-graphs | shader-graph-agent | 8 | 6c4a799 |
 | 49 | ⚫ dropped | Houses float: contact shading/shadows offset from building bases (pixel + cel town) |  | shader-graphs | shader-graph-agent | 8 |  |
 | 1 | 🟢 done | Pixel-art look as a shader graph (graphs/pixel-world), live preview, parity judge |  | shader-graphs | shader-graph-agent | 10 | 43111e7 |
@@ -54,6 +57,8 @@ Snapshot of queue.db, 2026-10-07T23:13:44. Edit through `app queue` (or `queue/q
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 |  |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |
 | 24 | ⚪ todo | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
+| 67 | ⚪ todo | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing |  | marketplace | queue-agent | 11 |  |
+| 66 | ⚪ todo | Marketplace install flow for card 2: Claude installs the 5 world parts from the registry live in the editor (app registry serve, publish) |  | marketplace | queue-agent | 12 |  |
 | 62 | 🟡 doing | Shell commands in a session can write outside its owned files (only instructions stop it) |  | editor | queue-agent | 25 |  |
 | 26 | 🔵 review | One Claude session per window/tab |  | editor | queue-agent | 30 | 5afa9d9,7284b1d (engine) |
 | 25 | 🟡 doing | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push |  | renderer | renderer-agent | 40 |  |
