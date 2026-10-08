@@ -1,20 +1,20 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T16:55:57. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T17:27:37. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-3 open / 23 total · 0 doing · 3 review · 20 done · 0 ready todos
+3 open / 25 total · 1 doing · 2 review · 22 done · 0 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-0 open / 6 total · 0 doing · 0 review · 6 done · 0 ready todos
+1 open / 7 total · 1 doing · 0 review · 6 done · 0 ready todos
 
-Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Current dashboard redesign follows Paul-approved goals; implementation is in progress.
+Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Implemented dashboard, typed model, bindings and history are available for inspection; human acceptance remains tracked separately in task103.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
@@ -50,12 +50,13 @@ Rust Data schemas and checked store writes expose live object fields to Luau. Fi
 
 #### Dashboard and inspection (`tracker.dashboard`)
 
-0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
 
 Readable top-level areas, compact status summaries, drill-down part pages, relationships and a complete grouped task DAG. The overview stays useful without exposing every task at once.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 132 | 🟡 doing | Keep task graph titles inside readable cards | codex-coordinator |  |
 | 112 | 🟢 done | Compact dashboard and inspection | codex-dashboard |  |
 
 #### Activity and search (`tracker.history`)
@@ -66,16 +67,17 @@ Preserve decisions, notes, source evidence and task changes. Search exact passag
 
 ### Claude and Codex sessions (`engine.sessions`)
 
-1 open / 4 total · 0 doing · 1 review · 3 done · 0 ready todos
+0 open / 5 total · 0 doing · 0 review · 5 done · 0 ready todos
 
 Provider-neutral embedded rmux sessions, routing, visibility and process lifecycle.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 62 | 🔵 review | Shell commands in a session can write outside its owned files (only instructions stop it) | queue-agent |  |
 | 94 | 🟢 done | Support Claude and Codex in the same native session interface | codex-provider |  |
+| 62 | 🟢 done | Shell commands in a session can write outside its owned files (only instructions stop it) | queue-agent |  |
 | 26 | 🟢 done | One Claude session per window/tab | queue-agent |  |
 | 61 | 🟢 done | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) | codex-coordinator |  |
+| 131 | 🟢 done | Make fresh-project onboarding reflect the selected Claude or Codex session | codex-coordinator |  |
 
 ### Collaboration (`engine.collab`)
 
@@ -232,7 +234,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-22 open / 49 total · 2 doing · 9 review · 26 done · 1 ready todos
+19 open / 49 total · 0 doing · 8 review · 29 done · 2 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -260,31 +262,31 @@ Town layout, seed planting and shared scene structure.
 
 ### Physical spell system (`game.magic`)
 
-5 open / 7 total · 1 doing · 2 review · 2 done · 0 ready todos
+3 open / 7 total · 0 doing · 1 review · 4 done · 0 ready todos
 
 Spellcraft, input-driven casting, spell effects and the shared authoritative town state.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 109 | 🟡 doing | Implement authored-spell select, aim and fire interaction | codex-coordinator |  |
 | 75 | 🔴 blocked | Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel | game-ui-agent |  |
 | 83 | ⚪ todo | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) | game-ui-agent |  |
-| 64 | 🔵 review | Play keys drive casting (today the town auto-casts every 8 s) | game-ui-agent |  |
 | 19 | 🔵 review | On-device fusion (cards 10-11 can't be filmed without it) | game-ui-agent |  |
+| 64 | 🟢 done | Route gameplay keys through explicit authored-spell selection and finite casting | codex-coordinator |  |
+| 109 | 🟢 done | Implement authored-spell select, aim and fire interaction | codex-coordinator |  |
 | 18 | 🟢 done | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it | game-ui-agent |  |
 | 85 | 🟢 done | One shared town per scene: spellcraft owns the simulation; the HUD, SpellFx and packages/creatures read the same town (no drift) | game-ui-agent |  |
 
 ### Wands and cartridge integration (`game.inventory`)
 
-2 open / 2 total · 1 doing · 0 review · 0 done · 0 ready todos
+1 open / 2 total · 0 doing · 0 review · 1 done · 1 ready todos
 
 Game energy behavior composed from the shared Inventory and Equipment systems: physical cartridges, equipped wand loading/replacement, finite authored-spell debit, identity-aware HUD energy totals and mana-consuming expansion.
 Planned after: engine.equipment, engine.inventory, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 101 | 🟡 doing | Model finite physical energy cartridges as inventory items and sum them in the bottom HUD | codex-coordinator |  |
-| 102 | ⚪ todo | Add grid capacity and mana-consuming inventory expanders |  |  |
+| 102 | ⚪ todo | Add grid capacity and mana-consuming inventory expanders | codex-coordinator |  |
+| 101 | 🟢 done | Model finite physical energy cartridges as inventory items and sum them in the bottom HUD | codex-coordinator |  |
 
 ### Game HUD (`game.hud`)
 
@@ -435,33 +437,33 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 104 | ⚪ todo | Verify authored-spell finite cartridge debit and readable camera |  |  |
+| 104 | ⚪ todo | Verify authored-spell finite cartridge debit and readable camera | codex-coordinator |  |
 
 ## Shared Platform and Components (`engine`)
 
-7 open / 32 total · 3 doing · 1 review · 25 done · 0 ready todos
+6 open / 33 total · 3 doing · 1 review · 27 done · 0 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-5 open / 22 total · 2 doing · 0 review · 17 done · 0 ready todos
+3 open / 22 total · 1 doing · 0 review · 19 done · 0 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
 #### Renderer and performance (`engine.renderer`)
 
-4 open / 11 total · 1 doing · 0 review · 7 done · 0 ready todos
+3 open / 11 total · 1 doing · 0 review · 8 done · 0 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
-| 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
+| 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 24 | 🔴 blocked | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default | renderer-agent |  |
 | 25 | 🔴 blocked | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push | renderer-agent |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
+| 22 | 🟢 done | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
 | 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up | renderer-agent |  |
 | 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff | renderer-agent |  |
 | 125 | 🟢 done | Preserve the full pixel camera view in smaller editor previews | codex-coordinator |  |
@@ -488,24 +490,25 @@ Run app components and update them while the host remains open. Typed data bindi
 
 #### Editor interaction (`engine.editor`)
 
-1 open / 3 total · 1 doing · 0 review · 2 done · 0 ready todos
+0 open / 3 total · 0 doing · 0 review · 3 done · 0 ready todos
 
 Shared editor interaction correctness.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 129 | 🟡 doing | Show scene import failures when opening a document instead of silently displaying another scene |  |  |
+| 129 | 🟢 done | Show scene import failures when opening a document instead of silently displaying another scene |  |  |
 | 29 | 🟢 done | layout_matrix: welcome-modal 4 px spill | runtime-agent |  |
 | 30 | 🟢 done | button_press test failing (cause untraced) | runtime-agent |  |
 
 ### Spell runtime and finite casting (`engine.spellcraft`)
 
-0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
 
 Typed Rust spell definitions, validated cartridge composition over generic Inventory/Equipment, idempotent cast admission, physics adapter and normalized Data projections. The game consumes these APIs through a separate native player component.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 130 | 🟡 doing | Admit an explicitly reviewed authored spell revision without resetting player state | codex-coordinator |  |
 | 127 | 🟢 done | Reusable finite cartridge and authored casting core |  |  |
 
 ### Data Layer (`engine.data`)
