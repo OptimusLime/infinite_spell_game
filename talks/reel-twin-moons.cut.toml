@@ -1,7 +1,8 @@
 # Reel v1 (r/aigamedev): ../storyboard/path.toml's reel cards in order, real offline engine clips from clips/, hard cuts, no
-# narration, one line of text (the title chip on the last shot). Silent: the engine has no music bed to give it.
+# narration, one line of text (the title, small in the lower third of the last shot). Silent: the engine has no music bed to give it.
 # Recording paths are relative to the project (the game repo), as the engine reads them.
-# Render (from the game repo): app video render storyboard/reel/reel-twin-moons.cut.toml --orientation landscape
+# Render (from the game repo): app video make talks/reel-twin-moons.cut.toml --orientation landscape
+# (make-reel-pieces.py makes the title shot, the black tail and the editor stand-in into .atelico/reel-pieces/)
 # Out: .atelico/reel-twin-moons/landscape.mp4
 name = "reel-twin-moons"
 title = "Reel: twin moons"
@@ -9,7 +10,7 @@ title = "Reel: twin moons"
 checklist = "../storyboard/path.toml"
 captions = "file"
 ground = "dark"
-order = ["cold-flip", "twin-moon-timelapse", "two-shadows", "pixel-to-ink", "snow", "embers", "firefall", "editor-claude", "title"]
+order = ["cold-flip", "twin-moon-timelapse", "two-shadows", "pixel-to-ink", "snow", "embers", "firefall", "editor-claude", "title", "black"]
 
 [voices]
 engine = "http://127.0.0.1:8187/v1"
@@ -71,11 +72,18 @@ at = "0:22.5"
 until = "0:25.5"
 name = "9. Made in the editor"
 note = "stand-in: a slow push over a real editor still (sketches/world/editor-pixel-graph.png) until the editor-claude clip lands"
-source = { recording = { file = ".atelico/reel-stand-ins/editor-pixel-graph-push-3s.mp4", shows = [] } }
+source = { recording = { file = ".atelico/reel-pieces/editor-pixel-graph-push-3s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
 
 [shot.title]
 at = "0:25.5"
 until = "0:29"
 name = "10. Title"
-label = "Infinite Spell Game"
-source = { recording = { file = "storyboard/reel/clips/ink-town-weather-firefall-low-orange-moon-4s.mp4", shows = [] } }
+note = "the lower third is drawn by make-reel-pieces.py: the cut's own label is a large violet chip"
+source = { recording = { file = ".atelico/reel-pieces/title-ink-town-lower-third-4s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
+
+[shot.black]
+at = "0:29"
+until = "0:29.7"
+name = "11. Cut to black"
+hold_ok = true
+source = { recording = { file = ".atelico/reel-pieces/black-tail-1s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
