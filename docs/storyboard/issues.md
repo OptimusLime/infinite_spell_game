@@ -192,3 +192,24 @@ J A still feel cards 2-5 as setup, ~40 s by A's count).
 | 98 | Ad framing at both ends; "$0" into the voice | G D J A | 🟡 | Left for Paul / post text |
 
 Applied: 15 cards, 439 spoken words. Fixes 91-95 not re-judged.
+
+## Rounds 11-12: task 45, a failed fusion near the climax (15-card version, now history)
+Round 11 put a dud (Emberheart) into card 14: 🔴 J S A ("repeats Hearthglow", "makes the player look clumsy", card 14
+"carries too much"). Round 12 moved the failure to card 13 as a rushed wrong-order cast (wind then fire, the fireball
+sails over the climbers): 🟢 J ("helps. It proves order matters under pressure"), S ("the best beat in the video");
+A 🟡 (make the wrong order visible). Card 14 now one decision, one payoff: A "clean now". Left 🟡: the spell economy
+(are spells used up?), the win reads as the model's luck (S), "Try 1/2" labels (A). Applied to the history cards.
+
+## Reel v1 (Paul, 2026-10-08: "focus on ujique artistic choices and PUNCHY moments ... watch out for this corny shit")
+The path is now a 10-shot, 36 s reel with no narration; the 15-card path is in docs/storyboard/history/.
+Judges: an r/aigamedev regular (R) and a senior art director (A), on reel-r1/cards.md.
+
+| # | Issue | Who | | Fix |
+|---|---|---|---|---|
+| R1 | Slow hook: a 7 s locked-off timelapse, nothing in the first 2 s | A (R: "if the first frame isn't static") | 🔴 | 1.5 s cold-open flip pixel->ink->pixel; timelapse cut to 5 s |
+| R2 | Shot 7 overloaded (three casts, two names in 5 s); ends on the deflating Hearthglow | A | 🔴 | Hearthglow first (the gag, 2 s), then Wall of Flame as the payoff (4 s); Fireball cut |
+| R3 | "made in the Atelico editor, with Claude" reads as a sponsor tag; the editor shot too small to read | R A | 🔴 | No burned-in tagline; a readable Claude prompt and the town flipping live is the shot |
+| R4 | Two shadows too subtle at 3 s | R A | 🟡 | 4 s, closer push |
+| R5 | Style flips faster and faster: trailer cliché | R | 🟡 | Left |
+Liked: Hearthglow ("killed me lol", R), the burning flakes into snow ("the shot people will screenshot", A), the
+two-shadow tint and the flip (A), the lamp ripple (R). Both: would upvote / share.

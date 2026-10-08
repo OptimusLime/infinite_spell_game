@@ -1,0 +1,6 @@
+title = "Pixel to ink"
+spoken = ""
+shown = "3 s, no text. Same framing, cut on the beat: warm pixel town, frozen flat ink (two tones, hard black lines, purple and orange only), pixel, ink, faster each time, landing on ink."
+status = "todo"
+sketch = "sketches/world/switch-pixel-to-ink.png"
+sketch_note = "Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/."

@@ -1,0 +1,6 @@
+title = "Twin-moon timelapse"
+spoken = ""
+shown = "5 s, no text. Locked-off over the cosy pixel town: the sun drops, the sky goes violet, the purple moon then the orange moon rise; the lamps click on in a ripple down the street; shadows swing round as the moons climb."
+status = "todo"
+sketch = "sketches/world/cinematic-sky.png"
+sketch_note = "Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/."
