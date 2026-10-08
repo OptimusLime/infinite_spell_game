@@ -73,3 +73,97 @@ inferred, not said); everything is a spell 🟢; fusion 🟡 (authored or genera
 | 45 | Nothing checkable: no repo, no session log, no price | D | 🟡 | For the post text, not the narration |
 
 Round 3 was the last allowed. Fixes 33-36 are applied to the cards but were not re-judged.
+
+## Round 4: the applied cards (re-judging round 3's fixes; queue task 12)
+Round 3 fixes: 34 installed vs written 🟢 (all five state "six parts, four files"); 36 narrator named 🟢 (all five:
+"Paul, who makes the Atelico editor"); 33 recipe vs AI 🟡 (G D read "the model invents"; J S: names only? bounded?);
+35 clocks 🔴 (the 18:00 overlay mid-fight; dawn at 19:00). Queue task 15 makes three yellows into work, so they are
+scored red here.
+
+| # | Issue | Who | | Proposed fix |
+|---|---|---|---|---|
+| 46 | Real vs game clock: "the clock says 18:00, with a part being installed. Is he installing it while the fight is going on?" | G J S | 🔴 | Card 5: "I skip ahead and play that night myself"; card 10: "still playing … while the night runs" |
+| 47 | Passive climax: "the player watches a health ring drain, and the moons part on schedule"; peaks at card 11 (task 15) | J S | 🔴 | Card 12: the player's own fusion saves the seed |
+| 48 | "Invents" reads as a name typing in; no bounds ("a demo that only works once") | J S A | 🔴 | Card 10: "invents what two spells make, as a new sensor and effect"; results write in as typed spell entries |
+| 49 | Fire in the snow affects nothing; the weather session is never credited (task 15) | G J S A D | 🔴 | Card 7: "the weather session's fire … every burning flake I catch is a free fire spell" |
+| 50 | Purple and orange creatures behave the same; the orange shadow does nothing (task 15) | S A | 🔴 | Card 8: "purple ones climb over walls, orange ones dig under them" |
+| 51 | Why the townsfolk freeze (queue task 14) | G J S A | 🟡 | Three options written into the frozen-ink card's sketch_note for Paul; spoken unchanged |
+| 52 | Card 2 dense; "adding the camera doesn't break the sky" unproven | G J S A D | 🟡 | Left (card 2 is held for Paul, task 13) |
+| 53 | "The one rule no part has" awkward; "I ask it" ambiguous | G J D | 🟡 | "I ask Claude" folded into 46's edit; rest left |
+| 54 | "Repo or it didn't happen"; price, model size | D | 🟡 | For the post text |
+| 55 | "It didn't exist at nine" vs prebuilt parts | D A | 🟡 | Left |
+
+## Round 5: round4-draft
+Reds 46-50 all read 🟢: "I start with … every flake adds fire" (G: "burning flakes made me stop, in a good way");
+climbers and diggers (all); "typed spell: name, sensor, effect" (S); the player casts the save (G J S A).
+
+| # | Issue | Who | | Proposed fix |
+|---|---|---|---|---|
+| 56 | The climax repeats card 10's combo ("tells me nothing new"); a ring of flame vs diggers underground; it should be "won by the thing just invented" | J S | 🔴 | Card 12: wind cast into the burning tower, "a pair I never tried"; the model invents a turning shadow that sweeps round the seed |
+| 57 | Wind is never obtained: "the payoff feels cheated" | S A | 🔴 | Card 7: "I start with wind; every burning flake I catch adds a fire spell" |
+| 58 | "Plays live" + real-time clock = one night lasting four hours: "reads like an error" | J S A | 🔴 | Card 5: "play that night, again and again, all afternoon"; the clock ticks between replays; card 10: "without restarting the night" |
+| 59 | Card 10 overloaded | S A | 🔴 | "as a new sensor and effect" cut from the spoken line (the typed entry on screen carries it) |
+| 60 | Same result every time? Cherry-picked? Show an uncut fusion with latency | S J D A | 🟡 | Partly covered by 56 (an untried pair, live); rest for the shoot |
+| 61 | Card 4's bug (walking through walls) vs card 8's feature (climbing over, digging under) | J | 🟡 | Left |
+| 62 | Moon town part vs the seed growing the town | J S | 🟡 | Left |
+| 63 | Editor beats 2-5 are ~45-60 s before the first payoff; flash the ink cut in card 1 | J A | 🟡 | Left (card 1 is Paul's camera direction) |
+| 64 | Townsfolk freeze, seed loss never shown | G S A | 🟡 | Options in the card note (51) |
+
+## Round 6: round5-draft
+Reds 56-59: the climax is now a new fusion the player makes (🟢: "the watchtower mutating live into a lighthouse beam
+of fire", G; A: "the right climax image"); wind's source 🟡 (logic there, but all five still ask "when did I get
+wind?"); card 10 trimmed 🟢; the clock 🔴 again (18:00 in card 5's replays and in card 10).
+
+| # | Issue | Who | | Proposed fix |
+|---|---|---|---|---|
+| 65 | 18:00 appears twice ("time goes backwards"); replays or one continuous night? | D J S A | 🔴 | Card 5's replay clocks are 15:30, 16:40; card 10: "Six p.m., mid-replay" |
+| 66 | "Again and again" does nothing: no failed attempt, the stakes are never felt; the seed is never seen breaking | J A S | 🔴 | Card 5: "All afternoon I lose the seed, and replay it"; two quick losses on screen (the seed shatters, the town greys out) |
+| 67 | Climbers vs diggers never matter (the beam kills both alike); card 12 crammed; the player casts once then watches | S J | 🔴 | Card 12 split: the beam burns the diggers (spells/lighthouse); the climbers are left on the roofs, and the player's last flake + wind puts a wall of flame along the rooftops (town/hold-the-seed) |
+| 68 | "I start with wind": when? All five asked; "everything is a spell" arrives after it | G D J S A | 🔴 | Fire-in-snow moves after the watchtower card; "My own spell is wind"; the wind icon is on screen "all along"; set in the town square |
+| 69 | Wall of flame and fireball look hand-authored; lead with the tower | A | 🟡 | Left |
+| 70 | Card 4's panes unreadable; card 5's forecast won't read in 2 s; ~60 s of UI up front | A J | 🟡 | Left |
+| 71 | Fused visuals vs "nothing off-style"; useless fusions? | S | 🟡 | Left |
+
+## Round 7: round6-draft
+Reds 65-68: clocks 🟢 (S: "the timeline works … the win needs Fusion, and Fusion arrives at 18:00"); climbers vs
+diggers need two counters 🟢 (S: "card 13 pays that off well"); loss on screen 🟢; wind 🟡 (four still ask).
+
+| # | Issue | Who | | Proposed fix |
+|---|---|---|---|---|
+| 72 | Card 5's "replayed" / loss montage breaks the one night being followed; losses come before the threat is known; "the worst card" | G D J S A | 🔴 | Card 5 ends at the skip; the two losses move to card 10 as flashes: "I have lost this night twice" |
+| 73 | Wind "all along" never set up | G D J S A | 🔴 | Card 8: "My wind is one; the watchtower is another"; card 9: "Every burning flake I catch is a fire spell" |
+| 74 | The finish repeats card 10's wall of flame; the beam is the stronger image; the moons part as a rescue | J A | 🔴 | Order swapped: rooftop wall first (town/rooftop-wall), the lighthouse beam last, landing at the sliver as the moons part (town/hold-the-seed) |
+| 75 | Orange is moon, diggers, fire and fireball at once in ink: fire on orange creatures turns to mush | A | 🟡 | Left (note for the look: fire white-hot) |
+| 76 | "Ask your agent for it": for what? | G | 🟡 | Left |
+| 77 | Orange shadow unexplained; snow, freeze, ink are decoration | S | 🟡 | Left |
+
+## Round 8: round7-draft
+Reds 72-74: card 5 now ends at the skip 🟢 (no judge lost there); the beam as the finish 🟢 (A: "the beam is the right
+climax"; S: each creature type "has a clear answer"); wind 🔴 still.
+
+| # | Issue | Who | | Proposed fix |
+|---|---|---|---|---|
+| 78 | "Lost this night twice" arrives after we have watched the night go well; card 10 overloaded | S A J | 🔴 | The two losses move to the top of the night (card 6: "Third try at this night", flashes at 15:30, 16:40, then 17:50); card 10 keeps only the install and the two fusions |
+| 79 | "My wind is one": what wind? | G J S A | 🔴 | Card 3: "You start with one spell: wind." (the wind icon in the player's one slot) |
+| 80 | "Without restarting it": the game or the night? | G D J S | 🔴 | "while the night keeps running" |
+| 81 | The model invents "sweep" exactly on cue; "a fusion I never tried" reads scripted; show a dud or a limit | S A D J | 🟡 | Left for Paul / the shoot (A: cut "a fusion I never tried") |
+| 82 | The climax reads "the AI saved me" plus a timer | J | 🟡 | Left: the invented fusion saving the night is the point of the video |
+| 83 | Climbers over walls vs the noon wall fix | S G | 🟡 | Left |
+
+## Round 9: round8-draft
+Reds 78-80 all read 🟢: no judge lost the night at card 10; "you start with one spell: wind" lands (wind no longer
+"from nowhere" for D S A; G J ask only what wind's own effect is); "while the night keeps running" 🟢 (A: say "while
+the game runs" 🟡). Every judge reconstructs the whole point: one day, six parts installed and four files written,
+order-dependent fusion by an on-device model into typed spells, buildings fusable, the night won by the beam.
+
+| # | Issue | Who | | Proposed fix |
+|---|---|---|---|---|
+| 84 | Who wins: "the model's invention and the clock win, and the player is barely involved"; "was it skill, or a dice roll?" (queue task 15) | J S | 🔴 | Card 13: the player's reason and aim: "The tower's shadow can't reach them, so I cast wind into it to make it move … The last digger burns a step from the seed, and then the moons part." Applied; not re-judged |
+| 85 | Fusion bounds: what stops a useless or unbalanced invention? Show one dud | S J D | 🟡 | Left for Paul / the shoot |
+| 86 | Why do both moons make fire? | G J A | 🟡 | Left (weather agent's rule, queue task 5) |
+| 87 | Townsfolk freeze | all | 🟡 | Three options in the frozen-ink card's sketch_note (queue task 14) |
+| 88 | Noon wall fix vs climbers and diggers | J S | 🟡 | Left |
+| 89 | Cards 2, 4, 5 ≈ 50 s of UI; cold-open on the ink flip | A J | 🟡 | Left (card 1 is Paul's camera direction; card 2 held, task 13) |
+| 90 | "Ask your agent for it" + "$0" read as an ad; show line counts / raw footage | D J A | 🟡 | For the post text and the shoot |
+
+Final: 14 cards, 434 spoken words (cap 555). Cards updated; path.toml reordered.

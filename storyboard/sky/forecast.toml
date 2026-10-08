@@ -1,5 +1,5 @@
 title = "The forecast"
-spoken = "The sky part runs each moon on its own clock, so I ask it when they next line up: in four game days. I skip ahead."
+spoken = "The sky part runs each moon on its own clock, so I ask Claude when they next line up: in four game days. I skip ahead to that night."
 shown = "Clock: 15:00. Typed to Claude: \"when do the moons line up next?\" The forecast panel opens: a ring per moon and a bar per moon's hours in the sky, the alignment four days ahead highlighted. The game skips forward through four nights in a few seconds."
 status = "doing"
 sketch = "sketches/world/forecast.png"

@@ -7,11 +7,12 @@ cards = [
   "making/agents",
   "sky/forecast",
   "world/cel/frozen-ink",
-  "sky/fire-in-snow",
   "sky/monsters-rise",
   "town/shadow-defence",
+  "sky/fire-in-snow",
   "spells/cast-order",
   "spells/fuse-building",
+  "town/rooftop-wall",
   "town/hold-the-seed",
   "world/pixel/morning-after",
 ]

@@ -1,0 +1,5 @@
+title = "Flame on the rooftops"
+spoken = "The last wave: climbers come over the walls first. One burning flake, then wind: a wall of flame runs along the rooftops, and they fall."
+shown = "Purple climbers top the house walls and cross the roofs toward the seed. The player catches a falling flake and casts fire then wind: a wall of flame runs along the roofline and the climbers fall burning. The seed's ring has drained to a quarter."
+status = "todo"
+sketch_note = "Needs climbers, the catchable flake and fusion; nothing to capture yet."

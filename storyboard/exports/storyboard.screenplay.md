@@ -1,6 +1,6 @@
 # Infinite Spell Game
 
-*A screenplay from the storyboard: 13 scenes, about 140 s.*
+*A screenplay from the storyboard: 14 scenes, about 177 s.*
 
 ## 1. A TOWN AT NIGHT
 
@@ -28,10 +28,10 @@ A clock in the corner: 9:00. The Atelico editor with one Claude pane. Typed: "a 
 
 *Town seed · not started · `town/seed-planted.toml`*
 
-Clock: 10:00. Claude's pane shows one new file, seed.luau, being written. Then in the game: the player presses a glowing seed into open ground; the first houses grow up around it. The seed keeps pulsing at the town's centre with a ring that shows its health.
+Clock: 10:00. Claude's pane shows one new file, seed.luau, being written. Then in the game: the player presses a glowing seed into open ground; the first houses grow up around it. The seed keeps pulsing at the town's centre with a ring that shows its health; one spell slot at the screen's edge holds a wind icon.
 
 > **NARRATOR**  
-> The one rule no part has, Claude writes: you plant a seed, and the town grows around it. If the seed breaks, the town is gone.
+> The one rule no part has, Claude writes: you plant a seed, and the town grows around it. If the seed breaks, the town is gone. You start with one spell: wind.
 
 ## 4. THREE SESSIONS, ONE BUG
 
@@ -53,78 +53,93 @@ Clock: 15:00. Typed to Claude: "when do the moons line up next?" The forecast pa
 *Sketch: The real forecast panel from packages/sky (moon-forecast --seed 22).*
 
 > **NARRATOR**  
-> The sky part runs each moon on its own clock, so I ask it when they next line up: in four game days. I skip ahead.
+> The sky part runs each moon on its own clock, so I ask Claude when they next line up: in four game days. I skip ahead to that night.
 
 ## 6. THE WORLD FREEZES
 
 *The world › Cel world · in progress · `world/cel/frozen-ink.toml`*
 
-The two moons touch in the sky. Hard cut from warm pixels to flat ink: two or three tones, hard black lines, purple and orange the only colours. People stopped mid-step, lamps gone cold. From here the picture stays in the game through the night; the corner clock and any editor beat are small overlays.
+Two flashes of earlier tries: creatures reach the seed, it shatters, the town greys out (corner clock 15:30, then 16:40). Then clock 17:50, a fresh try: the two moons touch in the sky. Hard cut from warm pixels to flat ink: two or three tones, hard black lines, purple and orange the only colours. People stopped mid-step, lamps gone cold. The picture stays in the game; the corner clock and any editor beat are small overlays.
 
-*Sketch: The look switch exists on the island: sketches/world/switch-pixel-to-ink.png and switch-pixel-to-ink.mp4; the town version waits on world round 2.*
-
-> **NARRATOR**  
-> The moons meet. The ink-world part restyles every house, tree and townsperson in one pass. Nothing is redrawn, so nothing comes out off-style. The townsfolk freeze.
-
-## 7. FIRE IN THE SNOW
-
-*Weather & moons · not started · `sky/fire-in-snow.toml`*
-
-A snowfield in the ink world; burning flakes come down and hiss into steam where they land.
+*Sketch: Why the townsfolk freeze (options for Paul; spoken line unchanged). Paul: "the good guys are frozen in place. And so that means that ... your things are vulnerable". A) Defenceless town: by day the townsfolk light the lamps and man the tower; frozen, nothing defends but the spells you set up in daylight, so the forecast is your preparation window. B) Breakable people: the frozen townsfolk are ink statues; a creature that touches one shatters it, and at dawn the town is smaller, so you guard people as well as the seed. C) Light leash: you stay unfrozen only inside the seed's glow; step out of it and you freeze like them, so every trip for a burning flake is a risk. Sketch frames: sketches/world/switch-pixel-to-ink.png and switch-pixel-to-ink.mp4 (island); the town version waits on world round 2.*
 
 > **NARRATOR**  
-> Both moons at once: fire falls into the snow.
+> Third try at this night. The moons meet. The ink-world part restyles every house, tree and townsperson in one pass. Nothing is redrawn, so nothing comes out off-style. The townsfolk freeze.
 
-## 8. MONSTERS FROM THE GROUND
+## 7. CLIMBERS AND DIGGERS
 
 *Weather & moons · not started · `sky/monsters-rise.toml`*
 
-The ground cracks under both moons' light; purple and orange ink creatures pull themselves up and walk toward the glowing seed.
+The ground cracks under both moons' light; purple and orange ink creatures pull themselves up and go for the glowing seed: the purple ones scale a house wall, the orange ones sink into the ground and surface past it.
 
 > **NARRATOR**  
-> Each moon raises its own creatures. Tonight both are up, so purple ones and orange ones climb out together and head for the seed.
+> Each moon raises its own creatures: purple ones climb over walls, orange ones dig under them. Tonight both are up, and they head for the seed.
 
-## 9. SHADOWS THAT FIGHT
+## 8. SHADOWS THAT FIGHT
 
 *Town seed · not started · `town/shadow-defence.toml`*
 
-The watchtower in the ink night with its spell beside it: sensor "creature in my shadow", effect "slow". Each moon throws its own coloured shadow from the tower; a creature steps into the purple one and drags to a crawl.
+The player's wind spell icon, then the watchtower in the ink night with its spell beside it: sensor "creature in my shadow", effect "slow". Each moon throws its own coloured shadow from the tower; a creature steps into the purple one and drags to a crawl.
 
 *Sketch: One shadow per moon is in progress (world round 2): sketches/world/two-shadows.png. The sensor/effect spell needs the spell core port (not started).*
 
 > **NARRATOR**  
-> The spells session made everything a spell: a sensor and an effect. The watchtower is one. Sensor: a creature in my shadow. Effect: slow it.
+> The spells session made everything a spell: a sensor and an effect. My wind is one; the watchtower is another. Sensor: a creature in my shadow. Effect: slow it.
+
+## 9. FIRE IN THE SNOW
+
+*Weather & moons · not started · `sky/fire-in-snow.toml`*
+
+The town square in the ink night, snow underfoot; burning flakes come down and hiss into steam where they land. The player runs under them and catches one; a fire icon fills the slot beside the wind icon.
+
+*Sketch: The weather agent owns the fire-in-snow state and visuals (queue tasks 5, 6, 8); this card needs the flake to be catchable as a fire spell.*
+
+> **NARRATOR**  
+> Both moons at once: the weather session's fire falls into the snow. Every burning flake I catch is a fire spell.
 
 ## 10. ORDER MATTERS
 
 *Spells · not started · `spells/cast-order.toml`*
 
-Clock: 18:00. A small overlay in the corner: the Fusion tile installs, while the picture stays in the ink night. The player casts fire then wind (two icons pop above the head in order): a wall of flame rises across the street and stops a line of creatures. Then wind then fire: a fireball arcs into a crowd and bursts. Each result's name writes in as it is invented.
+Clock 18:00, the same night running: a small overlay in the corner: the Fusion tile installs, while the picture stays in the ink night. The player casts fire then wind (two icons pop above the head in order): a wall of flame rises across the street and stops a line of creatures. Then wind then fire: a fireball arcs into a crowd and bursts. Each result writes in as a typed spell: name, sensor, effect.
 
 > **NARRATOR**  
-> Six p.m.: Claude installs the last part, fusion. Its small AI model runs on the player's machine and invents what two spells make. Fire then wind: a wall of flame. Wind then fire: a fireball.
+> Six p.m.: Claude installs the last part, fusion, while the night keeps running. A small AI model on the player's machine invents what two spells make. Fire then wind: a wall of flame. Wind then fire: a fireball.
 
 ## 11. FIRE INTO THE TOWER
 
 *Spells · not started · `spells/fuse-building.toml`*
 
-The player casts fire at the watchtower; its spell gains a second effect, "burn", and a new name writes in; the shadows get burning edges. A creature steps in, slows, and catches fire.
+The player casts fire at the watchtower; its spell entry rewrites: sensor "creature in my shadow", effect "slow" becomes "slow, then burn", under a new name; the shadows get burning edges. A creature steps in, slows, and catches fire.
 
-*Sketch: Needs the spell core and on-device fusion (the LoRA) before the shoot; nothing to capture yet.*
+*Sketch: Needs the spell core and on-device fusion (queue tasks 18, 19) before the shoot; nothing to capture yet.*
 
 > **NARRATOR**  
 > The tower is a spell too, so I cast fire into it. The model invents a new tower: slow, then burn.
 
-## 12. THE SEED HOLDS
+## 12. FLAME ON THE ROOFTOPS
+
+*Town seed · not started · `town/rooftop-wall.toml`*
+
+Purple climbers top the house walls and cross the roofs toward the seed. The player catches a falling flake and casts fire then wind: a wall of flame runs along the roofline and the climbers fall burning. The seed's ring has drained to a quarter.
+
+*Sketch: Needs climbers, the catchable flake and fusion; nothing to capture yet.*
+
+> **NARRATOR**  
+> The last wave: climbers come over the walls first. One burning flake, then wind: a wall of flame runs along the rooftops, and they fall.
+
+## 13. THE SEED HOLDS
 
 *Town seed · not started · `town/hold-the-seed.toml`*
 
-Creatures pile onto the seed; its health ring drains to a sliver. The creatures still coming must cross the tower's burning shadow, and go up in flames. Above, the moons slide apart; the ring stops at its last sliver.
+Orange diggers burst up beside the seed, just outside the tower's shadow; the ring drains to a sliver. The player casts wind into the burning watchtower; its spell entry rewrites live (a new name; effect "sweep" added) and its burning shadow turns round the seed like a lighthouse beam. Each digger it crosses goes up in flames (hit-stop, shake); the last burns a step from the seed. A beat later the moons slide apart above; the ring stops at its last sliver.
+
+*Sketch: The finish: the lighthouse beam sweeping round the seed on its last sliver as the moons part.*
 
 > **NARRATOR**  
-> The last wave reaches the seed; its ring is almost empty. They cross the tower's shadow and burn. The moons part, and the seed holds.
+> Then diggers surface right by the seed, and its ring is almost empty. The tower's shadow can't reach them, so I cast wind into it to make it move. The model invents a shadow that turns like a lighthouse beam. The last digger burns a step from the seed, and then the moons part.
 
-## 13. THE MORNING AFTER
+## 14. THE MORNING AFTER
 
 *The world › Pixel world · not started · `world/pixel/morning-after.toml`*
 

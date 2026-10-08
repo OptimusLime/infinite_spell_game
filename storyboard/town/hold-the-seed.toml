@@ -1,5 +1,6 @@
 title = "The seed holds"
-spoken = "The last wave reaches the seed; its ring is almost empty. They cross the tower's shadow and burn. The moons part, and the seed holds."
-shown = "Creatures pile onto the seed; its health ring drains to a sliver. The creatures still coming must cross the tower's burning shadow, and go up in flames. Above, the moons slide apart; the ring stops at its last sliver."
+spoken = "Then diggers surface right by the seed, and its ring is almost empty. The tower's shadow can't reach them, so I cast wind into it to make it move. The model invents a shadow that turns like a lighthouse beam. The last digger burns a step from the seed, and then the moons part."
+shown = "Orange diggers burst up beside the seed, just outside the tower's shadow; the ring drains to a sliver. The player casts wind into the burning watchtower; its spell entry rewrites live (a new name; effect \"sweep\" added) and its burning shadow turns round the seed like a lighthouse beam. Each digger it crosses goes up in flames (hit-stop, shake); the last burns a step from the seed. A beat later the moons slide apart above; the ring stops at its last sliver."
 status = "todo"
 sketch = "sketches/hold-the-seed.png"
+sketch_note = "The finish: the lighthouse beam sweeping round the seed on its last sliver as the moons part."
