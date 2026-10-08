@@ -272,3 +272,35 @@ source_image = ""
 original_sha256 = "dcef5f501ea6b693ceb62ae261cd994d0e34d3cf34d8ade3b059fda16956c041"
 display_sha256 = "dcef5f501ea6b693ceb62ae261cd994d0e34d3cf34d8ade3b059fda16956c041"
 conversion = "PNG byte copy"
+
+[[images]]
+id = "noita-projectile-impact"
+source = "https://store.steampowered.com/app/881100/"
+source_image = "references/media/motion/noita-projectile-impact-frames.jpg"
+original_sha256 = "b18c8d5faa0615556226ea1dda8f910888d5f1c8f22ab5693a881e0fc0d2df7b"
+display_sha256 = "00147e8258a897a48e6c20bdecd17313c1effd3ae096d724c8eb818efc8c0e34"
+conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."
+
+[[images]]
+id = "wizard-wind-area"
+source = "https://store.steampowered.com/app/445980/"
+source_image = "references/media/motion/wizard-wind-area-frames.jpg"
+original_sha256 = "a5f93330975fbb6425d66c4eedb1f228c9841027a0460559046365ab7a8fb2c2"
+display_sha256 = "0d4864a1960cdbaa3421828f16903dce2b949f7cb186cb8fad8ba0d602960840"
+conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."
+
+[[images]]
+id = "fighterz-charge-beam"
+source = "https://store.steampowered.com/app/678950/"
+source_image = "references/media/motion/fighterz-charge-beam-frames.jpg"
+original_sha256 = "4c02eca458c83a5562d183f02c7cbe35fadf5cc694a234e352b0950368be466d"
+display_sha256 = "7e029e2e1876acadff41c8c52b93871d9aabedff540db1d92549473a9e24d566"
+conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."
+
+[[images]]
+id = "noita-residual-material"
+source = "https://store.steampowered.com/app/881100/"
+source_image = "references/media/motion/noita-residual-material-frames.jpg"
+original_sha256 = "1846f5cf159031b831ab1663a4a85a3cb5f5b63539513c11bcae5330d896de2c"
+display_sha256 = "7bbfef504f5418c8be27fc928ad62211541c25617acf7e27f039b205ecea9078"
+conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."

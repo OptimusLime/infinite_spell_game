@@ -1,12 +1,12 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T15:08:26. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T15:51:55. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-6 open / 23 total · 0 doing · 5 review · 17 done · 0 ready todos
+6 open / 23 total · 1 doing · 5 review · 17 done · 0 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
@@ -66,15 +66,15 @@ Preserve decisions, notes, source evidence and task changes. Search exact passag
 
 ### Claude and Codex sessions (`engine.sessions`)
 
-3 open / 4 total · 0 doing · 2 review · 1 done · 0 ready todos
+3 open / 4 total · 1 doing · 2 review · 1 done · 0 ready todos
 
 Provider-neutral embedded rmux sessions, routing, visibility and process lifecycle.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 26 | 🔵 review | One Claude session per window/tab | queue-agent |  |
 | 62 | 🔵 review | Shell commands in a session can write outside its owned files (only instructions stop it) | queue-agent |  |
-| 61 | ⚪ todo | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) | renderer-agent |  |
+| 26 | 🔵 review | One Claude session per window/tab | queue-agent |  |
+| 61 | 🟡 doing | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) | codex-coordinator |  |
 | 94 | 🟢 done | Support Claude and Codex in the same native session interface | codex-provider |  |
 
 ### Collaboration (`engine.collab`)
@@ -119,7 +119,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-13 open / 23 total · 1 doing · 3 review · 9 done · 0 ready todos
+11 open / 23 total · 0 doing · 2 review · 11 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -137,7 +137,7 @@ Reusable storyboard authoring tool: hierarchical groups, relationships, paths an
 
 ### Video Sequencer (`engine.video`)
 
-3 open / 4 total · 0 doing · 3 review · 1 done · 0 ready todos
+2 open / 4 total · 0 doing · 2 review · 2 done · 0 ready todos
 
 Reusable video assembly and playback tool: source clips, timing, titles, narration, music and export. Individual edits are separate content artifacts.
 
@@ -164,24 +164,24 @@ Play and inspect a cut inside the app engine, including cuts authored in a diffe
 
 #### Video export (`video.export`)
 
-1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Render the authored cut with source footage, titles, narration, music and captions. Export evidence belongs to the specific content artifact being rendered.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 92 | 🔵 review | Engine video (044b965): title on a recording shot crashes: work dir not created before brand.title_at runs magick (needs create_dir_all(&work) before crates/cli/src/video/mod.rs:375); also the [music] bed is mixed mono into the voice track | runtime-agent |  |
+| 92 | 🟢 done | Engine video (044b965): title on a recording shot crashes: work dir not created before brand.title_at runs magick (needs create_dir_all(&work) before crates/cli/src/video/mod.rs:375); also the [music] bed is mixed mono into the voice track | runtime-agent |  |
 
 ### Reference and Concept Board (`engine.references`)
 
-1 open / 1 total · 1 doing · 0 review · 0 done · 0 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 A reusable comparison/review workspace for reference inputs, concept revisions and compatibility decisions across projects.
 Planned after: engine.tracker
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 107 | 🟡 doing | Build reusable concept/reference-board review and comparison tooling | codex-coordinator |  |
+| 107 | 🟢 done | Build reusable concept/reference-board review and comparison tooling | codex-coordinator |  |
 
 ### r/AIGameDev posts (`content.aigamedev`)
 
@@ -230,7 +230,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-23 open / 49 total · 0 doing · 9 review · 25 done · 0 ready todos
+23 open / 49 total · 1 doing · 9 review · 25 done · 0 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -274,14 +274,14 @@ Spellcraft, input-driven casting, spell effects and the shared authoritative tow
 
 ### Wands and cartridge integration (`game.inventory`)
 
-2 open / 2 total · 0 doing · 0 review · 0 done · 0 ready todos
+2 open / 2 total · 1 doing · 0 review · 0 done · 0 ready todos
 
 Game energy behavior composed from the shared Inventory and Equipment systems: physical cartridges, equipped wand loading/replacement, finite authored-spell debit, identity-aware HUD energy totals and mana-consuming expansion.
 Planned after: engine.equipment, engine.inventory, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 101 | ⚪ todo | Model finite physical energy cartridges as inventory items and sum them in the bottom HUD |  |  |
+| 101 | 🟡 doing | Model finite physical energy cartridges as inventory items and sum them in the bottom HUD | codex-coordinator |  |
 | 102 | ⚪ todo | Add grid capacity and mana-consuming inventory expanders |  |  |
 
 ### Game HUD (`game.hud`)
@@ -437,13 +437,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-11 open / 27 total · 0 doing · 4 review · 16 done · 1 ready todos
+8 open / 28 total · 1 doing · 2 review · 20 done · 1 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-5 open / 19 total · 0 doing · 2 review · 14 done · 1 ready todos
+4 open / 19 total · 0 doing · 1 review · 15 done · 1 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -467,19 +467,19 @@ Native GPU rendering, parity and frame budget.
 
 #### Runtime and hot reload (`engine.runtime`)
 
-1 open / 8 total · 0 doing · 1 review · 7 done · 0 ready todos
+0 open / 8 total · 0 doing · 0 review · 8 done · 0 ready todos
 
 Run app components and update them while the host remains open. Typed data bindings and shared layout are separate reusable dependencies.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 90 | 🔵 review | Host type list misses SpellFx and Creatures component types (can't place them in scenes) | game-ui-agent |  |
 | 57 | 🟢 done | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental | runtime-agent |  |
 | 58 | 🟢 done | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged | runtime-agent |  |
 | 59 | 🟢 done | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately | runtime-agent |  |
 | 60 | 🟢 done | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread | runtime-agent |  |
 | 86 | 🟢 done | A HUD text changing every frame costs only its label (ticking clocks, countdowns) | runtime-agent |  |
 | 81 | 🟢 done | Layout: a per-frame HUD text change rebuilds the whole kept layout (~20 ms); relayout only the changed leaf when its size is unchanged | runtime-agent |  |
+| 90 | 🟢 done | Host type list misses SpellFx and Creatures component types (can't place them in scenes) | game-ui-agent |  |
 | 43 | 🟢 done | scene-3d particle-graph test fails when run in parallel | runtime-agent |  |
 
 #### Editor interaction (`engine.editor`)
@@ -561,32 +561,33 @@ Consolidated shared applets and preserved historical showcase variants.
 
 ### Registry and publishing (`engine.registry`)
 
-3 open / 3 total · 0 doing · 1 review · 0 done · 0 ready todos
+2 open / 3 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Registry install/publish workflows and publication blockers.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 84 | 🔵 review | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types | weather-agent |  |
 | 67 | 🔴 blocked | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing | queue-agent |  |
 | 66 | ⚪ todo | Marketplace install flow for card 2: Claude installs the 5 world parts from the registry live in the editor (app registry serve, publish) | queue-agent |  |
+| 84 | 🟢 done | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types | codex-coordinator |  |
 
 ### Generic inventory (`engine.inventory`)
 
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
+1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
 
 Shared item identity, container/grid capacity, movement and expansion primitives. No mana-specific container API.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 98 | ⚪ todo | Create a reusable generic grid inventory and stable item identities |  |  |
+| 123 | 🟡 doing | Create reusable grid inventory UI over the typed Inventory component | codex-coordinator |  |
+| 98 | 🟢 done | Create a reusable generic grid inventory and stable item identities | codex-coordinator |  |
 
 ### Generic equipment (`engine.equipment`)
 
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Shared equipment slots and equipped item references, independent from carrying inventory and mana resource policy.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 99 | ⚪ todo | Create reusable equipment slots independent from carried inventory |  |  |
+| 99 | 🟢 done | Create reusable equipment slots independent from carried inventory | codex-coordinator |  |
