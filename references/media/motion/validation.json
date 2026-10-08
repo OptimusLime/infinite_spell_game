@@ -1,0 +1,36 @@
+{
+  "sources": 3,
+  "moments": 4,
+  "clip_seconds": 5.8016,
+  "all_asset_bytes": 4547870,
+  "verified": [
+    {
+      "id": "noita-projectile-impact",
+      "frames": 57,
+      "duration": "0.950000",
+      "decoded_cleanly": true,
+      "checksums_match": true
+    },
+    {
+      "id": "wizard-wind-area",
+      "frames": 99,
+      "duration": "1.650000",
+      "decoded_cleanly": true,
+      "checksums_match": true
+    },
+    {
+      "id": "fighterz-charge-beam",
+      "frames": 48,
+      "duration": "1.601600",
+      "decoded_cleanly": true,
+      "checksums_match": true
+    },
+    {
+      "id": "noita-residual-material",
+      "frames": 96,
+      "duration": "1.600000",
+      "decoded_cleanly": true,
+      "checksums_match": true
+    }
+  ]
+}
