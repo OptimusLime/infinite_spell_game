@@ -1,0 +1,81 @@
+# Reel v1 (r/aigamedev): ../storyboard/path.toml's reel cards in order, real offline engine clips from clips/, hard cuts, no
+# narration, one line of text (the title chip on the last shot). Silent: the engine has no music bed to give it.
+# Recording paths are relative to the project (the game repo), as the engine reads them.
+# Render (from the game repo): app video render storyboard/reel/reel-twin-moons.cut.toml --orientation landscape
+# Out: .atelico/reel-twin-moons/landscape.mp4
+name = "reel-twin-moons"
+title = "Reel: twin moons"
+# no shot needs checklist ids; the cut format requires the field
+checklist = "../storyboard/path.toml"
+captions = "file"
+ground = "dark"
+order = ["cold-flip", "twin-moon-timelapse", "two-shadows", "pixel-to-ink", "snow", "embers", "firefall", "editor-claude", "title"]
+
+[voices]
+engine = "http://127.0.0.1:8187/v1"
+transcriber = "in-memory::whisper-small.en"
+narrator = { model = "in-memory::qwen3-tts", voice = "nyc", speed = 1.25, language = "en" }
+user = { model = "in-memory::pocket-tts", voice = "michael", speed = 1.2 }
+
+[timing]
+fps = 30
+lead = 0.0
+beat = 0.0
+
+[shot.cold-flip]
+at = "0:00"
+until = "0:01.5"
+name = "1. Cold open: the flip"
+source = { recording = { file = "storyboard/reel/clips/town-overview-cold-flip-pixel-ink-pixel-1.5s.mp4", shows = [] } }
+
+[shot.twin-moon-timelapse]
+at = "0:01.5"
+until = "0:06.5"
+name = "2. Twin-moon timelapse"
+source = { recording = { file = "storyboard/reel/clips/pixel-town-twin-moon-timelapse-17h-to-23h-5s.mp4", shows = [] } }
+
+[shot.two-shadows]
+at = "0:06.5"
+until = "0:10.5"
+name = "3. Two moons, two shadows"
+note = "the clip shows one shadow, not two (two-shadow tower not rendered yet)"
+source = { recording = { file = "storyboard/reel/clips/pixel-town-watchtower-push-one-shadow-4s.mp4", shows = [] } }
+
+[shot.pixel-to-ink]
+at = "0:10.5"
+until = "0:13.5"
+name = "4. Pixel to ink"
+source = { recording = { file = "storyboard/reel/clips/town-street-pixel-to-ink-switch-faster-lands-ink-3s.mp4", shows = [] } }
+
+[shot.snow]
+at = "0:13.5"
+until = "0:16"
+name = "5. Snow"
+source = { recording = { file = "storyboard/reel/clips/ink-town-weather-snow-purple-moon-low-2.5s.mp4", shows = [] } }
+
+[shot.embers]
+at = "0:16"
+until = "0:18.5"
+name = "6. Embers"
+note = "daylight and sparse, not the orange-moon night the card asks for"
+source = { recording = { file = "storyboard/reel/clips/ink-town-weather-embers-daylight-sparse-2.5s.mp4", shows = [] } }
+
+[shot.firefall]
+at = "0:18.5"
+until = "0:22.5"
+name = "7. Fire falling into snow"
+source = { recording = { file = "storyboard/reel/clips/ink-town-weather-firefall-steam-square-4s.mp4", shows = [] } }
+
+[shot.editor-claude]
+at = "0:22.5"
+until = "0:25.5"
+name = "9. Made in the editor"
+note = "stand-in: a slow push over a real editor still (sketches/world/editor-pixel-graph.png) until the editor-claude clip lands"
+source = { recording = { file = ".atelico/reel-stand-ins/editor-pixel-graph-push-3s.mp4", shows = [] } }
+
+[shot.title]
+at = "0:25.5"
+until = "0:29"
+name = "10. Title"
+label = "Infinite Spell Game"
+source = { recording = { file = "storyboard/reel/clips/ink-town-weather-firefall-low-orange-moon-4s.mp4", shows = [] } }
