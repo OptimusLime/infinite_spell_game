@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T00:17:56. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T00:18:26. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 

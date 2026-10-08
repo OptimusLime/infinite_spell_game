@@ -18,3 +18,4 @@ One folder per day: `evidence/<YYYY-MM-DD>/`. Each file is named `<where>-<what 
 | 2026-10-07/project-copy-ink-town-play-keys-fire-then-wind-model-names-blazing-curtain.png | Play keys (2, cast, 1, cast) arm then fuse in cast order; the cursor waits; the model's name "Blazing Curtain" types in (project copy, hidden host) | 19, 18 |
 | 2026-10-07/project-copy-ink-town-play-keys-wind-twice-dud-model-names-zephyr.png | The same spell twice is a dud; the model gives it a humble name (project copy, hidden host) | 19 |
 | 2026-10-08/reel-twin-moons-v1-contact-sheet-29s-1080p30.png | Reel v1 exists: 29 s, 1920x1080, 30 fps, offline engine renders (timelapse, pixel-to-ink, snow, embers, firefall, editor stand-in, title); no fusion shot yet; video at storyboard/exports/reel-twin-moons-v1.mp4 | 71 |
+| 2026-10-08/town-tab-meter-playing-10-12ms-paused-8ms.txt | Paul's Town tab after the runtime restart: 8 ms paused, 10–12 ms playing (was 52–83 ms) | 50 |
