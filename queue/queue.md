@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T02:56:18. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T02:59:54. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -20,7 +20,7 @@ Snapshot of queue.db, 2026-10-08T02:56:18. Edit through `app queue` (or `queue/q
 | 16 | 🟡 doing | Storyboard: real sketches for the 10 cards without engine pictures |  | storyboard | storyboard-agent | 16 |  |
 | 69 | 🔵 review | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 | 2e47283 1ec8aac (game e0a31e2) |
 | 79 | ⚪ todo | Engine: pixel town and ink town have different layouts, so the same camera does not line up across the pixel->ink cut; ink look reads sepia not two-tone purple/orange |  | world |  | 20 |  |
-| 87 | ⚪ todo | Creatures polish: bigger pixel stalker sprite; beetle hidden behind the well in brood camera; steam swirl over the hero's face; flat night grade |  | creatures | weather-agent | 25 |  |
+| 87 | 🟡 doing | Creatures polish: bigger pixel stalker sprite; beetle hidden behind the well in brood camera; steam swirl over the hero's face; flat night grade |  | creatures | weather-agent | 25 |  |
 | 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
 | 45 | 🔵 review | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 | dc2b48b |
@@ -58,13 +58,12 @@ Snapshot of queue.db, 2026-10-08T02:56:18. Edit through `app queue` (or `queue/q
 
 | # | | Task | Group | Lane | Owner | P | Commits |
 |---|---|---|---|---|---|---|---|
-| 72 | 🟡 doing | ‼️ Shared build broken: component_creatures unresolved in scene-3d |  | hygiene | weather-agent | 1 |  |
+| 72 | 🔵 review | ‼️ Shared build broken: component_creatures unresolved in scene-3d |  | hygiene | weather-agent | 1 | f895f87 |
 | 84 | ⚪ todo | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types |  | shader-graphs |  | 8 |  |
 | 67 | 🟡 doing | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing |  | marketplace | queue-agent | 11 |  |
 | 26 | 🔵 review | One Claude session per window/tab |  | editor | queue-agent | 30 | 5afa9d9,7284b1d (engine) |
 | 80 | ⚪ todo | Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor |  | video |  | 15 |  |
 | 78 | ⚪ todo | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed |  | video |  | 30 |  |
-| 28 | 🟡 doing | Video playback inside the engine (no HTML hub) |  | editor | runtime-agent | 50 |  |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
 | 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip |  | editor | queue-agent | 1 | 1481051 |
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 | 91ce373 |
@@ -78,6 +77,7 @@ Snapshot of queue.db, 2026-10-08T02:56:18. Edit through `app queue` (or `queue/q
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says |  | hygiene | paul | 50 |  |
 | 27 | ⚪ todo | Collaboration server (Rust, websockets, persistent state) |  | collab |  | 55 |  |
 | 50 | 🟢 done | ‼️ Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
+| 28 | 🟢 done | Video playback inside the engine (no HTML hub) |  | editor | runtime-agent | 50 | e681b97 |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB |  | hygiene | coordinator | 1 |  |
 | 63 | 🟢 done | Shared build broken: duplicate component-spellcraft package |  | hygiene | game-ui-agent | 1 |  |
 | 82 | 🟢 done | world.wgsl fix uncommitted: committed HEAD can't draw the town |  | hygiene | shader-graph-agent | 1 | 69c0ecf |

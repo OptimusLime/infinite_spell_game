@@ -24,3 +24,4 @@ One folder per day: `evidence/<YYYY-MM-DD>/`. Each file is named `<where>-<what 
 | 2026-10-08/town-tab-cpu-renderer-hidden-host.png | The same frame painted by tiny-skia (renderer cpu), for comparison | 22 |
 | 2026-10-08/town-tab-meter-playing-10ms-cpu-9ms-skia-cpu.txt | Paul's Town tab playing: 10 ms (cpu), 9 ms (skia-cpu) after the debug-line removal and runtime batch | 50 |
 | 2026-10-08/town-tab-meter-playing-7ms-skia-cpu-target-met.txt | Paul's Town tab playing at 7 ms on skia-cpu: under the 8 ms target (was 52-83 ms on 2026-10-07) | 50 |
+| 2026-10-08/reel-twin-moons-v2-frames-coordinator-review.png | Reel v2 frames at 3/8/12/20/23/27 s: strong pixel shots; no spell moment, editor beat illegible, black ending | Reel v1 |
