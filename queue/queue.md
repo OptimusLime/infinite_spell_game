@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T23:38:00. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T23:49:23. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -18,7 +18,7 @@ Snapshot of queue.db, 2026-10-07T23:38:00. Edit through `app queue` (or `queue/q
 | 69 | ⚪ todo | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 |  |
 | 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
-| 45 | 🟡 doing | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 |  |
+| 45 | 🔵 review | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 | dc2b48b |
 | 19 | 🔵 review | On-device fusion (cards 10-11 can't be filmed without it) |  | spells | game-ui-agent | 50 | 873a3aa,4be4b69 |
 | 56 | ⚪ todo | Ink HUD: spell slot key numbers still tiny |  | game-ui | game-ui-agent | 60 |  |
 | 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 70 |  |
@@ -55,8 +55,8 @@ Snapshot of queue.db, 2026-10-07T23:38:00. Edit through `app queue` (or `queue/q
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
 | 72 | 🟡 doing | Shared build broken: component_creatures unresolved in scene-3d |  | hygiene | weather-agent | 1 |  |
 | 73 | 🟡 doing | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip |  | editor | queue-agent | 1 |  |
-| 57 | 🟡 doing | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 | d0d8ee6 4125ff9 |
-| 58 | 🟡 doing | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 | f670dc3 |
+| 57 | 🟡 doing | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 | d0d8ee6 4125ff9 acf91ba 8d75b2f 9074216 6f4511a |
+| 58 | 🟡 doing | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 | f670dc3 9074216 |
 | 59 | ⚪ todo | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately |  | runtime | runtime-agent | 2 |  |
 | 60 | ⚪ todo | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread |  | runtime | runtime-agent | 2 |  |
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 |  |
