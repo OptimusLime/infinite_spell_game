@@ -158,7 +158,13 @@ Decisions made while building:
   `play-1920x1080.png`.
 - The dial and the chip sit top-right, stacked at one width: the top centre stays clear for the world (the
   watchtower) and the banner.
-- Ink is ink on warm paper: a heavy outer line and a thin inner one, Archivo Black, vector line-art icons (rounded
+- Ink headings and numbers are Permanent Marker (Apache 2.0, bundled in the package); small labels stay Roobert so
+  they read. Its panels are inked like a hand-drawn frame: strokes that cross and run past each other at the
+  corners, heavier along the bottom and right, round warm paper.
+- The chip counts down to the weather package's fire in the snow ("FIRE IN 2D 21H"; while it falls "FIRE NOW, ENDS
+  2H 0M"), from `weather.days` and `weather.at`; the moons' alignment probe is the fallback. Seed, spells and
+  creatures stay stubs until the spell core lands.
+- Ink was ink on warm paper: a heavy outer line and a thin inner one, Archivo Black, vector line-art icons (rounded
   and turned boxes). Selection and danger both invert the plate (no hue: purple and orange stay the moons').
 
 ## Judging the look (art director, images only, a fresh judge each round)
