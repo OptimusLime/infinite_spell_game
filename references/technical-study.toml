@@ -7,7 +7,11 @@ source_url = "https://dev.epicgames.com/documentation/en-us/unreal-engine/cinema
 source_note = "Epic separates field of view/focal length, focus distance and aperture: framing and blur need distinct controls. Its examples vary one parameter while holding the others fixed. This is depth-of-field guidance, not proof that the cited games use a physically tilted lens."
 proposal = "First compare a wider elevated camera with blur disabled; then test a tilted world-space focus plane and limited foreground/background blur without changing framing. Keep actors, aim point, projectiles and hazardous ground inside a sharp combat region."
 review_checks = ["Player and intended target fit together in frame", "Incoming threats remain identifiable at the edge", "Small actor and large magic both readable", "Pixel contours survive post-processing", "UI stays sharp", "Offer an effect-off comparison", "No focus pumping while aiming"]
-implementation_status = "Reference research only; camera/renderer implementation belongs to task 108. No parameter or style is approved."
+tilt_primary_source = "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-pc-lens-advantage-what-you-see-is-what-youll-get"
+tilt_source_note = "Nikon separates lens tilt changing the focal plane from shift correcting perspective. A miniature-looking band in an image alone does not establish tilted-plane geometry."
+depth_implementation_source = "https://developer.nvidia.com/gpugems/gpugems3/part-iv-image-effects/chapter-28-practical-post-process-depth-field"
+depth_source_note = "The primary implementation discussion distinguishes depth gather/scatter and layer methods, including foreground bleeding and missing hidden-background limitations. The engine comparison must expose those limits instead of treating any blur as physical optics."
+implementation_status = "Task108 delivered six controlled close/wide/screen-space-band captures. Task141 now keeps the existing ordered effects on GPU with exact four-mode World parity. Task140 is implementing a separate depth-aware focus comparison during actual casting; a screen-space band is not physical tilted-plane optics. No parameter or style is approved."
 
 [cel]
 visual_references = ["fighterz-shadows", "kakarot-charge", "strive-shadow", "ninokuni-materials"]
@@ -30,7 +34,7 @@ proposal = "Test select → aim → fire → visible energy deduction → empty 
 [effects]
 visual_references = ["fighterz-aura", "kakarot-large-magic", "wizard-shape-vocabulary", "noita-rune-scale"]
 proposal = "Review anticipation, launch, travel, impact and residual material effect separately. Every spell needs distinct silhouette and effect radius readable without colour alone. Large magic must not erase the target, player, or incoming attack."
-next_evidence = "Four exact-frame motion studies and local clips are delivered in motion-study.toml. Next: a playable capture for a selected authored spell in our own game; external footage does not prove our implementation."
+next_evidence = "Four exact-frame motion studies and local clips are delivered in motion-study.toml. Task104 now supplies finite authored-spell game captures using graybox projectiles. Task75 retains readable effect presentation and comparison work; external footage does not prove our implementation."
 
 [ui]
 visual_references = ["re4-case", "backpack-grid", "dredge-grid", "wizard-spell-ui", "magicka-key-hints"]

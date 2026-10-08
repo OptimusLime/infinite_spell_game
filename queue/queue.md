@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T18:35:34. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T19:13:12. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -234,7 +234,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-16 open / 49 total · 1 doing · 7 review · 30 done · 1 ready todos
+17 open / 50 total · 2 doing · 7 review · 30 done · 1 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -305,13 +305,14 @@ Game-facing equipment, inventory and power displays composed from reusable UI co
 
 ### Gameplay camera and scale (`game.camera`)
 
-0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
 
 Compare readable gameplay scale, wider battlefield framing and tilt/lens variants without inventing numeric settings or a film camera.
 Planned after: engine.review, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 140 | 🟡 doing | Compare depth-aware tilt focus during actual casting | codex-coordinator |  |
 | 108 | 🟢 done | Compare gameplay camera scale and tilt/lens variants | codex-coordinator |  |
 
 ### Pixel and ink/cel looks (`game.looks`)
@@ -441,13 +442,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-6 open / 40 total · 3 doing · 1 review · 34 done · 0 ready todos
+4 open / 41 total · 2 doing · 1 review · 37 done · 0 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-3 open / 25 total · 1 doing · 0 review · 22 done · 0 ready todos
+3 open / 26 total · 2 doing · 0 review · 23 done · 0 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -459,17 +460,18 @@ Native host and editor that can inspect, run and hot reload the software being b
 
 #### Renderer and performance (`engine.renderer`)
 
-3 open / 11 total · 1 doing · 0 review · 8 done · 0 ready todos
+3 open / 12 total · 2 doing · 0 review · 9 done · 0 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
-| 24 | 🔴 blocked | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default | renderer-agent |  |
+| 24 | 🟡 doing | Complete GPU component drawing and post-effect parity | codex-coordinator |  |
 | 25 | 🔴 blocked | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push | renderer-agent |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
 | 22 | 🟢 done | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
+| 141 | 🟢 done | Keep existing camera lens effects on GPU | codex-coordinator |  |
 | 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up | renderer-agent |  |
 | 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff | renderer-agent |  |
 | 125 | 🟢 done | Preserve the full pixel camera view in smaller editor previews | codex-coordinator |  |
@@ -508,25 +510,25 @@ Shared editor interaction correctness.
 
 ### Spell runtime and finite casting (`engine.spellcraft`)
 
-2 open / 4 total · 2 doing · 0 review · 2 done · 0 ready todos
+0 open / 4 total · 0 doing · 0 review · 4 done · 0 ready todos
 
 Typed Rust spell definitions, validated cartridge composition over generic Inventory/Equipment, idempotent cast admission, physics adapter and normalized Data projections. The game consumes these APIs through a separate native player component.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 138 | 🟡 doing | Define and account for funded spell instance completion | codex-coordinator |  |
 | 127 | 🟢 done | Reusable finite cartridge and authored casting core |  |  |
 | 130 | 🟢 done | Admit an explicitly reviewed authored spell revision without resetting player state | codex-coordinator |  |
+| 138 | 🟢 done | Define and account for funded spell instance completion | codex-coordinator |  |
 
 #### Spell authoring (`spellcraft.authoring`)
 
-1 open / 1 total · 1 doing · 0 review · 0 done · 0 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 The current Player can inspect and admit external source edits; that is not a crafting UI. Reuse the existing SpellDefinition/catalog validation and document boundaries. Game projects own authored files; authoring behavior belongs in a reusable package.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 135 | 🟡 doing | Provide native authoring for saved spell definitions | codex-coordinator |  |
+| 135 | 🟢 done | Provide native authoring for saved spell definitions | codex-coordinator |  |
 
 ### Data Layer (`engine.data`)
 
