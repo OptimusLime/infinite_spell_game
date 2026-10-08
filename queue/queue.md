@@ -1,12 +1,12 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T06:07:45. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T06:32:30. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
 | # | | Task | Group | Lane | Owner | P | Commits |
 |---|---|---|---|---|---|---|---|
-| 71 | 🟡 doing | Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline |  | storyboard | storyboard-agent | 1 | 2f7d3eb,197cd82,5915bc9,06449fe |
+| 71 | 🔵 review | Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline |  | storyboard | storyboard-agent | 1 | 2f7d3eb,197cd82,5915bc9,06449fe,d628300 |
 | 70 | 🟡 doing | Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor |  | storyboard | storyboard-agent | 18 |  |
 | 75 | 🟡 doing | Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel |  | spells | game-ui-agent | 2 | cc95549,b410077 |
 | 51 | ⚪ todo | Changing screens: the live switch between the pixel town and the ink world (dusk flip) in the town scene |  | shader-graphs | shader-graph-agent | 9 |  |
@@ -63,16 +63,17 @@ Snapshot of queue.db, 2026-10-08T06:07:45. Edit through `app queue` (or `queue/q
 | 84 | 🔵 review | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types |  | shader-graphs | weather-agent | 8 | 42aa773 |
 | 67 | 🟡 doing | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing |  | marketplace | queue-agent | 11 |  |
 | 26 | 🔵 review | One Claude session per window/tab |  | editor | queue-agent | 30 | 5afa9d9,7284b1d (engine) |
-| 80 | 🔵 review | Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor |  | video | runtime-agent | 15 | 739ba4b |
-| 78 | 🔵 review | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed |  | video | runtime-agent | 30 | 044b965 |
+| 80 | 🔵 review | Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor |  | video | runtime-agent | 15 | 739ba4b 7c1f211 |
+| 78 | 🔵 review | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed |  | video | runtime-agent | 30 | 044b965 447c35c |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
 | 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip |  | editor | queue-agent | 1 | 1481051 |
 | 90 | 🔵 review | Host type list misses SpellFx and Creatures component types (can't place them in scenes) |  | editor | game-ui-agent | 6 |  |
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 | 91ce373 |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |
-| 24 | ⚪ todo | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
+| 24 | 🟡 doing | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
 | 66 | ⚪ todo | Marketplace install flow for card 2: Claude installs the 5 world parts from the registry live in the editor (app registry serve, publish) |  | marketplace | queue-agent | 12 |  |
 | 62 | 🔵 review | Shell commands in a session can write outside its owned files (only instructions stop it) |  | editor | queue-agent | 25 | eeec9c8 |
+| 92 | ⚪ todo | Engine video (044b965): title on a recording shot crashes: work dir not created before brand.title_at runs magick (needs create_dir_all(&work) before crates/cli/src/video/mod.rs:375); also the [music] bed is mixed mono into the voice track |  | video |  | 25 |  |
 | 25 | 🟡 doing | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push |  | renderer | renderer-agent | 40 |  |
 | 61 | ⚪ todo | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) |  | renderer | renderer-agent | 45 |  |
 | 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision |  | hygiene | paul | 50 |  |
