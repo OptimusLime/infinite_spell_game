@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T01:59:59. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T02:08:32. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -24,6 +24,7 @@ Snapshot of queue.db, 2026-10-08T01:59:59. Edit through `app queue` (or `queue/q
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
 | 45 | 🔵 review | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 | dc2b48b |
 | 19 | 🔵 review | On-device fusion (cards 10-11 can't be filmed without it) |  | spells | game-ui-agent | 50 | 873a3aa,4be4b69 |
+| 85 | 🟡 doing | One shared town per scene: spellcraft owns the simulation; the HUD, SpellFx and packages/creatures read the same town (no drift) |  | spells | game-ui-agent | 50 |  |
 | 56 | ⚪ todo | Ink HUD: spell slot key numbers still tiny |  | game-ui | game-ui-agent | 60 |  |
 | 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 70 |  |
 | 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes |  | storyboard | paul | 70 | 56eb78b |
@@ -69,6 +70,7 @@ Snapshot of queue.db, 2026-10-08T01:59:59. Edit through `app queue` (or `queue/q
 | 58 | 🔵 review | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 | f670dc3 9074216 |
 | 59 | 🔵 review | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately |  | runtime | runtime-agent | 2 | 574c9c8 |
 | 60 | 🔵 review | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread |  | runtime | runtime-agent | 2 | f869514 |
+| 86 | 🔵 review | A HUD text changing every frame costs only its label (ticking clocks, countdowns) |  | runtime | runtime-agent | 2 | f2aa55c |
 | 81 | 🟡 doing | Layout: a per-frame HUD text change rebuilds the whole kept layout (~20 ms); relayout only the changed leaf when its size is unchanged |  | runtime | runtime-agent | 3 |  |
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 | 91ce373 |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |

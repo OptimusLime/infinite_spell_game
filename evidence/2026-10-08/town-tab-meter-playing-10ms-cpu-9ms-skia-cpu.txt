@@ -1,0 +1,5 @@
+Paul editor 7878, Town, playing, after restart on runtime batch incl. f2aa55c and debug HUD line removed:
+renderer cpu: 10/10/10 ms, 29-30 draws/s
+renderer skia-cpu: see second block
+renderer skia-cpu: 9/9/9 ms, 30 draws/s (left on skia-cpu)
+read with app get runtime.scene; renderer via POST /renderer
