@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T22:24:36. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T22:25:05. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -50,7 +50,7 @@ Snapshot of queue.db, 2026-10-07T22:24:36. Edit through `app queue` (or `queue/q
 | 22 | ⚪ todo | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 |  |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |
 | 24 | ⚪ todo | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
-| 26 | ⚪ todo | One Claude session per window/tab |  | editor |  | 30 |  |
+| 26 | 🟡 doing | One Claude session per window/tab |  | editor | queue-agent | 30 |  |
 | 25 | 🟡 doing | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push |  | renderer | renderer-agent | 40 |  |
 | 28 | ⚪ todo | Video playback inside the engine (no HTML hub) |  | editor |  | 50 |  |
 | 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision |  | hygiene | paul | 50 |  |
@@ -61,7 +61,7 @@ Snapshot of queue.db, 2026-10-07T22:24:36. Edit through `app queue` (or `queue/q
 | 30 | ⚪ todo | button_press test failing (cause untraced) |  | editor |  | 60 |  |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB |  | hygiene | coordinator | 1 |  |
 | 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ |  | hygiene | coordinator | 15 | b161905 |
-| 35 | 🟢 done | Queue in the editor: a Queue panel that reads queue/queue.db |  | editor | queue-agent | 20 | 463997e a20f33a |
+| 35 | 🟢 done | Queue in the editor: a Queue panel that reads queue/queue.db |  | editor | queue-agent | 20 | 463997e a20f33a a6a900d |
 | 42 | 🟢 done | Find who switched Paul's main window to the Game Engine form and dropped the Storyboard tab (restored by coordinator) |  | hygiene | coordinator | 20 |  |
 | 31 | 🟢 done | Engine working tree: tracked proof PNGs show as deleted (proof/node-graphs/...) — restore or explain |  | hygiene | coordinator | 25 |  |
 | 32 | 🟢 done | Delete 18 GB abandoned project copy in scratchpad (sbproj-atelico-partial) |  | hygiene |  | 70 |  |
