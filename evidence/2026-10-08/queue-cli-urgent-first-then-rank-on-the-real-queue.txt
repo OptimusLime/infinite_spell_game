@@ -1,0 +1,30 @@
+$ app queue list --urgent
+ 72 🟡 doing   P1   [software/hygiene] ‼ [blocker] Shared build broken: component_creatures unresolved in scene-3d  (weather-agent)   (urgent · blocker · blocks 1 · P1)
+ 50 🟡 doing   P1   [software/renderer] ‼ [high] Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU)  (renderer-agent)   (urgent · high · paul-visible · P1)
+
+$ app queue list --sort rank   (first 8)
+ 72 🟡 doing   P1   [software/hygiene] ‼ [blocker] Shared build broken: component_creatures unresolved in scene-3d  (weather-agent)   (urgent · blocker · blocks 1 · P1)
+ 50 🟡 doing   P1   [software/renderer] ‼ [high] Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU)  (renderer-agent)   (urgent · high · paul-visible · P1)
+ 26 🔵 review  P30  [software/editor] One Claude session per window/tab  (queue-agent)   (blocks 1 · P30)
+ 71 🟡 doing   P1   [pieces/storyboard] Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline  (storyboard-agent)   (paul-visible · video-critical · P1)
+ 80 ⚪ todo    P15  [software/video] Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor  (-)   (paul-visible · video-critical · P15)
+ 70 🟡 doing   P18  [pieces/storyboard] Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor  (storyboard-agent)   (paul-visible · video-critical · P18)
+ 78 ⚪ todo    P30  [software/video] Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed  (-)   (paul-visible · video-critical · P30)
+ 75 🟡 doing   P2   [pieces/spells] Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel  (game-ui-agent)   (video-critical · P2)
+
+$ app queue list --tag paul-visible --json   (id, rank, why)
+50 1 urgent · high · paul-visible · P1
+71 2 paul-visible · video-critical · P1
+80 3 paul-visible · video-critical · P15
+70 4 paul-visible · video-critical · P18
+78 5 paul-visible · video-critical · P30
+51 6 paul-visible · P9
+54 7 paul-visible · P10
+28 8 paul-visible · P50
+
+$ app queue next --about "editor features, Rust, Luau"
+by meaning (in-memory::BAAI/bge-small-en-v1.5)
+→  0.532  80 ⚪ todo    P15  [software/video] Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor  (-)
+   0.493  78 ⚪ todo    P30  [software/video] Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed  (-)
+   0.489  79 ⚪ todo    P20  [pieces/world] Engine: pixel town and ink town have different layouts, so the same camera does not line up across the pixel->ink cut; ink look reads sepia not two-tone purple/orange  (-)
+claim it: app queue claim 80 --who <you>
