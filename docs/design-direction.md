@@ -9,7 +9,11 @@ This is the current design handoff, not a new screenplay. Today's explicit user 
 | Object | Decision | What is established; what remains open |
 |---|---|---|
 | Physical mana | In | Energy is harnessed, stored and released. A cast receives finite funding; actual sensing, logic and effects consume energy. Exact units and prices remain open. |
-| Wand/battery | In | A wand has limited storage/supply roles. It may combine caster and reservoir; a separate physical battery object is not mandatory. Capacity, refill mechanism and rate remain open. |
+| Generic grid inventory | In | A reusable game system holds item instances within finite grid capacity. It must not be a mana-specific inventory. Grid dimensions, item footprints and stacking rules remain open. |
+| Equipment | In | A separate reusable system equips an item such as a wand. Item identity and ownership must remain consistent with inventory; equipping must not duplicate an item or its energy. |
+| Wand and physical cartridges | In | Equip a wand, then load and replace physical mana cartridges carried as inventory items. Mana is finite. Cartridge capacity, charging sources and transfer pricing remain open. |
+| Total power display | In | The bottom panel reads generic inventory and sums the remaining energy of its cartridge items. A loaded/equipped reference must not count the same cartridge twice. Exact transfer/containment behavior needs an explicit contract. |
+| Magical inventory expanders | In | Expanding carrying capacity consumes mana. Extent, rates and empty-power behavior remain choices; no values are specified yet. |
 | Unlimited automatic recharge | No | Do not hide an infinite supply behind the mana display. Any later replenishment requires an explicit source and rule. |
 | Craft and fire spells | In | The player crafts a spell, selects it and fires that selected spell. Neither auto-casting nor a fixed pair table establishes the requested crafting experience. |
 | Pixel world | In | Keep pixel presentation; its implementation and exact resolution remain choices. |
@@ -29,16 +33,23 @@ MarkovJunior generation and dark, brooding moon landscapes are important inherit
 This is a proposed acceptance procedure for the requested behavior, not invented balance or a film narrative:
 
 1. Craft or modify one spell through the existing authoring path; save the exact spell revision and select it. Firing must use that selected revision, not substitute a demo spell.
-2. Show the wand's available energy and the cast allocation. Admit only a cast the source can fund; debit the source and fund the instance once. An unaffordable cast gives visible feedback and performs no unfunded action.
+2. Put cartridge item instances in the generic grid inventory, equip a wand through Equipment, and load a physical cartridge. Show the bottom-panel sum of remaining inventory-cartridge energy, the loaded source and the cast allocation without counting an item twice. Admit only a cast the source can fund; debit that source and fund the instance once. An unaffordable cast gives visible feedback and performs no unfunded action.
 3. Observe one funded cast through its physical result. Record sensing/logic/effect charges, remaining energy and any dissipation separately. A launched instance retains its transferred budget if its former supply is disconnected.
-4. Continue until the limited supply prevents another cast. Time passing alone must not secretly restore it. Reload/refill interaction is an open follow-up, not a specified cartridge count, capacity or cooldown.
+4. Continue until the limited cartridge prevents another cast. Time passing alone must not secretly restore it. Replace the depleted cartridge with another inventory cartridge and deliberately cast the selected spell again. Preserve the depleted item and its remaining energy; cartridge count, capacity, charging and cooldown values are not specified.
 5. Repeat the same selected spell and event in pixel/anime and day/night comparisons. The presentation can differ; the finite-energy rules must agree. Capture source revisions and ledger evidence, plus continuous playable footage before calling the slice accepted.
 
 This procedure has not been run. The engine port has mana and lifecycle execution, but [the port record](spells.md) explicitly excludes the source project's Rapier, history/review and collaboration implementation. Do not infer end-to-end crafting from the presence of mana code.
 
 The current town entry point makes the missing supply connection concrete: `packages/spellcraft/src/town.rs::start_definition` supplies `definition.mana.allocation` afresh to `runtime::cast`, without debiting a finite player reservoir there. `runtime::cast` then initializes and meters the funded instance. Instance accounting and player battery admission are separate requirements; the former does not establish the latter.
 
+## Shared-system boundary
+
+Inventory owns item identity, placement, grid capacity and transfers. Equipment owns equipped item references and equip/unequip rules. Both are independent reusable game systems. Cartridge energy and wand loading compose those systems; they do not define the inventory API. The game HUD reads authoritative inventory state. Any loaded-cartridge ownership transition must preserve identity and prevent duplicate energy totals. This is a required boundary, not a new bespoke game implementation.
+
+The older immutable concept snapshots remain historical revision inputs. Their earlier wording that left battery form open is superseded by the cartridge decision above; retain their hashes rather than rewriting them in place. A new concept revision and compatibility review is tracked work. No inventory, equipment or cartridge implementation is claimed here.
+
 ## Compare current frames with references
+
 
 The off-path `storyboard/design-review/` cards show two frames from reel v5, three official reference candidates, the historical moon-clearing target, and the battery/camera review questions. They have empty narration and are not film shots. `storyboard/path.toml` and the cut stay unchanged. The existing Board includes off-path cards; Slideshow follows only the active path. Markdown/HTML exports append off-path cards under “Not on the path”; construction export lists them separately, not as shots.
 
