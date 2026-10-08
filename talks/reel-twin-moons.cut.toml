@@ -1,17 +1,21 @@
-# Reel v4 (r/aigamedev): a re-edit of v3's real engine clips (storyboard/reel/clips/, rendered offline at 30 fps),
-# hard cuts, no narration, one line of text: the title, small, cut in on the fireball's impact frame. Silent: the
-# engine has no music bed to give it. No black tail: it ends on the impact.
+# Reel v5 (r/aigamedev): real engine clips (storyboard/reel/clips/, rendered offline at 30 fps), hard cuts on the music's
+# beats, no narration, one line of text: the title, cut in on the fireball's impact frame and held as the picture fades to black.
+# Music: "Fantasy: Rising Moon" (RandomMind, CC0, licence in storyboard/reel/audio/) from 4.92 s, so its first hit lands
+# on the cut to the watchtower (4.2 s), its second phrase on the night embers (13.33 s) and its full section on the
+# fireball's launch (22.47 s); the bed carries two synthesized hits (whoosh into the launch, thump on the impact).
+# The engine mixes the bed in mono at 48 kHz (its voice track).
+# Self-contained: every shot is a file under storyboard/reel/ (the made ones by talks/make-reel-pieces.py, beside them).
 # Recording paths are relative to the project (the game repo), as the engine reads them.
 # Render (from a copy of the game repo): app video make talks/reel-twin-moons.cut.toml --orientation landscape
-# (make-reel-pieces.py makes the title shot into .atelico/reel-pieces/)
-# Out: .atelico/reel-twin-moons/landscape.mp4 -> storyboard/exports/reel-twin-moons-v4.mp4
+# Out: .atelico/reel-twin-moons/landscape.mp4 -> storyboard/exports/reel-twin-moons-v5.mp4
 name = "reel-twin-moons"
 title = "Reel: twin moons"
 # no shot needs checklist ids; the cut format requires the field
 checklist = "../storyboard/path.toml"
 captions = "file"
 ground = "dark"
-order = ["twin-moon-timelapse", "watchtower-moon", "editor-look", "ink-firefall", "founding", "twin-moons", "brood", "fireball-launch", "impact-title"]
+order = ["twin-moon-timelapse", "watchtower-moon", "look-edit", "twin-moons", "founding", "night-embers", "ink-firefall", "brood", "wall-of-flame", "fireball-launch", "impact", "impact-title"]
+music = { file = "storyboard/reel/audio/reel-twin-moons-bed-rising-moon-from-4.92s-with-hits-27s.wav", from = 0.0, volume = 0.9, fade_in = 0.3, fade_out = 1.2 }
 
 [voices]
 engine = "http://127.0.0.1:8187/v1"
@@ -28,58 +32,81 @@ beat = 0.0
 at = "0:00"
 until = "0:04.2"
 name = "1. Twin-moon timelapse, pixel: dusk to both moons"
+note = "under the music's windy intro; the first hit lands on the cut out of it"
 source = { recording = { file = "storyboard/reel/clips/pixel-town-twin-moon-timelapse-dusk-to-both-moons-4.2s.mp4", shows = [] } }
 
 [shot.watchtower-moon]
 at = "0:04.2"
-until = "0:06.6"
+until = "0:06.5"
 name = "2. The orange moon sat on the watchtower"
 source = { recording = { file = "storyboard/reel/clips/pixel-town-watchtower-orange-moon-push-2.4s.mp4", shows = [] } }
 
-[shot.editor-look]
-at = "0:06.6"
-until = "0:08.3"
-name = "3. The look graph: texels 2 to 6, snap"
-note = "five captured states of the hidden editor (texels 2, 3, 4, 5, 6), stepped not dragged; cut 0.15 s after 6 lands, a hard snap into the ink town"
-source = { recording = { file = "storyboard/reel/clips/editor-look-graph-pixel-lens-texels-2-to-6-snap-1.7s.mp4", shows = [] } }
-
-[shot.ink-firefall]
-at = "0:08.3"
-until = "0:11.1"
-name = "4. Ink: fire falling, the orange moon by the tower"
-note = "the style change is a cut out of the editor, not the live pixel-to-ink switch (task 51, not built yet)"
-source = { recording = { file = "storyboard/reel/clips/ink-town-firefall-orange-moon-push-2.8s.mp4", shows = [] } }
-
-[shot.founding]
-at = "0:11.1"
-until = "0:14.3"
-name = "5. The town founded: the seed in, houses rise"
-note = "the ring of light reads small at this distance"
-source = { recording = { file = "storyboard/reel/clips/ink-town-founding-dusk-houses-rise-3.2s.mp4", shows = [] } }
+[shot.look-edit]
+at = "0:06.5"
+until = "0:08.7667"
+name = "3. The look graph: Rim Light to the orange moon, then the town wiped to it"
+note = "editor half: four captures of a hidden editor on a copy (strength stepped 0.35, 1.0, 1.8, 2.0), not a live drag; town half: two offline renders at the two settings, wiped. Pixel to ink is a snap cut into this shot (the live switch, task 51, is not built)"
+source = { recording = { file = "storyboard/reel/clips/ink-town-look-graph-rim-light-edit-wipe-2.27s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
 
 [shot.twin-moons]
-at = "0:14.3"
-until = "0:16.9"
-name = "6. Twin moons aligned, fire falling"
-note = "kept for length (aim 22 to 28 s)"
+at = "0:08.7667"
+until = "0:11.0667"
+name = "4. Ink: twin moons aligned, fire falling (a new camera after the look edit, so the cut does not read as the edit undone)"
+from = 0.3
 source = { recording = { file = "storyboard/reel/clips/ink-town-twin-moons-aligned-firefall-zoom-2.6s.mp4", shows = [] } }
+[shot.founding]
+at = "0:11.0667"
+until = "0:13.3333"
+name = "5. The town founded: the seed in, houses rise"
+note = "the ring of light reads small at this distance"
+from = 0.2667
+source = { recording = { file = "storyboard/reel/clips/ink-town-founding-dusk-houses-rise-3.2s.mp4", shows = [] } }
 
+[shot.night-embers]
+at = "0:13.3333"
+until = "0:15.6333"
+name = "6. Night embers, the orange moon alone: a beetle bursts out of the snow"
+note = "embers are small sparks at this distance; a lamp post crowds the top right early in the shot"
+from = 0.2
+source = { recording = { file = "storyboard/reel/clips/ink-town-night-embers-beetle-erupts-low-push-2.5s.mp4", shows = [] } }
+
+[shot.ink-firefall]
+at = "0:15.6333"
+until = "0:17.3333"
+name = "7. Ink: fire falling, the orange moon by the tower"
+note = "the same camera as the look shot's town; three shots apart"
+from = 0.9
+source = { recording = { file = "storyboard/reel/clips/ink-town-firefall-orange-moon-push-2.8s.mp4", shows = [] } }
 [shot.brood]
-at = "0:16.9"
-until = "0:19.9"
-name = "7. The brood at the seed"
+at = "0:17.3333"
+until = "0:20.2"
+name = "8. The brood at the seed"
 source = { recording = { file = "storyboard/reel/clips/ink-town-brood-climber-at-seed-in-firefall-3s.mp4", shows = [] } }
 
+[shot.wall-of-flame]
+at = "0:20.2"
+until = "0:22.4667"
+name = "9. Wind and fire: the wall of flame"
+note = "spell VFX rounds 4-11: flickering pointed tongues and swirl smoke; flat golden, no hot core, so a still reads as a golden heap"
+from = 0.3667
+source = { recording = { file = "storyboard/reel/clips/ink-town-wall-of-flame-side-tongues-push-2.6s.mp4", shows = [] } }
+
 [shot.fireball-launch]
-at = "0:19.9"
-until = "0:20.4"
-name = "8. Wind then fire: a fireball"
-note = "task 75's spell effects"
+at = "0:22.4667"
+until = "0:22.9667"
+name = "10. Wind then fire: a fireball"
+note = "the earlier spell VFX (kept: the new fireball reads smaller at every angle tried)"
 source = { recording = { file = "storyboard/reel/clips/ink-town-fireball-launch-behind-hero-0.5s.mp4", shows = [] } }
 
+[shot.impact]
+at = "0:22.9667"
+until = "0:23.3333"
+name = "11. The fireball meets a climber"
+source = { recording = { file = "storyboard/reel/clips/ink-town-fireball-impact-on-climber-from-flight-1.6s.mp4", shows = [] } }
+
 [shot.impact-title]
-at = "0:20.4"
-until = "0:22.03"
-name = "9. The fireball hits a climber; the title"
-note = "the title is cut in on the impact frame by make-reel-pieces.py over the real clip ink-town-fireball-impact-on-climber-from-flight-1.6s.mp4 (task 75's spell effects)"
-source = { recording = { file = ".atelico/reel-pieces/title-fireball-impact-cut-in-1.6s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
+at = "0:23.3333"
+until = "0:25.5667"
+name = "12. The burst; the title cuts in on it and holds as the picture fades to black"
+note = "made by make-reel-pieces.py from the real clip (the cut's own title field fails on a recording shot at engine 044b965: its work folder is not made before the title is drawn)"
+source = { recording = { file = "storyboard/reel/clips/ink-town-fireball-burst-title-fade-to-black-2.23s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
