@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T01:32:30. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T01:52:43. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -62,10 +62,12 @@ Snapshot of queue.db, 2026-10-08T01:32:30. Edit through `app queue` (or `queue/q
 | 28 | ⚪ todo | Video playback inside the engine (no HTML hub) |  | editor |  | 50 |  |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
 | 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip |  | editor | queue-agent | 1 | 1481051 |
+| 82 | 🟡 doing | world.wgsl fix uncommitted: committed HEAD can't draw the town |  | hygiene | shader-graph-agent | 1 |  |
 | 57 | 🔵 review | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 | d0d8ee6 4125ff9 acf91ba 8d75b2f 9074216 6f4511a |
 | 58 | 🔵 review | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 | f670dc3 9074216 |
 | 59 | 🔵 review | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately |  | runtime | runtime-agent | 2 | 574c9c8 |
 | 60 | 🔵 review | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread |  | runtime | runtime-agent | 2 | f869514 |
+| 81 | 🟡 doing | Layout: a per-frame HUD text change rebuilds the whole kept layout (~20 ms); relayout only the changed leaf when its size is unchanged |  | runtime | runtime-agent | 3 |  |
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 | 91ce373 |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |
 | 24 | ⚪ todo | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
