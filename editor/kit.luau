@@ -179,7 +179,8 @@ local function button_box(kind, action, o, kids)
 		on_press = action,
 		disabled = o.disabled,
 		-- (a flash keeps the window drawing until it is over)
-		ui_state = if flash then { working = true, kind = kind } else { kind = kind },
+		-- (`tip`: it shows a tooltip on hover, so the editor says when the pointer is over it: runtime.hover)
+		ui_state = if flash then { working = true, kind = kind, tip = o.tip ~= nil } else { kind = kind, tip = o.tip ~= nil },
 		hover = { border_color = c.muted },
 		style = ui.merge({
 			height = o.height or math.max(26, math.ceil((o.size or m.font_size) * 1.25) + 8), shrink = 0, padding_x = kit.u(10), gap = kit.u(6), align = "center", justify = "center",
@@ -288,6 +289,49 @@ function kit.pill(value, color, id)
 	return ui.node({ id = id, style = { padding_x = kit.u(6), height = h, align = "center", radius = h / 2, background = color or kit.c.raised, shrink = 1, min_width = 0 } }, {
 		kit.text(value, { id = if id then id .. "-text" else nil, size = kit.m.small, bold = true, color = if color then kit.c.on_accent else kit.c.muted }),
 	})
+end
+
+-- Collaboration (docs/collab.md): the other people in the session (runtime.collab, kept by the host), none when
+-- this editor is not connected to one.
+function kit.peers()
+	local s = store.get("runtime.collab")
+	if type(s) ~= "table" or s.state ~= "connected" then return {} end
+	return s.peers or {}
+end
+
+local function has_open(p, doc)
+	return doc ~= nil and doc ~= "" and (p.doc == doc or table.find(p.docs or {}, doc) ~= nil)
+end
+
+-- A person's name as a small chip: accent ring and ink when they have `doc` open, muted when they are elsewhere.
+-- (The Queue tab's budget: panel, ink, muted ink and accent; the small text size.)
+function kit.peer_chip(p, doc, id)
+	local color = if has_open(p, doc) then kit.c.accent else kit.c.muted
+	local h = math.max(16, math.ceil(kit.m.small * 1.25))
+	return ui.node({ id = id, style = { padding_x = kit.u(6), height = h, align = "center", radius = h / 2, border = 1, border_color = color, shrink = 0 } }, {
+		kit.text(p.name or "?", { size = kit.m.small, color = color, style = { max_width = kit.u(96) } }),
+	})
+end
+
+-- The chips of the people with `doc` open (`all`: everyone in the session, those on `doc` first), in a row.
+function kit.peer_chips(doc, id, all)
+	local on, off = {}, {}
+	for _, p in kit.peers() do
+		if has_open(p, doc) then table.insert(on, p) elseif all then table.insert(off, p) end
+	end
+	local chips = {}
+	for _, p in on do table.insert(chips, kit.peer_chip(p, doc, id .. ":" .. tostring(p.id))) end
+	for _, p in off do table.insert(chips, kit.peer_chip(p, doc, id .. ":" .. tostring(p.id))) end
+	return ui.row({ id = id, style = { gap = kit.u(4), align = "center", shrink = 0 } }, chips)
+end
+
+-- How wide the chips of the people with `doc` open are (for laying out tabs), estimated from their names.
+function kit.peer_chips_width(doc, size)
+	local w = 0
+	for _, p in kit.peers() do
+		if has_open(p, doc) then w += kit.u(16) + math.min(#(p.name or "?") * size * 0.62, kit.u(96)) end
+	end
+	return w
 end
 
 -- A color swatch showing the store color at `path`.

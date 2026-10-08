@@ -1,7 +1,7 @@
 -- Shared reel palette and native controls.
 local ui=require('ui')
 local pixels=require('themes.portal.theme')
-local t={colors={background='fdf8ef',panel='fdf8ef',raised='eee6d8',border='1a1100',text='1a1100',muted='594d37',accent='aa96ff',purple='aa96ff',green='aa96ff',red='e87d75'}}
+local t={colors={background='fdf8ef',panel='fdf8ef',raised='eee6d8',border='1a1100',text='1a1100',muted='594d37',accent='aa96ff',gold='ffd780',signal='55fbeb',call='7bd6a1',purple='aa96ff',green='aa96ff',red='e87d75'}}
 local c=t.colors
 t.font='themes/atelico/roobert.ttf'
 function t.text(value,size,color,props)
@@ -20,14 +20,20 @@ function t.button(label,action,props)
         t.text(label,props.size or 20,c.text,{style={text_wrap='none'}}),
     })
 end
+function t.select(label,action,props)
+    local button=t.button(label,action,props)
+    table.insert(button.children,ui.image({texture="themes/atelico/down.png",style={width=14,height=14,shrink=0}}))
+    return button
+end
 function t.icon(name,action,props)
     props=props or {}
-    return ui.button(ui.merge(props,{on_press=action,style=ui.merge({width=44,height=44,min_height=44,shrink=0,align='center',justify='center',border=2,border_color=c.text,background=c.background},props.style),hover={background=c.raised}}),{
-        ui.image({texture='themes/atelico/'..name..'.png',style={width=26,height=26}}),
+    local size=props.size or 44
+    return ui.button(ui.merge(props,{on_press=action,style=ui.merge({width=size,height=size,min_height=size,shrink=0,align='center',justify='center',border=2,border_color=c.text,background=c.background},props.style),hover={background=c.raised}}),{
+        ui.image({texture='themes/atelico/'..name..'.png',style={width=math.floor(size*26/44),height=math.floor(size*26/44)}}),
     })
 end
 function t.input(id,value,placeholder,action,props)
-    return ui.input(ui.merge(props,{id=id,bind=id,value=value or '',placeholder=placeholder or '',on_submit=action,focus_border=c.accent,
+    return ui.input(ui.merge(props,{id=id,bind=id,value=value or '',placeholder=placeholder or '',on_submit=action,focus_border=c.border,
         style=ui.merge({width='100%',min_width=0,height=48,min_height=48,shrink=0,padding=10,border=2,border_color=c.border,background=c.background,color=c.text,font=t.font,font_size=24,text_wrap='none'},props and props.style)}))
 end
 function t.portal(props)
@@ -36,13 +42,13 @@ end
 function t.background() return pixels.background() end
 function t.contact(sheet,action,props)
     return ui.button(ui.merge(props,{on_press=action,
-        style={width='100%',height=88,min_height=88,padding=6,gap=16,align='center',shrink=0,border=2,radius=44,border_color=c.border,background=c.panel},
+        style={width='100%',height=88,min_height=88,padding=6,padding_right=16,gap=16,align='center',shrink=0,border=2,radius=44,border_color=c.border,background=c.panel},
         hover={background=c.raised}}),{
         ui.node({style={width=72,height=72,shrink=0,radius=36,clip=true,border=2,border_color=c.border,background=c.accent}},{
             ui.material({material={shader='phone/avatar.wgsl',texture=require('phone.avatar').texture(sheet.id)},style={width='100%',height='100%'}}),
         }),
         t.text(sheet.name,27,nil,{style={grow=1,min_width=0}}),
-        t.text(if props and props.edit then '✎' else '↗',24,nil,{style={padding_right=16}}),
+        if props and props.edit then t.text('✎',24,nil,{style={padding_right=16}}) else ui.node({style={width=44,height=44,shrink=0,radius=22,background=c.call,align='center',justify='center'}},{ui.image({texture='themes/atelico/contacts/handset.png',style={width=26,height=26}})}),
     })
 end
 return t

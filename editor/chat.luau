@@ -16,10 +16,12 @@
 local ui = require("ui")
 local kit = require("kit")
 local proposal = require("proposal")
+local sessions = require("session_model")
 
 local chat = { routes = {} }
 
 local REQUEST = "bar:request"
+-- A part can populate the window's typed SessionRequest before opening the card.
 -- how long a toast stays, and how long the button takes to stretch into its field and back (seconds)
 local TOAST, MORPH = 3.0, 0.18
 -- the most toasts beside the button at once
@@ -33,18 +35,45 @@ local BORDER = 3
 function chat.routes.bar_request(self, r, ctx)
 	local text = string.gsub(string.gsub(tostring(r[REQUEST] or ""), "^%s+", ""), "%s+$", "")
 	if text == "" then return end
+	local session = sessions.context()
+	if not session then return end
+	if session.provider == "codex" and (not session.attached or not session.ready) then
+		-- Keep the request in the field while the person completes CLI startup in the terminal.
+		ctx.emit("editor.claude", { level = "terminal" })
+		return
+	end
 	ctx.emit("input.set", { key = REQUEST, value = "" })
+	local context = sessions.request()
+	local about = if context then context.about else ""
+	if about ~= "" then
+		-- (one line: the request goes to Claude's terminal as typed)
+		text = `{text} (About {string.gsub(about, "%s*\n%s*", " ")})`
+		sessions.clear_request()
+	end
 	ctx.emit("editor.ask", { kind = "request", text = text })
 end
 
--- Claude at another level: `button`, `card` or `terminal` (the editor moves the keys' focus with it).
+-- Claude at another level: `button`, `card` or `terminal` (the editor moves the keys' focus with it). The button
+-- itself opens the card about nothing in particular.
 function chat.routes.claude(self, r, ctx)
+	sessions.clear_request()
 	ctx.emit("editor.claude", { level = r.level })
+end
+
+function chat.routes.agent_ready(self, r, ctx)
+	ctx.emit("editor.agent_ready", {})
 end
 
 -- The accent at an alpha (0..1).
 local function accent(alpha)
 	return string.format("%s%02x", string.sub(kit.c.accent, 1, 7), math.floor(math.clamp(alpha, 0, 1) * 255 + 0.5))
+end
+
+-- The field's prompt: who the request goes to ("Ask the Storyboard session…"; plain "Ask Claude…" for main).
+local function ask_label()
+	local s = sessions.context()
+	if s and s.name ~= "main" and (s.title or "") ~= "" then return `Ask the {s.title} session…` end
+	return `Ask {if s then s.provider_label else "Agent"}…`
 end
 
 -- A small button on the card's head: its label at the card's size, its padding with it.
@@ -83,22 +112,27 @@ local function wide(text, size, bold)
 	return select(2, typeset.lines(if bold then kit.face.bold else (kit.face.text or "fonts/Roobert-Regular.ttf"), size, 1e6, text)) or (#text * size * 0.6)
 end
 
--- Sizes for a window `w` x `h`: the whole surface is one unit, scaled as a 1080p picture is (the button 88 px there,
--- its words 27 px, never under that from 1080 up), so a small window (a cube face shot at 1067x600 and scale 1.8)
+-- Sizes for a window `w` x `h`: the whole surface is one unit, scaled as a 1080p picture is (all but the button, which
+-- is `BUTTON` px at any size; the words 27 px, never under that from 1080 up), so a small window (a cube face shot at 1067x600 and scale 1.8)
 -- draws it as a smaller picture of the same thing. The card is never narrower than its head.
+-- Claude's button, logical px at every window size.
+local BUTTON = 72
+
 local function sizes(w, h)
 	local k = math.min(w, h) / 1080
 	-- (never under the editor's readable least, 21 px: a small window keeps its words readable)
 	local text = math.max(READABLE, math.floor(kit.m.font_size * math.min(k, 1) + 0.5))
 	local margin = math.floor(MARGIN * k + 0.5)
-	local b = math.floor(88 * k + 0.5)
+	-- Claude's button is the same size at any window size (it grew with the window); only the card it opens scales
+	local b = BUTTON
 	-- the field at its least: the mark's circle, "Ask Claude…" and the terminal icon, their gaps and padding
 	local least = b + wide("Ask Claude…", text) + kit.line(text) + math.floor(8 * k + 0.5) + 4 * math.floor(12 * k)
 	local field = if h > w then math.floor(w * 0.92) else math.floor(560 * k + 0.5)
 	return {
 		k = k,
 		button = b,
-		ring = b + math.floor(28 * k),
+		ring = b + math.floor(28 * b / 88),
+		kb = b / 88, -- the button's own unit (its glow, its ring of dots)
 		margin = margin,
 		text = text, -- 27 px at 1080p: every word Claude shows reads in the video
 		card = math.min(math.max(field, math.ceil(least)), w - 2 * margin),
@@ -138,7 +172,7 @@ local function entry(z, working, t, e, focus, inputs)
 		if working then
 			-- twelve dots round the button, the lit one going round a second and a half a turn, the ones behind it
 			-- fading
-			local n, r, d = 12, ring / 2 - 4 * z.k, math.max(4, math.floor(7 * z.k))
+			local n, r, d = 12, ring / 2 - 4 * z.kb, math.max(4, math.floor(7 * z.kb))
 			for i = 0, n - 1 do
 				local a = i / n * 2 * math.pi
 				local lag = ((t / 1.5) - i / n) % 1
@@ -171,14 +205,15 @@ local function entry(z, working, t, e, focus, inputs)
 		table.insert(row, ui.node({ id = "claude-field", style = { grow = 1, width = 0, min_width = 0, clip = true } }, {
 			ui.input({
 				id = "event-request", ui = "request", bind = REQUEST, value = (inputs or {})[REQUEST] or "",
-				placeholder = "Ask Claude…", on_submit = kit.route("bar_request", {}), focus_border = c.panel,
+				placeholder = if sessions.request() and sessions.request().label ~= "" then sessions.request().label else ask_label(), on_submit = kit.route("bar_request", {}), focus_border = c.panel,
 				style = { width = "100%", height = kit.line(z.text) + 2 * math.floor(6 * z.k + 0.5), padding = math.floor(6 * z.k + 0.5), border = 0, background = c.panel, color = c.text,
 					font = regular, font_size = z.text, text_wrap = "none" },
 			}),
 		}))
 		table.insert(row, terminal_button(z))
 	end
-	return ui.row({ id = "request-card", ui = "ask", style = {
+	local about = sessions.request()
+	return ui.row({ id = "request-card", ui = "ask", ui_state = { context = if about then about.label else "", about = if about then about.id else "" }, style = {
 		-- (the mark's circle a border's width in from the pill's edge)
 		width = width, height = b, shrink = 0, padding_left = BORDER, padding_right = if e > 0.5 then gap else BORDER, gap = gap, align = "center", clip = true,
 		radius = b / 2, background = c.panel, border = 3, border_color = c.accent,
@@ -218,11 +253,59 @@ local function asking(z)
 	} }, {
 		ui.row({ style = { width = "100%", gap = math.floor(10 * z.k), align = "center", shrink = 0 } }, {
 			mark(math.floor(22 * z.k), c.accent),
-			kit.text("Claude proposes", { bold = true, size = z.text, color = c.accent }),
+			kit.text(`{if sessions.context() then sessions.context().provider_label else "Agent"} proposes`, { bold = true, size = z.text, color = c.accent }),
 		}),
 		p,
 		answer,
 	})
+end
+
+-- The window's Claude session (runtime.session, the editor's: which of the sessions this tab or window talks to,
+-- the task it has claimed): one line over the field saying who the request goes to, and the sessions to switch
+-- to, with a new one for this tab. A choice pins it for the window; "Follow the tab" lets the document choose.
+local function session_label(s)
+	local provider = if s then (s.provider_label or "Claude") else "Claude"
+	if not s or not s.title or s.title == "" then return provider end
+	return `{provider} · {s.title}`
+end
+
+local function session_strip(z)
+	local s = sessions.context()
+	if not s then return nil end
+	local c = kit.c
+	-- (every word at the card's size: Claude's words read in a video, 27 px at 1080p)
+	local claimed = sessions.record(s.claimed[1])
+	local bh = kit.line(z.text) + math.floor(10 * z.k + 0.5)
+	local choices = {}
+	for _, path in s.sessions do
+		local o = sessions.record(path)
+		table.insert(choices, kit.button(`{o.title} · {o.provider_label or "Claude"}`, kit.route("claude_session_select", { name = o.name }), { id = `claude-session:{o.name}`, active = o.name == s.name, size = z.text, height = bh }))
+	end
+	if s.pinned then
+		table.insert(choices, kit.button("Follow the tab", kit.route("claude_session_select", { name = "" }), { id = "claude-session-follow", size = z.text, height = bh }))
+	end
+	table.insert(choices, kit.button(if (s.doc or "") ~= "" then "New Claude for tab" else "New Claude", kit.route("claude_session_new", { provider = "claude" }), { id = "claude-session-new", size = z.text, height = bh }))
+	table.insert(choices, kit.button(if (s.doc or "") ~= "" then "New Codex for tab" else "New Codex", kit.route("claude_session_new", { provider = "codex" }), { id = "codex-session-new", size = z.text, height = bh }))
+	local strip = ui.column({ id = "claude-session", ui = "session", style = {
+		width = z.card, shrink = 0, padding = math.floor(16 * z.k), gap = math.floor(10 * z.k),
+		radius = math.floor(20 * z.k), background = c.panel, border = 3, border_color = c.accent,
+	} }, {
+		ui.row({ style = { width = "100%", gap = math.floor(10 * z.k), align = "center", shrink = 0 } }, {
+			mark(math.floor(20 * z.k), c.accent),
+			kit.text(session_label(s), { id = "claude-session-title", bold = true, size = z.text, color = c.accent, style = { shrink = 0 } }),
+		}),
+		-- the task it has claimed in the queue, whole (wrapped, never cut)
+		kit.text(if claimed then `#{claimed.id} {claimed.title}` else "No task claimed", { id = "claude-session-task", size = z.text, wrap = true, color = if claimed then c.text else c.muted, style = { width = "100%", shrink = 0 } }),
+		ui.row({ style = { width = "100%", gap = math.floor(8 * z.k), wrap = true, shrink = 0 } }, choices),
+	})
+	strip.ui_state = { session = s.name, claimed = if claimed then claimed.id else false, pinned = s.pinned == true }
+	return strip
+end
+
+function chat.routes.claude_session_select(self, r, ctx) sessions.select(r.name) end
+
+function chat.routes.claude_session_new(self, r, ctx)
+	ctx.emit("editor.session", { op = "new", provider = r.provider or "claude" })
 end
 
 -- The terminal: the live Claude session in a large floating window, with a collapse back to the card.
@@ -231,18 +314,28 @@ local function terminal(z, w, h, bottom)
 	local tw, th = math.floor(w * 0.7), math.floor(math.min(h * 0.7, h - bottom - kit.bars().toolbar - z.margin))
 	local head = ui.row({ id = "claude-terminal-head", style = { width = "100%", height = kit.line(z.text) + math.floor(24 * z.k), shrink = 0, padding_x = math.floor(18 * z.k), gap = math.floor(12 * z.k), align = "center", background = c.header } }, {
 		mark(math.floor(22 * z.k), c.accent),
-		kit.text("Claude", { bold = true, size = z.text, color = c.accent, style = { shrink = 0 } }),
-		-- (no session status: its words, "reattached session 'atelico-agent-…'", are jargon on screen)
+		-- which session this terminal is (its title, never the rmux name: "reattached session 'atelico-agent-…'" is
+		-- jargon on screen)
+		kit.text(session_label(sessions.context()), { id = "claude-terminal-session", bold = true, size = z.text, color = c.accent, style = { shrink = 0 } }),
 		kit.spacer(),
 		head_button("Back to card", kit.route("claude", { level = "card" }), "claude-collapse", z),
 	})
+	local contents = { head }
+	local session = sessions.context()
+	if session and not session.attached then
+		table.insert(contents, kit.text(session.status or "Opening the agent terminal…", { id = "agent-terminal-status", size = z.text, wrap = true, color = c.muted, style = { width = "100%", shrink = 0, padding = math.floor(12 * z.k) } }))
+	end
+	if session and session.provider == "codex" and session.attached and not session.ready then
+		table.insert(contents, ui.column({ style = { width = "100%", shrink = 0, padding = math.floor(12 * z.k), gap = math.floor(8 * z.k) } }, {
+			kit.text("Finish sign-in and startup in this terminal, then enable card requests.", { size = z.text, wrap = true, style = { width = "100%" } }),
+			head_button("Ready for requests", kit.route("agent_ready", {}), "agent-ready", z),
+		}))
+	end
+	table.insert(contents, { kind = "surface", surface = "agent", style = { width = "100%", grow = 1, min_height = 0 } })
 	return ui.column({ id = "claude-terminal", ui = "terminal", style = {
 		absolute = true, overlay = true, right = z.margin, bottom = bottom, width = tw, height = th,
 		radius = math.floor(18 * z.k), clip = true, background = c.panel, border = 3, border_color = c.accent,
-	} }, {
-		head,
-		{ kind = "surface", surface = "agent", style = { width = "100%", grow = 1, min_height = 0 } },
-	})
+	} }, contents)
 end
 
 -- Everything of Claude's over the window, for main.luau's overlay: the button always; toasts beside it while it
@@ -274,15 +367,19 @@ function chat.corner(env)
 		local fits = math.max(1, math.floor(strip / each))
 		while #popped > fits do table.remove(popped, 1) end
 	end
-	-- a proposal grows up out of the field
+	-- a proposal grows up out of the field; the session it talks to sits right over the field
 	local grown = if e == 1 then asking(z) else nil
+	local strip = if e == 1 then session_strip(z) else nil
 	-- (the field sits where the button's disc sits, inside its ring)
 	local inset = if e > 0 then (z.ring - z.button) / 2 else 0
-	if grown then
+	if grown or strip then
 		local col = {}
 		for _, toast in popped do table.insert(col, toast) end
 		if grown then table.insert(col, grown) end
+		if strip then table.insert(col, strip) end
 		table.insert(col, element)
+		-- (its size, for a part that keeps its text clear of it: runtime.size.claude_corner)
+		table.insert(col, { kind = "measure", name = "claude_corner", style = { absolute = true, left = 0, top = 0, width = "100%", height = "100%" } })
 		table.insert(over, ui.column({ id = "claude-corner", style = { absolute = true, overlay = true, right = z.margin + inset, bottom = bottom + inset, gap = math.floor(12 * z.k), align = "end",
 			max_height = h - bottom - kit.bars().toolbar - z.margin } }, col))
 	else
@@ -296,7 +393,14 @@ function chat.corner(env)
 		table.insert(over, kit.tooltip("Open the terminal", "claude-expand-tip", { absolute = true, overlay = true, right = z.margin + inset, bottom = bottom + inset + z.button + math.floor(10 * z.k) }))
 	end
 	if level == "terminal" then
-		table.insert(over, terminal(z, w, h, bottom + z.ring + math.floor(12 * z.k)))
+		if sessions.context() and not sessions.context().terminal_available then
+			table.insert(over, ui.column({ style = { absolute = true, overlay = true, right = z.margin, bottom = bottom + z.ring + 12, width = z.card, padding = 18, gap = 12, background = kit.c.panel, radius = 18 } }, {
+				kit.text("Live terminals are in the main window. Select this session there; requests here still reach it.", { size = z.text, wrap = true, style = { width = "100%" } }),
+				head_button("Back to card", kit.route("claude", { level = "card" }), "claude-collapse", z),
+			}))
+		else
+			table.insert(over, terminal(z, w, h, bottom + z.ring + math.floor(12 * z.k)))
+		end
 	end
 	return over
 end

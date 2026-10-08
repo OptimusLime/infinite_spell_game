@@ -1,0 +1,537 @@
+# Shader Forge node classes. Each `code` is a WGSL expression: `{name}` is an input (the wired source, cast to
+# the port's type, else the port's `default`) or a param (as a WGSL literal). Port types: float, vec2, color.
+name: shader
+categories:
+  - {name: input, color: "#5aa9e6"}
+  - {name: pattern, color: "#b18cff"}
+  - {name: math, color: "#8fbf6a"}
+  - {name: color, color: "#f2a33a"}
+  - {name: motion, color: "#5ad1b3"}
+  - {name: mask, color: "#d9d36a"}
+  - {name: fire, color: "#ff7a3d"}
+  - {name: output, color: "#ef5b5b"}
+  - {name: look, color: "#c77dff"}
+casts:
+  vec2: [float]
+  color: [float, vec2, rgba]
+  float: [color, rgba]
+  rgba: [color, float]
+types:
+  - name: uv
+    title: UV
+    category: input
+    doc: Where the pixel is, (0,0) bottom-left to (1,1) top-right.
+    outputs: [{name: uv, type: vec2}]
+    code: "uv"
+    renderer: preview
+  - name: time
+    title: Time
+    category: input
+    doc: Seconds on the timeline's playhead, times speed.
+    outputs: [{name: t, type: float}]
+    params: [{name: speed, kind: number, default: 1, min: -10, max: 10}]
+    code: "time * {speed}"
+    renderer: value
+  - name: scroll
+    title: Scroll
+    category: input
+    doc: Moves coordinates over time along a direction (flames rise).
+    inputs: [{name: uv, type: vec2, default: uv}, {name: t, type: float, default: time}]
+    outputs: [{name: uv, type: vec2}]
+    params:
+      - {name: dx, kind: number, default: 0, min: -5, max: 5}
+      - {name: dy, kind: number, default: -1, min: -5, max: 5}
+    code: "{uv} + vec2<f32>({dx}, {dy}) * {t}"
+  - name: noise
+    title: Noise
+    category: pattern
+    doc: Fractal value noise; more octaves add finer detail.
+    inputs: [{name: uv, type: vec2, default: uv}]
+    outputs: [{name: value, type: float}]
+    params:
+      - {name: scale, kind: number, default: 4, min: 0.1, max: 64}
+      - {name: stretch, kind: number, default: 1, min: 0.1, max: 8}
+      - {name: octaves, kind: number, default: 4, min: 1, max: 8}
+    code: "fbm({uv} * vec2<f32>({scale}, {scale} / {stretch}), {octaves})"
+    renderer: preview
+  - name: warp
+    title: Warp
+    category: pattern
+    doc: Pushes coordinates sideways by a value (turbulence).
+    inputs: [{name: uv, type: vec2, default: uv}, {name: amount, type: float}]
+    outputs: [{name: uv, type: vec2}]
+    params: [{name: strength, kind: number, default: 0.2, min: 0, max: 2}]
+    code: "{uv} + vec2<f32>({amount} - 0.5, ({amount} - 0.5) * 0.35) * {strength}"
+  - name: gradient
+    title: Gradient
+    category: pattern
+    inputs: [{name: uv, type: vec2, default: uv}]
+    outputs: [{name: value, type: float}]
+    params: [{name: direction, kind: one_of, default: vertical, choices: [vertical, horizontal, radial]}]
+    code: "grad_{direction}({uv})"
+    renderer: preview
+  - name: multiply
+    title: Multiply
+    category: math
+    inputs: [{name: a, type: float, default: "1.0"}, {name: b, type: float, default: "1.0"}]
+    outputs: [{name: out, type: float}]
+    params: [{name: gain, kind: number, default: 1, min: 0, max: 8}]
+    code: "{a} * {b} * {gain}"
+  - name: add
+    title: Add
+    category: math
+    inputs: [{name: a, type: float}, {name: b, type: float}]
+    outputs: [{name: out, type: float}]
+    code: "{a} + {b}"
+  - name: smoothstep
+    title: Threshold
+    category: math
+    doc: Soft cut between two levels.
+    inputs: [{name: x, type: float}]
+    outputs: [{name: out, type: float}]
+    params:
+      - {name: low, kind: number, default: 0.2, min: -1, max: 2}
+      - {name: high, kind: number, default: 0.8, min: -1, max: 2}
+    code: "smoothstep({low}, {high}, {x})"
+    renderer: preview
+  - name: ramp
+    title: Color Ramp
+    category: color
+    doc: Maps 0..1 through four colors.
+    inputs: [{name: value, type: float}]
+    outputs: [{name: color, type: color}]
+    params:
+      - {name: c0, kind: color, default: "#000000"}
+      - {name: c1, kind: color, default: "#7a1206"}
+      - {name: c2, kind: color, default: "#ff7a12"}
+      - {name: c3, kind: color, default: "#fff4c2"}
+    code: "ramp4({value}, {c0}, {c1}, {c2}, {c3})"
+    renderer: ramp
+  - name: mix
+    title: Mix
+    category: color
+    inputs: [{name: a, type: color}, {name: b, type: color}, {name: t, type: float, default: "0.5"}]
+    outputs: [{name: color, type: color}]
+    code: "mix({a}, {b}, {t})"
+  - name: output
+    title: Output
+    category: output
+    doc: The fragment color.
+    inputs: [{name: color, type: color}]
+    outputs: [{name: color, type: color}]
+    code: "{color}"
+    renderer: preview
+
+  # ---- painted layers: the Hades-style torch (docs/research/painted-layers-and-hades-vfx.md) ----
+  - name: center_uv
+    title: Centered
+    category: input
+    doc: Coordinates centered on x (-1..1), 0 at the base.
+    inputs: [{name: uv, type: vec2, default: uv}]
+    outputs: [{name: p, type: vec2, identity: "{uv}"}]
+    code: "center_p({uv})"
+  - name: local_time
+    title: Local Time
+    category: input
+    doc: Time that lags with a delay map (Hades 0:42), plus a phase.
+    inputs: [{name: t, type: float, default: time}, {name: delay, type: float}]
+    outputs: [{name: t, type: float, identity: "{t}"}]
+    params:
+      - {name: phase, kind: number, default: 0, min: -100, max: 100}
+      - {name: delay_strength, kind: number, default: 0.35, min: 0, max: 4}
+    code: "{t} + {phase} - {delay} * {delay_strength}"
+  - name: swirl
+    title: Swirl
+    category: motion
+    doc: A curling fold around a center, fading with distance.
+    inputs: [{name: p, type: vec2, default: center_p(uv)}, {name: t, type: float, default: time}]
+    outputs: [{name: p, type: vec2, identity: "{p}"}]
+    params:
+      - {name: amount, kind: number, default: 0.28, min: 0, max: 2}
+      - {name: center, kind: vec2, default: [0.1, 0.58]}
+      - {name: falloff, kind: number, default: 6, min: 0.1, max: 40}
+    code: "swirl({p}, {t}, {amount}, {center}, {falloff})"
+  - name: angular_noise
+    title: Angular Noise
+    category: pattern
+    doc: Faceted moving noise (linear interpolation), the painted density (density_layer).
+    inputs: [{name: p, type: vec2, default: center_p(uv)}, {name: t, type: float, default: time}]
+    outputs: [{name: value, type: float, identity: "1.0"}]
+    params:
+      - {name: scale, kind: number, default: 3.4, min: 0.1, max: 40}
+      - {name: stretch, kind: number, default: 0.83, min: 0.1, max: 8}
+      - {name: scroll, kind: vec2, default: [0.22, 1.7]}
+    code: "angular_noise({p}, {t}, {scale}, {stretch}, {scroll}, seed)"
+    renderer: preview
+  - name: band_ramp
+    title: Bands
+    category: color
+    doc: Flat tonal bands from heat (palette_layer), HDR colors.
+    inputs: [{name: value, type: float}]
+    outputs: [{name: color, type: color, identity: "vec3<f32>({value})"}]
+    params:
+      - {name: c0, kind: hdr, default: [0.9, 0.075, 0.006]}
+      - {name: c1, kind: hdr, default: [2.1, 0.3, 0.008]}
+      - {name: c2, kind: hdr, default: [2.9, 0.92, 0.025]}
+      - {name: c3, kind: hdr, default: [3.8, 2.65, 0.5]}
+      - {name: t1, kind: number, default: 0.4, min: 0, max: 2}
+      - {name: t2, kind: number, default: 0.59, min: 0, max: 2}
+      - {name: t3, kind: number, default: 0.82, min: 0, max: 2}
+      - {name: soft, kind: number, default: 0.01, min: 0, max: 0.2}
+    code: "band_ramp({value}, {c0}, {c1}, {c2}, {c3}, {t1}, {t2}, {t3}, {soft})"
+    renderer: preview
+  - name: with_alpha
+    title: Color + Alpha
+    category: color
+    inputs: [{name: color, type: color}, {name: alpha, type: float, default: "1.0"}]
+    outputs: [{name: rgba, type: rgba, identity: "vec4<f32>({color}, 1.0)"}]
+    code: "vec4<f32>({color}, {alpha})"
+  - name: tint
+    title: Tint
+    category: color
+    doc: A mask as a colored layer.
+    inputs: [{name: mask, type: float}]
+    outputs: [{name: rgba, type: rgba, identity: "vec4<f32>(0.0)"}]
+    params: [{name: color, kind: hdr, default: [2.7, 1.1, 0.09]}]
+    code: "vec4<f32>({color}, {mask})"
+  - name: layer
+    title: Layer
+    category: color
+    doc: One layer over (or added onto) another.
+    inputs: [{name: base, type: rgba}, {name: top, type: rgba}]
+    outputs: [{name: rgba, type: rgba, identity: "{base}"}]
+    params: [{name: op, kind: one_of, default: over, choices: [over, add]}]
+    code: "layer_{op}({base}, {top})"
+    renderer: preview
+  - name: glow
+    title: Glow
+    category: color
+    doc: A soft warm halo from a wide mask, added last and kept restrained.
+    inputs: [{name: rgba, type: rgba}, {name: halo, type: float}]
+    outputs: [{name: rgba, type: rgba, identity: "{rgba}"}]
+    params:
+      - {name: intensity, kind: number, default: 0.055, min: 0, max: 2}
+      - {name: color, kind: hdr, default: [1.0, 0.35, 0.05]}
+    code: "layer_add({rgba}, vec4<f32>({color}, {halo} * {intensity} * 6.0))"
+  - name: alpha_output
+    title: Output (alpha)
+    category: output
+    doc: The fragment color with alpha; clip cuts at 0.5, blend keeps it soft.
+    inputs: [{name: rgba, type: rgba}]
+    outputs: [{name: rgba, type: rgba}]
+    params: [{name: mode, kind: one_of, default: clip, choices: [clip, blend]}]
+    code: "out_{mode}({rgba})"
+    renderer: preview
+  - name: place
+    title: Place
+    category: pattern
+    doc: A point moved into a shape's own space, from where the shape stands (`at`) and its size, so one shape can sit anywhere at any scale.
+    inputs: [{name: p, type: vec2, default: center_p(uv)}]
+    outputs: [{name: p, type: vec2, identity: "{p}"}]
+    params:
+      - {name: at, kind: vec2, default: [0.0, 0.0]}
+      - {name: size, kind: vec2, default: [1.0, 1.0]}
+    code: "place({p}, {at}, {size})"
+  - name: ellipse
+    title: Ellipse
+    category: pattern
+    doc: A flat ellipse mask (a pool of light on the ground), crisp unless `soft`.
+    inputs: [{name: p, type: vec2, default: center_p(uv)}]
+    outputs: [{name: mask, type: float, identity: "0.0"}]
+    params:
+      - {name: at, kind: vec2, default: [0.0, 0.2]}
+      - {name: radius, kind: vec2, default: [0.6, 0.12]}
+      - {name: soft, kind: number, default: 0.01, min: 0.001, max: 2}
+    code: "ellipse({p}, {at}, {radius}, {soft})"
+    renderer: preview
+  # ---- the one fire's stages (creature_3d_studio layers-29, in order); their code is the fire package's
+  # (packages/fire/src/flame.wgsl), linked into every graph where the fire package is ----
+  - name: fire_flow
+    title: Flow
+    category: fire
+    doc: "Stage 2: bends, rolls, sways and swirls the point, more with height (flow_layer)."
+    inputs: [{name: p, type: vec2, default: center_p(uv)}, {name: t, type: float, default: time}]
+    outputs: [{name: p, type: vec2, identity: "{p}"}]
+    params: [{name: flow, kind: number, default: 0.28, min: 0, max: 1}]
+    code: "fire_flow({p}, {t}, {flow})"
+  - name: fire_shape
+    title: Shape
+    category: fire
+    doc: "Stage 1: the broad envelope the flame lives in (shape_layer); depth is 1 on its axis and 0 on its outline, h how high up it is (0 to 1)."
+    inputs: [{name: p, type: vec2, default: center_p(uv)}]
+    outputs:
+      - {name: mask, type: float, identity: "1.0", code: "fire_shape({p}, {width}, {height})"}
+      - {name: depth, type: float, identity: "1.0", code: "fire_depth({p}, {width}, {height})"}
+      - {name: h, type: float, identity: "0.5", code: "clamp(({p}).y / {height}, 0.0, 1.0)"}
+    params:
+      - {name: width, kind: number, default: 0.72, min: 0.1, max: 1.5}
+      - {name: height, kind: number, default: 0.94, min: 0.2, max: 1.0}
+    renderer: preview
+  - name: fire_density
+    title: Density
+    category: fire
+    doc: "Stage 3: faceted noise rising through the flame (density_layer)."
+    inputs: [{name: p, type: vec2, default: center_p(uv)}, {name: t, type: float, default: time}]
+    outputs: [{name: value, type: float, identity: "0.5"}]
+    params: [{name: frequency, kind: number, default: 3.4, min: 0.5, max: 12}]
+    code: "fire_density({p}, {t}, {frequency})"
+    renderer: preview
+  - name: fire_heat
+    title: Heat
+    category: fire
+    doc: "The one scalar field every band is cut from: deep and low is hot, the outline and tip cool, grained by the density (flame_heat)."
+    inputs: [{name: depth, type: float, default: "1.0"}, {name: h, type: float, default: "0.5"}, {name: density, type: float, default: "0.5"}]
+    outputs: [{name: heat, type: float, identity: "{depth}"}]
+    code: "fire_heat({depth}, {h}, {density})"
+    renderer: preview
+  - name: fire_erosion
+    title: Erosion
+    category: fire
+    doc: "Stage 4: tears in the heat through the cooler upper edges, never the core or its rim (erosion_layer); mask is what stays of the envelope; threshold, from the core's size, is where the heat turns to core."
+    inputs: [{name: p, type: vec2, default: center_p(uv)}, {name: t, type: float, default: time}, {name: heat, type: float}, {name: h, type: float, default: "0.5"}, {name: envelope, type: float, default: "1.0"}]
+    outputs:
+      - {name: mask, type: float, identity: "{envelope} * smoothstep(0.005, 0.025, {heat})", code: "{envelope} * smoothstep(0.005, 0.025, fire_erosion({p}, {t}, {heat}, {h}, {amount}, fire_threshold({core})))"}
+      - {name: heat, type: float, identity: "{heat}", code: "fire_erosion({p}, {t}, {heat}, {h}, {amount}, fire_threshold({core}))"}
+      - {name: threshold, type: float, identity: "fire_threshold({core})", code: "fire_threshold({core})"}
+    params:
+      - {name: amount, kind: number, default: 0.58, min: 0, max: 1.5}
+      - {name: core, kind: number, default: 0.34, min: 0, max: 0.7}
+    renderer: preview
+  - name: fire_core
+    title: Core
+    category: fire
+    doc: "Stage 5: the hottest cutout of the same heat, inside the flame (core_layer)."
+    inputs: [{name: heat, type: float}, {name: mask, type: float, default: "1.0"}, {name: threshold, type: float, default: "0.71"}]
+    outputs: [{name: core, type: float, identity: "0.0"}]
+    code: "fire_core({heat}, {mask}, {threshold})"
+    renderer: preview
+  - name: fire_palette
+    title: Palette
+    category: fire
+    doc: "Stage 6: the heat in four flat bands (palette_layer), in linear light: by default the study's as it shows them, a red-orange rim, orange, peach and a cream core."
+    inputs: [{name: heat, type: float}, {name: core, type: float}, {name: threshold, type: float, default: "0.71"}]
+    outputs: [{name: color, type: color, identity: "vec3<f32>(clamp({heat}, 0.0, 1.0))"}]
+    params:
+      - {name: c0, kind: hdr, default: [0.604, 0.084, 0.021]}
+      - {name: c1, kind: hdr, default: [0.888, 0.341, 0.095]}
+      - {name: c2, kind: hdr, default: [0.839, 0.539, 0.198]}
+      - {name: c3, kind: hdr, default: [0.871, 0.737, 0.381]}
+    code: "fire_palette({heat}, {core}, {threshold}, {c0}, {c1}, {c2}, {c3})"
+    renderer: preview
+  - name: fire_fragments
+    title: Fragments
+    category: fire
+    doc: "Stage 7: sparks rising off the flame (fragments_layer): `rate` a second through the particle package's embers, the engine's one spark system (the fire part draws them in 3D, fire-construction over its 2D frames); here the flame's colour and cut-out alpha pass through."
+    inputs: [{name: color, type: color}, {name: mask, type: float, default: "1.0"}]
+    outputs: [{name: rgba, type: rgba, identity: "vec4<f32>({color}, {mask})"}]
+    params: [{name: rate, kind: number, default: 4, min: 0, max: 30}]
+    code: "fire_with_fragments({color}, {mask})"
+    renderer: preview
+  - name: fire_glow
+    title: Glow
+    category: fire
+    doc: "Stage 8: brighter than white by intensity, so the renderer's bloom haloes the bands (the study's bloom)."
+    inputs: [{name: rgba, type: rgba}]
+    outputs: [{name: rgba, type: rgba, identity: "{rgba}"}]
+    params: [{name: intensity, kind: number, default: 0.055, min: 0, max: 1}]
+    code: "fire_glow({rgba}, {intensity})"
+    renderer: preview
+  - name: blast
+    title: Blast
+    category: pattern
+    doc: A ball of fire in rounded cartoon puffs, grown with a quick overshoot from a white-hot starburst flash, breaking into lumps as it fades; its mask, heat and depth from the edge.
+    inputs: [{name: p, type: vec2, default: center_p(uv)}, {name: t, type: float, default: time}]
+    outputs:
+      - {name: mask, type: float, identity: "1.0", code: "blast({p}, {t}, {cy}, {radius}, {grow}, {lobes}, {lumpy}, {fade_start}, {fade_end}, {seed}).x"}
+      - {name: heat, type: float, identity: "0.5", code: "blast({p}, {t}, {cy}, {radius}, {grow}, {lobes}, {lumpy}, {fade_start}, {fade_end}, {seed}).y"}
+      - {name: depth, type: float, identity: "1.0", code: "blast({p}, {t}, {cy}, {radius}, {grow}, {lobes}, {lumpy}, {fade_start}, {fade_end}, {seed}).z"}
+    params:
+      - {name: cy, kind: number, default: 0.45, min: 0, max: 1}
+      - {name: radius, kind: number, default: 0.42, min: 0.05, max: 1}
+      - {name: grow, kind: number, default: 0.16, min: 0.01, max: 1}
+      - {name: lobes, kind: number, default: 7, min: 0, max: 16}
+      - {name: lumpy, kind: number, default: 0.12, min: 0, max: 0.5}
+      - {name: fade_start, kind: number, default: 0.3, min: 0, max: 2}
+      - {name: fade_end, kind: number, default: 0.65, min: 0, max: 2}
+      - {name: seed, kind: number, default: 0, min: 0, max: 100}
+    renderer: preview
+  - name: ink_rim
+    title: Ink rim
+    category: color
+    doc: A band of ink just inside an edge (depth 0 on it), the cel outline.
+    inputs: [{name: color, type: color}, {name: depth, type: float, default: "1.0"}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: width, kind: number, default: 0.07, min: 0, max: 0.5}
+      - {name: ink, kind: hdr, default: [0.12, 0.03, 0.04]}
+    code: "ink_rim({color}, {depth}, {width}, {ink})"
+    renderer: preview
+
+  # ---- looks: a World's post pass as a graph (graphs/pixel-world.graph.yaml, graphs/cel-world.graph.yaml). Each
+  # stage reads the frame the meshes, sprites and sky drew (the renderer's wl_* functions, crates/render-3d's
+  # look_api.wgsl); colours are linear light until Display, sRGB after it. A look graph ends in a Look Output, and
+  # a scene draws through it when its Grade names the graph (Grade.graph). ----
+  - name: look_scene
+    title: Scene
+    category: look
+    doc: The colour the scene drew here (lit meshes, sprites, sky), in linear light.
+    inputs: [{name: uv, type: vec2, default: uv}]
+    outputs: [{name: color, type: color}]
+    code: "wl_scene({uv})"
+    renderer: preview
+  - name: pixel_lens
+    title: Pixel Lens
+    category: look
+    doc: Snaps where the frame is read to blocks of texels picture pixels, chunkier pixels (1 as drawn). Wire it into the stages that read the frame.
+    inputs: [{name: uv, type: vec2, default: uv}]
+    outputs: [{name: uv, type: vec2, identity: "{uv}"}]
+    params: [{name: texels, kind: number, default: 1, min: 1, max: 16}]
+    code: "wl_pixelate({uv}, {texels})"
+  - name: ink_outline
+    title: Ink Outline
+    category: look
+    doc: An ink line round every silhouette, width px at 1280 wide, darker than the face it outlines, toward ink (self_tone 1, the face's own colour much darker, as pixel art inks); fade 1 thins it with distance, 0 keeps one line everywhere and outlines against the sky.
+    inputs: [{name: color, type: color}, {name: uv, type: vec2, default: uv}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: width, kind: number, default: 2.2, min: 0, max: 8}
+      - {name: strength, kind: number, default: 1, min: 0, max: 1}
+      - {name: ink, kind: color, default: "#1a1423"}
+      - {name: fade, kind: number, default: 1, min: 0, max: 1}
+      - {name: self_tone, kind: number, default: 0, min: 0, max: 1}
+    code: "wl_ink({color}, {uv}, {width}, {strength}, {ink}, {fade}, {self_tone})"
+    renderer: preview
+  - name: occlusion
+    title: Occlusion
+    category: look
+    doc: Ambient occlusion in two flat steps toward the shadow tint (creases and the feet of walls).
+    inputs: [{name: color, type: color}, {name: uv, type: vec2, default: uv}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: strength, kind: number, default: 1, min: 0, max: 3}
+      - {name: threshold, kind: number, default: 0.3, min: 0, max: 1}
+    code: "wl_ao({color}, {uv}, {strength}, {threshold})"
+    renderer: preview
+  - name: light_bands
+    title: Light Bands
+    category: look
+    doc: Cuts the lightness into flat bands, each the middle of its range, the hue kept (cel shading's bands; darks stay dark); amount of the way there.
+    inputs: [{name: color, type: color}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: steps, kind: number, default: 3, min: 1, max: 12}
+      - {name: amount, kind: number, default: 1, min: 0, max: 1}
+    code: "wl_bands({color}, {steps}, {amount})"
+    renderer: preview
+  - name: rim_light
+    title: Rim Light
+    category: look
+    doc: A light on the edges of surfaces turned away from the eye (the anime rim), width of the way in from the edge.
+    inputs: [{name: color, type: color}, {name: uv, type: vec2, default: uv}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: width, kind: number, default: 0.25, min: 0, max: 1}
+      - {name: colour, kind: color, default: "#ffd2a0"}
+      - {name: strength, kind: number, default: 0.25, min: 0, max: 2}
+    code: "wl_rim({color}, {uv}, {width}, {colour}, {strength})"
+    renderer: preview
+  - name: sky_gradient
+    title: Sky Gradient
+    category: look
+    doc: Paints the sky as a gradient from horizon up to top, amount over what the sky drew.
+    inputs: [{name: color, type: color}, {name: uv, type: vec2, default: uv}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: top, kind: color, default: "#1c1844"}
+      - {name: horizon, kind: color, default: "#5a3a6e"}
+      - {name: amount, kind: number, default: 0, min: 0, max: 1}
+    code: "wl_sky({color}, {uv}, {top}, {horizon}, {amount})"
+    renderer: preview
+  - name: exposure
+    title: Exposure
+    category: look
+    doc: Brighter or darker (a multiplier), with the World's white balance.
+    inputs: [{name: color, type: color}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params: [{name: exposure, kind: number, default: 1, min: 0, max: 4}]
+    code: "wl_exposure({color}, {exposure})"
+    renderer: preview
+  - name: bloom
+    title: Bloom
+    category: look
+    doc: A glow from what is brighter than threshold (lamps, windows, the seed).
+    inputs: [{name: color, type: color}, {name: uv, type: vec2, default: uv}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: threshold, kind: number, default: 1.4, min: 0, max: 4}
+      - {name: amount, kind: number, default: 0.3, min: 0, max: 2}
+    code: "wl_bloom({color}, {uv}, {threshold}, {amount})"
+    renderer: preview
+  - name: tonemap
+    title: Tonemap
+    category: look
+    doc: The filmic shoulder that keeps bright lights from clipping, amount of the way.
+    inputs: [{name: color, type: color}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params: [{name: amount, kind: number, default: 1, min: 0, max: 1}]
+    code: "wl_tonemap({color}, {amount})"
+    renderer: preview
+  - name: display
+    title: Display
+    category: look
+    doc: Linear light to the screen's colours (sRGB); the stages after it work on what you see.
+    inputs: [{name: color, type: color}]
+    outputs: [{name: color, type: color}]
+    code: "wl_display({color})"
+    renderer: preview
+  - name: colour_look
+    title: Colour Look
+    category: look
+    doc: The hour's colour look (the Sky's Looks, a 3D table each), at the hour's strength times strength.
+    inputs: [{name: color, type: color}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params: [{name: strength, kind: number, default: 1, min: 0, max: 2}]
+    code: "wl_look({color}, {strength})"
+    renderer: preview
+  - name: saturation
+    title: Saturation
+    category: look
+    doc: 0 grey, 1 as is, above 1 richer (on screen colours).
+    inputs: [{name: color, type: color}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params: [{name: amount, kind: number, default: 1, min: 0, max: 3}]
+    code: "wl_saturation({color}, {amount})"
+    renderer: preview
+  - name: light_steps
+    title: Light Steps
+    category: look
+    doc: The brightness in steps (the pixel look's stepped lamp rings and shading), an ordered dither dither deep between them; 0 steps leaves it.
+    inputs: [{name: color, type: color}, {name: uv, type: vec2, default: uv}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: steps, kind: number, default: 0, min: 0, max: 32}
+      - {name: dither, kind: number, default: 0.5, min: 0, max: 1}
+    code: "wl_steps({color}, {uv}, {steps}, {dither})"
+    renderer: preview
+  - name: palette
+    title: Palette
+    category: look
+    doc: The nearest colour of the PixelArt's palette (none - 31 levels a channel), an ordered dither nudging the choice; amount of the way.
+    inputs: [{name: color, type: color}, {name: uv, type: vec2, default: uv}]
+    outputs: [{name: color, type: color, identity: "{color}"}]
+    params:
+      - {name: dither, kind: number, default: 0.5, min: 0, max: 1}
+      - {name: amount, kind: number, default: 1, min: 0, max: 1}
+    code: "wl_palette({color}, {uv}, {dither}, {amount})"
+    renderer: preview
+  - name: look_output
+    title: Look Output
+    category: output
+    doc: What the screen shows (sRGB, after Display). scene and camera name what the preview draws through this look.
+    inputs: [{name: color, type: color}]
+    outputs: [{name: color, type: color}]
+    params:
+      - {name: scene, kind: text, default: scenes/pixel-world.scene.luau}
+      - {name: camera, kind: text, default: player}
+    code: "{color}"
+    renderer: preview

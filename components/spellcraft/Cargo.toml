@@ -1,0 +1,21 @@
+[package]
+name = "component-spellcraft"
+edition = "2021"
+version = "0.1.0"
+license = "Commercial"
+
+[dependencies]
+atelico-items.workspace = true
+atelico-inventory = { workspace = true, features = ["store"] }
+atelico-equipment = { workspace = true }
+atelico-store.workspace = true
+sha2 = "0.10"
+atelico-component.workspace = true
+atelico-data.workspace = true
+atelico-render-3d.workspace = true
+glam = "0.29"
+component-particles.workspace = true
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml_ng = "0.10"
+toml.workspace = true

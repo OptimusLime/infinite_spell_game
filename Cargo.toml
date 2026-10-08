@@ -18,7 +18,6 @@ linkme = "0.3"
 png = "0.17"
 rmux-sdk = "0.10"
 serde_json = "1"
-softbuffer = "0.4"
 tiny-skia = "0.11"
 tiny_http = "0.12"
 toml = "0.8"
@@ -27,8 +26,14 @@ winit = "0.30"
 [workspace.dependencies.atelico-agent]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/agent"
 
+[workspace.dependencies.atelico-cli]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/cli"
+
 [workspace.dependencies.atelico-clock]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/clock"
+
+[workspace.dependencies.atelico-collab]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/collab"
 
 [workspace.dependencies.atelico-component]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/component"
@@ -42,8 +47,14 @@ path = "/Users/paul/coding/atelico/atelico-app-engine/crates/control"
 [workspace.dependencies.atelico-data]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/data"
 
+[workspace.dependencies.atelico-data-derive]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/data-derive"
+
 [workspace.dependencies.atelico-editor]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/editor"
+
+[workspace.dependencies.atelico-equipment]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/equipment"
 
 [workspace.dependencies.atelico-gltf-import]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/gltf-import"
@@ -54,11 +65,32 @@ path = "/Users/paul/coding/atelico/atelico-app-engine/crates/gpu"
 [workspace.dependencies.atelico-graph]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/graph"
 
+[workspace.dependencies.atelico-host]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/host"
+
+[workspace.dependencies.atelico-inventory]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/inventory"
+
 [workspace.dependencies.atelico-items]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/items"
 
 [workspace.dependencies.atelico-node-cache]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/node-cache"
+
+[workspace.dependencies.atelico-paint]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/paint"
+
+[workspace.dependencies.atelico-paint-cpu]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/paint-cpu"
+
+[workspace.dependencies.atelico-paint-skia]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/paint-skia"
+
+[workspace.dependencies.atelico-queue]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/queue"
+
+[workspace.dependencies.atelico-references]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/references"
 
 [workspace.dependencies.atelico-registry]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/registry"
@@ -78,11 +110,17 @@ path = "/Users/paul/coding/atelico/atelico-app-engine/crates/script"
 [workspace.dependencies.atelico-search]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/search"
 
+[workspace.dependencies.atelico-sessions]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/sessions"
+
 [workspace.dependencies.atelico-skeleton]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/skeleton"
 
 [workspace.dependencies.atelico-store]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/store"
+
+[workspace.dependencies.atelico-storyboard]
+path = "/Users/paul/coding/atelico/atelico-app-engine/crates/storyboard"
 
 [workspace.dependencies.atelico-sync]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/sync"
@@ -90,23 +128,62 @@ path = "/Users/paul/coding/atelico/atelico-app-engine/crates/sync"
 [workspace.dependencies.atelico-timeline]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/timeline"
 
+[workspace.dependencies.component-ai]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/ai"
+
 [workspace.dependencies.component-arrow]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/arrow"
+
+[workspace.dependencies.component-audio]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/audio"
+
+[workspace.dependencies.component-camera-path]
+path = "/Users/paul/coding/atelico/atelico-app-engine/packages/camera-path"
 
 [workspace.dependencies.component-character-animation]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/character-animation"
 
+[workspace.dependencies.component-creatures]
+path = "/Users/paul/coding/atelico/atelico-app-engine/packages/creatures"
+
+[workspace.dependencies.component-faces]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/faces"
+
 [workspace.dependencies.component-fire]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/fire"
+
+[workspace.dependencies.component-founding]
+path = "/Users/paul/coding/atelico/atelico-app-engine/packages/founding"
+
+[workspace.dependencies.component-image-view]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/image-view"
 
 [workspace.dependencies.component-island-props]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/island-props"
 
+[workspace.dependencies.component-item-synthesis]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/item-synthesis"
+
+[workspace.dependencies.component-layout]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/layout"
+
 [workspace.dependencies.component-markov-junior]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/markov-junior"
 
+[workspace.dependencies.component-moon-forecast]
+path = "/Users/paul/coding/atelico/atelico-app-engine/packages/moon-forecast"
+
+[workspace.dependencies.component-moon-town]
+path = "/Users/paul/coding/atelico/atelico-app-engine/packages/moon-town"
+
+[workspace.dependencies.component-node-graph]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/node-graph"
+
 [workspace.dependencies.component-particles]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/particles"
+
+[workspace.dependencies.component-pattern-generation]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/pattern-generation"
 
 [workspace.dependencies.component-pixel-sprites]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/pixel-sprites"
@@ -117,17 +194,44 @@ path = "/Users/paul/coding/atelico/atelico-app-engine/packages/plant-generation"
 [workspace.dependencies.component-rock-generation]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/rock-generation"
 
+[workspace.dependencies.component-scene-3d]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/scene-3d"
+
+[workspace.dependencies.component-shader-forge]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/shader-forge"
+
 [workspace.dependencies.component-sky]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/sky"
+
+[workspace.dependencies.component-spell-player]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/spell-player"
+
+[workspace.dependencies.component-spellcraft]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/spellcraft"
 
 [workspace.dependencies.component-terrain-generation]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/terrain-generation"
 
+[workspace.dependencies.component-third-person]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/third-person"
+
 [workspace.dependencies.component-toon-character]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/toon-character"
 
+[workspace.dependencies.component-vector]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/vector"
+
+[workspace.dependencies.component-video]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/video"
+
 [workspace.dependencies.component-water]
 path = "/Users/paul/coding/atelico/atelico-app-engine/packages/water"
+
+[workspace.dependencies.component-weather]
+path = "/Users/paul/coding/atelico/atelico-app-engine/components/weather"
+
+[workspace.dependencies.component-world-looks]
+path = "/Users/paul/coding/atelico/atelico-app-engine/packages/world-looks"
 
 [workspace.dependencies.markov-junior]
 path = "/Users/paul/coding/atelico/atelico-app-engine/crates/markov-junior"

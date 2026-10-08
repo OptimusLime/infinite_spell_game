@@ -38,7 +38,7 @@ end
 function theme.input(id, label, value, props)
     return ui.column({id=id.."_field",style={gap=8,width="100%"}}, {
         theme.text(label,18,c.muted),
-        ui.input(ui.merge(props, {id=id,bind=id,value=value or "",focus_border=c.accent,
+        ui.input(ui.merge(props, {id=id,bind=id,value=value or "",focus_border=c.border,
             style=ui.merge({min_height=48,width="100%",padding=12,border=2,border_color=c.border,
                 background=c.background,color=c.text,font=theme.font,font_size=20,text_wrap="word",height=136,max_height=136,shrink=0},props and props.style)})),
     })

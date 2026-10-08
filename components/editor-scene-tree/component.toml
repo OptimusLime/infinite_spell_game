@@ -1,0 +1,14 @@
+lua = "An editor part: require('editor_parts.scene_tree') returns {name, slot, order, render}; the editor shell places it."
+name = "editor-scene-tree"
+provides = ["editor_parts.scene_tree"]
+requires = ["editor-panels"]
+
+[package]
+data_types = ["editor part (luau)"]
+description = "Scene tree panel for the editor: the selected scene's nodes as a hierarchy; click a node to inspect it."
+keywords = ["scene tree", "hierarchy", "nodes", "outline"]
+permissions = []
+version = "0.1.0"
+
+[package.dependencies]
+editor-panels = "^0.1"

@@ -1,0 +1,18 @@
+# Engineering input fixture, not an accepted game spell or balance configuration.
+version: 1
+name: engineering-push
+title: Engineering push
+kind: spell
+shape: orb
+element: wind
+mana: {source: wand, allocation: 20}
+container: field
+phases:
+  on_start:
+    - {id: form, use: body.orb, output: form}
+    - {id: launch, use: motion.launch, target: form, params: {speed: 5}}
+  on_contact:
+    target: form
+    every: 1
+    steps:
+      - {id: push, use: force.push, target: event.other, params: {strength: 3}}

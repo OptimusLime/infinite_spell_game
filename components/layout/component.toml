@@ -4,11 +4,20 @@ Lays out and paints ui.* trees (flexbox via taffy), the shape the applets' Lua U
 style: width/height/min_*/max_* (px or "50%"), direction = "column", grow, shrink, gap, padding[_x|_y|_left|...],
   align (start|center|end|stretch), justify (start|center|end|space_between), wrap, absolute + left/top/right/bottom,
   hidden, aspect, background, border, border_color, radius, clip, scroll + scroll_y, rotation,
+  scroll_to = "end" (stays at the bottom) | <id> (keeps that descendant a quarter of the way down the view, as laid out),
   font (asset path), font_size, color, text_wrap (none|word), text_align,
   gradient = {"#rrggbbaa", ...} (evenly spaced stops) along gradient_dir = "x" | "y".
+fit = "contain": content bigger than the box is drawn scaled down to fit it (boxes and hits scaled too).
+zoom = <z>: the node's content is drawn at zoom z (a canvas): its text counts at size / z for the smallest-text rule.
+Text under 21 px is recorded per layer (inspect().small); every text-in-a-box, how centred its ink is (inspect().centring).
+breakpoints = {{below = <width>, style = {...}}, ...}: style overrides when the node is narrower than `below`.
+text_overflow = "ellipsis": a single line too long for its box is cut short with "…".
+What does not fit (a node or a text line past its parent's content box where nothing scrolls or scales it)
+is recorded per layer: inspect().overflow, which the editor's verify fails on.
+inspect().scrolls records typed ScrollRegion geometry per layer: id, visible rect, clamped offset/maximum, content scale and follow_end.
 hover = {background?, border_color?} applies while the pointer is over the node.
 button.on_press, node.on_pointer and input.bind/on_submit are what pointer input reaches.
-image: texture (asset path), atlas = {x0, y0, x1, y1}.
+image: texture (asset path), texture_revision? (content revision; changes reload pixels and backend upload), atlas = {x0, y0, x1, y1}.
 Nodes of other kinds are painted by whichever installed component draws them (e.g. face)."""
 name = "layout"
 provides = ["node", "text", "button", "input", "image"]
@@ -19,4 +28,4 @@ description = "Lays out and paints user-interface trees: flexbox rows and column
 keywords = ["ui", "layout", "flexbox", "widgets", "text", "buttons", "rendering"]
 permissions = ["native-code"]
 tests = ["cargo test --quiet"]
-version = "0.1.0"
+version = "0.1.1"

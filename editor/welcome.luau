@@ -11,6 +11,7 @@
 local ui = require("ui")
 local kit = require("kit")
 local proposal = require("proposal")
+local sessions = require("session_model")
 
 local welcome = { routes = {} }
 local BRIEF = "welcome:brief"
@@ -22,13 +23,21 @@ function welcome.routes.welcome_build(self, r, ctx)
 	local text = string.gsub(tostring(r[BRIEF] or ""), "^%s+", "")
 	text = string.gsub(text, "%s+$", "")
 	if text == "" then return end
+	local session = sessions.context()
+	if not session then return end
+	if session.provider == "codex" and (not session.attached or not session.ready) then
+		-- Startup is explicit. Keep the draft here until the selected session is ready.
+		ctx.emit("editor.claude", { level = "terminal" })
+		return
+	end
 	ctx.emit("input.blur", {})
-	store.set("editor.ui.brief", text)
+	data.object("editor.ui").brief = text
 	ctx.emit("editor.ask", { kind = "build", text = text })
+	if session.provider == "codex" then ctx.emit("editor.claude", { level = "terminal" }) end
 end
 
--- Claude's short lines to the person (its `say`s), newest last.
-local function claude_lines()
+-- Agent notes (`say`), newest last. The shared conversation protocol retains its legacy speaker tag.
+local function agent_lines()
 	local out = {}
 	for _, m in (store.get("runtime.chat") or {}).messages or {} do
 		if m.from == "claude" then table.insert(out, m.text) end
@@ -114,24 +123,27 @@ local function landed_names()
 end
 
 -- The modal's content for where the talk is.
-local function content(c, inputs, inner)
-	local brief = store.get("editor.ui.brief") or ""
+local function content(c, inputs, inner, provider)
+	local brief = data.object("editor.ui").brief
 	if brief == "" then
 		-- 1. the question, and the box to answer in
 		return {
 			heading(QUESTION, kit.u(34), { id = "welcome-question" }),
-			line("Say it in your own words. Claude finds the packages that make it, and this engine becomes yours.", { tone = "muted", size = kit.m.small + 1 }),
+			line(`Say it in your own words. {provider} finds the packages that make it, and this engine becomes yours.`, { tone = "muted", size = kit.m.small + 1 }),
 			ui.input({
 				id = "welcome-brief", bind = BRIEF, value = inputs[BRIEF] or "",
-				placeholder = "A small island to explore, seen over the shoulder of a kid with a satchel…",
+				placeholder = "Describe the project and the tools you need…",
 				on_submit = kit.route("welcome_build", {}), focus_border = c.accent,
-				style = { width = "100%", height = kit.u(112), padding = kit.u(10), radius = kit.m.radius, border = 2, border_color = c.border,
+				-- (its text scrolls inside it: a long answer, or the example in a narrow window, never spills below the box)
+				style = { width = "100%", height = kit.u(112), scroll = true, padding = kit.u(10), radius = kit.m.radius, border = 2, border_color = c.border,
 					background = c.background, color = c.text, font = kit.face.text, font_size = kit.m.font_size, text_wrap = "word" },
 			}),
-			ui.row({ style = { width = "100%", gap = kit.u(12), align = "center", justify = "end", shrink = 0 } }, {
-				kit.text("Enter to send", { size = kit.m.small, tone = "muted" }),
-				kit.button("Ask Claude", kit.route("welcome_build", {}), { id = "welcome-build", tone = "accent", bold = true, height = kit.u(40), style = { padding_x = kit.u(20) } }),
-			}),
+			-- (a narrow modal keeps the button alone: the hint and the gap beside it pushed the button out of the box)
+			ui.row({ style = { width = "100%", gap = kit.u(12), align = "center", justify = "end", shrink = 0 } }, (function()
+				local send = kit.button(`Ask {provider}`, kit.route("welcome_build", {}), { id = "welcome-build", tone = "accent", bold = true, height = kit.u(40), style = { padding_x = kit.u(20) } })
+				if inner < kit.u(360) then return { send } end
+				return { kit.text("Enter to send", { size = kit.m.small, tone = "muted" }), send }
+			end)()),
 		}
 	end
 	local p = store.get("runtime.proposal") or {}
@@ -152,7 +164,7 @@ local function content(c, inputs, inner)
 	local tw = math.floor((inner - (cols - 1) * kit.u(14)) / cols) - 4
 	if proposal.showing(p, { "welcome-install", "welcome-decline" }) then
 		-- 3. what Claude proposes, pictured, and Install
-		table.insert(items, heading(if p.title and p.title ~= "" then p.title else "Claude proposes", kit.u(26), { id = "welcome-proposal-title" }))
+		table.insert(items, heading(if p.title and p.title ~= "" then p.title else `{provider} proposes`, kit.u(26), { id = "welcome-proposal-title" }))
 		local tiles = {}
 		for _, ch in packages do table.insert(tiles, tile(ch, tw, c, nil)) end
 		table.insert(items, ui.row({ id = "welcome-proposal", style = { width = "100%", gap = kit.u(14), wrap = true } }, tiles))
@@ -187,7 +199,7 @@ local function content(c, inputs, inner)
 		table.insert(items, ui.row({ id = "welcome-installing", style = { width = "100%", gap = kit.u(14), wrap = true } }, tiles))
 	end
 	-- 2. (and under 4) Claude's newest short note, and what it is doing now
-	local lines = claude_lines()
+	local lines = agent_lines()
 	if #lines > 0 then table.insert(items, said(lines[#lines], "welcome-claude", c)) end
 	local now = store.get("runtime.activity") or {}
 	local notes = now.notes or {}
@@ -209,7 +221,7 @@ local function content(c, inputs, inner)
 	end
 	table.insert(items, ui.row({ id = "welcome-activity", style = { width = "100%", gap = kit.u(10), align = "center", shrink = 0 } }, {
 		ui.node({ style = { width = kit.u(10), height = kit.u(10), radius = kit.u(5), shrink = 0, background = if now.working then c.accent else c.muted } }),
-		kit.text(doing or "Claude is reading what you asked", { id = "welcome-note", size = kit.m.small + 1, tone = "muted", wrap = true, style = { grow = 1, width = 0 } }),
+		kit.text(doing or `{provider} is reading what you asked`, { id = "welcome-note", size = kit.m.small + 1, tone = "muted", wrap = true, style = { grow = 1, width = 0 } }),
 	}))
 	return items
 end
@@ -220,9 +232,23 @@ function welcome.render(focus, inputs, time)
 	local w = size.w or 1200
 	local mw = math.min(kit.u(MAX_W), w - 2 * kit.u(MARGIN))
 	local pad = kit.u(28)
+	local session = sessions.context()
+	local provider = if session and session.provider_label ~= "" then session.provider_label else "Agent"
+	local contents = content(c, inputs, mw - 2 * pad - 4, provider)
+	local title = if session and session.title ~= "" then `{session.title} · {provider}` else provider
+	local status = if session and session.provider == "codex" and (not session.attached or not session.ready)
+		then "Complete terminal startup before sending. Your draft stays here."
+		elseif session then session.status else "Choose a session to begin."
+	table.insert(contents, 1, ui.column({ style = { width = "100%", gap = kit.u(6), shrink = 0 } }, {
+		ui.row({ style = { width = "100%", gap = kit.u(12), align = "center", shrink = 0 } }, {
+			kit.text(title, { id = "welcome-session-title", bold = true, size = kit.m.small + 1, wrap = true, style = { grow = 1, width = 0 } }),
+			kit.button("Sessions", kit.route("claude", { level = "card" }), { id = "welcome-sessions", height = kit.u(34), size = kit.m.small + 1 }),
+		}),
+		line(status, { id = "welcome-session-status", size = kit.m.small, tone = "muted" }),
+	}))
 	local modal = ui.column({ id = "welcome-modal", ui = "modal", style = {
 		width = mw, padding = pad, gap = kit.u(16), radius = kit.u(16), background = c.panel, border = 2, border_color = c.accent, shrink = 0,
-	} }, content(c, inputs, mw - 2 * pad - 4))
+	} }, contents)
 	return ui.column({ id = "panel:welcome", ui = "welcome", style = { width = "100%", grow = 1, min_height = 0, background = c.background, clip = true } }, {
 		{ kind = "measure", name = "welcome", style = { absolute = true, left = 0, top = 0, width = "100%", height = "100%" } },
 		ui.column({ style = { width = "100%", grow = 1, min_height = 0, align = "center", justify = "center", scroll = true, padding_y = kit.u(MARGIN) } }, { modal }),

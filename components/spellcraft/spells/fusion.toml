@@ -1,0 +1,18 @@
+# Cast-order fusion's names (packages/spellcraft, fusion.rs). The first spell cast gives the shape, the second the
+# element; the first's element rides along. A pair not named here is named "Element Shape" (Frost Bolt) by Rust, or
+# by the on-device model when it is asked (item-synthesis).
+
+# A spell cast twice in a row: a dud (it glows warm and harms nothing).
+[dud]
+fire = "Hearthglow"
+wind = "Idle Breeze"
+
+[[named]]
+first = "fire"
+second = "wind"
+name = "Wall of Flame"
+
+[[named]]
+first = "wind"
+second = "fire"
+name = "Fireball"

@@ -148,7 +148,9 @@ local function stack(defs, env, collapsed, lead)
 		-- (a part's size may be a function: the On Device strip is one row or two, by the width it measured; the
 		-- form may give its first part a share of the height, `lead`)
 		local size = if i == 1 and lead then `{math.floor(lead * 100)}%` elseif type(def.size) == "function" then def.size() else def.size
-		local s = if size and i < #defs then { width = "100%", height = size, shrink = 1, min_height = kit.u(60) } else { width = "100%", grow = 1, min_height = if collapsed then 0 else 60 }
+		-- (the last part takes the room left from nothing, not from its content's height: a long Scene Tree would
+		-- otherwise squeeze the Project panel over it to a few rows)
+		local s = if size and i < #defs then { width = "100%", height = size, shrink = 1, min_height = kit.u(60) } else { width = "100%", grow = 1, height = if i == #defs and i > 1 then 0 else nil, min_height = if collapsed then 0 else 60 }
 		-- a part that animates (`clock`) gets the time, and so draws again every frame
 		local node = unit(def.key or def.name, def.render, s, env.focus, env.inputs, if def.clock then env.time else nil)
 		node.docs, node.edits, node.collapsed = def.docs or { "*" }, def.edits == true, collapsed == true
@@ -166,7 +168,7 @@ local function tabs(doc, room)
 	-- with its ×), the active one always among them, then the others nearest it, one side and the other in turn
 	local size = m.small + 1
 	local function wide(d)
-		return kit.u(16) + #kit.title(d) * size * 0.62 + (if d == doc and #all > 1 then kit.u(34) else 0)
+		return kit.u(16) + #kit.title(d) * size * 0.62 + (if d == doc and #all > 1 then kit.u(34) else 0) + kit.peer_chips_width(d, m.small)
 	end
 	local at = table.find(all, doc) or 1
 	local lo, hi = at, at
@@ -195,6 +197,8 @@ local function tabs(doc, room)
 			ui.button({ id = "open:" .. d, on_press = kit.route("open", { doc = d }), style = { shrink = 1, min_width = 0, height = "100%", align = "center" } }, {
 				kit.text(name, { bold = active, tone = if active then "text" else "muted", size = m.small + 1 }),
 			}),
+			-- who else has this document open (docs/collab.md)
+			kit.peer_chips(d, "peers:" .. d),
 			if closes then kit.icon_button("×", kit.route("close_doc", { doc = d }), { id = "close:" .. d, height = math.max(kit.u(20), kit.line(m.small) + kit.u(4)), size = m.small, tip = "Close this tab", tip_below = true }) else nil,
 		})
 		if active then kit.bound(tab, kit.color_path("panel"), "fill", "bottom") end
@@ -325,8 +329,8 @@ end
 -- a proposal in the card; note toasts beside the button while it works), and under the title, when its form name
 -- was clicked, the form menu.
 local function with_cards(window, env, welcomed)
-	-- the empty engine's modal is the talk with Claude itself: nothing goes over it
-	if welcomed then return window end
+	-- Keep the welcome uncluttered until the person explicitly opens session controls.
+	if welcomed and data.object("editor.ui").claude == "button" then return window end
 	local over = chat.corner(env)
 	if store.get("editor.ui.form_menu") == true then
 		-- required here, not at the top: an empty engine has no panels package installed until Claude installs it

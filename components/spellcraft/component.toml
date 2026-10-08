@@ -1,0 +1,24 @@
+lua = """
+Everything is a spell: sensors, effectors and an action (creature_3d_studio's spellcraft, ported). Spell data is
+YAML (spells/<name>.spell.yaml: on_start / on_tick / on_contact steps from the catalog, typed handles, a container,
+mana) with an optional Luau brain (spells/<name>.lua, metered: each VM work unit costs mana). Paul's two visible parts
+are a spell's shape (bolt, wall, orb) and element (fire, wind, frost); casting two in a row fuses them: the first
+gives the shape, the second the element (spells/fusion.toml names known pairs). The moon town runs them all
+(spells/town.toml: the seed, the buildings, the fences, where the broods rise).
+  spellcraft.town({key, t, purple, orange, fire, autoplay}) -> {seed, slots, fused, fusion, creatures, events,
+    buildings, town_gone, fire_caught}: the town stepped to scene time t under the moons (directions) and the fire
+    falling (0..1)
+  spellcraft.spell(name) -> a definition; spellcraft.fuse(first, second) -> the fused definition
+The design: docs/spells.md in the game repo."""
+name = "spellcraft"
+project_files = ["spells/wind.spell.yaml", "spells/fire.spell.yaml", "spells/watchtower.spell.yaml", "spells/watchtower.lua", "spells/climber.spell.yaml", "spells/digger.spell.yaml", "spells/town-seed.spell.yaml", "spells/fusion.toml", "spells/town.toml"]
+provides = ["spellcraft", "scene:SpellFx"]
+
+[package]
+data_types = ["SpellDefinition (spells/*.spell.yaml)", "Names (spells/fusion.toml)", "TownConfig (spells/town.toml)"]
+description = "Spells as data: sensors, effectors and an action in YAML phases, with mana-metered Luau brains and a world adapter; cast-order fusion (the first spell gives the shape, the second the element); the moon town's watchtower, creatures and town seed as spells."
+keywords = ["spells", "spellcraft", "magic", "fusion", "mana", "sensors", "effectors", "tower defense", "town seed", "creatures"]
+permissions = ["native-code"]
+tests = ["cargo test --quiet"]
+title = "Spellcraft"
+version = "0.1.0"

@@ -1,0 +1,17 @@
+published component ui-kit 0.1.2 (script, 293 KB, sha256 74c6c7ae5dc98c30) in 0.2s
+  luau: 13 files compile
+  test: cargo test --quiet
+published component scene-3d 0.1.0 (native, 69 KB, sha256 9f457d56f336fba7) in 27.3s
+  luau: 2 files compile
+  cargo test --quiet: ok in 27.2s, 41 tests passed
+  test: cargo test --quiet
+published component spellcraft 0.1.0 (native, 59 KB, sha256 8fc70b0453183ff0) in 14.0s
+  luau: 0 files compile
+  cargo test --quiet: ok in 13.8s, 23 tests passed
+published component inventory-grid 0.1.0 (script, 2 KB, sha256 680e2d6db7257287) in 0.1s
+  luau: 2 files compile
+  test: cargo test --offline --quiet --lib
+published app spell-player 0.1.0 (native, 22 KB, sha256 3ecb667d3e737d54) in 11.7s
+  luau: 4 files compile
+  entry: lua/apps/spell_player.luau
+  cargo test --offline --quiet --lib: ok in 11.5s, 4 tests passed

@@ -1,0 +1,193 @@
+# The spell component catalog: every step a spell, a building, a creature or the town seed can use. Ported from
+# creature_3d_studio's crates/spellcraft/assets/components.yaml (same descriptor: phases, typed ports, bounded params)
+# and extended for the moon town. `mana` is what one run of the step costs (sensors: per sample; logic.lua: per VM
+# work unit, see `unit`); the prices are illustrative, as spellcraft's are.
+#
+# Port types: body (a handle made by an earlier step or `self`), observations (a sensor's cached sample), targets
+# (either: an effector acts on one body or on every body an observation holds).
+version: 1
+components:
+  # construction: the spell's shape (Paul's first visible part)
+  - id: body.bolt
+    title: Bolt
+    kind: construction
+    description: Form a narrow bolt that flies straight and hits the first body in its way.
+    phases: [on_start]
+    output: {type: body, required: true}
+    params:
+      size: {type: number, default: 0.4, min: 0.1, max: 3, required: false}
+    mana: 2
+    tags: [shape, projectile]
+  - id: body.wall
+    title: Wall
+    kind: construction
+    description: Raise a wall across the ground in front of the caster; bodies that cross it are touched by it.
+    phases: [on_start]
+    output: {type: body, required: true}
+    params:
+      length: {type: number, default: 5, min: 1, max: 12, required: false}
+    mana: 3
+    tags: [shape, barrier]
+  - id: body.orb
+    title: Orb
+    kind: construction
+    description: Form a round orb that arcs and bursts where it lands.
+    phases: [on_start]
+    output: {type: body, required: true}
+    params:
+      size: {type: number, default: 0.7, min: 0.1, max: 3, required: false}
+    mana: 2
+    tags: [shape, projectile]
+  - id: body.self
+    title: This
+    kind: construction
+    description: Bind the thing that holds the spell (a building, a creature, the seed) as a body for later steps.
+    phases: [on_start]
+    output: {type: body, required: true}
+    params: {}
+    mana: 0
+    tags: [self]
+  # motion
+  - id: motion.launch
+    title: Launch
+    kind: motion
+    description: Send a formed body forward from the caster.
+    phases: [on_start]
+    target: {type: body, required: true}
+    params:
+      speed: {type: number, default: 10, min: 0, max: 40, required: false}
+    mana: 1
+    tags: [motion]
+  - id: move.toward
+    title: Go for the seed
+    kind: motion
+    description: Walk the body toward the town seed; a climber goes over walls, a digger under them (unseen while it digs).
+    phases: [on_tick]
+    target: {type: body, required: true}
+    params:
+      speed: {type: number, default: 1.2, min: 0, max: 8, required: false}
+      way: {type: choice, choices: [walk, climb, dig], default: walk, required: false}
+    mana: 0.02
+    tags: [motion, creature]
+  # sensors
+  - id: sense.nearby
+    title: Bodies nearby
+    kind: sensor
+    description: Sample the bodies round a target and publish a cached observation.
+    phases: [on_tick]
+    target: {type: body, required: true}
+    output: {type: observations, required: true}
+    params:
+      radius: {type: number, default: 4, min: 0.1, max: 40, required: false}
+    mana: 0.18
+    tags: [sensor, proximity]
+  - id: sense.shadow
+    title: Creature in my shadow
+    kind: sensor
+    description: Sample the creatures standing in the shadow a moon throws from the target (each moon its own shadow).
+    phases: [on_tick]
+    target: {type: body, required: true}
+    output: {type: observations, required: true}
+    params:
+      moon: {type: choice, choices: [any, purple, orange], default: any, required: false}
+      reach: {type: number, default: 9, min: 1, max: 30, required: false}
+    mana: 0.22
+    tags: [sensor, shadow, moon]
+  # logic
+  - id: logic.lua
+    title: Decide
+    kind: logic
+    description: Run a Luau brain on a cached observation; each VM work unit (call or loop turn) costs mana.
+    phases: [on_tick]
+    input: {type: observations, required: true}
+    params:
+      entry: {type: text, default: decide, required: false}
+    mana: 0.004
+    unit: work
+    tags: [logic, lua]
+  # effectors: Paul's second visible part, the element, picks among these
+  - id: effect.slow
+    title: Slow
+    kind: effector
+    description: Slow the target to a crawl for a while.
+    phases: [on_tick, on_contact]
+    target: {type: targets, required: true}
+    params:
+      factor: {type: number, default: 0.25, min: 0.05, max: 1, required: false}
+      seconds: {type: number, default: 2, min: 0.1, max: 10, required: false}
+    mana: 0.6
+    tags: [effector, frost, status]
+  - id: effect.burn
+    title: Burn
+    kind: effector
+    description: Set the target alight; it loses health each second it burns.
+    phases: [on_tick, on_contact]
+    target: {type: targets, required: true}
+    params:
+      per_second: {type: number, default: 1, min: 0.1, max: 10, required: false}
+      seconds: {type: number, default: 3, min: 0.1, max: 10, required: false}
+    mana: 1
+    tags: [effector, fire, status]
+  - id: effect.damage
+    title: Hit
+    kind: effector
+    description: Take health from the target at once.
+    phases: [on_tick, on_contact]
+    target: {type: targets, required: true}
+    params:
+      amount: {type: number, default: 1, min: 0.1, max: 20, required: false}
+    mana: 0.8
+    tags: [effector, damage]
+  - id: force.push
+    title: Push
+    kind: effector
+    description: Shove the target away from the spell.
+    phases: [on_tick, on_contact]
+    target: {type: targets, required: true}
+    params:
+      strength: {type: number, default: 2, min: 0.1, max: 10, required: false}
+    mana: 1.2
+    tags: [effector, wind, force]
+  - id: fire.burst
+    title: Burst into flame
+    kind: effector
+    description: Burst into fire where the target is; everything within the radius burns.
+    phases: [on_contact]
+    target: {type: body, required: true}
+    params:
+      radius: {type: number, default: 2, min: 0.5, max: 8, required: false}
+    mana: 4.8
+    tags: [effector, fire, area]
+  - id: effect.warm
+    title: Glow warm
+    kind: effector
+    description: A soft warm glow round the target; it harms nothing.
+    phases: [on_start, on_tick, on_contact]
+    target: {type: targets, required: true}
+    params:
+      radius: {type: number, default: 1, min: 0.1, max: 4, required: false}
+    mana: 0.5
+    tags: [effector, warmth]
+  # vitality and the action when it runs out
+  - id: vital.health
+    title: Health
+    kind: vital
+    description: "Give the target health; when it reaches zero the action happens (fall: the town is gone; vanish)."
+    phases: [on_start]
+    target: {type: body, required: true}
+    params:
+      max: {type: number, default: 5, min: 1, max: 100, required: false}
+      on_zero: {type: choice, choices: [fall, vanish], default: vanish, required: false}
+    mana: 0
+    tags: [vital]
+  - id: vital.drain
+    title: Hurt by what touches it
+    kind: vital
+    description: The target loses health for each body in the observation (creatures that reached it).
+    phases: [on_tick]
+    target: {type: body, required: true}
+    input: {type: observations, required: true}
+    params:
+      per_body: {type: number, default: 1, min: 0.01, max: 10, required: false}
+    mana: 0
+    tags: [vital]

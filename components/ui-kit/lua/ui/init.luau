@@ -22,8 +22,10 @@ function ui.input(props)
     local children={}
     if (props.value or '')=='' and (props.placeholder or '')~='' then
         local style=props.style or {}
-        table.insert(children,ui.text(props.placeholder,{style={absolute=true,left=style.padding or 12,top=style.padding or 12,
-            font=style.font,font_size=style.font_size or 20,color='827b70',text_wrap='word'}}))
+        -- inside the field: as wide as its content, wrapped, or on one line ending in "…" when the field is one line
+        local pad,line=style.padding or 12,style.text_wrap=='none'
+        table.insert(children,ui.text(props.placeholder,{style={absolute=true,left=pad,top=pad,right=pad,
+            font=style.font,font_size=style.font_size or 20,color='827b70',text_wrap=line and 'none' or 'word',text_overflow=line and 'ellipsis' or nil}}))
     end
     return ui.node(ui.merge(props,{kind='input'}),children)
 end

@@ -1,0 +1,169 @@
+{
+  "capture": "Native game7890 control API frames, one actual stepped simulation/draw frame per PNG; no cuts/time acceleration",
+  "fps": 30,
+  "frames": 390,
+  "duration_seconds": 13,
+  "size": [
+    1100,
+    800
+  ],
+  "start_clock": {
+    "mode": {
+      "fps": 30.0,
+      "mode": "stepped"
+    },
+    "t": 13.293258458
+  },
+  "end_clock": {
+    "mode": {
+      "fps": 30.0,
+      "mode": "stepped"
+    },
+    "t": 26.293258458
+  },
+  "actions": [
+    {
+      "frame": 0,
+      "state_total": 50,
+      "receipts": 2,
+      "error": ""
+    },
+    {
+      "frame": 30,
+      "at_seconds": 1.0,
+      "action": "spell-fire",
+      "rect": [
+        467.0,
+        701.0,
+        277.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 35,
+      "state_total": 40,
+      "receipts": 3,
+      "error": ""
+    },
+    {
+      "frame": 75,
+      "at_seconds": 2.5,
+      "action": "spell-fire",
+      "rect": [
+        467.0,
+        701.0,
+        277.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 80,
+      "state_total": 40,
+      "receipts": 3,
+      "error": "loaded cartridge cannot fund the selected spell allocation"
+    },
+    {
+      "frame": 105,
+      "at_seconds": 3.5,
+      "action": "spell-equipment-toggle",
+      "rect": [
+        16.0,
+        100.0,
+        277.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 130,
+      "at_seconds": 4.333333333333333,
+      "action": "spell-unload",
+      "rect": [
+        30.0,
+        432.0,
+        432.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 155,
+      "at_seconds": 5.166666666666667,
+      "action": "spell-load:blue",
+      "rect": [
+        30.0,
+        380.0,
+        432.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 160,
+      "state_total": 40,
+      "receipts": 3,
+      "error": ""
+    },
+    {
+      "frame": 180,
+      "at_seconds": 6.0,
+      "action": "spell-equipment-toggle",
+      "rect": [
+        16.0,
+        100.0,
+        221.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 200,
+      "at_seconds": 6.666666666666667,
+      "action": "spell-select:orb",
+      "rect": [
+        335.0,
+        650.0,
+        291.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 225,
+      "at_seconds": 7.5,
+      "action": "spell-aim:side",
+      "rect": [
+        249.0,
+        701.0,
+        210.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 250,
+      "at_seconds": 8.333333333333334,
+      "action": "spell-fire",
+      "rect": [
+        467.0,
+        701.0,
+        277.0,
+        43.0
+      ]
+    },
+    {
+      "frame": 255,
+      "state_total": 20,
+      "receipts": 4,
+      "error": ""
+    },
+    {
+      "frame": 389,
+      "state_total": 20,
+      "receipts": 4,
+      "error": ""
+    }
+  ],
+  "source_directory": "/tmp/game104-motion-frames",
+  "output": "finite-casting-1100x800.mp4",
+  "observed_push": {
+    "side_x_before": 1.7000000476837158,
+    "side_x_after": 1.7083477973937988,
+    "delta": 0.008347749710083008,
+    "interpretation": "Small measured displacement from provisional physical inputs; not accepted game feel."
+  }
+}

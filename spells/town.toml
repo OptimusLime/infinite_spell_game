@@ -1,0 +1,65 @@
+# The moon town as the spells see it (packages/spellcraft, town.rs): where the seed, the hero and the buildings stand
+# on the ground (x, z in metres, as scenes/parts/moon-town/town.scene.luau lays the town out), the fences creatures
+# climb over or dig under, where the moons' broods rise, and how fast the town feeds its buildings' spells.
+ticks_per_second = 20
+# mana a second the seed's lines give each town-fed spell (buildings) and the seed itself
+refill = 1.2
+
+[seed]
+x = 0.0
+z = -1.4
+spell = "town-seed"
+
+[hero]
+x = -2.6
+z = 2.3
+
+[[buildings]]
+name = "watchtower"
+spell = "watchtower"
+x = 0.0
+z = -6.6
+height = 7.0
+
+# fences: a creature crossing one climbs it (half speed) or digs under it (unseen)
+[[walls]]
+x1 = -7.0
+z1 = 3.6
+x2 = 7.0
+z2 = 3.6
+
+[[walls]]
+x1 = -7.0
+z1 = -9.5
+x2 = 7.0
+z2 = -9.5
+
+# where the broods rise at night: the purple moon's climbers, the orange moon's diggers
+[[spawns]]
+x = -16.0
+z = -14.0
+moon = "purple"
+spell = "climber"
+
+[[spawns]]
+x = 16.0
+z = -14.0
+moon = "orange"
+spell = "digger"
+
+[[spawns]]
+x = -16.0
+z = 10.0
+moon = "orange"
+spell = "digger"
+
+[[spawns]]
+x = 16.0
+z = 10.0
+moon = "purple"
+spell = "climber"
+
+[waves]
+# a creature rises every `every` seconds while its moon is up, at most `alive` at once
+every = 4.0
+alive = 6

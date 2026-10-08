@@ -1,0 +1,45 @@
+# The spells' effects (fx.rs): flames and the dud's warm puff light themselves (they barely take the scene's light and
+# throw no shadow they sit in); the wind is pale and soft; the hit flash is pure light; the dust is plain.
+
+[[material]]
+name = "spell-flame"
+albedo = "#ff6a1a"
+roughness = 0.9
+specular = 0.0
+response = 1.6
+lit_cap = 0.85
+wrap = 1.0
+rim = 0.0
+shadowed = false
+
+[[material]]
+name = "spell-wind"
+albedo = "#e4f4ff"
+roughness = 0.9
+specular = 0.0
+response = 1.8
+lit_cap = 1.0
+wrap = 1.0
+rim = 0.4
+shadowed = false
+
+[[material]]
+name = "spell-glow"
+albedo = "#ffb07a"
+roughness = 0.9
+specular = 0.0
+response = 1.8
+lit_cap = 0.9
+wrap = 1.0
+rim = 0.0
+shadowed = false
+
+[[material]]
+name = "spell-dust"
+albedo = "#8a8790"
+roughness = 0.95
+specular = 0.0
+response = 0.8
+lit_cap = 0.7
+wrap = 0.3
+rim = 0.1

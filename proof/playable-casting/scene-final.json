@@ -1,0 +1,130 @@
+{
+  "error": null,
+  "boxes": [
+    {
+      "id": "app",
+      "rect": [
+        0.0,
+        48.0,
+        1600.0,
+        912.0
+      ]
+    },
+    {
+      "id": "content",
+      "rect": [
+        0.0,
+        48.0,
+        1600.0,
+        912.0
+      ]
+    },
+    {
+      "id": "root/world",
+      "rect": [
+        0.0,
+        48.0,
+        1600.0,
+        912.0
+      ]
+    },
+    {
+      "id": "spell-player-hud",
+      "rect": [
+        0.0,
+        48.0,
+        1600.0,
+        912.0
+      ]
+    },
+    {
+      "id": "spell-equipment-toggle",
+      "rect": [
+        16.0,
+        100.0,
+        277.0,
+        43.0
+      ]
+    },
+    {
+      "id": "spell-inventory-toggle",
+      "rect": [
+        301.0,
+        100.0,
+        141.0,
+        43.0
+      ]
+    },
+    {
+      "id": "spell-sources-toggle",
+      "rect": [
+        450.0,
+        100.0,
+        195.0,
+        43.0
+      ]
+    },
+    {
+      "id": "spell-player-bottom",
+      "rect": [
+        16.0,
+        758.0,
+        1568.0,
+        188.0
+      ]
+    },
+    {
+      "id": "spell-select:bolt",
+      "rect": [
+        30.0,
+        810.0,
+        297.0,
+        43.0
+      ]
+    },
+    {
+      "id": "spell-select:orb",
+      "rect": [
+        335.0,
+        810.0,
+        291.0,
+        43.0
+      ]
+    },
+    {
+      "id": "spell-aim:front",
+      "rect": [
+        30.0,
+        861.0,
+        211.0,
+        43.0
+      ]
+    },
+    {
+      "id": "spell-aim:side",
+      "rect": [
+        249.0,
+        861.0,
+        210.0,
+        43.0
+      ]
+    },
+    {
+      "id": "spell-fire",
+      "rect": [
+        467.0,
+        861.0,
+        277.0,
+        43.0
+      ]
+    }
+  ],
+  "components": [
+    "layout",
+    "node-graph",
+    "scene-3d",
+    "shader-forge",
+    "spell-player",
+    "spellcraft"
+  ]
+}

@@ -1,0 +1,21 @@
+[package]
+name = "component-spell-player"
+version = "0.1.0"
+edition = "2021"
+license = "Commercial"
+[dependencies]
+atelico-component.workspace = true
+atelico-clock.workspace = true
+atelico-data.workspace = true
+atelico-store.workspace = true
+atelico-inventory = { workspace = true, features = ["store"] }
+atelico-equipment = { workspace = true, features = ["store"] }
+atelico-items.workspace = true
+atelico-render-3d.workspace = true
+component-spellcraft = { workspace = true }
+component-scene-3d = { workspace = true }
+glam = "0.29"
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+sha2 = "0.10"

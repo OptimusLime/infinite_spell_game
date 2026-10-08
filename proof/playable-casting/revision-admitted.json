@@ -1,0 +1,204 @@
+{
+  "root": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517",
+  "dashboard": {
+    "aim_x": 0,
+    "aim_y": 0,
+    "aim_z": 1,
+    "aimed_target": "front",
+    "bodies": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.6163746f72",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.636173743a633264323134643332663164313761623138663865356632646533656331646431323261623737396337386132643366313734383532323635353736666338342f666f726d",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.66726f6e74",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.73696465"
+    ],
+    "config": "/Users/paul/coding/infinite_spell_game/players/casting-study.player.toml",
+    "description": "Explicit authored selection, physical wand/cartridge custody and finite energy. In-memory session; no durable world save.",
+    "equipment": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.equipment.dashboard",
+    "error": "",
+    "has_aim": true,
+    "inventory": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.dashboard",
+    "inventory_interaction": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.interaction",
+    "inventory_request": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.request",
+    "keys": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.31",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.32",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.51",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.45",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.5370616365",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.57",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.41",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.42",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.55",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.49",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.47"
+    ],
+    "message": "Fired 20 energy from amber. Loaded cartridge: 40 \u2192 20.",
+    "request": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.request",
+    "revision_request": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.revision_request",
+    "revision_review": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.revision_review",
+    "selected_spell": "bolt",
+    "session": "casting-study",
+    "source_changed": false,
+    "source_error": "",
+    "spells": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.spells.626f6c74",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.spells.6f7262"
+    ],
+    "supply": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.dashboard",
+    "targets": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.66726f6e74",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.73696465"
+    ],
+    "tick": 189,
+    "title": "Infinite Spell \u00b7 playable study (unreviewed)",
+    "token": 9,
+    "ui": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.ui",
+    "wands": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.77616e64"
+    ]
+  },
+  "supply": {
+    "allocation": 10,
+    "can_cast": true,
+    "cartridges": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.cartridges.616d626572",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.cartridges.626c7565"
+    ],
+    "instances": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.instances.636173743a63326432313464333266316431376162313866386535663264653365633164643132326162373739633738613264336631373438353232363535373666633834"
+    ],
+    "loaded": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.cartridges.616d626572",
+    "owner": "player",
+    "reason": "",
+    "receipts": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70396337313236613439313133323933383836626230313734303466623664306564626338633435373365393232366663643161306330393132383563393531373a37"
+    ],
+    "selected_name": "casting-study-bolt",
+    "selected_revision": "73ccc9ef36c8022ad1bab4be459d454af7511cb65ace1b2cfe097e38a00eaded",
+    "selected_title": "Directed bolt revision",
+    "total": 60,
+    "wand": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.77616e64"
+  },
+  "receipts": [
+    {
+      "after": 20,
+      "allocation": 20,
+      "before": 40,
+      "cartridge": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.cartridges.616d626572",
+      "cartridge_id": "amber",
+      "instance": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.instances.636173743a63326432313464333266316431376162313866386535663264653365633164643132326162373739633738613264336631373438353232363535373666633834",
+      "request_id": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517:7",
+      "revision": "cfb78b9714d1dc5bc1b0c649f0c24cb40b3e88ea7a65b3f1d62a3afd25909c7c",
+      "tick": 69,
+      "wand_id": "wand"
+    }
+  ],
+  "instances": [
+    {
+      "dissipation": 0,
+      "effectors": 3.8,
+      "id": "cast:c2d214d32f1d17ab18f8e5f2de3ec1dd122ab779c78a2d3f174852265576fc84",
+      "initial": 20,
+      "logic": 0,
+      "reason": "",
+      "remaining": 13.169999999999972,
+      "revision": "cfb78b9714d1dc5bc1b0c649f0c24cb40b3e88ea7a65b3f1d62a3afd25909c7c",
+      "rules": 0.03,
+      "sensors": 2.9999999999999933,
+      "status": "running",
+      "title": "Directed bolt study"
+    }
+  ],
+  "cartridges": [
+    {
+      "capacity": 40,
+      "definition": "study-cartridge",
+      "item": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.616d626572",
+      "item_id": "amber",
+      "loaded": true,
+      "remaining": 20
+    },
+    {
+      "capacity": 40,
+      "definition": "study-cartridge",
+      "item": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.626c7565",
+      "item_id": "blue",
+      "loaded": false,
+      "remaining": 40
+    }
+  ],
+  "bodies": [
+    {
+      "alive": true,
+      "dx": 0,
+      "dy": 0,
+      "dz": 1,
+      "has_health": true,
+      "health": 12,
+      "id": "actor",
+      "instance": "",
+      "radius": 0.5,
+      "shape": "actor",
+      "vx": 0,
+      "vy": 0,
+      "vz": 0,
+      "x": 0,
+      "y": 0.5,
+      "z": 0
+    },
+    {
+      "alive": true,
+      "dx": 0,
+      "dy": -0.2724047303199768,
+      "dz": 0.9621827602386475,
+      "has_health": false,
+      "health": 0,
+      "id": "cast:c2d214d32f1d17ab18f8e5f2de3ec1dd122ab779c78a2d3f174852265576fc84/form",
+      "instance": "cast:c2d214d32f1d17ab18f8e5f2de3ec1dd122ab779c78a2d3f174852265576fc84",
+      "radius": 0.10000000149011612,
+      "shape": "body.bolt",
+      "vx": 0,
+      "vy": 0,
+      "vz": 0,
+      "x": 0,
+      "y": 0.39973148703575134,
+      "z": 1.4083318710327148
+    },
+    {
+      "alive": true,
+      "dx": 0,
+      "dy": -0.30426374077796936,
+      "dz": 0.9525878429412842,
+      "has_health": true,
+      "health": 9,
+      "id": "front",
+      "instance": "",
+      "radius": 0.5,
+      "shape": "target",
+      "vx": 0,
+      "vy": 0,
+      "vz": 0,
+      "x": 0,
+      "y": 0.5,
+      "z": 2.0020833015441895
+    },
+    {
+      "alive": true,
+      "dx": 0,
+      "dy": 0,
+      "dz": 1,
+      "has_health": true,
+      "health": 12,
+      "id": "side",
+      "instance": "",
+      "radius": 0.5,
+      "shape": "target",
+      "vx": 0,
+      "vy": 0,
+      "vz": 0,
+      "x": 1.7000000476837158,
+      "y": 0.5,
+      "z": 1.7000000476837158
+    }
+  ]
+}

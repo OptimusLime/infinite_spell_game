@@ -1,0 +1,14 @@
+lua = "An editor part: require('editor_parts.scene_view') returns {name, slot, order, render}; the editor shell places it."
+name = "editor-scene-view"
+provides = ["editor_parts.scene_view"]
+requires = ["editor-panels"]
+
+[package]
+data_types = ["editor part (luau)"]
+description = "Scene view for the editor: the stage where the selected scene runs, previewed in edit mode or live when playing."
+keywords = ["scene", "viewport", "preview", "stage"]
+permissions = []
+version = "0.1.0"
+
+[package.dependencies]
+editor-panels = "^0.1"

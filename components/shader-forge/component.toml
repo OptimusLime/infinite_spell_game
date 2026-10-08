@@ -1,0 +1,18 @@
+lua = """
+local r = shader.compile(name, graph, catalog, node?)   -- {ok, wgsl, error, order, ran, cached, nodes = {id = {status, key}}}
+{kind = "shader_preview", id, wgsl, time}               -- the shader drawn live (wgpu offscreen)
+shader.snapshot(wgsl, w, h, time, "out.png")
+require("graph_renderers.shader")                        -- node bodies for the canvas: previews, ramps, values
+graphs/fire.graph.yaml (and its timeline) comes with it: the one fire, which the welcome view burns."""
+name = "shader-forge"
+project_files = ["graphs/fire.graph.yaml", "graphs/fire.timeline.yaml"]
+provides = ["shader", "shader_preview", "graph_types.shader", "graph_renderers.shader"]
+requires = ["node-graph"]
+
+[package]
+data_types = ["shader graph", "WGSL"]
+description = "Shader Forge: shader node graphs (uv, time, scroll, noise, warp, flame, math, color ramp, output) compiled to WGSL and rendered live on the GPU; any node's output can be previewed or saved as an image."
+keywords = ["shader", "shader graph", "wgsl", "fire", "noise", "gpu", "material"]
+permissions = ["native-code", "gpu"]
+tests = ["cargo test --quiet"]
+version = "0.1.0"

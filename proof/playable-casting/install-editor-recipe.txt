@@ -1,0 +1,27 @@
+recipe app-editor 0.1.0: 7 packages
+  recipe app-editor 0.1.0
+    editor-console ^0.1 → editor-console 0.1.0
+      ai ^0.1 (optional) → skipped
+      editor-panels ^0.1 → editor-panels 0.1.0
+        ui (one of ui-kit, ui-lite) ^0.1 → ui-kit 0.1.0 (installed)
+    editor-inspector ^0.1 → editor-inspector 0.1.0
+      editor-panels ^0.1 → editor-panels 0.1.0 (already in the plan)
+    editor-project ^0.1 → editor-project 0.1.0
+      editor-panels ^0.1 → editor-panels 0.1.0 (already in the plan)
+    editor-scene-tree ^0.1 → editor-scene-tree 0.1.0
+      editor-panels ^0.1 → editor-panels 0.1.0 (already in the plan)
+    editor-scene-view ^0.1 → editor-scene-view 0.1.0
+      editor-panels ^0.1 → editor-panels 0.1.0 (already in the plan)
+    editor-status ^0.1 → editor-status 0.1.0
+      editor-panels ^0.1 → editor-panels 0.1.0 (already in the plan)
+    editor-toolbar ^0.1 → editor-toolbar 0.1.0
+      editor-panels ^0.1 → editor-panels 0.1.0 (already in the plan)
+cached component editor-panels@0.1.0: sha256 85573281ca56… verified, from the local store (6 KB)
+cached component editor-console@0.1.0: sha256 6efa9a6032c7… verified, from the local store (0 KB)
+cached component editor-inspector@0.1.0: sha256 4a5e8f9bf696… verified, from the local store (0 KB)
+cached component editor-project@0.1.0: sha256 1c3c45a2f705… verified, from the local store (0 KB)
+cached component editor-scene-tree@0.1.0: sha256 be33d83c32a5… verified, from the local store (0 KB)
+cached component editor-scene-view@0.1.0: sha256 ac797b2307dd… verified, from the local store (0 KB)
+cached component editor-status@0.1.0: sha256 a92fbf84d4c6… verified, from the local store (0 KB)
+cached component editor-toolbar@0.1.0: sha256 aa228bfd6f17… verified, from the local store (0 KB)
+applied recipe app-editor 0.1.0: +8 −0, live (script packages only)

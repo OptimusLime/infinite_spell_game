@@ -1,0 +1,4 @@
+  test: cargo test --quiet
+published component shader-forge 0.1.0 (native, 25 KB, sha256 140701ad866f6103) in 6.9s
+  luau: 1 file compile
+  cargo test --quiet: ok in 6.8s, 5 tests passed

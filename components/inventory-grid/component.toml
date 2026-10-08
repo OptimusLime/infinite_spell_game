@@ -1,0 +1,10 @@
+lua = "Reusable grid Inventory view and explicit typed interaction requests. No game, equipment or resource-specific fields."
+name = "inventory-grid"
+provides = ["inventory_grid"]
+requires = ["ui-kit"]
+
+[package]
+data_types = ["InventoryView", "GridView", "ItemView", "InventoryInteractionRequest", "InventoryInteractionView"]
+description = "Native Inventory grid with selection, placement preview, rotation and explicit move."
+keywords = ["inventory", "grid", "items"]
+version = "0.1.0"

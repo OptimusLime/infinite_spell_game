@@ -1,0 +1,15 @@
+lua = "The editor's panel library: require('panels') (project, tree, scene view, inspector, console, toolbar, status) and require('picker') (the HSV color picker). Parts wrap these."
+name = "editor-panels"
+provides = ["panels", "picker"]
+requires = ["ui-kit"]
+
+[package]
+data_types = ["store paths (editor.ui, scene.*, project.*)"]
+description = "The editor's panel library shared by the editor parts: file tree, scene tree, scene view, inspector with color picker, console, toolbar and status bar renderers."
+keywords = ["editor", "panels", "library", "color picker"]
+permissions = []
+version = "0.1.0"
+
+[package.dependencies.ui]
+one_of = ["ui-kit", "ui-lite"]
+version = "^0.1"

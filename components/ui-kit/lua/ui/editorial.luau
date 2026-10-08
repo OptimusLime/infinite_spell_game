@@ -14,10 +14,10 @@ function editorial.art(texture,time)
         editorial.image(texture,time,{width='100%',height='100%',radius=21}),
     })
 end
-function editorial.compose(env,art,children,aspect)
+function editorial.compose(env,art,children,aspect,portrait_height)
     local wide=env.width>=900
     return (if wide then ui.row else ui.column)({style={width='100%',shrink=0,gap=if wide then 28 else 16,min_width=0,align=if wide then 'start' else 'center'}},{
-        ui.column({style={width=if wide then '46%' else 200*(aspect or 1),max_width='100%',shrink=0}}, {art}),
+        ui.column({style={width=if wide then '46%' else (portrait_height or math.clamp(env.height-624,132,200))*(aspect or 1),max_width='100%',shrink=0}}, {art}),
         ui.column({style={width=if wide then '50%' else '100%',grow=if wide then 1 else 0,shrink=0,min_width=0,gap=14}},children),
     })
 end

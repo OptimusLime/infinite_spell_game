@@ -46,12 +46,14 @@ function conversation.render(app,env,props)
         if turn.interrupted and #visible==0 then continue end
         table.insert(turns,ui.row({id=tostring(i),style={width='100%',justify=if outgoing then 'end' else 'start'}},{
             ui.column({style={max_width='90%',min_width=0,padding=12,gap=5,border=2,radius=8,border_color=t.colors.text,background=if outgoing then t.colors.accent else t.colors.raised}},{
-                t.text(if outgoing then 'YOU' else string.upper(props.name),13,t.colors.muted),
-                t.text(if #visible>0 then visible else string.rep('.',1+math.floor((env.time or 0)*3)%3),if env.width<600 then 18 else 20,nil,{id='message',style={text_wrap='word'}}),
+                -- who speaks, in the bubble's own text color: muted ink on the accent is unreadable in a dark look
+                -- (a Chat node's `size` sets the words, its label four fifths of it)
+                t.text(if outgoing then 'YOU' else string.upper(props.name),if props.size then math.floor(props.size*0.8+0.5) else 13,if outgoing then t.colors.text else t.colors.muted),
+                t.text(if #visible>0 then visible else string.rep('.',1+math.floor((env.time or 0)*3)%3),props.size or (if env.width<600 then 18 else 20),nil,{id='message',style={text_wrap='word'}}),
             }),
         }))
     end
-    if #turns==0 then table.insert(turns,t.text(if app.state.connected then 'Say hello…' else '',16,t.colors.muted)) end
+    if #turns==0 then table.insert(turns,t.text(if app.state.connected then 'Say hello…' else '',if props.size then math.floor(props.size*0.8+0.5) else 16,t.colors.muted)) end
     return ui.column({id='conversation',style={width='100%',gap=12,min_width=0}},turns)
 end
 return conversation

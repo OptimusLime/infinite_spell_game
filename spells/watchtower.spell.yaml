@@ -1,0 +1,16 @@
+# The watchtower is a spell too (storyboard card "Shadows that fight"). Sensor: a creature in its shadow (each moon
+# throws its own). Decision: a small Luau brain (watchtower.lua) says whether anything is there, so the slow is only
+# paid for when it lands. Effect: slow. Fed by the town (the seed's mana lines).
+version: 1
+name: watchtower
+title: Watchtower
+kind: building
+mana: {source: town, allocation: 140}
+container: grand
+phases:
+  on_start:
+    - {id: tower, use: body.self, output: tower}
+  on_tick:
+    - {id: look, use: sense.shadow, target: tower, output: in_shadow, every: 6, params: {moon: any, reach: 9}}
+    - {id: anyone, use: logic.lua, input: in_shadow, every: 6, params: {entry: decide}}
+    - {id: slow, use: effect.slow, target: in_shadow, every: 6, params: {factor: 0.25, seconds: 1}}

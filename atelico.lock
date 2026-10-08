@@ -2,15 +2,121 @@
 version = 1
 
 [[package]]
-name = "layout"
+name = "editor-console"
 kind = "component"
 version = "0.1.0"
-hash = "7e0a6865d069dccaab3d5eada3b2a0f8073103a021743307b45ee442c85b0156"
+hash = "6efa9a6032c76d9917e2fbc69b1d3963168d251089fbffd4d3d0725c06b90656"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+by = "app-editor"
+
+[[package]]
+name = "editor-inspector"
+kind = "component"
+version = "0.1.0"
+hash = "4a5e8f9bf696b500dad91cbb5c8454f2e3646db3df03eb03600d45011490e1b6"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+by = "app-editor"
+
+[[package]]
+name = "editor-panels"
+kind = "component"
+version = "0.1.0"
+hash = "85573281ca561cbd80c2588dc246c49b8e400d0597df3862c2c6d4e78888b16b"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+by = "app-editor"
+
+[[package]]
+name = "editor-project"
+kind = "component"
+version = "0.1.0"
+hash = "1c3c45a2f705f56ac04a34ede107e7a02d6a13c0dd6ef21f8ce3176d4ac0254f"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+by = "app-editor"
+
+[[package]]
+name = "editor-scene-tree"
+kind = "component"
+version = "0.1.0"
+hash = "be33d83c32a5942d0e26d0a8611eaa035c76a01a67874e6f8ea14c2c1dd9a97d"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+by = "app-editor"
+
+[[package]]
+name = "editor-scene-view"
+kind = "component"
+version = "0.1.0"
+hash = "ac797b2307dd21dee74c32dfbbabd73f0c260bd01f14c631d7c4d667a4499622"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+by = "app-editor"
+
+[[package]]
+name = "editor-status"
+kind = "component"
+version = "0.1.0"
+hash = "a92fbf84d4c6fa795f828ec4fd3520d8762a1299ac920d4fcbeb63b5b7c490a4"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+by = "app-editor"
+
+[[package]]
+name = "editor-toolbar"
+kind = "component"
+version = "0.1.0"
+hash = "aa228bfd6f1712d22a5161b8723d64cf370ddf5f46eeda3abf4e1d1f34646df8"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+by = "app-editor"
+
+[[package]]
+name = "inventory-grid"
+kind = "component"
+version = "0.1.0"
+hash = "680e2d6db7257287ccf5d84a707f37a93729db834553fc2754e6e2f9d0d31b7d"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+
+[[package]]
+name = "layout"
+kind = "component"
+version = "0.1.1"
+hash = "967c7267ef78a0b0fcd8137e1dd323295de774232a2c9e13f5577e5d6c982e37"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+
+[[package]]
+name = "node-graph"
+kind = "component"
+version = "0.1.0"
+hash = "cba994d8d17d48471f4014c4572379ae6029bd91a72a5c89648223a206ac846e"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+
+[[package]]
+name = "scene-3d"
+kind = "component"
+version = "0.1.0"
+hash = "9f457d56f336fba79bd5ad9666b4948eea29d28cf28a4d4c73e1435796150199"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+
+[[package]]
+name = "shader-forge"
+kind = "component"
+version = "0.1.0"
+hash = "140701ad866f61035f36a2f3968ea23076af8b169a134ef2d526a81a7ccf6690"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+
+[[package]]
+name = "spell-player"
+kind = "app"
+version = "0.1.1"
+hash = "27ae9f36d127a35daf85dfdf280cf0b5c295750b2b93401c144caf5e923857a7"
+source = "registry+file:///Users/paul/.atelico/remote/index.git"
+
+[[package]]
+name = "spellcraft"
+kind = "component"
+version = "0.1.0"
+hash = "8fc70b0453183ff0bb1fd144c55db14e620bc8ceedc2b01f0116f3b46017f127"
 source = "registry+file:///Users/paul/.atelico/remote/index.git"
 
 [[package]]
 name = "ui-kit"
 kind = "component"
-version = "0.1.0"
-hash = "af06f4116e96b920d12c01f107764481f8fca9ee37f933fc9db19f24d6a0ee78"
+version = "0.1.2"
+hash = "74c6c7ae5dc98c300217b475b6c0b2a0d828ed00dc9902d1544c66f9c6f2ada2"
 source = "registry+file:///Users/paul/.atelico/remote/index.git"

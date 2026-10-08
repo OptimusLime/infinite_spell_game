@@ -1,0 +1,4 @@
+  test: cargo test --quiet
+published component layout 0.1.1 (native, 175 KB, sha256 967c7267ef78a0b0) in 9.5s
+  luau: 0 files compile
+  cargo test --quiet: ok in 9.4s, 20 tests passed
