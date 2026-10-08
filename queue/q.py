@@ -1,16 +1,27 @@
 #!/usr/bin/env python3
 """The work queue for the Infinite Spell Game and the Atelico engine work behind it.
 
-One SQLite file (queue/queue.db) is the source of truth; queue/queue.md is a readable snapshot written after
-every change. Every agent reads its task here and writes its progress here.
+One SQLite file (queue/queue.db) is the source of truth, owned by the engine's atelico-queue crate; queue/queue.md is
+a readable snapshot written after every change. Every agent reads its task here and writes its progress here.
+
+This script is now a thin wrapper: it runs the engine's `app queue` with the same arguments, so the old habits keep
+working and gain the new verbs. Use `app queue` directly when you can (see the engine's docs/queue.md):
 
   q.py list [--all]                      open tasks by priority (--all: done and dropped too)
   q.py show ID                           one task with its history
-  q.py add TITLE --track T --lane L [--owner O] [--priority N] [--detail D] [--quote Q]
-  q.py set ID [--status S] [--owner O] [--priority N] [--detail D] [--commits C] [--evidence E]
+  q.py add TITLE --track T --lane L [--owner O] [--priority N] [--detail D] [--quote Q] [--group G] [--tag T] [--size S]
+  q.py set ID [--status S] [--owner O] [--priority N] [--detail D] [--commits C] [--evidence E] [--group G] ...
   q.py note ID TEXT [--who W]            add to a task's history
+  q.py open --json                       the open tasks, every field
+  q.py search "TEXT"                     open tasks by meaning (by words when the AI engine is down)
+  q.py next [--lane L] [--about "what I am good at"] [--claim --who W]
+  q.py claim ID --who W                  take a todo; atomic, one agent wins
+  q.py group suggest | apply NAME ID... | list
+
+Only when the engine's `app` binary is missing does it fall back to the old built-in commands below (list, show,
+add, set, note), which still work against the migrated file.
 """
-import argparse, datetime, os, sqlite3, sys
+import argparse, datetime, os, sqlite3, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(HERE, "queue.db")
@@ -68,7 +79,7 @@ def snapshot(c):
         out.append("")
     open(SNAPSHOT, "w").write("\n".join(out))
 
-def main():
+def legacy_main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     s = p.add_subparsers(dest="cmd", required=True)
     l = s.add_parser("list"); l.add_argument("--all", action="store_true")
@@ -108,6 +119,31 @@ def main():
         elif args.cmd == "note":
             c.execute("UPDATE tasks SET updated=? WHERE id=?", (now(), args.id)); log(c, args.id, args.who, args.text)
         snapshot(c)
+
+
+ENGINE = os.path.expanduser("~/coding/atelico/atelico-app-engine")
+APP = [os.path.join(ENGINE, "target", "debug", "app"), os.path.join(ENGINE, "target", "release", "app")]
+GAME = os.path.dirname(HERE)
+
+
+def app():
+    """The newest `app` binary that knows `queue`, or None."""
+    found = [p for p in APP if os.path.exists(p)]
+    found.sort(key=os.path.getmtime, reverse=True)
+    for p in found:
+        if subprocess.run([p, "queue", "--help"], capture_output=True).returncode == 0:
+            return p
+    return None
+
+
+def main():
+    a = app()
+    if a is None:
+        print("(engine `app` not built with `queue`: using the built-in commands)", file=sys.stderr)
+        return legacy_main()
+    # run from the game repo: its atelico.toml names queue/queue.db and queue/queue.md
+    sys.exit(subprocess.run([a, "queue", *sys.argv[1:]], cwd=GAME).returncode)
+
 
 if __name__ == "__main__":
     main()
