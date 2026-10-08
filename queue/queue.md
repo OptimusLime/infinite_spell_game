@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T02:08:32. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T02:24:55. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -57,7 +57,6 @@ Snapshot of queue.db, 2026-10-08T02:08:32. Edit through `app queue` (or `queue/q
 | # | | Task | Group | Lane | Owner | P | Commits |
 |---|---|---|---|---|---|---|---|
 | 72 | 🟡 doing | ‼️ Shared build broken: component_creatures unresolved in scene-3d |  | hygiene | weather-agent | 1 |  |
-| 50 | 🟡 doing | ‼️ Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
 | 84 | ⚪ todo | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types |  | shader-graphs |  | 8 |  |
 | 67 | 🟡 doing | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing |  | marketplace | queue-agent | 11 |  |
 | 26 | 🔵 review | One Claude session per window/tab |  | editor | queue-agent | 30 | 5afa9d9,7284b1d (engine) |
@@ -66,11 +65,6 @@ Snapshot of queue.db, 2026-10-08T02:08:32. Edit through `app queue` (or `queue/q
 | 28 | ⚪ todo | Video playback inside the engine (no HTML hub) |  | editor |  | 50 |  |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
 | 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip |  | editor | queue-agent | 1 | 1481051 |
-| 57 | 🔵 review | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 | d0d8ee6 4125ff9 acf91ba 8d75b2f 9074216 6f4511a |
-| 58 | 🔵 review | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 | f670dc3 9074216 |
-| 59 | 🔵 review | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately |  | runtime | runtime-agent | 2 | 574c9c8 |
-| 60 | 🔵 review | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread |  | runtime | runtime-agent | 2 | f869514 |
-| 86 | 🔵 review | A HUD text changing every frame costs only its label (ticking clocks, countdowns) |  | runtime | runtime-agent | 2 | f2aa55c |
 | 81 | 🟡 doing | Layout: a per-frame HUD text change rebuilds the whole kept layout (~20 ms); relayout only the changed leaf when its size is unchanged |  | runtime | runtime-agent | 3 |  |
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 | 91ce373 |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |
@@ -85,9 +79,15 @@ Snapshot of queue.db, 2026-10-08T02:08:32. Edit through `app queue` (or `queue/q
 | 43 | ⚪ todo | scene-3d particle-graph test fails when run in parallel |  | editor |  | 55 |  |
 | 29 | ⚪ todo | layout_matrix: welcome-modal 4 px spill |  | editor |  | 60 |  |
 | 30 | ⚪ todo | button_press test failing (cause untraced) |  | editor |  | 60 |  |
+| 50 | 🟢 done | ‼️ Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB |  | hygiene | coordinator | 1 |  |
 | 63 | 🟢 done | Shared build broken: duplicate component-spellcraft package |  | hygiene | game-ui-agent | 1 |  |
 | 82 | 🟢 done | world.wgsl fix uncommitted: committed HEAD can't draw the town |  | hygiene | shader-graph-agent | 1 | 69c0ecf |
+| 57 | 🟢 done | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 | d0d8ee6 4125ff9 acf91ba 8d75b2f 9074216 6f4511a |
+| 58 | 🟢 done | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 | f670dc3 9074216 |
+| 59 | 🟢 done | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately |  | runtime | runtime-agent | 2 | 574c9c8 |
+| 60 | 🟢 done | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread |  | runtime | runtime-agent | 2 | f869514 |
+| 86 | 🟢 done | A HUD text changing every frame costs only its label (ticking clocks, countdowns) |  | runtime | runtime-agent | 2 | f2aa55c 34f6d64 e70fa2e b27d887 |
 | 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up |  | renderer | renderer-agent | 5 | 8230619 |
 | 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff |  | renderer | renderer-agent | 6 | d10ffa7 |
 | 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ |  | hygiene | coordinator | 15 | b161905 |
