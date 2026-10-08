@@ -1,0 +1,140 @@
+title: 'Infinite Spell Game: reel'
+storyboard: /Users/paul/coding/infinite_spell_game/storyboard
+estimate_s: 20.0
+shots:
+- step: 1
+  id: reel/cold-flip
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/cold-flip.toml
+  group: reel
+  title: 'Cold open: the flip'
+  shot: '1.5 s, no text. The pixel town at night, then a hard cut to the frozen ink town and back, on the first beat: the hook in the first second.'
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/world/switch-pixel-to-ink.png
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 2
+  id: reel/twin-moon-timelapse
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/twin-moon-timelapse.toml
+  group: reel
+  title: Twin-moon timelapse
+  shot: '5 s, no text. Locked-off over the cosy pixel town: the sun drops, the sky goes violet, the purple moon then the orange moon rise; the lamps click on in a ripple down the street; shadows swing round as the moons climb.'
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/world/cinematic-sky.png
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 3
+  id: reel/two-shadows
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/two-shadows.toml
+  group: reel
+  title: Two moons, two shadows
+  shot: '4 s, no text. Close on the watchtower at night, slow push in: two shadows at once, one per moon, each tinted the other moon''s colour.'
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/world/two-shadows.png
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 4
+  id: reel/pixel-to-ink
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/pixel-to-ink.toml
+  group: reel
+  title: Pixel to ink
+  shot: '3 s, no text. Same framing, cut on the beat: warm pixel town, frozen flat ink (two tones, hard black lines, purple and orange only), pixel, ink, faster each time, landing on ink.'
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: /Users/paul/coding/infinite_spell_game/storyboard/sketches/world/switch-pixel-to-ink.png
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 5
+  id: reel/snow
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/snow.toml
+  group: reel
+  title: Snow
+  shot: 2.5 s, no text. Ink square, heavy snow under the purple moon.
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: null
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 6
+  id: reel/embers
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/embers.toml
+  group: reel
+  title: Embers
+  shot: '2.5 s, no text. Pixel street under the orange moon: embers drifting up, heat haze bending the houses behind.'
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: null
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 7
+  id: reel/firefall
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/firefall.toml
+  group: reel
+  title: Fire falling into snow
+  shot: '4 s, no text. Both moons up, low camera: burning flakes with star cores and tails fall into the snowy square and hiss into steam round the hero''s feet.'
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: null
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 8
+  id: reel/fusion
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/fusion.toml
+  group: reel
+  title: Spells fuse
+  shot: '6 s. Fire then fire: a sad little glow, its name types in, "Hearthglow" (2 s). Then fire then wind: the two icons snap together above the hero''s head, a Wall of Flame rips across the street and its name types in letter by letter, "Wall of Flame" (4 s).'
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: null
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 9
+  id: reel/editor-claude
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/editor-claude.toml
+  group: reel
+  title: Made in the editor
+  shot: '5 s. The Atelico editor, readable at phone size: a short prompt on the Claude card ("freeze the town into ink when the moons meet") and the town in the scene view swings from pixel to ink live; a node in the look graph dragged on the beat. No burned-in tagline.'
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: null
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+- step: 10
+  id: reel/title
+  file: /Users/paul/coding/infinite_spell_game/storyboard/reel/title.toml
+  group: reel
+  title: Title
+  shot: 2.5 s. The ink town under both moons, fire still falling; "Infinite Spell Game" small in the lower third. Cut to black.
+  spoken: ''
+  estimate_s: 2.0
+  duration_s: null
+  sketch: null
+  sketch_note: 'Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/.'
+  status: todo
+off_path:
+- making/agents
+- making/parts
+- sky/fire-in-snow
+- sky/forecast
+- sky/monsters-rise
+- spells/cast-order
+- spells/fuse-building
+- spells/fusion-arrives
+- town/hold-the-seed
+- town/rooftop-wall
+- town/seed-planted
+- town/shadow-defence
+- world/cel/frozen-ink
+- world/pixel/morning-after
+- world/pixel/night-town

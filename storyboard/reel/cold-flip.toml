@@ -1,0 +1,6 @@
+title = "Cold open: the flip"
+spoken = ""
+shown = "1.5 s, no text. The pixel town at night, then a hard cut to the frozen ink town and back, on the first beat: the hook in the first second."
+status = "todo"
+sketch = "sketches/world/switch-pixel-to-ink.png"
+sketch_note = "Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/."

@@ -1,0 +1,6 @@
+title = "The forecast"
+spoken = "The sky part forecasts when the moons line up: four game days. I skip ahead."
+shown = "Clock: 15:00. Over the game, a small forecast overlay for three seconds: two moon icons sliding together on one timeline, \"4 days\". The game skips forward through four nights in a few seconds."
+status = "doing"
+sketch = "sketches/world/forecast-in-game.png"
+sketch_note = "Shown as a three-second overlay over the game, not the editor panel. The data is the real forecast from packages/sky (moon-forecast --seed 22): sketches/world/forecast.png."

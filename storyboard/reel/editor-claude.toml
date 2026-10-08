@@ -1,0 +1,5 @@
+title = "Made in the editor"
+spoken = ""
+shown = "5 s. The Atelico editor, readable at phone size: a short prompt on the Claude card (\"freeze the town into ink when the moons meet\") and the town in the scene view swings from pixel to ink live; a node in the look graph dragged on the beat. No burned-in tagline."
+status = "todo"
+sketch_note = "Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/."

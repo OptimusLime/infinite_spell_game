@@ -1,0 +1,164 @@
+[colors]
+background = "#111317"
+panel = "#1a1d23"
+header = "#20242b"
+raised = "#2a2f38"
+border = "#2e333c"
+text = "#e1e4ea"
+muted = "#8b929e"
+accent = "#4c8dff"
+on_accent = "#ffffff"
+play = "#35c486"
+danger = "#ef5f5f"
+# the buttons' semantic colors: confirm, the green of Apply changes and Install (confirm_pressed, the brighter green
+# it flashes when pressed); a secondary button's neutral fill; pressed, what any other button flashes
+confirm = "#2fb36b"
+on_confirm = "#ffffff"
+confirm_pressed = "#5fd592"
+button = "#353b46"
+pressed = "#4c5462"
+viewport = "#0c0d10"
+
+# The brand's light look (atelico.studio: cream, ink, violet and orange, Roobert), which a window can draw the editor
+# in (editor.ui.look = "light"): the talk's slides show the editor this way.
+[looks.light]
+text = "fonts/Roobert-Regular.ttf"
+bold = "fonts/Roobert-SemiBold.ttf"
+
+[looks.light.colors]
+background = "#fdf8ef"
+panel = "#fdf8ef"
+header = "#f4ecdc"
+raised = "#efe5d0"
+border = "#1a1100"
+text = "#1a1100"
+muted = "#5c5446"
+accent = "#aa96ff"
+on_accent = "#1a1100"
+play = "#ffb000"
+danger = "#c0392b"
+confirm = "#1f8a4c"
+on_confirm = "#fdf8ef"
+confirm_pressed = "#35b36a"
+button = "#e6dac2"
+pressed = "#d4c3a2"
+viewport = "#f4ecdc"
+
+# Atelico dark: what a new project opens in, and what recipes customise. The brand's ink as the ground, its cream as
+# the text, violet and orange as the pops (atelico.studio after dark).
+[looks.dark]
+text = "fonts/Roobert-Regular.ttf"
+bold = "fonts/Roobert-SemiBold.ttf"
+display = "fonts/AtelicoTypeKern-Black.ttf"
+radius = 6.0
+
+[looks.dark.colors]
+background = "#120e07"
+panel = "#1a1509"
+header = "#211a0d"
+raised = "#2c2414"
+border = "#3d3320"
+text = "#fdf8ef"
+muted = "#b3a78f"
+accent = "#aa96ff"
+on_accent = "#120e07"
+play = "#ffb000"
+danger = "#ff6a4d"
+confirm = "#4cc38a"
+on_confirm = "#120e07"
+confirm_pressed = "#86e0b3"
+button = "#43381f"
+pressed = "#5e4f2d"
+viewport = "#0c0904"
+
+# node graphs after dark: the ink ground, cream outlines and cables, the headers keep their family colors
+[looks.dark.graph]
+canvas = "#120e07"
+node = "#1a1509"
+ink = "#e8dcc4"
+muted = "#b3a78f"
+group = "#211a0d"
+grid = "#1c160b"
+grid_major = "#2a2212"
+
+[looks.dark.graph.families]
+output = "#e8dcc4"
+
+# The type scale, in px at 1080p and UI scale 1: body text 27, secondary labels 22; nothing is set under 21 but the
+# mono console (verify's size rule). Headings scale up from these.
+[metrics]
+font_size = 27.0
+small = 22.0
+radius = 5.0
+gap = 8.0
+claude_clearance = 120.0
+# a pressed button flashes its pressed color this long (seconds, on the engine's clock)
+flash = 0.2
+
+# How decks look (talks/*.slides.toml): atelico.studio's own type and colors. Sizes are percent of the stage's
+# shorter side: at 1080p a title is 75 px and nothing is under 50 px.
+[slides]
+# atelico.studio: the brand face on the opening and the reveal only; everything else in Roobert; Atelico World's
+# glyphs draw the street band along the top
+display = "fonts/AtelicoTypeKern-Black.ttf"
+text = "fonts/Roobert-Regular.ttf"
+strong = "fonts/Roobert-SemiBold.ttf"
+world = "fonts/AtelicoWorld-White.otf"
+figure = 16.0
+title = 11.0
+heading = 7.0
+body = 4.6
+margin = 7.0
+# the cream ground and near-black ink; orange and violet as pops (chips, marks, the car), never text
+background = "#fdf8ef"
+ink = "#1a1100"
+accent = "#ffb000"
+violet = "#aa96ff"
+card = "#fdf8ef"
+street = "#a39782"
+# the street band's cars, one per lane, in the brand's pops: violet, orange, teal, coral
+cars = ["slides/car.png", "slides/car-orange.png", "slides/car-teal.png", "slides/car-coral.png"]
+band = 13.0
+# a chip's hard shadow: 10px 10px 0 ink at 1080
+shadow = 0.93
+# a revealed step fades in, in place, over this long
+step_fade = 0.35
+
+# How node graphs look, in the editor and on slides: atelico.studio's palette, sharp corners, 2 px ink outlines,
+# a header colored by the node's family, ink cables routed at right angles.
+[graph]
+canvas = "#fdf8ef"
+node = "#ffffff"
+ink = "#1a1100"
+muted = "#807a6f"
+selected = "#aa96ff"
+group = "#f4ecdc"
+danger = "#c0392b"
+ok = "#0096aa"
+radius = 2.0
+outline = 2.0
+header = "#ffd780"
+# the canvas's grid: cream lines a shade under the canvas, a warmer one every 5 cells
+grid = "#f1e8d7"
+grid_major = "#e6d8bd"
+cell = 24.0
+major = 5.0
+
+[graph.families]
+input = "#0096aa"
+pattern = "#aa96ff"
+math = "#e6dece"
+color = "#ffb000"
+motion = "#ffd780"
+mask = "#c0b6a3"
+output = "#1a1100"
+game = "#0096aa"
+capture = "#ffd780"
+voice = "#aa96ff"
+edit = "#ffb000"
+
+[graph.types]
+float = "#807a6f"
+vec2 = "#aa96ff"
+color = "#ffb000"
+rgba = "#ffb000"

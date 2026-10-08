@@ -1,0 +1,22 @@
+lua = """
+Lays out and paints ui.* trees (flexbox via taffy), the shape the applets' Lua UI returns:
+{kind = "node" | "text" | "button" | "input" | "image", id?, style = {...}, children = {...}}
+style: width/height/min_*/max_* (px or "50%"), direction = "column", grow, shrink, gap, padding[_x|_y|_left|...],
+  align (start|center|end|stretch), justify (start|center|end|space_between), wrap, absolute + left/top/right/bottom,
+  hidden, aspect, background, border, border_color, radius, clip, scroll + scroll_y, rotation,
+  font (asset path), font_size, color, text_wrap (none|word), text_align,
+  gradient = {"#rrggbbaa", ...} (evenly spaced stops) along gradient_dir = "x" | "y".
+hover = {background?, border_color?} applies while the pointer is over the node.
+button.on_press, node.on_pointer and input.bind/on_submit are what pointer input reaches.
+image: texture (asset path), atlas = {x0, y0, x1, y1}.
+Nodes of other kinds are painted by whichever installed component draws them (e.g. face)."""
+name = "layout"
+provides = ["node", "text", "button", "input", "image"]
+
+[package]
+data_types = ["ui tree (luau table)", "fonts (ttf)"]
+description = "Lays out and paints user-interface trees: flexbox rows and columns, text, buttons, text inputs, images, gradients and hover styles. The UI foundation other packages draw with."
+keywords = ["ui", "layout", "flexbox", "widgets", "text", "buttons", "rendering"]
+permissions = ["native-code"]
+tests = ["cargo test --quiet"]
+version = "0.1.0"

@@ -1,0 +1,11 @@
+Fantasy: Rising Moon
+Author: RandomMind (OpenGameArt.org)
+Source: https://opengameart.org/content/fantasy-rising-moon
+File: https://opengameart.org/sites/default/files/Rising_Moon_0.mp3 (downloaded 2026-10-08, unmodified)
+SHA-256: 0e56e864d19ea50cf78851baa2edbeab319fc75527140c7be7ade6ecb4c8f4d2
+License: CC0 1.0 Universal (Public Domain Dedication), https://creativecommons.org/publicdomain/zero/1.0/
+Author's note on the page: "My free fantasy track for windy night environment ... Use it without giving any credits!"
+
+Used as the music bed of the twin-moons reel (talks/reel-twin-moons.cut.toml): talks/make-reel-pieces.py trims it from
+4.92 s (so its first hit, at 9.12 s, lands on the reel's second cut) and adds two synthesized hits (a whoosh on the
+fireball's launch, a thump on its impact) into reel-twin-moons-bed-rising-moon-from-4.92s-with-hits-27s.wav.

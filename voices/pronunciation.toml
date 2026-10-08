@@ -1,0 +1,31 @@
+# How the voices must say words they get wrong. The voice is given `spoken`; subtitles and transcripts keep `written`.
+# A take is cached by what is spoken, so a change here speaks its lines again on the next render.
+
+# The noun, CON-tent ("content studio"). As written, qwen3-tts nyc stresses it like the adjective, con-TENT (its
+# pitch peaks on "tent"). Tried: "CON tent", "KON-tent", "kon-tent", "kahn tent", "cont-ent", "cóntent" (misheard
+# or garbled); "con-tent", "conn-tent", "kontent", "contènt" (still even or on "tent"). "cahn-tent" is heard as
+# "content" and puts the pitch fall and the length on the first syllable.
+[[word]]
+written = "content"
+spoken = "cahn-tent"
+model = "in-memory::qwen3-tts"
+voice = "nyc"
+checked = "speed 1.25, language en, engine v0.14.7; whisper-small.en hears \"content\" in both launch lines; pitch high and falling on \"cahn\", low on \"tent\""
+
+# The name, AH-teh-lee-ko (Paul, 2026-10-02): an open "ah" first, never "ee" or "eh-tel". As written, qwen3-tts nyc says
+# "A Teleco" (whisper hears "A Teleco"). Tried: "Ahtelico" ("A Telico"), "Aahtelico" ("A Teleco"), "Ah-teh-lee-ko"
+# ("Ah, tolico", a break after "Ah"), "Ahteleeko" ("Achelico"), "Ahteliko" ("Atilito"), "Ahtehleeko" ("Atilico"),
+# "Otteleeko" ("Autoleiko"), "Ahtelleeco" ("Atelico" leading a line, but "world at Telico" after a sentence),
+# "Ah-telleeco" ("Ah, Telico"), "Ahh-telleeco" ("Ah, Taliko"). "Ah-tellee-co" is heard as "Atelico" in both places.
+[[word]]
+written = "Atelico"
+spoken = "Ah-tellee-co"
+model = "in-memory::qwen3-tts"
+voice = "nyc"
+checked = "speed 1.25, language en, engine v0.14.7; whisper-small.en hears \"Atelico, the one-stop shop component marketplace for agents.\" and \"Welcome to the new world, Atelico. The one-stop shop component marketplace...\""
+
+# Dropped 2026-10-02: "Makers" -> "Mayk-ers" and "unraveled" -> "un-raveled". Neither was a mispronunciation, and both
+# made things worse. The respelled sentence dropped about 6 semitones below the rest of the line ("Mayk-ers set the price"
+# -6.0 st, "coming un-raveled today" -5.5 st). Whisper also lost words: 30% of the meter line, and the moat line after its
+# first sentence. "Mayk-ers" also matched every "makers" ("other makers'", "pays makers"). As written, whisper-small.en
+# hears the v0.5 meter line ("Makers set the price. ... in every kind of software.") and the moat line whole.
