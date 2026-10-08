@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T02:59:54. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T03:51:00. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -15,12 +15,12 @@ Snapshot of queue.db, 2026-10-08T02:59:54. Edit through `app queue` (or `queue/q
 | 77 | ⚪ todo | Engine: weather gives embers only in daylight (no orange-moon night embers, no heat haze at night); reel shot 'embers' needs night embers |  | weather |  | 20 |  |
 | 6 | 🔵 review | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | ca43e28 (game 15e4edd) |
 | 83 | ⚪ todo | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) |  | spells | game-ui-agent | 12 |  |
+| 89 | ⚪ todo | Night grade too flat: darker blue night ground, warm light pools under windows/lamps/fire impacts, cool rim on characters (ink look part, cel-world graph, pixel Sky palette) |  | shader-graphs | shader-graph-agent | 14 |  |
 | 64 | 🔵 review | Play keys drive casting (today the town auto-casts every 8 s) |  | spells | game-ui-agent | 15 | 873a3aa |
 | 88 | ⚪ todo | Moon-town seed plinth reads as a layer cake with noisy pillars; cel 10:00 grass murky with no sun shadow |  | shader-graphs | shader-graph-agent | 15 |  |
 | 16 | 🟡 doing | Storyboard: real sketches for the 10 cards without engine pictures |  | storyboard | storyboard-agent | 16 |  |
-| 69 | 🔵 review | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 | 2e47283 1ec8aac (game e0a31e2) |
+| 69 | 🔵 review | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 | 2e47283 1ec8aac 88b0c1d (game feab568) |
 | 79 | ⚪ todo | Engine: pixel town and ink town have different layouts, so the same camera does not line up across the pixel->ink cut; ink look reads sepia not two-tone purple/orange |  | world |  | 20 |  |
-| 87 | 🟡 doing | Creatures polish: bigger pixel stalker sprite; beetle hidden behind the well in brood camera; steam swirl over the hero's face; flat night grade |  | creatures | weather-agent | 25 |  |
 | 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
 | 45 | 🔵 review | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 | dc2b48b |
@@ -44,6 +44,7 @@ Snapshot of queue.db, 2026-10-08T02:59:54. Edit through `app queue` (or `queue/q
 | 8 | 🟢 done | Card 5 and card 7 sketches (forecast in-game, fire in the snow) |  | weather | weather-agent | 20 | 00ac59d d30d790 9f36134 |
 | 55 | 🟢 done | Ink HUD type too small at editor zoom (0.65): labels like ENDS 2H 0M barely readable |  | game-ui | game-ui-agent | 20 | 5378b13 |
 | 44 | 🟢 done | Storyboard round 10: re-judge card 13 (player wins climax) and the dud-spell / two-moons-make-fire yellows |  | storyboard | storyboard-agent | 25 | a31ef39 |
+| 87 | 🟢 done | Creatures polish: bigger pixel stalker sprite; beetle hidden behind the well in brood camera; steam swirl over the hero's face; flat night grade |  | creatures | weather-agent | 25 | 7ab1027 88b0c1d |
 | 12 | 🟢 done | Storyboard: re-judge round-3 fixes (recipe vs AI, marketplace vs written files, ten p.m., narrator named) |  | storyboard | storyboard-agent | 30 | 56eb78b |
 | 15 | 🟢 done | Storyboard yellows: fire-in-snow affects nothing; purple vs orange creatures behave the same; tower wins climax not player |  | storyboard | storyboard-agent | 35 | 56eb78b |
 | 47 | 🟢 done | Game UI: ink panels still read 'like a website' — brush display font; real data for seed/spells/creatures (stubs today) |  | game-ui |  | 35 | 325c3bb |
@@ -58,7 +59,6 @@ Snapshot of queue.db, 2026-10-08T02:59:54. Edit through `app queue` (or `queue/q
 
 | # | | Task | Group | Lane | Owner | P | Commits |
 |---|---|---|---|---|---|---|---|
-| 72 | 🔵 review | ‼️ Shared build broken: component_creatures unresolved in scene-3d |  | hygiene | weather-agent | 1 | f895f87 |
 | 84 | ⚪ todo | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types |  | shader-graphs |  | 8 |  |
 | 67 | 🟡 doing | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing |  | marketplace | queue-agent | 11 |  |
 | 26 | 🔵 review | One Claude session per window/tab |  | editor | queue-agent | 30 | 5afa9d9,7284b1d (engine) |
@@ -76,6 +76,7 @@ Snapshot of queue.db, 2026-10-08T02:59:54. Edit through `app queue` (or `queue/q
 | 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision |  | hygiene | paul | 50 |  |
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says |  | hygiene | paul | 50 |  |
 | 27 | ⚪ todo | Collaboration server (Rust, websockets, persistent state) |  | collab |  | 55 |  |
+| 72 | 🟢 done | ‼️ Shared build broken: component_creatures unresolved in scene-3d |  | hygiene | weather-agent | 1 | f895f87 |
 | 50 | 🟢 done | ‼️ Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
 | 28 | 🟢 done | Video playback inside the engine (no HTML hub) |  | editor | runtime-agent | 50 | e681b97 |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB |  | hygiene | coordinator | 1 |  |
