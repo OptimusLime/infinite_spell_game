@@ -26,6 +26,11 @@ source = "/Users/paul/.atelico/registry/store/af06f4116e96b920d12c01f107764481f8
 
 [settings]
 
+# the work queue: `app queue` run here (and queue/q.py) reads and writes this file (the engine's docs/queue.md)
+[settings.editor-queue]
+db = "queue/queue.db"
+snapshot = "queue/queue.md"
+
 [editor]
 dir = "editor"
 requires = ["layout", "ui-kit", "shader-forge"]
