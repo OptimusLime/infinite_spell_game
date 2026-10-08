@@ -1,3 +1,5 @@
 .atelico/
 .tools
 target/
+queue/queue.db-wal
+queue/queue.db-shm
