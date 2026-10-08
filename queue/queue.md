@@ -1,185 +1,180 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T10:58:33. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T12:29:39. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
-## Atelico app engine (`engine`)
+## Working Together (`working`)
 
-27 open / 51 total · 8 doing · 12 review · 24 done · 1 ready todos
+6 open / 23 total · 0 doing · 5 review · 17 done · 0 ready todos
 
-The native host, shared runtime and editor capabilities. Tasks retain their recorded status; done does not imply Paul accepted the result.
+Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
+
+### Work Tracker (`engine.tracker`)
+
+1 open / 6 total · 0 doing · 1 review · 5 done · 0 ready todos
+
+Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Current dashboard redesign follows Paul-approved goals; implementation is in progress.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 96 | 🟢 done | Work Tracker: dashboard, catalog and history | codex-tracker |  |
+| 113 | 🟢 done | Organize parts and component relationships | codex-coordinator |  |
+
+#### Work model (`tracker.model`)
+
+1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+
+Rust types define work parts, tasks, relationship kinds, status and dashboard projections. JSON and tables are conversion boundaries; business rules stay in typed code.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip | queue-agent |  |
+| 111 | 🟢 done | Typed work model and data bindings | codex-tracker |  |
+
+#### Queue database (`tracker.database`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+SQLite persists parts separately from tasks, with stable identities, task prerequisites and append-only activity. Additive migrations preserve earlier work and decisions.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 35 | 🟢 done | Queue in the editor: a Queue panel that reads queue/queue.db | queue-agent |  |
+
+#### Data bindings (`tracker.bindings`)
+
+0 open / 0 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Rust Data schemas and checked store writes expose live object fields to Luau. Field revisions invalidate the UI that reads them. Normalized object references prevent nested copied tables from becoming a second domain model.
+
+#### Dashboard and inspection (`tracker.dashboard`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+Readable top-level areas, compact status summaries, drill-down part pages, relationships and a complete grouped task DAG. The overview stays useful without exposing every task at once.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 112 | 🟢 done | Compact dashboard and inspection | codex-dashboard |  |
+
+#### Activity and search (`tracker.history`)
+
+0 open / 0 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Preserve decisions, notes, source evidence and task changes. Search exact passages by meaning with a local keyword fallback. Recorded task state is distinct from observed agent activity and user acceptance.
 
 ### Claude and Codex sessions (`engine.sessions`)
 
-4 open / 4 total · 0 doing · 3 review · 0 done · 0 ready todos
+3 open / 4 total · 0 doing · 2 review · 1 done · 0 ready todos
 
 Provider-neutral embedded rmux sessions, routing, visibility and process lifecycle.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 26 | 🔵 review | One Claude session per window/tab | queue-agent |  |
-| 94 | 🔵 review | Support Claude and Codex in the same native session interface | codex-provider |  |
 | 62 | 🔵 review | Shell commands in a session can write outside its owned files (only instructions stop it) | queue-agent |  |
 | 61 | ⚪ todo | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) | renderer-agent |  |
+| 94 | 🟢 done | Support Claude and Codex in the same native session interface | codex-provider |  |
+
+### Collaboration (`engine.collab`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+Peer synchronization of authoritative shared editing state. Derived queue/storyboard views remain local.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 27 | 🟢 done | Collaboration server (Rust, websockets, persistent state) | collab-agent |  |
+
+### Tooling review and acceptance (`engine.review`)
+
+1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
+
+Implementation and technical validation precede a separate review of the working workspace with Paul. Content waits for explicit human acceptance.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 103 | 🔵 review | Review consolidated tooling with Paul | paul |  |
 
 ### Build, integration and verification (`engine.build`)
 
-4 open / 11 total · 3 doing · 1 review · 7 done · 0 ready todos
+1 open / 11 total · 0 doing · 1 review · 10 done · 0 ready todos
 
 Consolidation, repository hygiene, verified checkpoints and proof. Existing done statuses remain historical agent reports.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 91 | 🟡 doing | Shared build broken: paint-skia gpu.rs texture() signature mismatch (renderer step 5) | renderer-agent |  |
-| 93 | 🟡 doing | Consolidate engine lanes and preserve all worktree/checkpoint history | codex-coordinator |  |
-| 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar | coordinator |  |
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says | paul |  |
 | 72 | 🟢 done | Shared build broken: component_creatures unresolved in scene-3d | weather-agent |  |
+| 91 | 🟢 done | Shared build broken: paint-skia gpu.rs texture() signature mismatch (renderer step 5) | renderer-agent |  |
+| 93 | 🟢 done | Consolidate engine lanes and preserve all worktree/checkpoint history | codex-coordinator |  |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB | coordinator |  |
+| 52 | 🟢 done | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar | coordinator |  |
 | 63 | 🟢 done | Shared build broken: duplicate component-spellcraft package | game-ui-agent |  |
 | 82 | 🟢 done | world.wgsl fix uncommitted: committed HEAD can't draw the town | shader-graph-agent |  |
 | 42 | 🟢 done | Find who switched Paul's main window to the Game Engine form and dropped the Storyboard tab (restored by coordinator) | coordinator |  |
 | 31 | 🟢 done | Engine working tree: tracked proof PNGs show as deleted (proof/node-graphs/...) — restore or explain | coordinator |  |
 | 32 | 🟢 done | Delete 18 GB abandoned project copy in scratchpad (sbproj-atelico-partial) |  |  |
 
-### Renderer and performance (`engine.renderer`)
+## Content (`content`)
 
-4 open / 9 total · 2 doing · 1 review · 5 done · 1 ready todos
+13 open / 23 total · 0 doing · 3 review · 9 done · 1 ready todos
 
-Native GPU rendering, parity and frame budget.
+Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
+Planned after: engine.review
 
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 22 | 🔵 review | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | renderer-agent |  |
-| 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | renderer-agent |  |
-| 24 | 🟡 doing | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default | renderer-agent |  |
-| 25 | 🟡 doing | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push | renderer-agent |  |
-| 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
-| 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up | renderer-agent |  |
-| 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff | renderer-agent |  |
-| 37 | 🟢 done | Editor perf patch rounds (damage, caches, meter, scroll, one window, storyboard tab) |  |  |
-| 41 | 🟢 done | Renderer research (4 lanes + recommendation: Skia Ganesh on wgpu Metal) |  |  |
-
-### Shared runtime and layout (`engine.runtime`)
-
-1 open / 8 total · 0 doing · 1 review · 7 done · 0 ready todos
-
-Scene state, incremental layout, polling and retained rendering.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 90 | 🔵 review | Host type list misses SpellFx and Creatures component types (can't place them in scenes) | game-ui-agent |  |
-| 57 | 🟢 done | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental | runtime-agent |  |
-| 58 | 🟢 done | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged | runtime-agent |  |
-| 59 | 🟢 done | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately | runtime-agent |  |
-| 60 | 🟢 done | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread | runtime-agent |  |
-| 86 | 🟢 done | A HUD text changing every frame costs only its label (ticking clocks, countdowns) | runtime-agent |  |
-| 81 | 🟢 done | Layout: a per-frame HUD text change rebuilds the whole kept layout (~20 ms); relayout only the changed leaf when its size is unchanged | runtime-agent |  |
-| 43 | 🟢 done | scene-3d particle-graph test fails when run in parallel | runtime-agent |  |
-
-### Editor interaction (`engine.editor`)
+### Storyboard (`engine.board`)
 
 0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
 
-Shared editor interaction correctness.
+Reusable storyboard authoring tool: hierarchical groups, relationships, paths and inspection. A particular video storyboard is a separate artifact with its own versions and review decisions.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 29 | 🟢 done | layout_matrix: welcome-modal 4 px spill | runtime-agent |  |
-| 30 | 🟢 done | button_press test failing (cause untraced) | runtime-agent |  |
+| 95 | 🟢 done | Restore storyboard groups, native wires and whole/focused board navigation | codex-board |  |
+| 38 | 🟢 done | Storyboard UI under design budget; screenplay; play-order board |  |  |
 
-### Video editing and playback (`engine.video`)
+### Video Sequencer (`engine.video`)
 
 3 open / 4 total · 0 doing · 3 review · 1 done · 0 ready todos
 
-Native cut playback, titles, music, exports and project routing.
+Reusable video assembly and playback tool: source clips, timing, titles, narration, music and export. Individual edits are separate content artifacts.
+
+#### Timeline and cut model (`video.timeline`)
+
+1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
+
+Typed Cut, Shot, Source, Music and caption records describe a video edit independently of its editor UI.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 78 | 🔵 review | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed | runtime-agent |  |
+
+#### Native playback (`video.player`)
+
+1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+
+Play and inspect a cut inside the app engine, including cuts authored in a different project with project-relative source paths.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 80 | 🔵 review | Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor | runtime-agent |  |
-| 78 | 🔵 review | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed | runtime-agent |  |
-| 92 | 🔵 review | Engine video (044b965): title on a recording shot crashes: work dir not created before brand.title_at runs magick (needs create_dir_all(&work) before crates/cli/src/video/mod.rs:375); also the [music] bed is mixed mono into the voice track | runtime-agent |  |
 | 28 | 🟢 done | Video playback inside the engine (no HTML hub) | runtime-agent |  |
 
-### Storyboard editor (`engine.board`)
+#### Video export (`video.export`)
 
-1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
 
-Reusable board navigation, groups, planned paths and native presentation.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 95 | 🔵 review | Restore storyboard groups, native wires and whole/focused board navigation | codex-board |  |
-| 38 | 🟢 done | Storyboard UI under design budget; screenplay; play-order board |  |  |
-
-### Hierarchical work tracker (`engine.tracker`)
-
-2 open / 3 total · 1 doing · 1 review · 1 done · 0 ready todos
-
-Objects, execution prerequisites, activity and searchable history in the existing queue.
+Render the authored cut with source footage, titles, narration, music and captions. Export evidence belongs to the specific content artifact being rendered.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 96 | 🟡 doing | Turn the existing queue into hierarchical objects, prerequisites and searchable work history | codex-tracker |  |
-| 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip | queue-agent |  |
-| 35 | 🟢 done | Queue in the editor: a Queue panel that reads queue/queue.db | queue-agent |  |
+| 92 | 🔵 review | Engine video (044b965): title on a recording shot crashes: work dir not created before brand.title_at runs magick (needs create_dir_all(&work) before crates/cli/src/video/mod.rs:375); also the [music] bed is mixed mono into the voice track | runtime-agent |  |
 
-### Collaboration (`engine.collab`)
+### Reference and Concept Board (`engine.references`)
 
-1 open / 1 total · 1 doing · 0 review · 0 done · 0 ready todos
-
-Peer synchronization of authoritative shared editing state. Derived queue/storyboard views remain local.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 27 | 🟡 doing | Collaboration server (Rust, websockets, persistent state) | collab-agent |  |
-
-### Registry and publishing (`engine.registry`)
-
-3 open / 3 total · 1 doing · 1 review · 0 done · 0 ready todos
-
-Registry install/publish workflows and publication blockers.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 84 | 🔵 review | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types | weather-agent |  |
-| 67 | 🟡 doing | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing | queue-agent |  |
-| 66 | ⚪ todo | Marketplace install flow for card 2: Claude installs the 5 world parts from the registry live in the editor (app registry serve, publish) | queue-agent |  |
-
-### Generic inventory (`engine.inventory`)
-
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
-
-Shared item identity, container/grid capacity, movement and expansion primitives. No mana-specific container API.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 98 | ⚪ todo | Create a reusable generic grid inventory and stable item identities |  |  |
-
-### Generic equipment (`engine.equipment`)
-
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
-
-Shared equipment slots and equipped item references, independent from carrying inventory and mana resource policy.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 99 | ⚪ todo | Create reusable equipment slots independent from carried inventory |  |  |
-
-### Tooling review and acceptance (`engine.review`)
-
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
-
-Implementation and technical validation precede a separate review of the working workspace with Paul. Content waits for explicit human acceptance.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 103 | ⚪ todo | Review current consolidated workspace, sessions and grouped task DAG with Paul | paul |  |
-
-### Reusable concept and reference board (`engine.references`)
-
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
+1 open / 1 total · 0 doing · 0 review · 0 done · 1 ready todos
 
 A reusable comparison/review workspace for reference inputs, concept revisions and compatibility decisions across projects.
 Planned after: engine.tracker
@@ -188,43 +183,112 @@ Planned after: engine.tracker
 |---|---|---|---|---|
 | 107 | ⚪ todo | Build reusable concept/reference-board review and comparison tooling |  |  |
 
-## Shared applets (`applets`)
+### r/AIGameDev posts (`content.aigamedev`)
 
-2 open / 2 total · 0 doing · 2 review · 0 done · 0 ready todos
+9 open / 16 total · 0 doing · 0 review · 6 done · 0 ready todos
 
-Reusable components and UI kits consumed by game projects.
-
-### Shared layout (`applets.layout`)
-
-1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
-
-Layout/text-measure caching and shared applet UI foundations.
+Content grounded in actual game design choices, reference comparisons and playable evidence. Content goals inform build priorities; no historical storyboard narrative has been approved.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision | paul |  |
+| 114 | ⚪ todo | Agree the next r/AIGameDev demonstration and required capabilities | paul |  |
 
-### Applet showcase (`applets.showcase`)
+#### Storyboard drafts (`content.storyboard`)
 
-1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
+5 open / 11 total · 0 doing · 0 review · 6 done · 0 ready todos
 
-Consolidated shared applets and preserved historical showcase variants.
+Authored shot sequence, dialogue, sketches and unresolved narrative calls.
+Planned after: game.design, game.proof
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 100 | 🔵 review | Consolidate shared applets and preserve historical showcase variants | codex-coordinator |  |
+| 105 | ⚪ todo | Review a new storyboard proposal after tooling and playable proof | paul |  |
+| 16 | 🔴 blocked | Historical, unapproved content — Storyboard: real sketches for the 10 cards without engine pictures | storyboard-agent |  |
+| 45 | 🔴 blocked | Historical, unapproved content — Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) | storyboard-agent |  |
+| 13 | 🔴 blocked | Historical, unapproved content — Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) | paul |  |
+| 14 | 🔴 blocked | Historical, unapproved content — Storyboard: draft 2-3 options for why the townsfolk freeze into card notes | paul |  |
+| 8 | 🟢 done | Historical, unapproved content — Card 5 and card 7 sketches (forecast in-game, fire in the snow) | weather-agent |  |
+| 44 | 🟢 done | Historical, unapproved content — Storyboard round 10: re-judge card 13 (player wins climax) and the dud-spell / two-moons-make-fire yellows | storyboard-agent |  |
+| 12 | 🟢 done | Historical, unapproved content — Storyboard: re-judge round-3 fixes (recipe vs AI, marketplace vs written files, ten p.m., narrator named) | storyboard-agent |  |
+| 15 | 🟢 done | Historical, unapproved content — Storyboard yellows: fire-in-snow affects nothing; purple vs orange creatures behave the same; tower wins climax not player | storyboard-agent |  |
+| 17 | 🟢 done | Historical, unapproved content — Storyboard: regenerate storyboard.pdf export (stale, old path) | storyboard-agent |  |
+| 39 | 🟢 done | Historical, unapproved content — Storyboard content: 13-card working-day path, 3 judge rounds |  |  |
+
+#### Video edits (`content.reel`)
+
+3 open / 4 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Demonstration cuts and source footage. Historical agent outputs require review against the confirmed game design.
+Planned after: content.storyboard, game.design
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 71 | 🔴 blocked | Historical, unapproved content — Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline | storyboard-agent |  |
+| 70 | 🔴 blocked | Historical, unapproved content — Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor | storyboard-agent |  |
+| 106 | ⚪ todo | Produce a reel from the approved storyboard proposal |  |  |
+| 74 | ⚫ dropped | Historical, unapproved content — Reel v1: 30-45 s punchy twin-moon reel (day/night timelapse, pixel->ink switch, wicked weather, spell fusion, editor+Claude beat) rendered offline from real engine footage; storyboard/exports/reel-twin-moons-v1.mp4 + contact sheet | storyboard-agent |  |
 
 ## Infinite Spell Game (`game`)
 
-23 open / 42 total · 3 doing · 8 review · 18 done · 6 ready todos
+23 open / 42 total · 0 doing · 9 review · 18 done · 0 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
-### Game HUD and UI kit (`game.hud`)
+### Design and reference decisions (`game.design`)
 
-1 open / 6 total · 0 doing · 0 review · 5 done · 1 ready todos
+1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
 
-Currently engine/packages/game-ui consumed by the game. Reuse of UI primitives is distinct from game-specific resource semantics.
+Confirmed rules and their source references; proposals and unresolved choices remain explicitly identified.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 97 | 🔵 review | Consolidate original game and Creature references into an explicit game-design source of truth | codex-coordinator |  |
+| 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ | coordinator |  |
+
+### Town and world structure (`game.world`)
+
+2 open / 2 total · 0 doing · 1 review · 0 done · 0 ready todos
+
+Town layout, seed planting and shared scene structure.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 69 | 🔵 review | Seed planting moment: plant the seed, first houses grow around it (card 3) | weather-agent |  |
+| 79 | ⚪ todo | Engine: pixel town and ink town have different layouts, so the same camera does not line up across the pixel->ink cut; ink look reads sepia not two-tone purple/orange | shader-graph-agent |  |
+
+### Physical spell system (`game.magic`)
+
+5 open / 7 total · 0 doing · 2 review · 2 done · 0 ready todos
+
+Spellcraft, input-driven casting, spell effects and the shared authoritative town state.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 109 | ⚪ todo | Implement authored-spell select, aim and fire interaction |  |  |
+| 75 | 🔴 blocked | Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel | game-ui-agent |  |
+| 83 | ⚪ todo | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) | game-ui-agent |  |
+| 64 | 🔵 review | Play keys drive casting (today the town auto-casts every 8 s) | game-ui-agent |  |
+| 19 | 🔵 review | On-device fusion (cards 10-11 can't be filmed without it) | game-ui-agent |  |
+| 18 | 🟢 done | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it | game-ui-agent |  |
+| 85 | 🟢 done | One shared town per scene: spellcraft owns the simulation; the HUD, SpellFx and packages/creatures read the same town (no drift) | game-ui-agent |  |
+
+### Wands and cartridge integration (`game.inventory`)
+
+2 open / 2 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Game energy behavior composed from the shared Inventory and Equipment systems: physical cartridges, equipped wand loading/replacement, finite authored-spell debit, identity-aware HUD energy totals and mana-consuming expansion.
+Planned after: engine.equipment, engine.inventory, game.design
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 101 | ⚪ todo | Model finite physical energy cartridges as inventory items and sum them in the bottom HUD |  |  |
+| 102 | ⚪ todo | Add grid capacity and mana-consuming inventory expanders |  |  |
+
+### Game HUD (`game.hud`)
+
+1 open / 6 total · 0 doing · 0 review · 5 done · 0 ready todos
+
+Game-facing equipment, inventory and power displays composed from reusable UI components. The confirmed power display sums remaining energy in inventory cartridges; generic inventory/equipment remain shared systems.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
@@ -235,31 +299,20 @@ Currently engine/packages/game-ui consumed by the game. Reuse of UI primitives i
 | 55 | 🟢 done | Ink HUD type too small at editor zoom (0.65): labels like ENDS 2H 0M barely readable | game-ui-agent |  |
 | 47 | 🟢 done | Game UI: ink panels still read 'like a website' — brush display font; real data for seed/spells/creatures (stubs today) |  |  |
 
-### Design and reference decisions (`game.design`)
+### Gameplay camera and scale (`game.camera`)
 
-1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
+1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
 
-Confirmed rules and their source references; proposals and unresolved choices remain explicitly identified.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 97 | 🟡 doing | Consolidate original game and Creature references into an explicit game-design source of truth | codex-coordinator |  |
-| 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ | coordinator |  |
-
-### Town and world structure (`game.world`)
-
-2 open / 2 total · 0 doing · 1 review · 0 done · 1 ready todos
-
-Town layout, seed planting and shared scene structure.
+Compare readable gameplay scale, wider battlefield framing and tilt/lens variants without inventing numeric settings or a film camera.
+Planned after: engine.review, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 69 | 🔵 review | Seed planting moment: plant the seed, first houses grow around it (card 3) | weather-agent |  |
-| 79 | ⚪ todo | Engine: pixel town and ink town have different layouts, so the same camera does not line up across the pixel->ink cut; ink look reads sepia not two-tone purple/orange | shader-graph-agent |  |
+| 108 | ⚪ todo | Compare gameplay camera scale and tilt/lens variants |  |  |
 
 ### Pixel and ink/cel looks (`game.looks`)
 
-6 open / 12 total · 1 doing · 3 review · 5 done · 2 ready todos
+6 open / 12 total · 0 doing · 3 review · 5 done · 0 ready todos
 
 Readable lighting, shadows, authored shader looks and the switch between them.
 
@@ -270,7 +323,7 @@ Readable lighting, shadows, authored shader looks and the switch between them.
 | 76 | 🔵 review | Engine: no second visible moon shadow in town scenes (second_shadow=1 shows nothing in pixel town or ink yard); reel shot 'two shadows' needs it | weather-agent |  |
 | 89 | ⚪ todo | Night grade too flat: darker blue night ground, warm light pools under windows/lamps/fire impacts, cool rim on characters (ink look part, cel-world graph, pixel Sky palette) | shader-graph-agent |  |
 | 88 | ⚪ todo | Moon-town seed plinth reads as a layer cake with noisy pillars; cel 10:00 grass murky with no sun shadow | shader-graph-agent |  |
-| 3 | 🟡 doing | Hero contrast against the dark path (size done) | shader-graph-agent |  |
+| 3 | 🔴 blocked | Hero contrast against the dark path (size done) | shader-graph-agent |  |
 | 48 | 🟢 done | Buildings float: base shading/shadow doesn't touch the ground (both looks) | shader-graph-agent |  |
 | 49 | ⚫ dropped | Houses float: contact shading/shadows offset from building bases (pixel + cel town) | shader-graph-agent |  |
 | 1 | 🟢 done | Pixel-art look as a shader graph (graphs/pixel-world), live preview, parity judge | shader-graph-agent |  |
@@ -292,25 +345,9 @@ Deterministic moon-driven weather and visible consequences.
 | 7 | 🟢 done | In-game forecast panel (game UI, not editor), drawn with the game-ui kit | weather-agent |  |
 | 9 | 🟢 done | forecasts/omens.toml: what each alignment brings (placeholder lines) | weather-agent |  |
 
-### Physical spell system (`game.magic`)
-
-5 open / 7 total · 1 doing · 2 review · 2 done · 1 ready todos
-
-Spellcraft, input-driven casting, spell effects and the shared authoritative town state.
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 109 | ⚪ todo | Implement authored-spell select, aim and fire interaction |  |  |
-| 75 | 🟡 doing | Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel | game-ui-agent |  |
-| 83 | ⚪ todo | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) | game-ui-agent |  |
-| 64 | 🔵 review | Play keys drive casting (today the town auto-casts every 8 s) | game-ui-agent |  |
-| 19 | 🔵 review | On-device fusion (cards 10-11 can't be filmed without it) | game-ui-agent |  |
-| 18 | 🟢 done | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it | game-ui-agent |  |
-| 85 | 🟢 done | One shared town per scene: spellcraft owns the simulation; the HUD, SpellFx and packages/creatures read the same town (no drift) | game-ui-agent |  |
-
 ### Creatures (`game.creatures`)
 
-1 open / 3 total · 0 doing · 0 review · 2 done · 1 ready todos
+1 open / 3 total · 0 doing · 0 review · 2 done · 0 ready todos
 
 Creature simulation, visibility, animation and polish across looks.
 
@@ -319,40 +356,6 @@ Creature simulation, visibility, animation and polish across looks.
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) | game-ui-agent |  |
 | 68 | 🟢 done | Creatures visible in both looks: climbers and diggers modelled/sprited, animated, rising from the ground per moon (card 7) | weather-agent |  |
 | 87 | 🟢 done | Creatures polish: bigger pixel stalker sprite; beetle hidden behind the well in brood camera; steam swirl over the hero's face; flat night grade | weather-agent |  |
-
-### Wands and cartridge integration (`game.inventory`)
-
-2 open / 2 total · 0 doing · 0 review · 0 done · 0 ready todos
-
-Game energy behavior composed from the shared Inventory and Equipment systems: physical cartridges, equipped wand loading/replacement, finite authored-spell debit, identity-aware HUD energy totals and mana-consuming expansion.
-Planned after: engine.equipment, engine.inventory, game.design
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 101 | ⚪ todo | Model finite physical energy cartridges as inventory items and sum them in the bottom HUD |  |  |
-| 102 | ⚪ todo | Add grid capacity and mana-consuming inventory expanders |  |  |
-
-### Playable interaction proof (`game.proof`)
-
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
-
-Prove authored-spell finite cartridge debit and camera readability after tooling acceptance and the reviewed game baseline; this is not new reel content.
-Planned after: engine.review, game.camera, game.design, game.inventory, game.magic
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 104 | ⚪ todo | Verify authored-spell finite cartridge debit and readable camera |  |  |
-
-### Gameplay camera and scale (`game.camera`)
-
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
-
-Compare readable gameplay scale, wider battlefield framing and tilt/lens variants without inventing numeric settings or a film camera.
-Planned after: engine.review, game.design
-
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 108 | ⚪ todo | Compare gameplay camera scale and tilt/lens variants |  |  |
 
 ### Reference and moodboard decisions (`game.references`)
 
@@ -365,44 +368,169 @@ Planned after: engine.references, engine.review
 |---|---|---|---|---|
 | 110 | ⚪ todo | Review reference and moodboard decisions with existing candidate inputs | paul |  |
 
-## Story and presentation (`content`)
+### Playable interaction proof (`game.proof`)
 
-8 open / 15 total · 0 doing · 0 review · 6 done · 0 ready todos
+1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
 
-Narrative, sketches, demonstration footage and editing. Presentation choices do not silently change game rules.
-Planned after: engine.review
-
-### Storyboard narrative and sketches (`content.storyboard`)
-
-5 open / 11 total · 0 doing · 0 review · 6 done · 0 ready todos
-
-Authored shot sequence, dialogue, sketches and unresolved narrative calls.
-Planned after: game.design, game.proof
+Prove authored-spell finite cartridge debit and camera readability after tooling acceptance and the reviewed game baseline; this is not new reel content.
+Planned after: engine.review, game.camera, game.design, game.inventory, game.magic
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 105 | ⚪ todo | Review a new storyboard proposal after tooling and playable proof | paul |  |
-| 16 | 🔴 blocked | Historical, unapproved content — Storyboard: real sketches for the 10 cards without engine pictures | storyboard-agent |  |
-| 45 | 🔴 blocked | Historical, unapproved content — Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) | storyboard-agent |  |
-| 13 | 🔴 blocked | Historical, unapproved content — Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) | paul |  |
-| 14 | 🔴 blocked | Historical, unapproved content — Storyboard: draft 2-3 options for why the townsfolk freeze into card notes | paul |  |
-| 8 | 🟢 done | Historical, unapproved content — Card 5 and card 7 sketches (forecast in-game, fire in the snow) | weather-agent |  |
-| 44 | 🟢 done | Historical, unapproved content — Storyboard round 10: re-judge card 13 (player wins climax) and the dud-spell / two-moons-make-fire yellows | storyboard-agent |  |
-| 12 | 🟢 done | Historical, unapproved content — Storyboard: re-judge round-3 fixes (recipe vs AI, marketplace vs written files, ten p.m., narrator named) | storyboard-agent |  |
-| 15 | 🟢 done | Historical, unapproved content — Storyboard yellows: fire-in-snow affects nothing; purple vs orange creatures behave the same; tower wins climax not player | storyboard-agent |  |
-| 17 | 🟢 done | Historical, unapproved content — Storyboard: regenerate storyboard.pdf export (stale, old path) | storyboard-agent |  |
-| 39 | 🟢 done | Historical, unapproved content — Storyboard content: 13-card working-day path, 3 judge rounds |  |  |
+| 104 | ⚪ todo | Verify authored-spell finite cartridge debit and readable camera |  |  |
 
-### Animatic and reel (`content.reel`)
+## Shared Platform and Components (`engine`)
 
-3 open / 4 total · 0 doing · 0 review · 0 done · 0 ready todos
+12 open / 27 total · 0 doing · 4 review · 15 done · 2 ready todos
 
-Demonstration cuts and source footage. Historical agent outputs require review against the confirmed game design.
-Planned after: content.storyboard, game.design
+The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
+
+### App Engine (`engine.app`)
+
+5 open / 19 total · 0 doing · 2 review · 14 done · 1 ready todos
+
+Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
+
+#### Renderer and performance (`engine.renderer`)
+
+4 open / 9 total · 0 doing · 1 review · 5 done · 1 ready todos
+
+Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 71 | 🔴 blocked | Historical, unapproved content — Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline | storyboard-agent |  |
-| 70 | 🔴 blocked | Historical, unapproved content — Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor | storyboard-agent |  |
-| 106 | ⚪ todo | Produce a reel from the approved storyboard proposal |  |  |
-| 74 | ⚫ dropped | Historical, unapproved content — Reel v1: 30-45 s punchy twin-moon reel (day/night timelapse, pixel->ink switch, wicked weather, spell fusion, editor+Claude beat) rendered offline from real engine footage; storyboard/exports/reel-twin-moons-v1.mp4 + contact sheet | storyboard-agent |  |
+| 22 | 🔵 review | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | renderer-agent |  |
+| 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | renderer-agent |  |
+| 24 | 🔴 blocked | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default | renderer-agent |  |
+| 25 | 🔴 blocked | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push | renderer-agent |  |
+| 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
+| 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up | renderer-agent |  |
+| 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff | renderer-agent |  |
+| 37 | 🟢 done | Editor perf patch rounds (damage, caches, meter, scroll, one window, storyboard tab) |  |  |
+| 41 | 🟢 done | Renderer research (4 lanes + recommendation: Skia Ganesh on wgpu Metal) |  |  |
+
+#### Runtime and hot reload (`engine.runtime`)
+
+1 open / 8 total · 0 doing · 1 review · 7 done · 0 ready todos
+
+Run app components and update them while the host remains open. Typed data bindings and shared layout are separate reusable dependencies.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 90 | 🔵 review | Host type list misses SpellFx and Creatures component types (can't place them in scenes) | game-ui-agent |  |
+| 57 | 🟢 done | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental | runtime-agent |  |
+| 58 | 🟢 done | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged | runtime-agent |  |
+| 59 | 🟢 done | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately | runtime-agent |  |
+| 60 | 🟢 done | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread | runtime-agent |  |
+| 86 | 🟢 done | A HUD text changing every frame costs only its label (ticking clocks, countdowns) | runtime-agent |  |
+| 81 | 🟢 done | Layout: a per-frame HUD text change rebuilds the whole kept layout (~20 ms); relayout only the changed leaf when its size is unchanged | runtime-agent |  |
+| 43 | 🟢 done | scene-3d particle-graph test fails when run in parallel | runtime-agent |  |
+
+#### Editor interaction (`engine.editor`)
+
+0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
+
+Shared editor interaction correctness.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 29 | 🟢 done | layout_matrix: welcome-modal 4 px spill | runtime-agent |  |
+| 30 | 🟢 done | button_press test failing (cause untraced) | runtime-agent |  |
+
+### Data Layer (`engine.data`)
+
+1 open / 1 total · 0 doing · 0 review · 0 done · 1 ready todos
+
+Shared typed state and reactive binding infrastructure, adapted from ai-battleground. Data schemas define fields; the store validates writes and revisions; typed script proxies bind UI reads to changes.
+
+#### Data schemas (`data.schemas`)
+
+0 open / 0 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Rust Data and DataKind traits plus derive macros describe checked fields and enum choices. File, JSON and script boundaries convert into typed objects.
+
+#### Reactive Store (`data.store`)
+
+0 open / 0 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Store, ObjRef and per-field revisions provide one checked mutation path, typed read/write access, atomic batches and change subscriptions.
+
+#### Typed Lua bindings (`data.bindings`)
+
+1 open / 1 total · 0 doing · 0 review · 0 done · 1 ready todos
+
+data.object returns a userdata proxy. Field reads record render dependencies; field writes go through the checked store. Only render units affected by changed fields need to run again.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 115 | ⚪ todo | Extend typed UI records to remaining storyboard and session consumers |  |  |
+
+### Graph Canvas (`engine.graph`)
+
+0 open / 0 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Reusable node-graph component for nodes, grouped regions, wires, pan and zoom. Work dependencies and storyboard paths use this visual machinery with distinct typed domain rules.
+
+### UI Kit (`engine.ui`)
+
+0 open / 0 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Reusable native controls, layout, typography and themes shared across app and editor tools. The game HUD uses these components without owning their generic implementation.
+
+### Shared applets (`applets`)
+
+1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+
+Reusable components and UI kits consumed by game projects.
+
+#### Shared layout (`applets.layout`)
+
+1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
+
+Layout/text-measure caching and shared applet UI foundations.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision | paul |  |
+
+#### Applet showcase (`applets.showcase`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+Consolidated shared applets and preserved historical showcase variants.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 100 | 🟢 done | Consolidate shared applets and preserve historical showcase variants | codex-coordinator |  |
+
+### Registry and publishing (`engine.registry`)
+
+3 open / 3 total · 0 doing · 1 review · 0 done · 0 ready todos
+
+Registry install/publish workflows and publication blockers.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 84 | 🔵 review | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types | weather-agent |  |
+| 67 | 🔴 blocked | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing | queue-agent |  |
+| 66 | ⚪ todo | Marketplace install flow for card 2: Claude installs the 5 world parts from the registry live in the editor (app registry serve, publish) | queue-agent |  |
+
+### Generic inventory (`engine.inventory`)
+
+1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Shared item identity, container/grid capacity, movement and expansion primitives. No mana-specific container API.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 98 | ⚪ todo | Create a reusable generic grid inventory and stable item identities |  |  |
+
+### Generic equipment (`engine.equipment`)
+
+1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
+
+Shared equipment slots and equipped item references, independent from carrying inventory and mana resource policy.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 99 | ⚪ todo | Create reusable equipment slots independent from carried inventory |  |  |
