@@ -150,6 +150,11 @@ Decisions made while building:
 - The scene's `pixel` draws the whole picture, HUD included, at 1/pixel. So the pixel HUD lives on the world's own
   art-pixel grid: one cell = one art pixel, a 5 × 7 cell font instead of VT323, every box an even number of art
   pixels and every placed box snapped, so nothing is centred on half a pixel and smeared.
+- The HUD is sized from the reference picture (1080 px high = 270 cells), so it covers the same share of the
+  screen at any size. The pixel cell stays one art pixel as the picture is really drawn (the scene's `pixel` over
+  the view's zoom); when the HUD must be smaller than that allows (the editor's scene view at zoom 0.71 on a 1x
+  screen: a 226 px wide picture), its cell counts shrink and it switches to a compact 3 × 5 cell font, a slot shows
+  its shape alone, and "NIGHT 3" reads "N3". Stills: `scene-view-908x510.png`, `play-1920x1080.png`.
 - The dial and the chip sit top-right, stacked at one width: the top centre stays clear for the world (the
   watchtower) and the banner.
 - Ink is ink on warm paper: a heavy outer line and a thin inner one, Archivo Black, vector line-art icons (rounded
