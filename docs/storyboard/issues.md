@@ -213,3 +213,15 @@ Judges: an r/aigamedev regular (R) and a senior art director (A), on reel-r1/car
 | R5 | Style flips faster and faster: trailer cliché | R | 🟡 | Left |
 Liked: Hearthglow ("killed me lol", R), the burning flakes into snow ("the shot people will screenshot", A), the
 two-shadow tint and the flip (A), the lamp ripple (R). Both: would upvote / share.
+
+## Reel v3 judges (r/aigamedev regular R, art director A), on an honest frame description of reel-twin-moons-v3.mp4
+Liked: the orange moon on the watchtower ("the thumbnail", R A), the twin-moon timelapse (R), the fireball hit (R A).
+Both: no cringe; R would upvote for the visuals.
+
+| # | Issue | Who | | Fix |
+|---|---|---|---|---|
+| V1 | The "wall of flame" reads as crystal spikes; the hero just stands there | R A | 🔴 | Cut from the reel until task 75's flame reads as fire (flickering soft tongues, heat haze, orange light on hero and ground) |
+| V2 | The editor beat interrupts the climax; the pixel-to-ink hard cut is unexplained | R A | 🔴 | Reorder: timelapse -> moon on the tower -> editor texel steps snapping to the ink look -> founding -> brood -> fireball -> end |
+| V3 | Ends limp on a static wide with a fade-in logo | A | 🔴 | End on the fireball impact; title cut in on the beat |
+| V4 | Timelapse 3 s too long for Reddit | A | 🟡 | Trim to ~4 s |
+| V5 | Wants one line saying what's special / the live switch shown | R | 🟡 | Waits on task 51 (live switch); no claim text until it exists |
