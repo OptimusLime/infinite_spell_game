@@ -25,3 +25,5 @@ One folder per day: `evidence/<YYYY-MM-DD>/`. Each file is named `<where>-<what 
 | 2026-10-08/town-tab-meter-playing-10ms-cpu-9ms-skia-cpu.txt | Paul's Town tab playing: 10 ms (cpu), 9 ms (skia-cpu) after the debug-line removal and runtime batch | 50 |
 | 2026-10-08/town-tab-meter-playing-7ms-skia-cpu-target-met.txt | Paul's Town tab playing at 7 ms on skia-cpu: under the 8 ms target (was 52-83 ms on 2026-10-07) | 50 |
 | 2026-10-08/reel-twin-moons-v2-frames-coordinator-review.png | Reel v2 frames at 3/8/12/20/23/27 s: strong pixel shots; no spell moment, editor beat illegible, black ending | Reel v1 |
+| 2026-10-08/spellcraft-reel-ink-spell-vfx-12-moments-ad-round-3-8-reds.png | Spell VFX (SpellFx) in the ink town, 12 moments rendered offscreen by spellcraft-reel from a script of Play keys, each still keyed to the town's real event; the art director's round 3 still found reds (not at the studio bar) | 75 |
+| 2026-10-08/spellcraft-reel-pixel-spell-vfx-12-moments-ad-round-3-8-reds.png | The same 12 moments in the pixel town (wide camera); reds remain | 75 |

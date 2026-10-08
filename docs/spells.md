@@ -106,3 +106,24 @@ alignment, building, danger, dawn) stay for stills.
 - Creatures rise under their moon and the seed breaks: the town is gone, and nothing more happens. With no moon up the
   seed holds.
 - The watchtower slows a creature in its shadow and pays for it; fire is caught from the flakes; a Fireball hits.
+
+## Spell effects in the world (task 75, first pass)
+
+`SpellFx` (packages/spellcraft, a World part) draws every live cast from the real town: the town's formed bodies
+(each with its look: wind orb, fire wall, wall of flame, fireball, dud) and its moments (burst, hit, knockback, the
+dud's warm puff). Knockback is a real shove that dies away in the town; impacts shake the camera a little in Play
+(`runtime.shake`). `spellcraft-reel` renders the effects offscreen from a script of Play keys, each still keyed to the
+event it shows (`spellcraft-reel scenes/town-ink.scene.luau player out --weather snow`; the pixel town with `--look
+pixel --carry-fire --frame-hero`). One town per scene serves every reader (`with_town`, `town_at_time`).
+
+Not yet at the studio bar. Three fresh art-director rounds, images only:
+
+| Round | Reds | What changed after it |
+|---|---|---|
+| 1 | 8 | wind became a swirl; knockback ring and kick; fireball small and hot with a trail; impact flash, crown, embers; dud at the hands; spells start clear of the caster |
+| 2 | 10 | stills keyed to the real events (most reds were beats one step early); flames without stripes; crest; longer smoke; wind core; smoother dud |
+| 3 | 8 | (open) fire walls read as traffic cones; wall of flame as crystal; knockback too faint; fireball caught after impact; pixel effects tiny at the wide camera, pixel dud far from the visible villager |
+
+The lesson: toon-shaded meshes, banded by the looks' shading, will not read as fire. Next: draw the spells' fire, smoke
+and wind through the engine's particle graphs (as the weather's firefall and the bomb's explosion are), with SpellFx
+emitting particles from the same town state; keep the meshes only for silhouettes (the wall's line, the orb's swirl).
