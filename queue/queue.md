@@ -1,20 +1,22 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T21:22:49. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T21:36:41. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
 | # | | Task | Group | Lane | Owner | P | Commits |
 |---|---|---|---|---|---|---|---|
-| 5 | 🟡 doing | Weather state as a function of the two moons (snow / embers / fire-in-snow + steam), seeded, tested |  | weather | weather-agent | 10 |  |
-| 6 | 🟡 doing | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 |  |
-| 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 15 | 0cc6556 |
-| 7 | 🟡 doing | In-game forecast panel (game UI, not editor), drawn with the game-ui kit |  | weather | weather-agent | 15 |  |
+| 48 | 🟡 doing | Buildings float: base shading/shadow doesn't touch the ground (both looks) |  | shader-graphs | shader-graph-agent | 8 |  |
+| 5 | 🟡 doing | Weather state as a function of the two moons (snow / embers / fire-in-snow + steam), seeded, tested |  | weather | weather-agent | 10 | 00ac59d |
+| 6 | 🟡 doing | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | 00ac59d |
+| 11 | 🟡 doing | packages/game-ui kit in both looks, placed in the moon town scenes |  | game-ui | game-ui-agent | 12 | 27100bb 90d6a8d e189974 2d75df9 93cc17c |
+| 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 15 | 0cc6556 d937ff2 |
+| 7 | 🟡 doing | In-game forecast panel (game UI, not editor), drawn with the game-ui kit |  | weather | weather-agent | 15 | 00ac59d |
 | 8 | 🟡 doing | Card 5 and card 7 sketches (forecast in-game, fire in the snow) |  | weather | weather-agent | 20 |  |
 | 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 30 |  |
 | 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes |  | storyboard | paul | 30 | 56eb78b |
 | 47 | ⚪ todo | Game UI: ink panels still read 'like a website' — brush display font; real data for seed/spells/creatures (stubs today) |  | game-ui |  | 35 |  |
-| 9 | ⚪ todo | forecasts/omens.toml: what each alignment brings (placeholder lines) |  | weather | weather-agent | 40 |  |
+| 9 | 🔵 review | forecasts/omens.toml: what each alignment brings (placeholder lines) |  | weather | weather-agent | 40 | 00ac59d |
 | 16 | ⚪ todo | Storyboard: real sketches for the 10 cards without engine pictures |  | storyboard |  | 40 |  |
 | 18 | ⚪ todo | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it |  | spells |  | 45 |  |
 | 45 | ⚪ todo | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard |  | 45 |  |
@@ -22,7 +24,6 @@ Snapshot of queue.db, 2026-10-07T21:22:49. Edit through `app queue` (or `queue/q
 | 1 | 🟢 done | Pixel-art look as a shader graph (graphs/pixel-world), live preview, parity judge |  | shader-graphs | shader-graph-agent | 10 | 43111e7 |
 | 2 | 🟢 done | Cel/anime look as a shader graph (graphs/cel-world), live preview, parity judge |  | shader-graphs | shader-graph-agent | 10 | 43111e7 |
 | 10 | 🟢 done | In-game UI spec docs/game-ui.md (seed ring, moon clock, spell slots, prompts, wave counter...) judged |  | game-ui | game-ui-agent | 10 | ee111f0 |
-| 11 | 🟢 done | packages/game-ui kit in both looks, placed in the moon town scenes |  | game-ui | game-ui-agent | 12 | 27100bb 90d6a8d e189974 2d75df9 93cc17c |
 | 4 | 🟢 done | Continuous crane opening: sky -> crane -> player view -> hero walking (pixel town drawable in perspective) |  | shader-graphs | shader-graph-agent | 20 | 856549f |
 | 44 | 🟢 done | Storyboard round 10: re-judge card 13 (player wins climax) and the dud-spell / two-moons-make-fire yellows |  | storyboard | storyboard-agent | 25 | a31ef39 |
 | 12 | 🟢 done | Storyboard: re-judge round-3 fixes (recipe vs AI, marketplace vs written files, ten p.m., narrator named) |  | storyboard | storyboard-agent | 30 | 56eb78b |
