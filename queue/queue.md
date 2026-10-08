@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue/queue.db, 2026-10-07T20:20:34. Edit through `queue/q.py`, not this file.
+Snapshot of queue/queue.db, 2026-10-07T20:25:29. Edit through `queue/q.py`, not this file.
 
 ## Pieces
 
@@ -13,16 +13,17 @@ Snapshot of queue/queue.db, 2026-10-07T20:20:34. Edit through `queue/q.py`, not 
 | 3 | ⚪ todo | Hero contrast against the dark path (size done) | shader-graphs | shader-graph-agent | 15 | 43111e7 |
 | 7 | 🟡 doing | In-game forecast panel (game UI, not editor), drawn with the game-ui kit | weather | weather-agent | 15 |  |
 | 8 | 🟡 doing | Card 5 and card 7 sketches (forecast in-game, fire in the snow) | weather | weather-agent | 20 |  |
-| 44 | 🟡 doing | Storyboard round 10: re-judge card 13 (player wins climax) and the dud-spell / two-moons-make-fire yellows | storyboard | storyboard-agent | 25 |  |
 | 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) | storyboard | paul | 30 |  |
 | 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes | storyboard | paul | 30 | 56eb78b |
 | 9 | ⚪ todo | forecasts/omens.toml: what each alignment brings (placeholder lines) | weather | weather-agent | 40 |  |
 | 16 | ⚪ todo | Storyboard: real sketches for the 10 cards without engine pictures | storyboard |  | 40 |  |
 | 18 | ⚪ todo | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it | spells |  | 45 |  |
+| 45 | ⚪ todo | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) | storyboard |  | 45 |  |
 | 19 | ⚪ todo | On-device fusion (cards 10-11 can't be filmed without it) | spells |  | 50 |  |
 | 1 | 🟢 done | Pixel-art look as a shader graph (graphs/pixel-world), live preview, parity judge | shader-graphs | shader-graph-agent | 10 | 43111e7 |
 | 2 | 🟢 done | Cel/anime look as a shader graph (graphs/cel-world), live preview, parity judge | shader-graphs | shader-graph-agent | 10 | 43111e7 |
 | 4 | 🟢 done | Continuous crane opening: sky -> crane -> player view -> hero walking (pixel town drawable in perspective) | shader-graphs | shader-graph-agent | 20 | 856549f |
+| 44 | 🟢 done | Storyboard round 10: re-judge card 13 (player wins climax) and the dud-spell / two-moons-make-fire yellows | storyboard | storyboard-agent | 25 | a31ef39 |
 | 12 | 🟢 done | Storyboard: re-judge round-3 fixes (recipe vs AI, marketplace vs written files, ten p.m., narrator named) | storyboard | storyboard-agent | 30 | 56eb78b |
 | 15 | 🟢 done | Storyboard yellows: fire-in-snow affects nothing; purple vs orange creatures behave the same; tower wins climax not player | storyboard | storyboard-agent | 35 | 56eb78b |
 | 17 | 🟢 done | Storyboard: regenerate storyboard.pdf export (stale, old path) | storyboard | storyboard-agent | 60 | 56eb78b |
