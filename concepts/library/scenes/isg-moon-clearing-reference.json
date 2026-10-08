@@ -1,0 +1,32 @@
+{
+  "id": "isg-moon-clearing-reference",
+  "kind": "scene",
+  "name": "Historical moon-clearing target",
+  "description": "Historical AI concept art: general direction accepted in September, not an engine capture or approval of every detail today.",
+  "parent": null,
+  "world": {
+    "id": "isg-world",
+    "revision": "26924568365d55509723c4044b2eb8f4ee3046820650efc67a462a02afdbda0b"
+  },
+  "transform": null,
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "TARGET.md records September 18 general-direction acceptance; latest no-voxel direction takes precedence.",
+    "decision.date": "2026-10-08",
+    "decision.state": "Maybe",
+    "reference.avoid": "Voxel geometry and any obsolete scene premise are not carried forward.",
+    "reference.borrow": "Cool layered distance, local warm spell light and open action space.",
+    "source.path": "/Users/paul/coding/creatures/creature_3d_studio/docs/research/magical_physics/art-direction/moon-clearing-target.jpg"
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

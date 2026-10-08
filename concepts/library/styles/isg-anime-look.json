@@ -1,0 +1,28 @@
+{
+  "id": "isg-anime-look",
+  "kind": "style",
+  "name": "Anime cel shading",
+  "description": "Anime-style cel shading with more Dragon Ball Z influence, while preserving readable battlefield scale.",
+  "parent": null,
+  "world": null,
+  "transform": null,
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.state": "In",
+    "open.technique": "Exact shader bands, outlines, effect shapes and lighting parameters require comparison.",
+    "style.influence": "Dragon Ball Z is a user direction; any particular Sparking! ZERO screenshot remains a candidate."
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

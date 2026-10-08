@@ -1,0 +1,6 @@
+title = "Current pixel — offline v5 / 3.000 s"
+spoken = ""
+shown = "Current baseline, not an approved target. Sky and roofs fill most of this cinematic frame; battlefield ground is cropped. Compare a wider play view with visible caster, target and threats."
+action = "Design review only; not a film shot."
+sketch = "sketches/design-review/current-pixel-reel-v5-03.000s.png"
+sketch_note = "Current: stored offline render, not today's live editor. Concept isg-pixel-night@6467a03b6fbbf3faa35dbbd803c40562ce39ac9c2803466847d78238bb7d95de. Source: concepts/library and docs/design-direction.md. Media attribution: storyboard/sketches/design-review/README.md. Pinned inputs are not verified compatibility. This off-path card has no film narration; its default work status is unrelated to the design decision."

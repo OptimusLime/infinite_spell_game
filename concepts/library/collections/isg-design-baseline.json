@@ -1,0 +1,20 @@
+{
+  "id": "isg-design-baseline",
+  "name": "Infinite Spell Game — design baseline",
+  "axis": "subject",
+  "roots": [
+    "isg-world",
+    "isg-wand-battery",
+    "isg-battlefield",
+    "isg-pixel-look",
+    "isg-anime-look",
+    "isg-voxel-look",
+    "isg-battlefield-camera",
+    "isg-moon-clearing-reference",
+    "isg-pixel-day",
+    "isg-pixel-night",
+    "isg-anime-day",
+    "isg-anime-night"
+  ],
+  "description": "Explicit design decisions and pinned comparison variants; no production status or image approval implied."
+}

@@ -1,0 +1,41 @@
+{
+  "id": "isg-octopath-reference",
+  "kind": "style",
+  "name": "Octopath II — reference candidate",
+  "description": "Candidate references for environment scale and pools of warm light in a blue night; not an approved game target.",
+  "parent": {
+    "id": "isg-pixel-look",
+    "revision": "c8f616a75795ef947b182b79df2fecff3737efe4c8aa0f84c352ad76f19f6033"
+  },
+  "world": null,
+  "transform": {
+    "operation": "design_variant",
+    "goal": "Candidate references for environment scale and pools of warm light in a blue night; not an approved game target.",
+    "changes": [],
+    "preserve": [
+      "Accepted game rules and cited compatibility pins."
+    ],
+    "avoid": []
+  },
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "Assistant-selected official reference, not a user commitment.",
+    "decision.date": "2026-10-08",
+    "decision.state": "Maybe",
+    "reference.avoid": "Do not adopt tiny actors or strong blur that prevents battlefield reading.",
+    "reference.borrow": "Spatial depth and motivated light.",
+    "source.assets": "img04.jpg: dock/environment scale; img13.jpg: night light pools.",
+    "source.url": "https://www.jp.square-enix.com/octopathtraveler2/about/"
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

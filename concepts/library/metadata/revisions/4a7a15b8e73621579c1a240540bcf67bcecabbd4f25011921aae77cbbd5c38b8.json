@@ -1,0 +1,27 @@
+{
+  "id": "isg-voxel-look",
+  "kind": "style",
+  "name": "Voxel world — excluded",
+  "description": "A voxel-world direction is explicitly excluded by the user.",
+  "parent": null,
+  "world": null,
+  "transform": null,
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.scope": "Visible world direction; this does not order removal of reusable historical algorithms.",
+    "decision.state": "No"
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

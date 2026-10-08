@@ -1,0 +1,28 @@
+{
+  "id": "isg-pixel-look",
+  "kind": "style",
+  "name": "Pixel world",
+  "description": "Pixel presentation is requested; retain battlefield readability and coherent physical magic.",
+  "parent": null,
+  "world": null,
+  "transform": null,
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.state": "In",
+    "open.technique": "Pixel resolution, lighting technique and sprite/geometry balance are not selected here.",
+    "style.identity": "Pixel presentation, not voxel terrain."
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

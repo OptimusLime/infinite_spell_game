@@ -1,0 +1,33 @@
+{
+  "id": "isg-battlefield",
+  "kind": "environment",
+  "name": "Readable magical battlefield",
+  "description": "Show enough of the battlefield to understand action and scale; retain dark, brooding atmosphere without hiding play.",
+  "parent": null,
+  "world": {
+    "id": "isg-world",
+    "revision": "26924568365d55509723c4044b2eb8f4ee3046820650efc67a462a02afdbda0b"
+  },
+  "transform": null,
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "camera.goal": "Current views are too zoomed. Show combat space, source, target and relevant threats together.",
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.state": "In",
+    "generation.source": "MarkovJunior inheritance is relevant; selecting exact world-generation rules is still open.",
+    "lighting.goal": "Keep spatial and energy silhouettes readable in both visual treatments.",
+    "scale.goal": "Make small and large forms legible; zord-like fighting scale is a user reference, not a new enemy specification."
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

@@ -1,3 +1,5 @@
+> **Current design authority (2026-10-08):** Read [docs/design-direction.md](docs/design-direction.md) first. The current AI film sequence is unapproved as the game specification. Historical notes below are preserved; explicit current decisions take precedence.
+
 # Infinite Spell Game: start here (updated 2026-10-07 evening)
 
 ## The thrust

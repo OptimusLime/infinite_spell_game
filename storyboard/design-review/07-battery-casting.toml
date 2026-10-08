@@ -1,0 +1,5 @@
+title = "In — craft, select, fire, spend energy"
+spoken = ""
+shown = "Acceptance slice: craft and save a spell, select it, fund one cast from a limited supply, fire that exact revision, observe paid work and exhaustion. No hidden automatic refill. Capacity and explicit replenishment remain open."
+action = "Design review only; not a film shot."
+sketch_note = "In requirement; implementation and end-to-end acceptance are not asserted. Concept isg-wand-battery@47d22a9e50c24d28b84e91da13e33da490b2b5ea9b40f49ec04285ca91dc9913. Source: concepts/library and docs/design-direction.md. Media attribution: storyboard/sketches/design-review/README.md. Pinned inputs are not verified compatibility. This off-path card has no film narration; its default work status is unrelated to the design decision."
