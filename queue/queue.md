@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T03:51:00. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T03:56:59. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -8,7 +8,7 @@ Snapshot of queue.db, 2026-10-08T03:51:00. Edit through `app queue` (or `queue/q
 |---|---|---|---|---|---|---|---|
 | 71 | 🟡 doing | Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline |  | storyboard | storyboard-agent | 1 | 2f7d3eb,197cd82 |
 | 70 | 🟡 doing | Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor |  | storyboard | storyboard-agent | 18 |  |
-| 75 | 🟡 doing | Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel |  | spells | game-ui-agent | 2 |  |
+| 75 | 🟡 doing | Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel |  | spells | game-ui-agent | 2 | cc95549,b410077 |
 | 51 | ⚪ todo | Changing screens: the live switch between the pixel town and the ink world (dusk flip) in the town scene |  | shader-graphs | shader-graph-agent | 9 |  |
 | 54 | ⚪ todo | Ink town in Paul's window looks foggy/washed sepia and soft (vs crisp cel sketches): fix the look |  | shader-graphs | shader-graph-agent | 10 |  |
 | 76 | ⚪ todo | Engine: no second visible moon shadow in town scenes (second_shadow=1 shows nothing in pixel town or ink yard); reel shot 'two shadows' needs it |  | world |  | 20 |  |
@@ -25,7 +25,6 @@ Snapshot of queue.db, 2026-10-08T03:51:00. Edit through `app queue` (or `queue/q
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
 | 45 | 🔵 review | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 | dc2b48b |
 | 19 | 🔵 review | On-device fusion (cards 10-11 can't be filmed without it) |  | spells | game-ui-agent | 50 | 873a3aa,4be4b69 |
-| 85 | 🟡 doing | One shared town per scene: spellcraft owns the simulation; the HUD, SpellFx and packages/creatures read the same town (no drift) |  | spells | game-ui-agent | 50 |  |
 | 56 | ⚪ todo | Ink HUD: spell slot key numbers still tiny |  | game-ui | game-ui-agent | 60 |  |
 | 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 70 |  |
 | 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes |  | storyboard | paul | 70 | 56eb78b |
@@ -50,6 +49,7 @@ Snapshot of queue.db, 2026-10-08T03:51:00. Edit through `app queue` (or `queue/q
 | 47 | 🟢 done | Game UI: ink panels still read 'like a website' — brush display font; real data for seed/spells/creatures (stubs today) |  | game-ui |  | 35 | 325c3bb |
 | 9 | 🟢 done | forecasts/omens.toml: what each alignment brings (placeholder lines) |  | weather | weather-agent | 40 | 00ac59d d30d790 9f36134 |
 | 18 | 🟢 done | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it |  | spells | game-ui-agent | 45 | aa8a701 |
+| 85 | 🟢 done | One shared town per scene: spellcraft owns the simulation; the HUD, SpellFx and packages/creatures read the same town (no drift) |  | spells | game-ui-agent | 50 | cc95549 |
 | 17 | 🟢 done | Storyboard: regenerate storyboard.pdf export (stale, old path) |  | storyboard | storyboard-agent | 60 | 56eb78b |
 | 38 | 🟢 done | Storyboard UI under design budget; screenplay; play-order board |  | storyboard |  | 90 |  |
 | 39 | 🟢 done | Storyboard content: 13-card working-day path, 3 judge rounds |  | storyboard |  | 90 |  |
@@ -66,6 +66,7 @@ Snapshot of queue.db, 2026-10-08T03:51:00. Edit through `app queue` (or `queue/q
 | 78 | ⚪ todo | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed |  | video |  | 30 |  |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
 | 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip |  | editor | queue-agent | 1 | 1481051 |
+| 90 | ⚪ todo | Host type list misses SpellFx and Creatures component types (can't place them in scenes) |  | editor | game-ui-agent | 6 |  |
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 | 91ce373 |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |
 | 24 | ⚪ todo | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
