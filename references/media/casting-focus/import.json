@@ -1,0 +1,36 @@
+{
+  "source_commit": "ca3b6bd0",
+  "review_status": "Unreviewed",
+  "images": [
+    {
+      "id": "casting-focus-cel-off",
+      "image": "cel-off.png",
+      "sha256": "04099fbe997f182e4f71c3718293fff2010fb5e337bed32d78a9fda0d8e8672b"
+    },
+    {
+      "id": "casting-focus-cel-mild",
+      "image": "cel-mild.png",
+      "sha256": "6042b4ca4c416128a770681646f5dcc173057a61cdf31dbc3ed487c78fb9c167"
+    },
+    {
+      "id": "casting-focus-cel-stress",
+      "image": "cel-stress.png",
+      "sha256": "5deb03d3842b5df0df1623a058b6ed6f6f955ef39356a9f0d15e3033b0c5a068"
+    },
+    {
+      "id": "casting-focus-pixel-off",
+      "image": "pixel-off.png",
+      "sha256": "206d9026e470e56981a7a5bbf2d66cab0d530864905a98d90a4e97d67cfddc82"
+    },
+    {
+      "id": "casting-focus-pixel-mild",
+      "image": "pixel-mild.png",
+      "sha256": "d8260f0c8c78a9a4c7d7cfb1cc547414ae32b9b4c4e9580791c20516dc101852"
+    },
+    {
+      "id": "casting-focus-pixel-stress",
+      "image": "pixel-stress.png",
+      "sha256": "5a0fa7cc7f8a96f9bdfedfd5244329329542267151f0c2eba2db3e024bcf113b"
+    }
+  ]
+}

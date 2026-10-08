@@ -304,3 +304,51 @@ source_image = "references/media/motion/noita-residual-material-frames.jpg"
 original_sha256 = "1846f5cf159031b831ab1663a4a85a3cb5f5b63539513c11bcae5330d896de2c"
 display_sha256 = "7bbfef504f5418c8be27fc928ad62211541c25617acf7e27f039b205ecea9078"
 conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."
+
+[[images]]
+id = "casting-focus-cel-off"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-cel-1600x960-off.png"
+original_sha256 = "04099fbe997f182e4f71c3718293fff2010fb5e337bed32d78a9fda0d8e8672b"
+display_sha256 = "04099fbe997f182e4f71c3718293fff2010fb5e337bed32d78a9fda0d8e8672b"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-cel-mild"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-cel-1600x960-world-plane.png"
+original_sha256 = "6042b4ca4c416128a770681646f5dcc173057a61cdf31dbc3ed487c78fb9c167"
+display_sha256 = "6042b4ca4c416128a770681646f5dcc173057a61cdf31dbc3ed487c78fb9c167"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-cel-stress"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-cel-1600x960-stress24-world-plane.png"
+original_sha256 = "5deb03d3842b5df0df1623a058b6ed6f6f955ef39356a9f0d15e3033b0c5a068"
+display_sha256 = "5deb03d3842b5df0df1623a058b6ed6f6f955ef39356a9f0d15e3033b0c5a068"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-pixel-off"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-pixel-1100x800-off.png"
+original_sha256 = "206d9026e470e56981a7a5bbf2d66cab0d530864905a98d90a4e97d67cfddc82"
+display_sha256 = "206d9026e470e56981a7a5bbf2d66cab0d530864905a98d90a4e97d67cfddc82"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-pixel-mild"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-pixel-1100x800-world-plane.png"
+original_sha256 = "d8260f0c8c78a9a4c7d7cfb1cc547414ae32b9b4c4e9580791c20516dc101852"
+display_sha256 = "d8260f0c8c78a9a4c7d7cfb1cc547414ae32b9b4c4e9580791c20516dc101852"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-pixel-stress"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-pixel-1100x800-stress24-world-plane.png"
+original_sha256 = "5a0fa7cc7f8a96f9bdfedfd5244329329542267151f0c2eba2db3e024bcf113b"
+display_sha256 = "5a0fa7cc7f8a96f9bdfedfd5244329329542267151f0c2eba2db3e024bcf113b"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"

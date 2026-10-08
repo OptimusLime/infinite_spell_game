@@ -1,0 +1,43 @@
+{
+  "board": {
+    "board_path": "/Users/paul/coding/infinite_spell_game/references/visual-direction.references.toml",
+    "total": 67,
+    "unreviewed": 67,
+    "accepted": 0,
+    "history_count": 0,
+    "error": "",
+    "review_error": ""
+  },
+  "source_commit": "ca3b6bd0",
+  "native_host_source": "9a430d1f",
+  "verified": [
+    "All six exact imported images match the committed native casting proof",
+    "Category navigation, scrolling to and opening REPLACED, pinning and clearing comparison",
+    "Side-by-side comparisons at 1600x960 and 1100x800",
+    "Source/history reachable by scrolling at 1100x800",
+    "No review or compatibility decisions saved"
+  ],
+  "capture_scope": "Native host rendered framebuffers, not OS-compositor acceptance or a performance measurement",
+  "images": [
+    {
+      "file": "comparison-1100.png",
+      "sha256": "7da80c65cee15cef4dc6c7b94c0ac9d86da77a1c2638ed681b84153ca7a58592"
+    },
+    {
+      "file": "comparison-1600.png",
+      "sha256": "09d708c6f42779848c47694ef580b734e982d8c4d2defaeeee673b1e1a9eece0"
+    },
+    {
+      "file": "overview-1600.png",
+      "sha256": "56a582a6f5684c9a13f7c5eee6eb87d75c64d0d0611ad37ac6856cffa0ef3ce6"
+    },
+    {
+      "file": "pixel-group-1100.png",
+      "sha256": "6994be987e072d31f3b5a07ed73fe0b859aa91f3db64a308912a87ce65030642"
+    },
+    {
+      "file": "source-history-1100.png",
+      "sha256": "cb7930eebcb2bc73f41ff80b022d3d45ba3c0f57739fd6fdedcd67152a15894f"
+    }
+  ]
+}
