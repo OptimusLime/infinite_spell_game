@@ -1,0 +1,342 @@
+{
+  "task": 108,
+  "approved": false,
+  "conditions": [
+    "Same 1280×720 scene design and 1216×684 native scene screenshot",
+    "Time0, hour22.5, same actors and geometry within each look",
+    "Production scenes unchanged; six isolated engineering scene files",
+    "All controls use blur0 in the same CPU lens path as blur 6; renderer sampling discrepancy tracked separately as126"
+  ],
+  "images": [
+    {
+      "id": "pixel-close",
+      "file": "proof/editor/camera-study/pixel-close.png",
+      "width": 1216,
+      "height": 684,
+      "sha256": "efbaeb558097d459596bba466a5247c4c5d58113714bf5279e363540768ecfca",
+      "camera": {
+        "dolly": 0,
+        "follow": "",
+        "fov": 42,
+        "hour": 22.5,
+        "lens": [
+          {
+            "blur": 0,
+            "centre": 0.57,
+            "focus": 0.72,
+            "kind": "tilt-shift"
+          }
+        ],
+        "look_x": -1.5,
+        "look_y": 0,
+        "look_z": 1.8,
+        "orthographic": true,
+        "pan_x": 0,
+        "pan_z": 0,
+        "pixel": 5,
+        "reference": "",
+        "show": "",
+        "target": "Unreviewed camera experiment; source scene and actor unchanged",
+        "time": 0,
+        "x": -1.5,
+        "y": 10,
+        "z": 19.12
+      },
+      "world": {
+        "bands": 2,
+        "camera": "study",
+        "distance": 40,
+        "fov": 42,
+        "ground": "#d9e4c8",
+        "height": 9,
+        "ink": "#1d2340",
+        "orbit_speed": 6,
+        "outline": 0,
+        "show": "",
+        "show_probes": false,
+        "stage": false,
+        "yaw": 20
+      },
+      "pixel": 5
+    },
+    {
+      "id": "pixel-wide",
+      "file": "proof/editor/camera-study/pixel-wide.png",
+      "width": 1216,
+      "height": 684,
+      "sha256": "08421748a580ac544c2bb8eb2bb11eba83a79685bb7a7a891845d30b8fe2aa9e",
+      "camera": {
+        "dolly": 0,
+        "follow": "",
+        "fov": 42,
+        "hour": 22.5,
+        "lens": [
+          {
+            "blur": 0,
+            "centre": 0.57,
+            "focus": 0.72,
+            "kind": "tilt-shift"
+          }
+        ],
+        "look_x": -1.5,
+        "look_y": 0,
+        "look_z": 1.8,
+        "orthographic": true,
+        "pan_x": 0,
+        "pan_z": 0,
+        "pixel": 3,
+        "reference": "",
+        "show": "",
+        "target": "Unreviewed camera experiment; source scene and actor unchanged",
+        "time": 0,
+        "x": -1.5,
+        "y": 16,
+        "z": 17.8
+      },
+      "world": {
+        "bands": 2,
+        "camera": "study",
+        "distance": 40,
+        "fov": 42,
+        "ground": "#d9e4c8",
+        "height": 9,
+        "ink": "#1d2340",
+        "orbit_speed": 6,
+        "outline": 0,
+        "show": "",
+        "show_probes": false,
+        "stage": false,
+        "yaw": 20
+      },
+      "pixel": 5
+    },
+    {
+      "id": "pixel-wide-lens",
+      "file": "proof/editor/camera-study/pixel-wide-lens.png",
+      "width": 1216,
+      "height": 684,
+      "sha256": "29f24e783488b3329c10699b32e1d0a35fbd9f6b76d7e47f0a5b8e249b019d0b",
+      "camera": {
+        "dolly": 0,
+        "follow": "",
+        "fov": 42,
+        "hour": 22.5,
+        "lens": [
+          {
+            "blur": 6,
+            "centre": 0.57,
+            "focus": 0.72,
+            "kind": "tilt-shift"
+          }
+        ],
+        "look_x": -1.5,
+        "look_y": 0,
+        "look_z": 1.8,
+        "orthographic": true,
+        "pan_x": 0,
+        "pan_z": 0,
+        "pixel": 3,
+        "reference": "",
+        "show": "",
+        "target": "Unreviewed camera experiment; source scene and actor unchanged",
+        "time": 0,
+        "x": -1.5,
+        "y": 16,
+        "z": 17.8
+      },
+      "world": {
+        "bands": 2,
+        "camera": "study",
+        "distance": 40,
+        "fov": 42,
+        "ground": "#d9e4c8",
+        "height": 9,
+        "ink": "#1d2340",
+        "orbit_speed": 6,
+        "outline": 0,
+        "show": "",
+        "show_probes": false,
+        "stage": false,
+        "yaw": 20
+      },
+      "pixel": 5
+    },
+    {
+      "id": "cel-close",
+      "file": "proof/editor/camera-study/cel-close.png",
+      "width": 1216,
+      "height": 684,
+      "sha256": "a2b778dae3f01041b0a24ade159b71e17cd9a7d8b14c18ef3bb70d5f93796edf",
+      "camera": {
+        "dolly": 0,
+        "follow": "",
+        "fov": 42,
+        "hour": 22.5,
+        "lens": [
+          {
+            "blur": 0,
+            "centre": 0.57,
+            "focus": 0.72,
+            "kind": "tilt-shift"
+          }
+        ],
+        "look_x": -0.7,
+        "look_y": 1.6,
+        "look_z": 0.5,
+        "orthographic": false,
+        "pan_x": 0,
+        "pan_z": 0,
+        "pixel": 0,
+        "reference": "",
+        "show": "",
+        "target": "Unreviewed camera experiment; source scene and actor unchanged",
+        "time": 0,
+        "x": 3.33,
+        "y": 7.1,
+        "z": 9.13
+      },
+      "world": {
+        "bands": 2,
+        "camera": "study",
+        "distance": 40,
+        "fov": 42,
+        "ground": "#d9e4c8",
+        "height": 9,
+        "ink": "#1d2340",
+        "orbit_speed": 6,
+        "outline": 2.2,
+        "show": "",
+        "show_probes": false,
+        "stage": false,
+        "yaw": 20
+      },
+      "pixel": 1
+    },
+    {
+      "id": "cel-wide",
+      "file": "proof/editor/camera-study/cel-wide.png",
+      "width": 1216,
+      "height": 684,
+      "sha256": "acbcae4d7f76ed4987bfee756386fa74fe913ade8a42cdbab446958ebaada133",
+      "camera": {
+        "dolly": 0,
+        "follow": "",
+        "fov": 42,
+        "hour": 22.5,
+        "lens": [
+          {
+            "blur": 0,
+            "centre": 0.57,
+            "focus": 0.72,
+            "kind": "tilt-shift"
+          }
+        ],
+        "look_x": -0.7,
+        "look_y": 0.6,
+        "look_z": 0.5,
+        "orthographic": false,
+        "pan_x": 0,
+        "pan_z": 0,
+        "pixel": 0,
+        "reference": "",
+        "show": "",
+        "target": "Unreviewed camera experiment; source scene and actor unchanged",
+        "time": 0,
+        "x": 9.4,
+        "y": 18,
+        "z": 18
+      },
+      "world": {
+        "bands": 2,
+        "camera": "study",
+        "distance": 40,
+        "fov": 42,
+        "ground": "#d9e4c8",
+        "height": 9,
+        "ink": "#1d2340",
+        "orbit_speed": 6,
+        "outline": 2.2,
+        "show": "",
+        "show_probes": false,
+        "stage": false,
+        "yaw": 20
+      },
+      "pixel": 1
+    },
+    {
+      "id": "cel-wide-lens",
+      "file": "proof/editor/camera-study/cel-wide-lens.png",
+      "width": 1216,
+      "height": 684,
+      "sha256": "e7f9a8c1c902702583b506166551c79b23751a88b90e6ceee66add0bb1f206c8",
+      "camera": {
+        "dolly": 0,
+        "follow": "",
+        "fov": 42,
+        "hour": 22.5,
+        "lens": [
+          {
+            "blur": 6,
+            "centre": 0.57,
+            "focus": 0.72,
+            "kind": "tilt-shift"
+          }
+        ],
+        "look_x": -0.7,
+        "look_y": 0.6,
+        "look_z": 0.5,
+        "orthographic": false,
+        "pan_x": 0,
+        "pan_z": 0,
+        "pixel": 0,
+        "reference": "",
+        "show": "",
+        "target": "Unreviewed camera experiment; source scene and actor unchanged",
+        "time": 0,
+        "x": 9.4,
+        "y": 18,
+        "z": 18
+      },
+      "world": {
+        "bands": 2,
+        "camera": "study",
+        "distance": 40,
+        "fov": 42,
+        "ground": "#d9e4c8",
+        "height": 9,
+        "ink": "#1d2340",
+        "orbit_speed": 6,
+        "outline": 2.2,
+        "show": "",
+        "show_probes": false,
+        "stage": false,
+        "yaw": 20
+      },
+      "pixel": 1
+    }
+  ],
+  "sharp_band_checks": [
+    {
+      "look": "pixel",
+      "central_half_byte_identical": true,
+      "sha256": "653dd41fbef72f6c8469b818989166a7d3adc1c27dd4b120eccd26c811cb4183"
+    },
+    {
+      "look": "cel",
+      "central_half_byte_identical": true,
+      "sha256": "f5fa29c6ea493ec80c70b01db960efcaad839aadd819337c7d4cf67bb227974d"
+    }
+  ],
+  "findings": [
+    "Wider views expose more traversable ground and side approaches, while reducing player screen size.",
+    "Existing pixel sprites flatten into the elevated view; this is not a new art-style proposal.",
+    "Current cel environment remains very dark outside local lights; camera coverage does not resolve actor/threat contrast.",
+    "Blur6 only softens outer rows while the central half remains exactly unchanged. It does not create physical depth-dependent focus."
+  ],
+  "limits": [
+    "No aiming reticle, spell/target/travel proof or HUD is in these studies. Those belong to tasks 101, 109 and 104.",
+    "Pixel/cel scenes use their existing separate geometry; only within-look comparisons hold geometry constant.",
+    "Existing effect is a screen-space horizontal sharp band, not a tilted optical focus plane.",
+    "No world mechanic, camera style, storyboard shot or source reference has been accepted."
+  ]
+}

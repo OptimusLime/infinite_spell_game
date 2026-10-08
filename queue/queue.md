@@ -1,18 +1,18 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T15:51:55. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T16:44:18. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-6 open / 23 total · 1 doing · 5 review · 17 done · 0 ready todos
+4 open / 23 total · 1 doing · 3 review · 19 done · 0 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-1 open / 6 total · 0 doing · 1 review · 5 done · 0 ready todos
+1 open / 6 total · 1 doing · 0 review · 5 done · 0 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Current dashboard redesign follows Paul-approved goals; implementation is in progress.
 
@@ -23,13 +23,13 @@ Understand what we are making, what is happening now, what is ready or blocked, 
 
 #### Work model (`tracker.model`)
 
-1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
 
 Rust types define work parts, tasks, relationship kinds, status and dashboard projections. JSON and tables are conversion boundaries; business rules stay in typed code.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip | queue-agent |  |
+| 73 | 🟡 doing | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip | queue-agent |  |
 | 111 | 🟢 done | Typed work model and data bindings | codex-tracker |  |
 
 #### Queue database (`tracker.database`)
@@ -66,16 +66,16 @@ Preserve decisions, notes, source evidence and task changes. Search exact passag
 
 ### Claude and Codex sessions (`engine.sessions`)
 
-3 open / 4 total · 1 doing · 2 review · 1 done · 0 ready todos
+1 open / 4 total · 0 doing · 1 review · 3 done · 0 ready todos
 
 Provider-neutral embedded rmux sessions, routing, visibility and process lifecycle.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 62 | 🔵 review | Shell commands in a session can write outside its owned files (only instructions stop it) | queue-agent |  |
-| 26 | 🔵 review | One Claude session per window/tab | queue-agent |  |
-| 61 | 🟡 doing | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) | codex-coordinator |  |
 | 94 | 🟢 done | Support Claude and Codex in the same native session interface | codex-provider |  |
+| 26 | 🟢 done | One Claude session per window/tab | queue-agent |  |
+| 61 | 🟢 done | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) | codex-coordinator |  |
 
 ### Collaboration (`engine.collab`)
 
@@ -119,7 +119,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-11 open / 23 total · 0 doing · 2 review · 11 done · 0 ready todos
+10 open / 24 total · 0 doing · 1 review · 13 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -137,7 +137,7 @@ Reusable storyboard authoring tool: hierarchical groups, relationships, paths an
 
 ### Video Sequencer (`engine.video`)
 
-2 open / 4 total · 0 doing · 2 review · 2 done · 0 ready todos
+1 open / 5 total · 0 doing · 1 review · 4 done · 0 ready todos
 
 Reusable video assembly and playback tool: source clips, timing, titles, narration, music and export. Individual edits are separate content artifacts.
 
@@ -153,14 +153,15 @@ Typed Cut, Shot, Source, Music and caption records describe a video edit indepen
 
 #### Native playback (`video.player`)
 
-1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+0 open / 3 total · 0 doing · 0 review · 3 done · 0 ready todos
 
 Play and inspect a cut inside the app engine, including cuts authored in a different project with project-relative source paths.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 80 | 🔵 review | Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor | runtime-agent |  |
+| 80 | 🟢 done | Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor | runtime-agent |  |
 | 28 | 🟢 done | Video playback inside the engine (no HTML hub) | runtime-agent |  |
+| 124 | 🟢 done | Make short motion clips precise to review in the native video player | codex-coordinator |  |
 
 #### Video export (`video.export`)
 
@@ -230,7 +231,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-23 open / 49 total · 1 doing · 9 review · 25 done · 0 ready todos
+22 open / 49 total · 2 doing · 9 review · 26 done · 1 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -258,13 +259,13 @@ Town layout, seed planting and shared scene structure.
 
 ### Physical spell system (`game.magic`)
 
-5 open / 7 total · 0 doing · 2 review · 2 done · 0 ready todos
+5 open / 7 total · 1 doing · 2 review · 2 done · 0 ready todos
 
 Spellcraft, input-driven casting, spell effects and the shared authoritative town state.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 109 | ⚪ todo | Implement authored-spell select, aim and fire interaction |  |  |
+| 109 | 🟡 doing | Implement authored-spell select, aim and fire interaction | codex-coordinator |  |
 | 75 | 🔴 blocked | Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel | game-ui-agent |  |
 | 83 | ⚪ todo | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) | game-ui-agent |  |
 | 64 | 🔵 review | Play keys drive casting (today the town auto-casts every 8 s) | game-ui-agent |  |
@@ -301,14 +302,14 @@ Game-facing equipment, inventory and power displays composed from reusable UI co
 
 ### Gameplay camera and scale (`game.camera`)
 
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Compare readable gameplay scale, wider battlefield framing and tilt/lens variants without inventing numeric settings or a film camera.
 Planned after: engine.review, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 108 | ⚪ todo | Compare gameplay camera scale and tilt/lens variants |  |  |
+| 108 | 🟢 done | Compare gameplay camera scale and tilt/lens variants | codex-coordinator |  |
 
 ### Pixel and ink/cel looks (`game.looks`)
 
@@ -359,7 +360,7 @@ Creature simulation, visibility, animation and polish across looks.
 
 ### Reference and moodboard decisions (`game.references`)
 
-1 open / 8 total · 0 doing · 0 review · 7 done · 0 ready todos
+1 open / 8 total · 0 doing · 0 review · 7 done · 1 ready todos
 
 Review existing candidate inputs and concept revisions into explicit In/Maybe/No/Future decisions, separate from storyboard and film production.
 Planned after: engine.references, engine.review
@@ -437,31 +438,33 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-8 open / 28 total · 1 doing · 2 review · 20 done · 1 ready todos
+7 open / 31 total · 1 doing · 1 review · 24 done · 0 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-4 open / 19 total · 0 doing · 1 review · 15 done · 1 ready todos
+4 open / 21 total · 1 doing · 0 review · 17 done · 0 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
 #### Renderer and performance (`engine.renderer`)
 
-4 open / 9 total · 0 doing · 1 review · 5 done · 1 ready todos
+4 open / 11 total · 1 doing · 0 review · 7 done · 0 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 22 | 🔵 review | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | renderer-agent |  |
-| 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | renderer-agent |  |
+| 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
+| 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 24 | 🔴 blocked | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default | renderer-agent |  |
 | 25 | 🔴 blocked | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push | renderer-agent |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
 | 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up | renderer-agent |  |
 | 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff | renderer-agent |  |
+| 125 | 🟢 done | Preserve the full pixel camera view in smaller editor previews | codex-coordinator |  |
+| 126 | 🟢 done | Keep pixel preview sampling consistent between GPU and CPU lens paths | codex-coordinator |  |
 | 37 | 🟢 done | Editor perf patch rounds (damage, caches, meter, scroll, one window, storyboard tab) |  |  |
 | 41 | 🟢 done | Renderer research (4 lanes + recommendation: Skia Ganesh on wgpu Metal) |  |  |
 
@@ -492,6 +495,16 @@ Shared editor interaction correctness.
 |---|---|---|---|---|
 | 29 | 🟢 done | layout_matrix: welcome-modal 4 px spill | runtime-agent |  |
 | 30 | 🟢 done | button_press test failing (cause untraced) | runtime-agent |  |
+
+### Spell runtime and finite casting (`engine.spellcraft`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+Typed Rust spell definitions, validated cartridge composition over generic Inventory/Equipment, idempotent cast admission, physics adapter and normalized Data projections. The game consumes these APIs through a separate native player component.
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 127 | 🟢 done | Reusable finite cartridge and authored casting core |  |  |
 
 ### Data Layer (`engine.data`)
 
@@ -573,14 +586,14 @@ Registry install/publish workflows and publication blockers.
 
 ### Generic inventory (`engine.inventory`)
 
-1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
+0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
 
 Shared item identity, container/grid capacity, movement and expansion primitives. No mana-specific container API.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 123 | 🟡 doing | Create reusable grid inventory UI over the typed Inventory component | codex-coordinator |  |
 | 98 | 🟢 done | Create a reusable generic grid inventory and stable item identities | codex-coordinator |  |
+| 123 | 🟢 done | Create reusable grid inventory UI over the typed Inventory component | codex-coordinator |  |
 
 ### Generic equipment (`engine.equipment`)
 
