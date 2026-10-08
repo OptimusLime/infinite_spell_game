@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T22:55:03. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T23:07:17. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -45,15 +45,18 @@ Snapshot of queue.db, 2026-10-07T22:55:03. Edit through `app queue` (or `queue/q
 |---|---|---|---|---|---|---|---|
 | 50 | 🟡 doing | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
-| 57 | ⚪ todo | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 |  |
+| 63 | 🟡 doing | Shared build broken: duplicate component-spellcraft package |  | hygiene | game-ui-agent | 1 |  |
+| 57 | 🟡 doing | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 |  |
 | 58 | ⚪ todo | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 |  |
 | 59 | ⚪ todo | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately |  | runtime | runtime-agent | 2 |  |
 | 60 | ⚪ todo | Editor file poll (dir scan, cut list) blocks the main thread for tens of ms — move off main thread |  | runtime | runtime-agent | 2 |  |
 | 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 |  |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |
 | 24 | ⚪ todo | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
-| 26 | 🟡 doing | One Claude session per window/tab |  | editor | queue-agent | 30 |  |
+| 62 | 🟡 doing | Shell commands in a session can write outside its owned files (only instructions stop it) |  | editor | queue-agent | 25 |  |
+| 26 | 🔵 review | One Claude session per window/tab |  | editor | queue-agent | 30 | 5afa9d9,7284b1d (engine) |
 | 25 | 🟡 doing | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push |  | renderer | renderer-agent | 40 |  |
+| 61 | ⚪ todo | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) |  | renderer |  | 45 |  |
 | 28 | ⚪ todo | Video playback inside the engine (no HTML hub) |  | editor |  | 50 |  |
 | 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision |  | hygiene | paul | 50 |  |
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says |  | hygiene | paul | 50 |  |
