@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T05:53:14. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T06:07:45. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -11,7 +11,7 @@ Snapshot of queue.db, 2026-10-08T05:53:14. Edit through `app queue` (or `queue/q
 | 75 | 🟡 doing | Spell VFX in the world, juicy, both looks: wind orb, fire wall, wall of flame, fireball, Hearthglow dud; screen shake/hit flash; for the reel |  | spells | game-ui-agent | 2 | cc95549,b410077 |
 | 51 | ⚪ todo | Changing screens: the live switch between the pixel town and the ink world (dusk flip) in the town scene |  | shader-graphs | shader-graph-agent | 9 |  |
 | 54 | ⚪ todo | Ink town in Paul's window looks foggy/washed sepia and soft (vs crisp cel sketches): fix the look |  | shader-graphs | shader-graph-agent | 10 |  |
-| 76 | 🟡 doing | Engine: no second visible moon shadow in town scenes (second_shadow=1 shows nothing in pixel town or ink yard); reel shot 'two shadows' needs it |  | world | weather-agent | 20 |  |
+| 76 | 🔵 review | Engine: no second visible moon shadow in town scenes (second_shadow=1 shows nothing in pixel town or ink yard); reel shot 'two shadows' needs it |  | world | weather-agent | 20 | 0ae5002 |
 | 77 | 🔵 review | Engine: weather gives embers only in daylight (no orange-moon night embers, no heat haze at night); reel shot 'embers' needs night embers |  | weather | weather-agent | 20 | 9f51b74 |
 | 6 | 🔵 review | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | ca43e28 (game 15e4edd) |
 | 83 | ⚪ todo | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) |  | spells | game-ui-agent | 12 |  |
@@ -77,7 +77,7 @@ Snapshot of queue.db, 2026-10-08T05:53:14. Edit through `app queue` (or `queue/q
 | 61 | ⚪ todo | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) |  | renderer | renderer-agent | 45 |  |
 | 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision |  | hygiene | paul | 50 |  |
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says |  | hygiene | paul | 50 |  |
-| 27 | ⚪ todo | Collaboration server (Rust, websockets, persistent state) |  | collab |  | 55 |  |
+| 27 | 🟡 doing | Collaboration server (Rust, websockets, persistent state) |  | collab | collab-agent | 55 |  |
 | 72 | 🟢 done | ‼️ Shared build broken: component_creatures unresolved in scene-3d |  | hygiene | weather-agent | 1 | f895f87 |
 | 50 | 🟢 done | ‼️ Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
 | 28 | 🟢 done | Video playback inside the engine (no HTML hub) |  | editor | runtime-agent | 50 | e681b97 |
