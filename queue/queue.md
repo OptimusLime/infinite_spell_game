@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T23:07:17. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T23:13:44. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -9,13 +9,14 @@ Snapshot of queue.db, 2026-10-07T23:07:17. Edit through `app queue` (or `queue/q
 | 51 | ⚪ todo | Changing screens: the live switch between the pixel town and the ink world (dusk flip) in the town scene |  | shader-graphs | shader-graph-agent | 9 |  |
 | 54 | ⚪ todo | Ink town in Paul's window looks foggy/washed sepia and soft (vs crisp cel sketches): fix the look |  | shader-graphs | shader-graph-agent | 10 |  |
 | 6 | 🔵 review | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | ca43e28 (game 15e4edd) |
+| 64 | ⚪ todo | Play keys drive casting (today the town auto-casts every 8 s) |  | spells | game-ui-agent | 15 |  |
 | 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
 | 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 30 |  |
 | 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes |  | storyboard | paul | 30 | 56eb78b |
+| 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells |  | 30 |  |
 | 16 | ⚪ todo | Storyboard: real sketches for the 10 cards without engine pictures |  | storyboard |  | 40 |  |
-| 18 | 🟡 doing | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it |  | spells | game-ui-agent | 45 |  |
 | 45 | ⚪ todo | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard |  | 45 |  |
-| 19 | ⚪ todo | On-device fusion (cards 10-11 can't be filmed without it) |  | spells |  | 50 |  |
+| 19 | 🟡 doing | On-device fusion (cards 10-11 can't be filmed without it) |  | spells | game-ui-agent | 50 |  |
 | 56 | ⚪ todo | Ink HUD: spell slot key numbers still tiny |  | game-ui |  | 60 |  |
 | 48 | 🟢 done | Buildings float: base shading/shadow doesn't touch the ground (both looks) |  | shader-graphs | shader-graph-agent | 8 | 6c4a799 |
 | 49 | ⚫ dropped | Houses float: contact shading/shadows offset from building bases (pixel + cel town) |  | shader-graphs | shader-graph-agent | 8 |  |
@@ -34,6 +35,7 @@ Snapshot of queue.db, 2026-10-07T23:07:17. Edit through `app queue` (or `queue/q
 | 15 | 🟢 done | Storyboard yellows: fire-in-snow affects nothing; purple vs orange creatures behave the same; tower wins climax not player |  | storyboard | storyboard-agent | 35 | 56eb78b |
 | 47 | 🟢 done | Game UI: ink panels still read 'like a website' — brush display font; real data for seed/spells/creatures (stubs today) |  | game-ui |  | 35 | 325c3bb |
 | 9 | 🟢 done | forecasts/omens.toml: what each alignment brings (placeholder lines) |  | weather | weather-agent | 40 | 00ac59d d30d790 9f36134 |
+| 18 | 🟢 done | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it |  | spells | game-ui-agent | 45 | aa8a701 |
 | 17 | 🟢 done | Storyboard: regenerate storyboard.pdf export (stale, old path) |  | storyboard | storyboard-agent | 60 | 56eb78b |
 | 38 | 🟢 done | Storyboard UI under design budget; screenplay; play-order board |  | storyboard |  | 90 |  |
 | 39 | 🟢 done | Storyboard content: 13-card working-day path, 3 judge rounds |  | storyboard |  | 90 |  |
@@ -45,7 +47,6 @@ Snapshot of queue.db, 2026-10-07T23:07:17. Edit through `app queue` (or `queue/q
 |---|---|---|---|---|---|---|---|
 | 50 | 🟡 doing | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
-| 63 | 🟡 doing | Shared build broken: duplicate component-spellcraft package |  | hygiene | game-ui-agent | 1 |  |
 | 57 | 🟡 doing | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 |  |
 | 58 | ⚪ todo | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 |  |
 | 59 | ⚪ todo | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately |  | runtime | runtime-agent | 2 |  |
@@ -65,6 +66,7 @@ Snapshot of queue.db, 2026-10-07T23:07:17. Edit through `app queue` (or `queue/q
 | 29 | ⚪ todo | layout_matrix: welcome-modal 4 px spill |  | editor |  | 60 |  |
 | 30 | ⚪ todo | button_press test failing (cause untraced) |  | editor |  | 60 |  |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB |  | hygiene | coordinator | 1 |  |
+| 63 | 🟢 done | Shared build broken: duplicate component-spellcraft package |  | hygiene | game-ui-agent | 1 |  |
 | 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up |  | renderer | renderer-agent | 5 | 8230619 |
 | 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff |  | renderer | renderer-agent | 6 | d10ffa7 |
 | 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ |  | hygiene | coordinator | 15 | b161905 |
