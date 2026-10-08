@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T01:52:43. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T01:54:35. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -14,10 +14,11 @@ Snapshot of queue.db, 2026-10-08T01:52:43. Edit through `app queue` (or `queue/q
 | 76 | ⚪ todo | Engine: no second visible moon shadow in town scenes (second_shadow=1 shows nothing in pixel town or ink yard); reel shot 'two shadows' needs it |  | world |  | 20 |  |
 | 77 | ⚪ todo | Engine: weather gives embers only in daylight (no orange-moon night embers, no heat haze at night); reel shot 'embers' needs night embers |  | weather |  | 20 |  |
 | 6 | 🔵 review | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | ca43e28 (game 15e4edd) |
-| 68 | 🟡 doing | Creatures visible in both looks: climbers and diggers modelled/sprited, animated, rising from the ground per moon (card 7) |  | creatures | weather-agent | 14 |  |
+| 83 | ⚪ todo | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) |  | spells | game-ui-agent | 12 |  |
+| 68 | 🟡 doing | Creatures visible in both looks: climbers and diggers modelled/sprited, animated, rising from the ground per moon (card 7) |  | creatures | weather-agent | 14 | f895f87 9a3b465 1271d7e a7b196d (game 30615be) |
 | 64 | 🔵 review | Play keys drive casting (today the town auto-casts every 8 s) |  | spells | game-ui-agent | 15 | 873a3aa |
 | 16 | 🟡 doing | Storyboard: real sketches for the 10 cards without engine pictures |  | storyboard | storyboard-agent | 16 |  |
-| 69 | ⚪ todo | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 |  |
+| 69 | 🟡 doing | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 | 6b5c988 1271d7e a7b196d (game 30615be) |
 | 79 | ⚪ todo | Engine: pixel town and ink town have different layouts, so the same camera does not line up across the pixel->ink cut; ink look reads sepia not two-tone purple/orange |  | world |  | 20 |  |
 | 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
