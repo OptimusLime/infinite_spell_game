@@ -1,0 +1,5 @@
+title = "Fusion arrives, and a dud"
+spoken = "Six p.m.: Claude installs the last part, fusion, while the night keeps running. A small AI model on the player's machine invents what two spells make. Not always something good: fire then fire, a warm glow that does nothing."
+shown = "Clock 18:00, the same night running: a small overlay in the corner: the Fusion tile installs, while the picture stays in the ink night. The player casts fire then fire: a dull orange glow; its typed entry flashes up, \"Hearthglow · effect: light\", and the creatures walk straight through it."
+status = "todo"
+sketch_note = "Needs the Fusion part and on-device fusion (queue tasks 18, 19); the dud must be a real model output on the shoot day, not staged."

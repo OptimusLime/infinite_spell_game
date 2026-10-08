@@ -167,3 +167,28 @@ order-dependent fusion by an on-device model into typed spells, buildings fusabl
 | 90 | "Ask your agent for it" + "$0" read as an ad; show line counts / raw footage | D J A | 🟡 | For the post text and the shoot |
 
 Final: 14 cards, 434 spoken words (cap 555). Cards updated; path.toml reordered.
+
+## Round 10: round10-draft (queue task 44)
+Taken on before judging (coordinator's list): a dud fusion in card 10 ("fire then fire, a warm glow that does
+nothing"); the weather rule in one line (card 9, the weather agent's rule: purple snow, orange embers, aligned
+firefall); the noon bug is now monsters spawning inside houses (no wall contradiction); cards 4 and 5 are game-first
+(panes as a strip, the forecast as a 3-second overlay), card 2's installs take two seconds (its spoken line
+untouched).
+
+Readings: card 13 🟡 (G: "'I' (Paul) plays it"; A: "the right image"; J: the clock and the AI still look like the
+winner; S: "the one real skill moment is deciding to cast wind into the tower"); dud 🟢 (D: "a nice honest touch";
+S: "shows the model can produce duds"); fire rule 🟢 (no one asked); wall fix 🟢 (no one asked); editor time 🟡 (G
+J A still feel cards 2-5 as setup, ~40 s by A's count).
+
+| # | Issue | Who | | Proposed fix |
+|---|---|---|---|---|
+| 91 | Card 10 too dense: install, model, dud, two orders, typed entries | J A | 🔴 | Split: spells/fusion-arrives (install, model, the dud) and spells/cast-order ("Order matters", big readable icons, entries flash for half a second) |
+| 92 | Fire then fire needs two fire spells; we saw one flake caught | G S | 🔴 | Card 9 shown: the player catches two |
+| 93 | The ring stops as the moons part: "rescued by a timer" | J S | 🔴 | Card 13 shown: the ring stops when the last digger burns; only then do the moons part, "the night's reward" |
+| 94 | Open on the ink night | J A | 🟡 | Card 1 keeps Paul's direction; adds a one-second flip to ink and back after the walk |
+| 95 | "Creature in my shadow" reads as the player's | A | 🟡 | "in its shadow" |
+| 96 | The model invents the perfect counter on the first try; show a failed fusion near the climax | S D | 🟡 | Left (the dud is in card 10) |
+| 97 | Wind and the tower: who made them? Moon town vs seed | D S | 🟡 | Left |
+| 98 | Ad framing at both ends; "$0" into the voice | G D J A | 🟡 | Left for Paul / post text |
+
+Applied: 15 cards, 439 spoken words. Fixes 91-95 not re-judged.

@@ -1,5 +1,5 @@
 title = "Fire into the tower"
 spoken = "The tower is a spell too, so I cast fire into it. The model invents a new tower: slow, then burn."
-shown = "The player casts fire at the watchtower; its spell entry rewrites: sensor \"creature in my shadow\", effect \"slow\" becomes \"slow, then burn\", under a new name; the shadows get burning edges. A creature steps in, slows, and catches fire."
+shown = "The player casts fire at the watchtower; its spell entry rewrites: sensor \"creature in its shadow\", effect \"slow\" becomes \"slow, then burn\", under a new name; the shadows get burning edges. A creature steps in, slows, and catches fire."
 status = "todo"
 sketch_note = "Needs the spell core and on-device fusion (queue tasks 18, 19) before the shoot; nothing to capture yet."

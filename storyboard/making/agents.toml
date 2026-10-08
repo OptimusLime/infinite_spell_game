@@ -1,5 +1,5 @@
 title = "Three sessions, one bug"
-spoken = "Noon. Three jobs left: monsters, spells, weather. I split Claude into three sessions, one per editor window, each changing only its own files. The first build lets monsters walk through walls; the monsters session fixes its own file, and nothing else changes."
-shown = "Clock: 12:00. The Claude pane splits into three, labelled Monsters, Spells, Weather, each docked beside its own editor window. A creature walks straight through a house wall; one line changes in monsters.luau, highlighted; the next run, it walks around. The other two panes keep working."
+spoken = "Noon. I split Claude into three sessions, monsters, spells and weather, each in its own files. The first build spawns monsters inside the houses; the monsters session fixes its own file, and nothing else changes."
+shown = "Clock: 12:00. The game window fills the frame; along its bottom edge, a strip of three Claude panes labelled Monsters, Spells, Weather. A creature appears inside a house and stands in the kitchen; in the Monsters pane one line of monsters.luau lights up; next run, the creatures climb out of the ground in the street."
 status = "todo"
-sketch_note = "Capture on the shoot day: three Claude sessions, one per editor window (engine item 9, not built yet); a real wall-clipping bug and its one-line fix."
+sketch_note = "Capture on the shoot day: the game full frame with a strip of three Claude panes (one session per window is engine item 9, not built yet); a real spawn bug (monsters inside houses) and its one-line fix."

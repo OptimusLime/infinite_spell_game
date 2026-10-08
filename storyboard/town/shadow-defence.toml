@@ -1,6 +1,6 @@
 title = "Shadows that fight"
-spoken = "The spells session made everything a spell: a sensor and an effect. My wind is one; the watchtower is another. Sensor: a creature in my shadow. Effect: slow it."
-shown = "The player's wind spell icon, then the watchtower in the ink night with its spell beside it: sensor \"creature in my shadow\", effect \"slow\". Each moon throws its own coloured shadow from the tower; a creature steps into the purple one and drags to a crawl."
+spoken = "The spells session made everything a spell: a sensor and an effect. My wind is one; the watchtower is another. Sensor: a creature in its shadow. Effect: slow it."
+shown = "The player's wind spell icon, then the watchtower in the ink night with its spell beside it: sensor \"creature in its shadow\", effect \"slow\". Each moon throws its own coloured shadow from the tower; a creature steps into the purple one and drags to a crawl."
 status = "todo"
 sketch = "sketches/world/two-shadows.png"
 sketch_note = "One shadow per moon is in progress (world round 2): sketches/world/two-shadows.png. The sensor/effect spell needs the spell core port (not started)."
