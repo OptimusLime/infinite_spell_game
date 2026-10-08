@@ -1,18 +1,18 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T16:44:18. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T16:55:57. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-4 open / 23 total · 1 doing · 3 review · 19 done · 0 ready todos
+3 open / 23 total · 0 doing · 3 review · 20 done · 0 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-1 open / 6 total · 1 doing · 0 review · 5 done · 0 ready todos
+0 open / 6 total · 0 doing · 0 review · 6 done · 0 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Current dashboard redesign follows Paul-approved goals; implementation is in progress.
 
@@ -23,14 +23,14 @@ Understand what we are making, what is happening now, what is ready or blocked, 
 
 #### Work model (`tracker.model`)
 
-1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
+0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
 
 Rust types define work parts, tasks, relationship kinds, status and dashboard projections. JSON and tables are conversion boundaries; business rules stay in typed code.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 73 | 🟡 doing | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip | queue-agent |  |
 | 111 | 🟢 done | Typed work model and data bindings | codex-tracker |  |
+| 73 | 🟢 done | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip | codex-coordinator |  |
 
 #### Queue database (`tracker.database`)
 
@@ -119,7 +119,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-10 open / 24 total · 0 doing · 1 review · 13 done · 0 ready todos
+10 open / 25 total · 0 doing · 1 review · 14 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -175,7 +175,7 @@ Render the authored cut with source footage, titles, narration, music and captio
 
 ### Reference and Concept Board (`engine.references`)
 
-0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
 
 A reusable comparison/review workspace for reference inputs, concept revisions and compatibility decisions across projects.
 Planned after: engine.tracker
@@ -183,6 +183,7 @@ Planned after: engine.tracker
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 107 | 🟢 done | Build reusable concept/reference-board review and comparison tooling | codex-coordinator |  |
+| 128 | 🟢 done | Keep reference category controls compact so the images lead |  |  |
 
 ### r/AIGameDev posts (`content.aigamedev`)
 
@@ -438,13 +439,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-7 open / 31 total · 1 doing · 1 review · 24 done · 0 ready todos
+7 open / 32 total · 3 doing · 1 review · 25 done · 0 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-4 open / 21 total · 1 doing · 0 review · 17 done · 0 ready todos
+5 open / 22 total · 2 doing · 0 review · 17 done · 0 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -487,12 +488,13 @@ Run app components and update them while the host remains open. Typed data bindi
 
 #### Editor interaction (`engine.editor`)
 
-0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
+1 open / 3 total · 1 doing · 0 review · 2 done · 0 ready todos
 
 Shared editor interaction correctness.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 129 | 🟡 doing | Show scene import failures when opening a document instead of silently displaying another scene |  |  |
 | 29 | 🟢 done | layout_matrix: welcome-modal 4 px spill | runtime-agent |  |
 | 30 | 🟢 done | button_press test failing (cause untraced) | runtime-agent |  |
 
@@ -574,15 +576,15 @@ Consolidated shared applets and preserved historical showcase variants.
 
 ### Registry and publishing (`engine.registry`)
 
-2 open / 3 total · 0 doing · 0 review · 1 done · 0 ready todos
+1 open / 3 total · 1 doing · 0 review · 2 done · 0 ready todos
 
 Registry install/publish workflows and publication blockers.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 67 | 🔴 blocked | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing | queue-agent |  |
-| 66 | ⚪ todo | Marketplace install flow for card 2: Claude installs the 5 world parts from the registry live in the editor (app registry serve, publish) | queue-agent |  |
+| 66 | 🟡 doing | Verify reusable world component installation into a fresh project | codex-coordinator |  |
 | 84 | 🟢 done | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types | codex-coordinator |  |
+| 67 | 🟢 done | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing | codex-coordinator |  |
 
 ### Generic inventory (`engine.inventory`)
 
