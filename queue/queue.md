@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T22:25:05. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T22:54:49. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -45,9 +45,7 @@ Snapshot of queue.db, 2026-10-07T22:25:05. Edit through `app queue` (or `queue/q
 |---|---|---|---|---|---|---|---|
 | 50 | 🟡 doing | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
-| 20 | 🟡 doing | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up |  | renderer | renderer-agent | 5 | 8230619 |
-| 21 | 🔵 review | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff |  | renderer | renderer-agent | 6 | d10ffa7 |
-| 22 | ⚪ todo | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 |  |
+| 22 | 🟡 doing | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 |  |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test |  | renderer | renderer-agent | 7 |  |
 | 24 | ⚪ todo | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
 | 26 | 🟡 doing | One Claude session per window/tab |  | editor | queue-agent | 30 |  |
@@ -60,6 +58,8 @@ Snapshot of queue.db, 2026-10-07T22:25:05. Edit through `app queue` (or `queue/q
 | 29 | ⚪ todo | layout_matrix: welcome-modal 4 px spill |  | editor |  | 60 |  |
 | 30 | ⚪ todo | button_press test failing (cause untraced) |  | editor |  | 60 |  |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB |  | hygiene | coordinator | 1 |  |
+| 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up |  | renderer | renderer-agent | 5 | 8230619 |
+| 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff |  | renderer | renderer-agent | 6 | d10ffa7 |
 | 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ |  | hygiene | coordinator | 15 | b161905 |
 | 35 | 🟢 done | Queue in the editor: a Queue panel that reads queue/queue.db |  | editor | queue-agent | 20 | 463997e a20f33a a6a900d |
 | 42 | 🟢 done | Find who switched Paul's main window to the Game Engine form and dropped the Storyboard tab (restored by coordinator) |  | hygiene | coordinator | 20 |  |
