@@ -1,7 +1,7 @@
-# The reel's made piece (talks/reel-twin-moons.cut.toml), into .atelico/reel-pieces/: the last shot, the ink town's
-# twin moons aligned with fire falling (a real engine clip), with "Infinite Spell Game" small in the lower right (the hero looks up from the lower left),
-# sliding up and fading in over 0.35 s. No black tail: the reel ends on the moons. `app video make` runs it from the
-# project root.
+# The reel's made piece (talks/reel-twin-moons.cut.toml), into .atelico/reel-pieces/: the last shot, the fireball
+# hitting a climber at the seed (a real engine clip), with "Infinite Spell Game" small in the lower right, cut in hard
+# on the impact frame (no fade) and held to the end. No black tail: the reel ends on the impact. `app video make`
+# runs it from the project root.
 #   uv run --with pillow python talks/make-reel-pieces.py
 import subprocess
 from pathlib import Path
@@ -11,8 +11,9 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / ".atelico" / "reel-pieces"
 W, H, FPS = 1920, 1080, 30
-TITLE_CLIP = ROOT / "storyboard/reel/clips/ink-town-twin-moons-aligned-firefall-zoom-3.2s.mp4"
-TITLE_SECONDS = 3.2
+TITLE_CLIP = ROOT / "storyboard/reel/clips/ink-town-fireball-impact-on-climber-from-flight-1.6s.mp4"
+# the clip's first frame of the burst (the fireball meets the climber): the title cuts in on it
+IMPACT_FRAME = 11
 TITLE = "Infinite Spell Game"
 FONT = ROOT / "editor/fonts/Roobert-SemiBold.ttf"
 CREAM = (250, 244, 232, 255)
@@ -23,19 +24,15 @@ def ffmpeg(*args: str) -> None:
 
 
 def lower_third(png: Path) -> None:
-    """The title small in the lower right: cream type on a soft shadow over a faint dark floor, no box."""
+    """The title small in the lower right: cream type on a soft shadow, no box, no floor."""
     size = 46
     font = ImageFont.truetype(str(FONT), size)
-    # a soft dark floor under it, so cream reads on the snow
+    # no floor (it would cut in with the title and darken the frame at once): a soft dark shadow round the type alone
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    floor = ImageDraw.Draw(layer)
-    for row in range(int(H * 0.62), H):
-        k = (row - H * 0.62) / (H * 0.38)
-        floor.line([(0, row), (W, row)], fill=(12, 8, 32, int(110 * k * k)))
     x, y = W - 96 - int(ImageDraw.Draw(layer).textlength(TITLE, font=font)), int(H * 0.84)
     shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    ImageDraw.Draw(shadow).text((x + 2, y + 3), TITLE, font=font, fill=(10, 8, 30, 200))
-    layer = Image.alpha_composite(layer, shadow.filter(ImageFilter.GaussianBlur(6)))
+    ImageDraw.Draw(shadow).text((x + 2, y + 3), TITLE, font=font, fill=(10, 8, 30, 235), stroke_width=6, stroke_fill=(10, 8, 30, 160))
+    layer = Image.alpha_composite(layer, shadow.filter(ImageFilter.GaussianBlur(9)))
     ImageDraw.Draw(layer).text((x, y), TITLE, font=font, fill=CREAM)
     layer.save(png)
 
@@ -43,13 +40,12 @@ def lower_third(png: Path) -> None:
 def title_shot(out: Path) -> None:
     png = OUT / "title-lower-third.png"
     lower_third(png)
-    # in at 0.5 s: up 18 px and from clear to full over 0.35 s (eased), then held
-    rise = "18*pow(1-min(max((t-0.5)/0.35,0),1),2)"
-    vf = f"[0:v]scale={W}:{H}:flags=lanczos,fps={FPS}[b];[1:v]format=rgba,fade=t=in:st=0.5:d=0.35:alpha=1[t];[b][t]overlay=x=0:y='{rise}',format=yuv420p[v]"
-    ffmpeg("-i", str(TITLE_CLIP), "-loop", "1", "-framerate", str(FPS), "-i", str(png), "-filter_complex", vf, "-map", "[v]", "-t", str(TITLE_SECONDS), "-c:v", "libx264", "-crf", "16", str(out))
+    # cut in on the impact frame: off before it, full after it, no fade
+    vf = f"[0:v]scale={W}:{H}:flags=lanczos,fps={FPS}[b];[b][1:v]overlay=0:0:shortest=1:enable='gte(n,{IMPACT_FRAME})',format=yuv420p[v]"
+    ffmpeg("-i", str(TITLE_CLIP), "-loop", "1", "-framerate", str(FPS), "-i", str(png), "-filter_complex", vf, "-map", "[v]", "-shortest", "-c:v", "libx264", "-crf", "16", str(out))
 
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    title_shot(OUT / "title-ink-town-twin-moons-lower-right-3.2s.mp4")
+    title_shot(OUT / "title-fireball-impact-cut-in-1.6s.mp4")
     print(f"made {OUT}")
