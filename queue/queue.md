@@ -1,12 +1,12 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T19:13:12. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T19:57:40. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-2 open / 25 total · 0 doing · 2 review · 23 done · 0 ready todos
+3 open / 26 total · 1 doing · 2 review · 23 done · 0 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
@@ -101,13 +101,14 @@ Implementation and technical validation precede a separate review of the working
 
 ### Build, integration and verification (`engine.build`)
 
-1 open / 11 total · 0 doing · 1 review · 10 done · 0 ready todos
+2 open / 12 total · 1 doing · 1 review · 10 done · 0 ready todos
 
 Consolidation, repository hygiene, verified checkpoints and proof. Existing done statuses remain historical agent reports.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says | paul |  |
+| 143 | 🟡 doing | Publish and activate the verified shared component updates | codex-coordinator |  |
 | 72 | 🟢 done | Shared build broken: component_creatures unresolved in scene-3d | weather-agent |  |
 | 91 | 🟢 done | Shared build broken: paint-skia gpu.rs texture() signature mismatch (renderer step 5) | renderer-agent |  |
 | 93 | 🟢 done | Consolidate engine lanes and preserve all worktree/checkpoint history | codex-coordinator |  |
@@ -121,7 +122,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-4 open / 25 total · 0 doing · 1 review · 14 done · 0 ready todos
+3 open / 25 total · 0 doing · 0 review · 15 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -139,19 +140,19 @@ Reusable storyboard authoring tool: hierarchical groups, relationships, paths an
 
 ### Video Sequencer (`engine.video`)
 
-1 open / 5 total · 0 doing · 1 review · 4 done · 0 ready todos
+0 open / 5 total · 0 doing · 0 review · 5 done · 0 ready todos
 
 Reusable video assembly and playback tool: source clips, timing, titles, narration, music and export. Individual edits are separate content artifacts.
 
 #### Timeline and cut model (`video.timeline`)
 
-1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Typed Cut, Shot, Source, Music and caption records describe a video edit independently of its editor UI.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 78 | 🔵 review | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed | runtime-agent |  |
+| 78 | 🟢 done | Invalidate rendered shots after title placement, size or fade edits | codex-coordinator |  |
 
 #### Native playback (`video.player`)
 
@@ -234,7 +235,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-17 open / 50 total · 2 doing · 7 review · 30 done · 1 ready todos
+15 open / 50 total · 1 doing · 7 review · 32 done · 1 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -290,13 +291,13 @@ Planned after: engine.equipment, engine.inventory, game.design
 
 ### Game HUD (`game.hud`)
 
-1 open / 6 total · 0 doing · 0 review · 5 done · 0 ready todos
+0 open / 6 total · 0 doing · 0 review · 6 done · 0 ready todos
 
 Game-facing equipment, inventory and power displays composed from reusable UI components. The confirmed power display sums remaining energy in inventory cartridges; generic inventory/equipment remain shared systems.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 56 | ⚪ todo | Ink HUD: spell slot key numbers still tiny | game-ui-agent |  |
+| 56 | 🟢 done | Ink HUD: spell slot key numbers still tiny | codex-coordinator |  |
 | 10 | 🟢 done | In-game UI spec docs/game-ui.md (seed ring, moon clock, spell slots, prompts, wave counter...) judged | game-ui-agent |  |
 | 11 | 🟢 done | packages/game-ui kit in both looks, placed in the moon town scenes | game-ui-agent |  |
 | 53 | 🟢 done | HUD bugs: stub 'Night 3' vs schedule day 30; ink chip says align in 4h40m while moons aligned; ink fire icon reads as water drop; spell bar touches bottom edge | game-ui-agent |  |
@@ -305,14 +306,14 @@ Game-facing equipment, inventory and power displays composed from reusable UI co
 
 ### Gameplay camera and scale (`game.camera`)
 
-1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
+0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
 
 Compare readable gameplay scale, wider battlefield framing and tilt/lens variants without inventing numeric settings or a film camera.
 Planned after: engine.review, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 140 | 🟡 doing | Compare depth-aware tilt focus during actual casting | codex-coordinator |  |
+| 140 | 🟢 done | Compare depth-aware tilt focus during actual casting | codex-coordinator |  |
 | 108 | 🟢 done | Compare gameplay camera scale and tilt/lens variants | codex-coordinator |  |
 
 ### Pixel and ink/cel looks (`game.looks`)
@@ -442,13 +443,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-4 open / 41 total · 2 doing · 1 review · 37 done · 0 ready todos
+5 open / 43 total · 3 doing · 1 review · 38 done · 0 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-3 open / 26 total · 2 doing · 0 review · 23 done · 0 ready todos
+3 open / 27 total · 2 doing · 0 review · 24 done · 0 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -466,8 +467,8 @@ Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 24 | 🟡 doing | Complete GPU component drawing and post-effect parity | codex-coordinator |  |
+| 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 25 | 🔴 blocked | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push | renderer-agent |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
 | 22 | 🟢 done | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
@@ -498,12 +499,13 @@ Run app components and update them while the host remains open. Typed data bindi
 
 #### Editor interaction (`engine.editor`)
 
-0 open / 3 total · 0 doing · 0 review · 3 done · 0 ready todos
+0 open / 4 total · 0 doing · 0 review · 4 done · 0 ready todos
 
 Shared editor interaction correctness.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 142 | 🟢 done | Redraw paused app scenes when viewport sizing changes | codex-coordinator |  |
 | 129 | 🟢 done | Show scene import failures when opening a document instead of silently displaying another scene |  |  |
 | 29 | 🟢 done | layout_matrix: welcome-modal 4 px spill | runtime-agent |  |
 | 30 | 🟢 done | button_press test failing (cause untraced) | runtime-agent |  |
@@ -602,12 +604,13 @@ Consolidated shared applets and preserved historical showcase variants.
 
 ### Registry and publishing (`engine.registry`)
 
-0 open / 4 total · 0 doing · 0 review · 4 done · 0 ready todos
+1 open / 5 total · 1 doing · 0 review · 4 done · 0 ready todos
 
 Registry install/publish workflows and publication blockers.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 144 | 🟡 doing | Detect native component upgrades that require a rebuilt host | codex-coordinator |  |
 | 84 | 🟢 done | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types | codex-coordinator |  |
 | 67 | 🟢 done | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing | codex-coordinator |  |
 | 66 | 🟢 done | Verify reusable world component installation into a fresh project | codex-coordinator |  |
