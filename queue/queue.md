@@ -1,18 +1,20 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T21:36:41. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T21:38:24. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
 | # | | Task | Group | Lane | Owner | P | Commits |
 |---|---|---|---|---|---|---|---|
 | 48 | 🟡 doing | Buildings float: base shading/shadow doesn't touch the ground (both looks) |  | shader-graphs | shader-graph-agent | 8 |  |
+| 49 | ⚪ todo | Houses float: contact shading/shadows offset from building bases (pixel + cel town) |  | shader-graphs | shader-graph-agent | 8 |  |
+| 51 | ⚪ todo | Changing screens: the live switch between the pixel town and the ink world (dusk flip) in the town scene |  | shader-graphs | shader-graph-agent | 9 |  |
 | 5 | 🟡 doing | Weather state as a function of the two moons (snow / embers / fire-in-snow + steam), seeded, tested |  | weather | weather-agent | 10 | 00ac59d |
 | 6 | 🟡 doing | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | 00ac59d |
 | 11 | 🟡 doing | packages/game-ui kit in both looks, placed in the moon town scenes |  | game-ui | game-ui-agent | 12 | 27100bb 90d6a8d e189974 2d75df9 93cc17c |
-| 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 15 | 0cc6556 d937ff2 |
 | 7 | 🟡 doing | In-game forecast panel (game UI, not editor), drawn with the game-ui kit |  | weather | weather-agent | 15 | 00ac59d |
 | 8 | 🟡 doing | Card 5 and card 7 sketches (forecast in-game, fire in the snow) |  | weather | weather-agent | 20 |  |
+| 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
 | 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 30 |  |
 | 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes |  | storyboard | paul | 30 | 56eb78b |
 | 47 | ⚪ todo | Game UI: ink panels still read 'like a website' — brush display font; real data for seed/spells/creatures (stubs today) |  | game-ui |  | 35 |  |
@@ -38,6 +40,8 @@ Snapshot of queue.db, 2026-10-07T21:36:41. Edit through `app queue` (or `queue/q
 | # | | Task | Group | Lane | Owner | P | Commits |
 |---|---|---|---|---|---|---|---|
 | 46 | ⚪ todo | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB |  | hygiene |  | 1 |  |
+| 50 | 🟡 doing | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
+| 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
 | 20 | 🟡 doing | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up |  | renderer | renderer-agent | 5 | 8230619 |
 | 21 | 🔵 review | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff |  | renderer | renderer-agent | 6 | d10ffa7 |
 | 22 | ⚪ todo | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu|gpu, runtime switch |  | renderer | renderer-agent | 7 |  |
