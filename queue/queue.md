@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T06:41:06. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T06:53:36. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
@@ -64,7 +64,7 @@ Snapshot of queue.db, 2026-10-08T06:41:06. Edit through `app queue` (or `queue/q
 | 67 | 🟡 doing | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing |  | marketplace | queue-agent | 11 |  |
 | 26 | 🔵 review | One Claude session per window/tab |  | editor | queue-agent | 30 | 5afa9d9,7284b1d (engine) |
 | 80 | 🔵 review | Engine video: play a cut from another project in the editor (cut paths are project-relative; game repo has no editor-video-viewer or [settings.ai]); reel must be playable in Paul's editor |  | video | runtime-agent | 15 | 739ba4b 7c1f211 |
-| 78 | 🔵 review | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed |  | video | runtime-agent | 30 | 044b965 447c35c |
+| 78 | 🔵 review | Engine video: cut format lacks a sized lower-third title (label chip only), a black/fade-out shot, and any music bed |  | video | runtime-agent | 30 | 044b965 447c35c 460d6b6 |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
 | 73 | 🔵 review | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip |  | editor | queue-agent | 1 | 1481051 |
 | 90 | 🔵 review | Host type list misses SpellFx and Creatures component types (can't place them in scenes) |  | editor | game-ui-agent | 6 |  |
@@ -73,7 +73,7 @@ Snapshot of queue.db, 2026-10-08T06:41:06. Edit through `app queue` (or `queue/q
 | 24 | 🟡 doing | GPU renderer step 5-7: port components, 3D post effects to GPU (render-3d split with shader agent), gpu default |  | renderer | renderer-agent | 8 |  |
 | 66 | ⚪ todo | Marketplace install flow for card 2: Claude installs the 5 world parts from the registry live in the editor (app registry serve, publish) |  | marketplace | queue-agent | 12 |  |
 | 62 | 🔵 review | Shell commands in a session can write outside its owned files (only instructions stop it) |  | editor | queue-agent | 25 | eeec9c8 |
-| 92 | 🟡 doing | Engine video (044b965): title on a recording shot crashes: work dir not created before brand.title_at runs magick (needs create_dir_all(&work) before crates/cli/src/video/mod.rs:375); also the [music] bed is mixed mono into the voice track |  | video | runtime-agent | 25 |  |
+| 92 | 🔵 review | Engine video (044b965): title on a recording shot crashes: work dir not created before brand.title_at runs magick (needs create_dir_all(&work) before crates/cli/src/video/mod.rs:375); also the [music] bed is mixed mono into the voice track |  | video | runtime-agent | 25 | 463a5d3 |
 | 25 | 🟡 doing | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push |  | renderer | renderer-agent | 40 |  |
 | 61 | ⚪ todo | Terminal per window: host paints each window's Claude session into that window's agent surface (sessions, task 26) |  | renderer | renderer-agent | 45 |  |
 | 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision |  | hygiene | paul | 50 |  |
