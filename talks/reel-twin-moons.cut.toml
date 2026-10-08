@@ -1,16 +1,17 @@
-# Reel v1 (r/aigamedev): ../storyboard/path.toml's reel cards in order, real offline engine clips from clips/, hard cuts, no
-# narration, one line of text (the title, small in the lower third of the last shot). Silent: the engine has no music bed to give it.
+# Reel v3 (r/aigamedev): real engine clips from storyboard/reel/clips/ (rendered offline at 30 fps, see each clip's
+# name), hard cuts, no narration, one line of text: the title, small, sliding in over the last shot. Silent: the engine
+# has no music bed to give it. No black tail: it ends on the twin moons.
 # Recording paths are relative to the project (the game repo), as the engine reads them.
-# Render (from the game repo): app video make talks/reel-twin-moons.cut.toml --orientation landscape
-# (make-reel-pieces.py makes the title shot, the black tail and the editor stand-in into .atelico/reel-pieces/)
-# Out: .atelico/reel-twin-moons/landscape.mp4
+# Render (from a copy of the game repo): app video make talks/reel-twin-moons.cut.toml --orientation landscape
+# (make-reel-pieces.py makes the title shot into .atelico/reel-pieces/)
+# Out: .atelico/reel-twin-moons/landscape.mp4 -> storyboard/exports/reel-twin-moons-v3.mp4
 name = "reel-twin-moons"
 title = "Reel: twin moons"
 # no shot needs checklist ids; the cut format requires the field
 checklist = "../storyboard/path.toml"
 captions = "file"
 ground = "dark"
-order = ["cold-flip", "twin-moon-timelapse", "two-shadows", "pixel-to-ink", "snow", "embers", "firefall", "editor-claude", "title", "black"]
+order = ["twin-moon-timelapse", "watchtower-moon", "ink-firefall", "founding", "brood", "fireball-launch", "fireball-impact", "wall-of-flame", "editor-look", "title"]
 
 [voices]
 engine = "http://127.0.0.1:8187/v1"
@@ -23,67 +24,69 @@ fps = 30
 lead = 0.0
 beat = 0.0
 
-[shot.cold-flip]
-at = "0:00"
-until = "0:01.5"
-name = "1. Cold open: the flip"
-source = { recording = { file = "storyboard/reel/clips/town-overview-cold-flip-pixel-ink-pixel-1.5s.mp4", shows = [] } }
-
 [shot.twin-moon-timelapse]
-at = "0:01.5"
-until = "0:06.5"
-name = "2. Twin-moon timelapse"
-source = { recording = { file = "storyboard/reel/clips/pixel-town-twin-moon-timelapse-17h-to-23h-5s.mp4", shows = [] } }
+at = "0:00"
+until = "0:06"
+name = "1. Twin-moon timelapse, pixel"
+source = { recording = { file = "storyboard/reel/clips/pixel-town-twin-moon-timelapse-16h30-to-01h30-6s.mp4", shows = [] } }
 
-[shot.two-shadows]
-at = "0:06.5"
-until = "0:10.5"
-name = "3. Two moons, two shadows"
-note = "the clip shows one shadow, not two (two-shadow tower not rendered yet)"
-source = { recording = { file = "storyboard/reel/clips/pixel-town-watchtower-push-one-shadow-4s.mp4", shows = [] } }
+[shot.watchtower-moon]
+at = "0:06"
+until = "0:08.4"
+name = "2. The orange moon sat on the watchtower"
+source = { recording = { file = "storyboard/reel/clips/pixel-town-watchtower-orange-moon-push-2.4s.mp4", shows = [] } }
 
-[shot.pixel-to-ink]
-at = "0:10.5"
-until = "0:13.5"
-name = "4. Pixel to ink"
-source = { recording = { file = "storyboard/reel/clips/town-street-pixel-to-ink-switch-faster-lands-ink-3s.mp4", shows = [] } }
+[shot.ink-firefall]
+at = "0:08.4"
+until = "0:11.2"
+name = "3. Cut to ink: fire falling, the orange moon by the tower"
+note = "a hard cut on the tower and its moon, not the live pixel-to-ink switch (task 51, not built yet)"
+source = { recording = { file = "storyboard/reel/clips/ink-town-firefall-orange-moon-push-2.8s.mp4", shows = [] } }
 
-[shot.snow]
-at = "0:13.5"
-until = "0:16"
-name = "5. Snow"
-source = { recording = { file = "storyboard/reel/clips/ink-town-weather-snow-purple-moon-low-2.5s.mp4", shows = [] } }
+[shot.founding]
+at = "0:11.2"
+until = "0:14.4"
+name = "4. The town founded: the seed in, houses rise"
+note = "the ring of light reads small at this distance"
+source = { recording = { file = "storyboard/reel/clips/ink-town-founding-dusk-houses-rise-3.2s.mp4", shows = [] } }
 
-[shot.embers]
-at = "0:16"
-until = "0:18.5"
-name = "6. Embers"
-note = "daylight and sparse, not the orange-moon night the card asks for"
-source = { recording = { file = "storyboard/reel/clips/ink-town-weather-embers-daylight-sparse-2.5s.mp4", shows = [] } }
+[shot.brood]
+at = "0:14.4"
+until = "0:17.4"
+name = "5. The brood at the seed"
+source = { recording = { file = "storyboard/reel/clips/ink-town-brood-climber-at-seed-in-firefall-3s.mp4", shows = [] } }
 
-[shot.firefall]
-at = "0:18.5"
-until = "0:22.5"
-name = "7. Fire falling into snow"
-source = { recording = { file = "storyboard/reel/clips/ink-town-weather-firefall-steam-square-4s.mp4", shows = [] } }
+[shot.fireball-launch]
+at = "0:17.4"
+until = "0:17.9"
+name = "6. Wind then fire: a fireball"
+note = "task 75's spell effects, uncommitted in the engine when rendered"
+source = { recording = { file = "storyboard/reel/clips/ink-town-fireball-launch-behind-hero-0.5s.mp4", shows = [] } }
 
-[shot.editor-claude]
-at = "0:22.5"
-until = "0:25.5"
-name = "9. Made in the editor"
-note = "stand-in: a slow push over a real editor still (sketches/world/editor-pixel-graph.png) until the editor-claude clip lands"
-source = { recording = { file = ".atelico/reel-pieces/editor-pixel-graph-push-3s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
+[shot.fireball-impact]
+at = "0:17.9"
+until = "0:19.4"
+name = "7. The fireball hits a climber"
+note = "task 75's spell effects, uncommitted in the engine when rendered"
+source = { recording = { file = "storyboard/reel/clips/ink-town-fireball-impact-on-climber-1.5s.mp4", shows = [] } }
+
+[shot.wall-of-flame]
+at = "0:19.4"
+until = "0:21.4"
+name = "8. Fire then wind: a wall of flame"
+note = "task 75's spell effects, uncommitted in the engine when rendered"
+source = { recording = { file = "storyboard/reel/clips/ink-town-wall-of-flame-erupts-behind-hero-2s.mp4", shows = [] } }
+
+[shot.editor-look]
+at = "0:21.4"
+until = "0:23.6"
+name = "9. The look graph: one number, a chunkier pixel"
+note = "five captured states of the hidden editor (texels 2, 3, 4, 5, 6), held 0.35 to 0.65 s each: stepped, not a live drag"
+source = { recording = { file = "storyboard/reel/clips/editor-look-graph-pixel-lens-texels-2-to-6-2.2s.mp4", shows = [] } }
 
 [shot.title]
-at = "0:25.5"
-until = "0:29"
-name = "10. Title"
-note = "the lower third is drawn by make-reel-pieces.py: the cut's own label is a large violet chip"
-source = { recording = { file = ".atelico/reel-pieces/title-ink-town-lower-third-4s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
-
-[shot.black]
-at = "0:29"
-until = "0:29.7"
-name = "11. Cut to black"
-hold_ok = true
-source = { recording = { file = ".atelico/reel-pieces/black-tail-1s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
+at = "0:23.6"
+until = "0:26.8"
+name = "10. Twin moons aligned, fire falling; the title"
+note = "the title is drawn by make-reel-pieces.py over the real clip ink-town-twin-moons-aligned-firefall-zoom-3.2s.mp4"
+source = { recording = { file = ".atelico/reel-pieces/title-ink-town-twin-moons-lower-right-3.2s.mp4", make = "talks/make-reel-pieces.py", shows = ["talks/make-reel-pieces.py"] } }
