@@ -1,11 +1,12 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-07T23:34:45. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-07T23:35:14. Edit through `app queue` (or `queue/q.py`), not this file.
 
 ## Pieces
 
 | # | | Task | Group | Lane | Owner | P | Commits |
 |---|---|---|---|---|---|---|---|
+| 71 | 🟡 doing | Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline |  | storyboard | storyboard-agent | 1 |  |
 | 51 | ⚪ todo | Changing screens: the live switch between the pixel town and the ink world (dusk flip) in the town scene |  | shader-graphs | shader-graph-agent | 9 |  |
 | 54 | ⚪ todo | Ink town in Paul's window looks foggy/washed sepia and soft (vs crisp cel sketches): fix the look |  | shader-graphs | shader-graph-agent | 10 |  |
 | 6 | 🔵 review | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation |  | weather | weather-agent | 12 | ca43e28 (game 15e4edd) |
@@ -15,12 +16,12 @@ Snapshot of queue.db, 2026-10-07T23:34:45. Edit through `app queue` (or `queue/q
 | 70 | 🟡 doing | Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor |  | storyboard | storyboard-agent | 18 |  |
 | 69 | ⚪ todo | Seed planting moment: plant the seed, first houses grow around it (card 3) |  | creatures | weather-agent | 20 |  |
 | 3 | 🟡 doing | Hero contrast against the dark path (size done) |  | shader-graphs | shader-graph-agent | 30 | 0cc6556 d937ff2 |
-| 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 30 |  |
-| 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes |  | storyboard | paul | 30 | 56eb78b |
 | 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) |  | spells | game-ui-agent | 30 |  |
 | 45 | 🟡 doing | Storyboard: a failed fusion near the climax; re-judge round-10 post-fixes (ring stops on last digger) |  | storyboard | storyboard-agent | 45 |  |
 | 19 | 🔵 review | On-device fusion (cards 10-11 can't be filmed without it) |  | spells | game-ui-agent | 50 | 873a3aa,4be4b69 |
 | 56 | ⚪ todo | Ink HUD: spell slot key numbers still tiny |  | game-ui | game-ui-agent | 60 |  |
+| 13 | 🔴 blocked | Storyboard: card 2 line 'I'm Paul, and I make the Atelico editor' — Paul's call (on camera) |  | storyboard | paul | 70 |  |
+| 14 | 🔴 blocked | Storyboard: draft 2-3 options for why the townsfolk freeze into card notes |  | storyboard | paul | 70 | 56eb78b |
 | 48 | 🟢 done | Buildings float: base shading/shadow doesn't touch the ground (both looks) |  | shader-graphs | shader-graph-agent | 8 | 6c4a799 |
 | 49 | ⚫ dropped | Houses float: contact shading/shadows offset from building bases (pixel + cel town) |  | shader-graphs | shader-graph-agent | 8 |  |
 | 1 | 🟢 done | Pixel-art look as a shader graph (graphs/pixel-world), live preview, parity judge |  | shader-graphs | shader-graph-agent | 10 | 43111e7 |
@@ -50,6 +51,8 @@ Snapshot of queue.db, 2026-10-07T23:34:45. Edit through `app queue` (or `queue/q
 |---|---|---|---|---|---|---|---|
 | 50 | 🟡 doing | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) |  | renderer | renderer-agent | 1 |  |
 | 52 | 🟡 doing | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar |  | hygiene | coordinator | 1 |  |
+| 72 | 🟡 doing | Shared build broken: component_creatures unresolved in scene-3d |  | hygiene | weather-agent | 1 |  |
+| 73 | 🟡 doing | Queue: urgent flag, severity, impact tags, due, dependency weight, computed rank; query/sort CLI; next honours urgency; Queue tab urgent strip |  | editor | queue-agent | 1 |  |
 | 57 | 🟡 doing | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental |  | runtime | runtime-agent | 2 | d0d8ee6 4125ff9 |
 | 58 | 🟡 doing | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged |  | runtime | runtime-agent | 2 | f670dc3 |
 | 59 | ⚪ todo | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately |  | runtime | runtime-agent | 2 |  |
