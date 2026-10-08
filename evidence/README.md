@@ -14,3 +14,6 @@ One folder per day: `evidence/<YYYY-MM-DD>/`. Each file is named `<where>-<what 
 | 2026-10-07/queue-tab-in-paul-editor.png | Queue tab live in the editor | 35 |
 | 2026-10-07/editor-host-profile-before-perf-round-2.txt | `sample` of Paul's editor: full repaints, per-frame text measuring, file polling | 50 |
 | 2026-10-07/editor-host-profile-paused-combine-and-fire-24ms.txt | `sample` while paused: whole scene repainted 30×/s, colour conversion on present | 50 |
+| 2026-10-07/local-engine-fuse-spells-names-qwen3.5-9b-1.4-3.4s.txt | The on-device model (local engine :8187) answers the fusion schema with legal choices and sensible names in 1.4–3.4 s | 19 |
+| 2026-10-07/project-copy-ink-town-play-keys-fire-then-wind-model-names-blazing-curtain.png | Play keys (2, cast, 1, cast) arm then fuse in cast order; the cursor waits; the model's name "Blazing Curtain" types in (project copy, hidden host) | 19, 18 |
+| 2026-10-07/project-copy-ink-town-play-keys-wind-twice-dud-model-names-zephyr.png | The same spell twice is a dud; the model gives it a humble name (project copy, hidden host) | 19 |

@@ -65,9 +65,15 @@ directions (from the World's environment) and the fire falling (from the weather
 - Bolts and orbs home in on the nearest creature; a wall stands 2.5 m out across the creature's way.
 - The town is a pure function of time: the same moons and casts give the same night. Time going back, or a change to
   any file in `spells/`, starts the town over.
-- **Player input:** until Play's keys drive casting, the town casts on a schedule. Every 8 s it casts wind, or, once
-  fire is caught, the next fusion in turn (fire→wind, wind→fire, fire→fire). This stands in for the input only; what
-  each cast does comes from the spells.
+- **Play keys:** 1–4 select a slot; space (or E) casts the selected spell. A cast arms it for 1.2 s ("FIRE → ?"):
+  cast a second within that time and the two fuse in cast order, the armed one first; otherwise the armed spell goes
+  alone. Casts aim at the nearest creature (the town's hero has no cursor or facing yet). In the editor's preview,
+  not playing, the town casts on its own every 8 s so a still town still shows fusions.
+- **Naming on this machine:** each fusion starts `engine:fuse_spells(first, second)`, which asks the local model
+  with the fusion schema. The cursor blinks for at least 350 ms; at 1.5 s the fallback name is stamped; when the
+  model's name arrives it swaps in quietly (`spellcraft.rename`) and becomes the spell's title. Measured on the local
+  engine (Qwen3.5-9B): 1.4–3.4 s, names such as "Blazing Curtain" and "Gale Rampart" (fire→wind), "Whirling Ember"
+  (wind→fire), "Warm Glow" and "Zephyr" (duds).
 
 ## The HUD's real state
 
