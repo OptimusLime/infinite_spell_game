@@ -1,5 +1,7 @@
 # In-game UI (HUD and game screens)
 
+> Historical implementation notes. Automatic fusion, seed-defense rules, forced look switching and the claim that mana is undecided are superseded by the current [design direction](design-direction.md). The confirmed route crafts and selects authored spells, equips a wand, loads physical cartridges from generic inventory, and spends finite energy. See [playable casting](playable-casting.md) for the implemented route and [battlefield review](../references/battlefield-review.md) for current HUD problems. Preserve the notes below as history; they are not current requirements or accepted visual design.
+
 The game's own UI, drawn over the game in Play and in the scene view. Not the editor. Paul: "We are missing in game
 UI elements, which is why the game looks so baren and werid" and "why would the forecast panel be in the editor?
 thats part of the game bud."

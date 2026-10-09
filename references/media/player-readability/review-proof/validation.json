@@ -1,0 +1,41 @@
+{
+  "host": {
+    "pid": 17590,
+    "boot": 1791511642.359888,
+    "doc": "/Users/paul/coding/infinite_spell_game/references/visual-direction.references.toml",
+    "mode": "play",
+    "playing": false,
+    "editor_error": null,
+    "file_errors": {
+      "scenes/player-visuals-cel.scene.luau": "scenes/player-visuals-cel.scene.luau: scene.player-visuals-cel.nodes.root/player.props: SpellPlayer has no field visuals (has config, session, world, show)",
+      "scenes/player-visuals-pixel.scene.luau": "scenes/player-visuals-pixel.scene.luau: scene.player-visuals-pixel.nodes.root/player.props: SpellPlayer has no field visuals (has config, session, world, show)"
+    }
+  },
+  "source_revision": "43313f54",
+  "runs": [
+    {
+      "viewport": [
+        1600,
+        960
+      ],
+      "selected": "current-cel-day-control",
+      "compared": "current-anime",
+      "total": 74,
+      "unreviewed": 74,
+      "review_events": 0
+    },
+    {
+      "viewport": [
+        1100,
+        800
+      ],
+      "selected": "current-cel-day-control",
+      "compared": "current-anime",
+      "total": 74,
+      "unreviewed": 74,
+      "review_events": 0
+    }
+  ],
+  "main_native_support": "Older host can review images but cannot import SpellPlayer.visuals; two existing file errors remain until task155 activation.",
+  "journal_written": false
+}
