@@ -1,18 +1,18 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T23:33:48. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-09T00:40:14. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-3 open / 30 total · 0 doing · 2 review · 27 done · 0 ready todos
+4 open / 32 total · 1 doing · 2 review · 28 done · 1 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-0 open / 9 total · 0 doing · 0 review · 9 done · 0 ready todos
+1 open / 10 total · 0 doing · 0 review · 9 done · 1 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Implemented dashboard, typed model, bindings and history are available for inspection; human acceptance remains tracked separately in task103.
 
@@ -50,16 +50,17 @@ Rust Data schemas and checked store writes expose live object fields to Luau. Fi
 
 #### Dashboard and inspection (`tracker.dashboard`)
 
-0 open / 4 total · 0 doing · 0 review · 4 done · 0 ready todos
+1 open / 5 total · 0 doing · 0 review · 4 done · 1 ready todos
 
 Readable top-level areas, compact status summaries, drill-down part pages, relationships and a complete grouped task DAG. The overview stays useful without exposing every task at once.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 161 | ⚪ todo | Route grouped task dependencies around intervening cards | codex-coordinator |  |
+| 157 | 🟢 done | Keep every collapsed task group reachable and visible when fitting the graph | codex-coordinator |  |
 | 112 | 🟢 done | Compact dashboard and inspection | codex-dashboard |  |
 | 145 | 🟢 done | Make the task graph readable before expanding historical work | codex-coordinator |  |
 | 132 | 🟢 done | Keep task graph titles inside readable cards | codex-coordinator |  |
-| 157 | 🟢 done | Keep every collapsed task group reachable and visible when fitting the graph | codex-coordinator |  |
 
 #### Activity and search (`tracker.history`)
 
@@ -103,17 +104,18 @@ Implementation and technical validation precede a separate review of the working
 
 ### Build, integration and verification (`engine.build`)
 
-2 open / 14 total · 0 doing · 1 review · 12 done · 0 ready todos
+2 open / 15 total · 1 doing · 1 review · 13 done · 0 ready todos
 
 Consolidation, repository hygiene, verified checkpoints and proof. Existing done statuses remain historical agent reports.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says | paul |  |
-| 155 | ⚪ todo | Activate the verified terminal and owned-frame host improvements | codex-coordinator |  |
+| 160 | 🟡 doing | Release the typed player and scene presentation as compatible shared packages | codex-release |  |
 | 72 | 🟢 done | Shared build broken: component_creatures unresolved in scene-3d | weather-agent |  |
 | 91 | 🟢 done | Shared build broken: paint-skia gpu.rs texture() signature mismatch (renderer step 5) | renderer-agent |  |
 | 93 | 🟢 done | Consolidate engine lanes and preserve all worktree/checkpoint history | codex-coordinator |  |
+| 155 | 🟢 done | Activate verified terminal and body-mapping improvements in the main editor | codex-coordinator |  |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB | coordinator |  |
 | 52 | 🟢 done | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar | coordinator |  |
 | 63 | 🟢 done | Shared build broken: duplicate component-spellcraft package | game-ui-agent |  |
@@ -240,7 +242,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-9 open / 51 total · 1 doing · 5 review · 39 done · 0 ready todos
+6 open / 52 total · 0 doing · 5 review · 43 done · 0 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -268,13 +270,12 @@ Town layout, seed planting and shared scene structure.
 
 ### Physical spell system (`game.magic`)
 
-2 open / 8 total · 1 doing · 0 review · 4 done · 0 ready todos
+1 open / 8 total · 0 doing · 0 review · 5 done · 0 ready todos
 
 Spellcraft, input-driven casting, spell effects and the shared authoritative town state.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 156 | 🟡 doing | Connect authoritative casting bodies to the existing town presentation | codex-coordinator |  |
 | 75 | ⚪ todo | Connect readable spell effects to authoritative casts and reviewed visual references | codex-coordinator |  |
 | 83 | ⚫ dropped | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) | game-ui-agent |  |
 | 64 | 🟢 done | Route gameplay keys through explicit authored-spell selection and finite casting | codex-coordinator |  |
@@ -282,6 +283,7 @@ Spellcraft, input-driven casting, spell effects and the shared authoritative tow
 | 19 | ⚫ dropped | On-device fusion (cards 10-11 can't be filmed without it) | game-ui-agent |  |
 | 85 | 🟢 done | One shared town per scene: spellcraft owns the simulation; the HUD, SpellFx and packages/creatures read the same town (no drift) | codex-coordinator |  |
 | 109 | 🟢 done | Implement authored-spell select, aim and fire interaction | codex-coordinator |  |
+| 156 | 🟢 done | Connect authoritative casting bodies to the existing town presentation | codex-coordinator |  |
 
 ### Wands and cartridge integration (`game.inventory`)
 
@@ -297,12 +299,13 @@ Planned after: engine.equipment, engine.inventory, game.design
 
 ### Game HUD (`game.hud`)
 
-0 open / 6 total · 0 doing · 0 review · 6 done · 0 ready todos
+0 open / 7 total · 0 doing · 0 review · 7 done · 0 ready todos
 
 Game-facing equipment, inventory and power displays composed from reusable UI components. The confirmed power display sums remaining energy in inventory cartridges; generic inventory/equipment remain shared systems.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 159 | 🟢 done | Reserve an unobstructed battlefield beside shared player controls | codex-coordinator |  |
 | 10 | 🟢 done | In-game UI spec docs/game-ui.md (seed ring, moon clock, spell slots, prompts, wave counter...) judged | game-ui-agent |  |
 | 11 | 🟢 done | packages/game-ui kit in both looks, placed in the moon town scenes | game-ui-agent |  |
 | 53 | 🟢 done | HUD bugs: stub 'Night 3' vs schedule day 30; ink chip says align in 4h40m while moons aligned; ink fire icon reads as water drop; spell bar touches bottom edge | game-ui-agent |  |
@@ -324,23 +327,23 @@ Planned after: engine.review, game.design
 
 ### Pixel and ink/cel looks (`game.looks`)
 
-3 open / 12 total · 0 doing · 1 review · 8 done · 0 ready todos
+1 open / 12 total · 0 doing · 1 review · 10 done · 0 ready todos
 
 Readable lighting, shadows, authored shader looks and the switch between them.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 51 | 🔵 review | Review the historical automatic look-switch experiment | paul |  |
-| 89 | ⚪ todo | Compare night lighting and actor separation against reference candidates | codex-coordinator |  |
-| 3 | ⚪ todo | Compare caster contrast at battlefield framing | codex-coordinator |  |
-| 76 | 🟢 done | Verify independent shadow directions for mesh and sprite casters | codex-coordinator |  |
 | 54 | 🟢 done | Compare snowy cel grading while preserving the snow-free baseline | codex-coordinator |  |
+| 76 | 🟢 done | Verify independent shadow directions for mesh and sprite casters | codex-coordinator |  |
 | 48 | 🟢 done | Buildings float: base shading/shadow doesn't touch the ground (both looks) | shader-graph-agent |  |
 | 49 | ⚫ dropped | Houses float: contact shading/shadows offset from building bases (pixel + cel town) | shader-graph-agent |  |
 | 1 | 🟢 done | Pixel-art look as a shader graph (graphs/pixel-world), live preview, parity judge | shader-graph-agent |  |
 | 2 | 🟢 done | Cel/anime look as a shader graph (graphs/cel-world), live preview, parity judge | shader-graph-agent |  |
+| 89 | 🟢 done | Compare night lighting and actor separation against reference candidates | codex-coordinator |  |
 | 88 | 🟢 done | Reproduce the reported missing daylight shadow in the cel town | codex-coordinator |  |
 | 4 | 🟢 done | Continuous crane opening: sky -> crane -> player view -> hero walking (pixel town drawable in perspective) | shader-graph-agent |  |
+| 3 | 🟢 done | Compare caster contrast at battlefield framing | codex-coordinator |  |
 | 40 | 🟢 done | World round 3: pixel and cel rebuilt on plugins; one key shadow |  |  |
 
 ### Moons, weather and forecast (`game.weather`)
@@ -449,13 +452,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-5 open / 51 total · 2 doing · 1 review · 46 done · 0 ready todos
+4 open / 51 total · 1 doing · 1 review · 47 done · 0 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-4 open / 33 total · 2 doing · 0 review · 29 done · 0 ready todos
+3 open / 33 total · 1 doing · 0 review · 30 done · 0 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -467,28 +470,28 @@ Native host and editor that can inspect, run and hot reload the software being b
 
 #### Renderer and performance (`engine.renderer`)
 
-4 open / 18 total · 2 doing · 0 review · 14 done · 0 ready todos
+3 open / 18 total · 1 doing · 0 review · 15 done · 0 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 147 | 🔴 blocked | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
 | 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 25 | 🔴 blocked | Automate software checks and provision a separate Mac GPU gate | codex-coordinator |  |
-| 158 | 🟡 doing | Remove secondary-light receiver self-shadow pattern on flat mesh ground | codex-coordinator |  |
+| 147 | 🔴 blocked | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
 | 22 | 🟢 done | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
 | 24 | 🟢 done | Complete GPU component drawing and post-effect parity | codex-coordinator |  |
-| 146 | 🟢 done | Draw the embedded terminal through the shared native Canvas | codex-coordinator |  |
 | 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up | renderer-agent |  |
 | 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff | renderer-agent |  |
 | 150 | 🟢 done | Clear obsolete scene controls and hit targets when app sources change | codex-coordinator |  |
+| 146 | 🟢 done | Draw the embedded terminal through the shared native Canvas | codex-coordinator |  |
 | 125 | 🟢 done | Preserve the full pixel camera view in smaller editor previews | codex-coordinator |  |
 | 126 | 🟢 done | Keep pixel preview sampling consistent between GPU and CPU lens paths | codex-coordinator |  |
 | 141 | 🟢 done | Keep existing camera lens effects on GPU | codex-coordinator |  |
 | 152 | 🟢 done | Isolate last-good weather configuration by canonical project | codex-coordinator |  |
 | 154 | 🟢 done | Remove the repeated World readback regression in native frame rendering | codex-coordinator |  |
+| 158 | 🟢 done | Remove secondary-light receiver self-shadow pattern on flat mesh ground | codex-coordinator |  |
 | 37 | 🟢 done | Editor perf patch rounds (damage, caches, meter, scroll, one window, storyboard tab) |  |  |
 | 41 | 🟢 done | Renderer research (4 lanes + recommendation: Skia Ganesh on wgpu Metal) |  |  |
 
