@@ -1,18 +1,18 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-09T00:40:14. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-09T00:55:31. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-4 open / 32 total · 1 doing · 2 review · 28 done · 1 ready todos
+3 open / 32 total · 1 doing · 2 review · 29 done · 0 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-1 open / 10 total · 0 doing · 0 review · 9 done · 1 ready todos
+1 open / 10 total · 1 doing · 0 review · 9 done · 0 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Implemented dashboard, typed model, bindings and history are available for inspection; human acceptance remains tracked separately in task103.
 
@@ -50,13 +50,13 @@ Rust Data schemas and checked store writes expose live object fields to Luau. Fi
 
 #### Dashboard and inspection (`tracker.dashboard`)
 
-1 open / 5 total · 0 doing · 0 review · 4 done · 1 ready todos
+1 open / 5 total · 1 doing · 0 review · 4 done · 0 ready todos
 
 Readable top-level areas, compact status summaries, drill-down part pages, relationships and a complete grouped task DAG. The overview stays useful without exposing every task at once.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 161 | ⚪ todo | Route grouped task dependencies around intervening cards | codex-coordinator |  |
+| 161 | 🟡 doing | Route grouped task dependencies around intervening cards | codex-coordinator |  |
 | 157 | 🟢 done | Keep every collapsed task group reachable and visible when fitting the graph | codex-coordinator |  |
 | 112 | 🟢 done | Compact dashboard and inspection | codex-dashboard |  |
 | 145 | 🟢 done | Make the task graph readable before expanding historical work | codex-coordinator |  |
@@ -104,18 +104,16 @@ Implementation and technical validation precede a separate review of the working
 
 ### Build, integration and verification (`engine.build`)
 
-2 open / 15 total · 1 doing · 1 review · 13 done · 0 ready todos
+1 open / 15 total · 0 doing · 1 review · 14 done · 0 ready todos
 
 Consolidation, repository hygiene, verified checkpoints and proof. Existing done statuses remain historical agent reports.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says | paul |  |
-| 160 | 🟡 doing | Release the typed player and scene presentation as compatible shared packages | codex-release |  |
 | 72 | 🟢 done | Shared build broken: component_creatures unresolved in scene-3d | weather-agent |  |
 | 91 | 🟢 done | Shared build broken: paint-skia gpu.rs texture() signature mismatch (renderer step 5) | renderer-agent |  |
 | 93 | 🟢 done | Consolidate engine lanes and preserve all worktree/checkpoint history | codex-coordinator |  |
-| 155 | 🟢 done | Activate verified terminal and body-mapping improvements in the main editor | codex-coordinator |  |
 | 46 | 🟢 done | DISK 100% full (20 GB free and falling): shared scratchpad copies — screenproj 158 GB, engine-copy 59 GB and growing (likely a copy including .atelico, which is 82 GB), sbproj-atelico-partial 21 GB | coordinator |  |
 | 52 | 🟢 done | Quality gate: nothing to review without a real screencapture of Paul's window checked against a written bar | coordinator |  |
 | 63 | 🟢 done | Shared build broken: duplicate component-spellcraft package | game-ui-agent |  |
@@ -124,6 +122,8 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 | 31 | 🟢 done | Engine working tree: tracked proof PNGs show as deleted (proof/node-graphs/...) — restore or explain | coordinator |  |
 | 143 | 🟢 done | Publish and activate the verified shared component updates | codex-coordinator |  |
 | 151 | 🟢 done | Upgrade the shared editor shell without overwriting project customizations | codex-coordinator |  |
+| 155 | 🟢 done | Activate verified terminal and body-mapping improvements in the main editor | codex-coordinator |  |
+| 160 | 🟢 done | Release the typed player and scene presentation as compatible shared packages | codex-release |  |
 | 32 | 🟢 done | Delete 18 GB abandoned project copy in scratchpad (sbproj-atelico-partial) |  |  |
 
 ## Content (`content`)
