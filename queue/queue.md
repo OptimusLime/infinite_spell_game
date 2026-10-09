@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T22:50:33. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T23:06:04. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -239,7 +239,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-12 open / 50 total · 1 doing · 5 review · 35 done · 5 ready todos
+12 open / 51 total · 2 doing · 5 review · 36 done · 2 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -267,12 +267,13 @@ Town layout, seed planting and shared scene structure.
 
 ### Physical spell system (`game.magic`)
 
-1 open / 7 total · 0 doing · 0 review · 4 done · 0 ready todos
+2 open / 8 total · 0 doing · 0 review · 4 done · 1 ready todos
 
 Spellcraft, input-driven casting, spell effects and the shared authoritative town state.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 156 | ⚪ todo | Connect authoritative casting bodies to the existing town presentation | codex-coordinator |  |
 | 75 | ⚪ todo | Connect readable spell effects to authoritative casts and reviewed visual references | codex-coordinator |  |
 | 83 | ⚫ dropped | One shared town simulation from spellcraft for HUD marks and creature rendering (no drift) | game-ui-agent |  |
 | 64 | 🟢 done | Route gameplay keys through explicit authored-spell selection and finite casting | codex-coordinator |  |
@@ -322,14 +323,14 @@ Planned after: engine.review, game.design
 
 ### Pixel and ink/cel looks (`game.looks`)
 
-5 open / 12 total · 0 doing · 1 review · 6 done · 4 ready todos
+5 open / 12 total · 1 doing · 1 review · 6 done · 1 ready todos
 
 Readable lighting, shadows, authored shader looks and the switch between them.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 51 | 🔵 review | Review the historical automatic look-switch experiment | paul |  |
-| 76 | ⚪ todo | Verify independent shadow directions for mesh and sprite casters | codex-coordinator |  |
+| 76 | 🟡 doing | Verify independent shadow directions for mesh and sprite casters | codex-coordinator |  |
 | 89 | ⚪ todo | Compare night lighting and actor separation against reference candidates | codex-coordinator |  |
 | 88 | ⚪ todo | Reproduce the reported missing daylight shadow in the cel town | codex-coordinator |  |
 | 3 | ⚪ todo | Compare caster contrast at battlefield framing | codex-coordinator |  |
@@ -343,14 +344,14 @@ Readable lighting, shadows, authored shader looks and the switch between them.
 
 ### Moons, weather and forecast (`game.weather`)
 
-2 open / 5 total · 1 doing · 0 review · 3 done · 1 ready todos
+1 open / 5 total · 1 doing · 0 review · 4 done · 0 ready todos
 
 Deterministic moon-driven weather and visible consequences.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 77 | 🟡 doing | Verify night embers and haze at a recorded deterministic moment | codex-coordinator |  |
-| 6 | ⚪ todo | Validate graph-driven weather, accumulation and refraction in both render paths | codex-coordinator |  |
+| 6 | 🟡 doing | Validate graph-driven weather, accumulation and refraction in both render paths | codex-coordinator |  |
+| 77 | 🟢 done | Verify night embers and haze at a recorded deterministic moment | codex-coordinator |  |
 | 5 | 🟢 done | Weather state as a function of the two moons (snow / embers / fire-in-snow + steam), seeded, tested | weather-agent |  |
 | 7 | 🟢 done | In-game forecast panel (game UI, not editor), drawn with the game-ui kit | weather-agent |  |
 | 9 | 🟢 done | forecasts/omens.toml: what each alignment brings (placeholder lines) | weather-agent |  |
