@@ -352,3 +352,43 @@ source_image = "in-flight-pixel-1100x800-stress24-world-plane.png"
 original_sha256 = "5a0fa7cc7f8a96f9bdfedfd5244329329542267151f0c2eba2db3e024bcf113b"
 display_sha256 = "5a0fa7cc7f8a96f9bdfedfd5244329329542267151f0c2eba2db3e024bcf113b"
 conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "mystralia-saved-spells"
+source = "https://store.steampowered.com/app/529660/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/529660/ss_bd3d4fcc3552efe2781ebe50b6b01a9b497f14a7.1920x1080.jpg?t=1786456220"
+original_sha256 = "a03f4972548ca52ed4c988831731de3e68656881756ac7033906e9c71a938999"
+display_sha256 = "a03f4972548ca52ed4c988831731de3e68656881756ac7033906e9c71a938999"
+conversion = "Unmodified downloaded bytes"
+
+[[images]]
+id = "mystralia-spell-editor"
+source = "https://store.steampowered.com/app/529660/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/529660/ss_53a3aca4c6affbcbc4e4ea479b187d8586c4c48c.1920x1080.jpg?t=1786456220"
+original_sha256 = "9546cc4df688c88194e1b133e90e183ae41dd0454dd048fb884cfe2921171f57"
+display_sha256 = "9546cc4df688c88194e1b133e90e183ae41dd0454dd048fb884cfe2921171f57"
+conversion = "Unmodified downloaded bytes"
+
+[[images]]
+id = "mystralia-authoring-cost"
+source = "https://www.gamedeveloper.com/design/creative-process-of-a-procedural-spell-crafting-system"
+source_image = "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/bltb368d5b87e4154c2/650e9d8b47b2f15f50ab40d0/Spellsystem.png/?disable=upscale&quality=100&width=1600"
+original_sha256 = "c6d246891c75aa036645b601bb0ae842b120f759b8494cd71b4d767ce5aa66fb"
+display_sha256 = "c6d246891c75aa036645b601bb0ae842b120f759b8494cd71b4d767ce5aa66fb"
+conversion = "Unmodified downloaded bytes"
+
+[[images]]
+id = "mystralia-authoring-motion"
+source = "https://store.steampowered.com/app/529660/"
+source_image = "https://video.akamai.steamstatic.com/store_trailers/529660/102461/939ac53aeccbae004c69a7b360e04e754fdd74ae/1751298001/hls_264_master.m3u8?t=1503521574"
+original_sha256 = "abb3030bfe0a5e54503595058d05d31b7d071ce3ada105835d7b189d23d699ec"
+display_sha256 = "895366e922908b0239b6d725f6a097862a41f483fc5e3b6465eab8114279aea4"
+conversion = "Exact source frames750,765,780,795,810,825,840,849,855 resized384x216 and tiled3x3; original hash refers to720p video rendition"
+
+[[images]]
+id = "fictorum-rune-assignment"
+source = "https://fictorum.com/blog/2016/01/11/fictorum-update-9-spell-shaping-system-runes-quests-and-ai-improvements/"
+source_image = "https://fictorum.com/blog/wp-content/uploads/2016/01/FictorumUpdatedRuneSet.png"
+original_sha256 = "d87b414267102554d26e027cdf3d351f900427dbfd615944df1c9d7f50ad3d72"
+display_sha256 = "d87b414267102554d26e027cdf3d351f900427dbfd615944df1c9d7f50ad3d72"
+conversion = "Unmodified downloaded bytes"

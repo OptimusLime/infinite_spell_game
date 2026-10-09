@@ -1,0 +1,30 @@
+version = 1
+retrieved_at = "2026-10-08"
+review_state = "Unreviewed research; no design or art acceptance"
+task = 118
+source_page = "https://store.steampowered.com/app/529660/"
+source_api = "https://store.steampowered.com/api/appdetails?appids=529660&l=english"
+source_title = "Mages of Mystralia - Launch Trailer"
+creator = "Borealys Games"
+source_rendition = "https://video.akamai.steamstatic.com/store_trailers/529660/102461/939ac53aeccbae004c69a7b360e04e754fdd74ae/1751298001/hls_264_1_video.m3u8"
+source_sha256 = "abb3030bfe0a5e54503595058d05d31b7d071ce3ada105835d7b189d23d699ec"
+clip = "media/casting-interactions/mystralia-authoring.mp4"
+clip_sha256 = "93b050ffde1e0489969cedf605ac81444eab5a23d67e376f5cb5629909dac73a"
+strip = "media/casting-interactions/mystralia-authoring-frames.png"
+strip_sha256 = "895366e922908b0239b6d725f6a097862a41f483fc5e3b6465eab8114279aea4"
+source_fps = "30000/1001"
+start_frame = 750
+end_frame_exclusive = 856
+start_seconds = 25.025
+end_seconds_exclusive = 28.5618666667
+clip_frames = 106
+clip_duration_seconds = 3.536867
+sample_frames = [750,765,780,795,810,825,840,849,855]
+transformation = "Source video-only720p cadence retained; trim,setpts=PTS-STARTPTS; H264 CRF20, no speed change. Nine exact samples resized384x216 and tiled3x3. No generated pixels or altered game UI."
+inspection = "Inspected trailer overview,18-frame detailed sequence,all15frames855–869 at next cut,and final9frame strip. Frame855 remains library/editor;856 switches to unrelated ice combat and is excluded."
+observations = ["750: named spell library transitions into the Fire Ball editor.","795: Move behavior description is visible;810: node is placed beside the core.","825–840: visible link joins core and behavior.","849–855: named spell library returns while the constructed graph remains visible."]
+limits = ["No physical controller input or authoritative save transaction is recorded.","No casting from this exact edited spell, resource debit, input latency or persistence across reload is proven by this excerpt.","Developer tutorial0sRQxxDp_vA was located, but YouTube download returned content unavailable; it was not inspected or used as timing evidence.","Fictorum2016 primary text documents distinct cast/shape controls and rune replacement; its old Gfycat demonstrations were unavailable. The retained screenshot proves only visible assigned modifiers."]
+project_checks = ["Crafting and saving an authored spell must not fire it or consume cartridge energy.","Selecting and aiming must preserve inventory-derived supply; only authoritative cast receipts debit it.","Show loaded-cartridge energy separately from total owned-cartridge energy; no regeneration or fusion imported from references."]
+source_documents = ["https://www.gamedeveloper.com/design/creative-process-of-a-procedural-spell-crafting-system","https://fictorum.com/blog/2016/01/11/fictorum-update-9-spell-shaping-system-runes-quests-and-ai-improvements/"]
+rights = "Original developer/publisher imagery retained for reference review; not project artwork or published reel footage."
+sample_source_seconds = [25.025, 25.5255, 26.026, 26.5265, 27.027, 27.5275, 28.028, 28.3283, 28.5285]
