@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-09T00:55:31. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-09T01:10:37. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
