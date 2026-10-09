@@ -1,12 +1,12 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T21:33:55. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T21:53:19. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-3 open / 27 total · 1 doing · 2 review · 24 done · 0 ready todos
+4 open / 28 total · 1 doing · 2 review · 24 done · 1 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
@@ -102,14 +102,15 @@ Implementation and technical validation precede a separate review of the working
 
 ### Build, integration and verification (`engine.build`)
 
-2 open / 12 total · 1 doing · 1 review · 10 done · 0 ready todos
+3 open / 13 total · 1 doing · 1 review · 10 done · 1 ready todos
 
 Consolidation, repository hygiene, verified checkpoints and proof. Existing done statuses remain historical agent reports.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says | paul |  |
 | 143 | 🟡 doing | Publish and activate the verified shared component updates | codex-coordinator |  |
+| 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says | paul |  |
+| 151 | ⚪ todo | Upgrade the shared editor shell without overwriting project customizations | codex-coordinator |  |
 | 72 | 🟢 done | Shared build broken: component_creatures unresolved in scene-3d | weather-agent |  |
 | 91 | 🟢 done | Shared build broken: paint-skia gpu.rs texture() signature mismatch (renderer step 5) | renderer-agent |  |
 | 93 | 🟢 done | Consolidate engine lanes and preserve all worktree/checkpoint history | codex-coordinator |  |
@@ -237,7 +238,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-16 open / 50 total · 2 doing · 7 review · 31 done · 0 ready todos
+15 open / 50 total · 2 doing · 4 review · 32 done · 3 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -254,14 +255,14 @@ Confirmed rules and their source references; proposals and unresolved choices re
 
 ### Town and world structure (`game.world`)
 
-2 open / 2 total · 0 doing · 1 review · 0 done · 0 ready todos
+2 open / 2 total · 0 doing · 1 review · 0 done · 1 ready todos
 
 Town layout, seed planting and shared scene structure.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 69 | 🔵 review | Seed planting moment: plant the seed, first houses grow around it (card 3) | weather-agent |  |
-| 79 | ⚪ todo | Engine: pixel town and ink town have different layouts, so the same camera does not line up across the pixel->ink cut; ink look reads sepia not two-tone purple/orange | shader-graph-agent |  |
+| 69 | 🔵 review | Review the historical seed-planting and house-growth concept | weather-agent |  |
+| 79 | ⚪ todo | Verify transforms and actor state remain shared when comparing render styles | shader-graph-agent |  |
 
 ### Physical spell system (`game.magic`)
 
@@ -315,23 +316,23 @@ Planned after: engine.review, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 140 | 🟢 done | Compare depth-aware tilt focus during actual casting | codex-coordinator |  |
 | 108 | 🟢 done | Compare gameplay camera scale and tilt/lens variants | codex-coordinator |  |
+| 140 | 🟢 done | Compare depth-aware tilt focus during actual casting | codex-coordinator |  |
 
 ### Pixel and ink/cel looks (`game.looks`)
 
-6 open / 12 total · 0 doing · 3 review · 5 done · 0 ready todos
+6 open / 12 total · 0 doing · 2 review · 5 done · 2 ready todos
 
 Readable lighting, shadows, authored shader looks and the switch between them.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 51 | 🔵 review | Changing screens: the live switch between the pixel town and the ink world (dusk flip) in the town scene | shader-graph-agent |  |
-| 54 | 🔵 review | Ink town in Paul's window looks foggy/washed sepia and soft (vs crisp cel sketches): fix the look | shader-graph-agent |  |
-| 76 | 🔵 review | Engine: no second visible moon shadow in town scenes (second_shadow=1 shows nothing in pixel town or ink yard); reel shot 'two shadows' needs it | weather-agent |  |
-| 89 | ⚪ todo | Night grade too flat: darker blue night ground, warm light pools under windows/lamps/fire impacts, cool rim on characters (ink look part, cel-world graph, pixel Sky palette) | shader-graph-agent |  |
-| 88 | ⚪ todo | Moon-town seed plinth reads as a layer cake with noisy pillars; cel 10:00 grass murky with no sun shadow | shader-graph-agent |  |
-| 3 | 🔴 blocked | Hero contrast against the dark path (size done) | shader-graph-agent |  |
+| 51 | 🔵 review | Review the historical automatic look-switch experiment | shader-graph-agent |  |
+| 54 | 🔵 review | Compare snowy cel grading while preserving the snow-free baseline | shader-graph-agent |  |
+| 76 | ⚪ todo | Verify independent shadow directions for mesh and sprite casters | weather-agent |  |
+| 89 | ⚪ todo | Compare night lighting and actor separation against reference candidates | shader-graph-agent |  |
+| 88 | ⚪ todo | Reproduce the reported missing daylight shadow in the cel town | shader-graph-agent |  |
+| 3 | ⚪ todo | Compare caster contrast at battlefield framing | shader-graph-agent |  |
 | 48 | 🟢 done | Buildings float: base shading/shadow doesn't touch the ground (both looks) | shader-graph-agent |  |
 | 49 | ⚫ dropped | Houses float: contact shading/shadows offset from building bases (pixel + cel town) | shader-graph-agent |  |
 | 1 | 🟢 done | Pixel-art look as a shader graph (graphs/pixel-world), live preview, parity judge | shader-graph-agent |  |
@@ -341,29 +342,29 @@ Readable lighting, shadows, authored shader looks and the switch between them.
 
 ### Moons, weather and forecast (`game.weather`)
 
-2 open / 5 total · 0 doing · 2 review · 3 done · 0 ready todos
+2 open / 5 total · 0 doing · 0 review · 3 done · 0 ready todos
 
 Deterministic moon-driven weather and visible consequences.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 77 | 🔵 review | Engine: weather gives embers only in daylight (no orange-moon night embers, no heat haze at night); reel shot 'embers' needs night embers | weather-agent |  |
-| 6 | 🔵 review | Weather visuals as graphs in both looks (weather-snow/embers/firefall), ground/roof accumulation | weather-agent |  |
+| 77 | ⚪ todo | Verify night embers and haze at a recorded deterministic moment | weather-agent |  |
+| 6 | ⚪ todo | Validate graph-driven weather, accumulation and refraction in both render paths | weather-agent |  |
 | 5 | 🟢 done | Weather state as a function of the two moons (snow / embers / fire-in-snow + steam), seeded, tested | weather-agent |  |
 | 7 | 🟢 done | In-game forecast panel (game UI, not editor), drawn with the game-ui kit | weather-agent |  |
 | 9 | 🟢 done | forecasts/omens.toml: what each alignment brings (placeholder lines) | weather-agent |  |
 
 ### Creatures (`game.creatures`)
 
-1 open / 3 total · 0 doing · 0 review · 2 done · 0 ready todos
+0 open / 3 total · 0 doing · 0 review · 3 done · 0 ready todos
 
 Creature simulation, visibility, animation and polish across looks.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 65 | ⚪ todo | Pixel town: draw creatures in the scene (marks only show in ink town) | game-ui-agent |  |
 | 68 | 🟢 done | Creatures visible in both looks: climbers and diggers modelled/sprited, animated, rising from the ground per moon (card 7) | weather-agent |  |
 | 87 | 🟢 done | Creatures polish: bigger pixel stalker sprite; beetle hidden behind the well in brood camera; steam swirl over the hero's face; flat night grade | weather-agent |  |
+| 65 | 🟢 done | Pixel town: draw creatures in the scene (marks only show in ink town) | game-ui-agent |  |
 
 ### Reference and moodboard decisions (`game.references`)
 
@@ -445,13 +446,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-7 open / 47 total · 3 doing · 1 review · 40 done · 0 ready todos
+9 open / 50 total · 4 doing · 1 review · 41 done · 2 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-6 open / 30 total · 3 doing · 0 review · 24 done · 0 ready todos
+7 open / 32 total · 3 doing · 0 review · 25 done · 2 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -463,20 +464,22 @@ Native host and editor that can inspect, run and hot reload the software being b
 
 #### Renderer and performance (`engine.renderer`)
 
-6 open / 15 total · 3 doing · 0 review · 9 done · 0 ready todos
+7 open / 17 total · 3 doing · 0 review · 10 done · 2 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 24 | 🟡 doing | Complete GPU component drawing and post-effect parity | codex-coordinator |  |
-| 150 | 🟡 doing | Clear obsolete scene controls and hit targets when app sources change | codex-coordinator |  |
+| 154 | 🟡 doing | Remove the repeated World readback regression in native frame rendering | codex-coordinator |  |
 | 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
-| 25 | 🔴 blocked | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push | renderer-agent |  |
+| 25 | ⚪ todo | Automate software checks and provision a separate Mac GPU gate | renderer-agent |  |
 | 146 | ⚪ todo | Draw the embedded terminal through the shared native Canvas | codex-coordinator |  |
 | 147 | ⚪ todo | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
+| 152 | ⚪ todo | Isolate last-good weather configuration by canonical project | codex-coordinator |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
 | 22 | 🟢 done | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
+| 150 | 🟢 done | Clear obsolete scene controls and hit targets when app sources change | codex-coordinator |  |
 | 141 | 🟢 done | Keep existing camera lens effects on GPU | codex-coordinator |  |
 | 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up | renderer-agent |  |
 | 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff | renderer-agent |  |
@@ -573,12 +576,13 @@ Reusable node-graph component for nodes, grouped regions, wires, pan and zoom. W
 
 ### UI Kit (`engine.ui`)
 
-0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+1 open / 2 total · 1 doing · 0 review · 1 done · 0 ready todos
 
 Reusable native controls, layout, typography and themes shared across app and editor tools. The game HUD uses these components without owning their generic implementation.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 153 | 🟡 doing | Render JPEG reference images through the shared layout image loader | codex-coordinator |  |
 | 139 | 🟢 done | Initialize native text editing from the displayed field value | codex-coordinator |  |
 
 ### Shared applets (`applets`)
