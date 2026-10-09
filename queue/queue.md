@@ -1,18 +1,18 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T19:57:40. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T21:33:55. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-3 open / 26 total · 1 doing · 2 review · 23 done · 0 ready todos
+3 open / 27 total · 1 doing · 2 review · 24 done · 0 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-0 open / 7 total · 0 doing · 0 review · 7 done · 0 ready todos
+0 open / 8 total · 0 doing · 0 review · 8 done · 0 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Implemented dashboard, typed model, bindings and history are available for inspection; human acceptance remains tracked separately in task103.
 
@@ -50,12 +50,13 @@ Rust Data schemas and checked store writes expose live object fields to Luau. Fi
 
 #### Dashboard and inspection (`tracker.dashboard`)
 
-0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
+0 open / 3 total · 0 doing · 0 review · 3 done · 0 ready todos
 
 Readable top-level areas, compact status summaries, drill-down part pages, relationships and a complete grouped task DAG. The overview stays useful without exposing every task at once.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 145 | 🟢 done | Make the task graph readable before expanding historical work | codex-coordinator |  |
 | 112 | 🟢 done | Compact dashboard and inspection | codex-dashboard |  |
 | 132 | 🟢 done | Keep task graph titles inside readable cards | codex-coordinator |  |
 
@@ -122,7 +123,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-3 open / 25 total · 0 doing · 0 review · 15 done · 0 ready todos
+4 open / 26 total · 1 doing · 0 review · 15 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -178,13 +179,14 @@ Render the authored cut with source footage, titles, narration, music and captio
 
 ### Reference and Concept Board (`engine.references`)
 
-0 open / 2 total · 0 doing · 0 review · 2 done · 0 ready todos
+1 open / 3 total · 1 doing · 0 review · 2 done · 0 ready todos
 
 A reusable comparison/review workspace for reference inputs, concept revisions and compatibility decisions across projects.
 Planned after: engine.tracker
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 149 | 🟡 doing | Open source pages and motion evidence directly from reference cards | codex-coordinator |  |
 | 107 | 🟢 done | Build reusable concept/reference-board review and comparison tooling | codex-coordinator |  |
 | 128 | 🟢 done | Keep reference category controls compact so the images lead |  |  |
 
@@ -235,7 +237,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-15 open / 50 total · 1 doing · 7 review · 32 done · 1 ready todos
+16 open / 50 total · 2 doing · 7 review · 31 done · 0 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -365,7 +367,7 @@ Creature simulation, visibility, animation and polish across looks.
 
 ### Reference and moodboard decisions (`game.references`)
 
-1 open / 8 total · 0 doing · 0 review · 7 done · 1 ready todos
+2 open / 8 total · 1 doing · 0 review · 6 done · 0 ready todos
 
 Review existing candidate inputs and concept revisions into explicit In/Maybe/No/Future decisions, separate from storyboard and film production.
 Planned after: engine.references, engine.review
@@ -392,11 +394,11 @@ Planned after: engine.references, engine.review
 
 #### Research spell crafting, aiming and casting interaction (`game.references.casting`)
 
-0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+1 open / 1 total · 1 doing · 0 review · 0 done · 0 ready todos
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 118 | 🟢 done | Research spell crafting, aiming and casting interaction | codex-coordinator |  |
+| 118 | 🟡 doing | Research spell crafting, aiming and casting interaction | codex-coordinator |  |
 
 #### Research spell shapes, motion and impact effects (`game.references.effects`)
 
@@ -443,13 +445,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-5 open / 43 total · 3 doing · 1 review · 38 done · 0 ready todos
+7 open / 47 total · 3 doing · 1 review · 40 done · 0 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-3 open / 27 total · 2 doing · 0 review · 24 done · 0 ready todos
+6 open / 30 total · 3 doing · 0 review · 24 done · 0 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -461,15 +463,18 @@ Native host and editor that can inspect, run and hot reload the software being b
 
 #### Renderer and performance (`engine.renderer`)
 
-3 open / 12 total · 2 doing · 0 review · 9 done · 0 ready todos
+6 open / 15 total · 3 doing · 0 review · 9 done · 0 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 24 | 🟡 doing | Complete GPU component drawing and post-effect parity | codex-coordinator |  |
+| 150 | 🟡 doing | Clear obsolete scene controls and hit targets when app sources change | codex-coordinator |  |
 | 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 25 | 🔴 blocked | Automatic test runs (CI): no Mac GPU runner; interim = renderer agent runs tests before each push | renderer-agent |  |
+| 146 | ⚪ todo | Draw the embedded terminal through the shared native Canvas | codex-coordinator |  |
+| 147 | ⚪ todo | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
 | 22 | 🟢 done | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
 | 141 | 🟢 done | Keep existing camera lens effects on GPU | codex-coordinator |  |
@@ -604,14 +609,15 @@ Consolidated shared applets and preserved historical showcase variants.
 
 ### Registry and publishing (`engine.registry`)
 
-1 open / 5 total · 1 doing · 0 review · 4 done · 0 ready todos
+0 open / 6 total · 0 doing · 0 review · 6 done · 0 ready todos
 
 Registry install/publish workflows and publication blockers.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 144 | 🟡 doing | Detect native component upgrades that require a rebuilt host | codex-coordinator |  |
 | 84 | 🟢 done | scene-3d: 4 failing tests block publishing it (and so every world part): the face stays in the lit band; the followed hero keeps every outline and eye pixel; a particle graph draws the same at the same moment; the Luau and manifest lists miss SpellFx in component.toml data_types | codex-coordinator |  |
+| 148 | 🟢 done | Isolate shared-package proofs from live registries and hosts | codex-coordinator |  |
+| 144 | 🟢 done | Detect native component upgrades that require a rebuilt host | codex-coordinator |  |
 | 67 | 🟢 done | Registry publish failures: node-graph lockfile collision, scene-3d and item-synthesis failing tests block publishing | codex-coordinator |  |
 | 66 | 🟢 done | Verify reusable world component installation into a fresh project | codex-coordinator |  |
 | 137 | 🟢 done | Allow explicit registry package upgrades without shadowing them with installed copies | codex-coordinator |  |
