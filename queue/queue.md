@@ -1,12 +1,12 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-08T22:22:41. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-08T22:50:33. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-3 open / 28 total · 1 doing · 2 review · 25 done · 0 ready todos
+3 open / 29 total · 0 doing · 2 review · 26 done · 0 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
@@ -102,14 +102,14 @@ Implementation and technical validation precede a separate review of the working
 
 ### Build, integration and verification (`engine.build`)
 
-2 open / 13 total · 1 doing · 1 review · 11 done · 0 ready todos
+2 open / 14 total · 0 doing · 1 review · 12 done · 0 ready todos
 
 Consolidation, repository hygiene, verified checkpoints and proof. Existing done statuses remain historical agent reports.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says | paul |  |
-| 151 | 🟡 doing | Upgrade the shared editor shell without overwriting project customizations | codex-coordinator |  |
+| 155 | ⚪ todo | Activate the verified terminal and owned-frame host improvements | codex-coordinator |  |
 | 72 | 🟢 done | Shared build broken: component_creatures unresolved in scene-3d | weather-agent |  |
 | 91 | 🟢 done | Shared build broken: paint-skia gpu.rs texture() signature mismatch (renderer step 5) | renderer-agent |  |
 | 143 | 🟢 done | Publish and activate the verified shared component updates | codex-coordinator |  |
@@ -120,6 +120,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 | 82 | 🟢 done | world.wgsl fix uncommitted: committed HEAD can't draw the town | shader-graph-agent |  |
 | 42 | 🟢 done | Find who switched Paul's main window to the Game Engine form and dropped the Storyboard tab (restored by coordinator) | coordinator |  |
 | 31 | 🟢 done | Engine working tree: tracked proof PNGs show as deleted (proof/node-graphs/...) — restore or explain | coordinator |  |
+| 151 | 🟢 done | Upgrade the shared editor shell without overwriting project customizations | codex-coordinator |  |
 | 32 | 🟢 done | Delete 18 GB abandoned project copy in scratchpad (sbproj-atelico-partial) |  |  |
 
 ## Content (`content`)
@@ -238,7 +239,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-14 open / 50 total · 1 doing · 5 review · 33 done · 7 ready todos
+12 open / 50 total · 1 doing · 5 review · 35 done · 5 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -255,14 +256,14 @@ Confirmed rules and their source references; proposals and unresolved choices re
 
 ### Town and world structure (`game.world`)
 
-2 open / 2 total · 0 doing · 1 review · 0 done · 1 ready todos
+1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
 
 Town layout, seed planting and shared scene structure.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 69 | 🔵 review | Review the historical seed-planting and house-growth concept | paul |  |
-| 79 | ⚪ todo | Verify transforms and actor state remain shared when comparing render styles | codex-coordinator |  |
+| 79 | 🟢 done | Verify transforms and actor state remain shared when comparing render styles | codex-coordinator |  |
 
 ### Physical spell system (`game.magic`)
 
@@ -321,18 +322,18 @@ Planned after: engine.review, game.design
 
 ### Pixel and ink/cel looks (`game.looks`)
 
-6 open / 12 total · 1 doing · 1 review · 5 done · 4 ready todos
+5 open / 12 total · 0 doing · 1 review · 6 done · 4 ready todos
 
 Readable lighting, shadows, authored shader looks and the switch between them.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 51 | 🔵 review | Review the historical automatic look-switch experiment | paul |  |
-| 54 | 🟡 doing | Compare snowy cel grading while preserving the snow-free baseline | codex-coordinator |  |
 | 76 | ⚪ todo | Verify independent shadow directions for mesh and sprite casters | codex-coordinator |  |
 | 89 | ⚪ todo | Compare night lighting and actor separation against reference candidates | codex-coordinator |  |
 | 88 | ⚪ todo | Reproduce the reported missing daylight shadow in the cel town | codex-coordinator |  |
 | 3 | ⚪ todo | Compare caster contrast at battlefield framing | codex-coordinator |  |
+| 54 | 🟢 done | Compare snowy cel grading while preserving the snow-free baseline | codex-coordinator |  |
 | 48 | 🟢 done | Buildings float: base shading/shadow doesn't touch the ground (both looks) | shader-graph-agent |  |
 | 49 | ⚫ dropped | Houses float: contact shading/shadows offset from building bases (pixel + cel town) | shader-graph-agent |  |
 | 1 | 🟢 done | Pixel-art look as a shader graph (graphs/pixel-world), live preview, parity judge | shader-graph-agent |  |
@@ -342,13 +343,13 @@ Readable lighting, shadows, authored shader looks and the switch between them.
 
 ### Moons, weather and forecast (`game.weather`)
 
-2 open / 5 total · 0 doing · 0 review · 3 done · 2 ready todos
+2 open / 5 total · 1 doing · 0 review · 3 done · 1 ready todos
 
 Deterministic moon-driven weather and visible consequences.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 77 | ⚪ todo | Verify night embers and haze at a recorded deterministic moment | codex-coordinator |  |
+| 77 | 🟡 doing | Verify night embers and haze at a recorded deterministic moment | codex-coordinator |  |
 | 6 | ⚪ todo | Validate graph-driven weather, accumulation and refraction in both render paths | codex-coordinator |  |
 | 5 | 🟢 done | Weather state as a function of the two moons (snow / embers / fire-in-snow + steam), seeded, tested | weather-agent |  |
 | 7 | 🟢 done | In-game forecast panel (game UI, not editor), drawn with the game-ui kit | weather-agent |  |
@@ -446,13 +447,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-5 open / 50 total · 2 doing · 1 review · 45 done · 2 ready todos
+4 open / 50 total · 3 doing · 1 review · 46 done · 0 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-4 open / 32 total · 2 doing · 0 review · 28 done · 2 ready todos
+3 open / 32 total · 3 doing · 0 review · 29 done · 0 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -464,19 +465,19 @@ Native host and editor that can inspect, run and hot reload the software being b
 
 #### Renderer and performance (`engine.renderer`)
 
-4 open / 17 total · 2 doing · 0 review · 13 done · 2 ready todos
+3 open / 17 total · 3 doing · 0 review · 14 done · 0 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 147 | 🟡 doing | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
 | 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
-| 25 | ⚪ todo | Automate software checks and provision a separate Mac GPU gate | codex-coordinator |  |
-| 146 | 🟡 doing | Draw the embedded terminal through the shared native Canvas | codex-coordinator |  |
-| 147 | ⚪ todo | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
+| 25 | 🟡 doing | Automate software checks and provision a separate Mac GPU gate | codex-coordinator |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
-| 24 | 🟢 done | Complete GPU component drawing and post-effect parity | codex-coordinator |  |
 | 22 | 🟢 done | GPU renderer step 3-4: Skia CPU then Skia Ganesh on wgpu Metal; [host] renderer = cpu\|gpu, runtime switch | codex-coordinator |  |
+| 24 | 🟢 done | Complete GPU component drawing and post-effect parity | codex-coordinator |  |
+| 146 | 🟢 done | Draw the embedded terminal through the shared native Canvas | codex-coordinator |  |
 | 20 | 🟢 done | GPU renderer step 1: wgpu surface present + 3D texture sampled, no readback, shader warm-up | renderer-agent |  |
 | 21 | 🟢 done | GPU renderer step 2: neutral display-list interface, tiny-skia backend, zero pixel diff | renderer-agent |  |
 | 150 | 🟢 done | Clear obsolete scene controls and hit targets when app sources change | codex-coordinator |  |
