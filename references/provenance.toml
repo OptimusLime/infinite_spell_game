@@ -251,6 +251,7 @@ conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
 
 [[images]]
 id = "current-pixel"
+revision = "reel-twin-moons-v5"
 source = ""
 source_image = ""
 original_sha256 = "285b1ccb93816d5ea5ddce01c111ff5ea4b709050c1f52e5987821e26af8a72a"
@@ -259,6 +260,7 @@ conversion = "PNG byte copy"
 
 [[images]]
 id = "current-anime"
+revision = "reel-twin-moons-v5"
 source = ""
 source_image = ""
 original_sha256 = "8d4f58b95fe6a44b81b74cc141030d9e6009e46e737698a959748f9d45be47e6"
@@ -392,3 +394,41 @@ source_image = "https://fictorum.com/blog/wp-content/uploads/2016/01/FictorumUpd
 original_sha256 = "d87b414267102554d26e027cdf3d351f900427dbfd615944df1c9d7f50ad3d72"
 display_sha256 = "d87b414267102554d26e027cdf3d351f900427dbfd615944df1c9d7f50ad3d72"
 conversion = "Unmodified downloaded bytes"
+
+# Native town comparison: repeated current IDs below name a new revision; prior reel bytes are preserved.
+
+[[images]]
+id = "current-pixel"
+revision = "town-player-square-2026-10-09"
+source = "atelico-app-engine:proof/editor/player-readability"
+source_image = "media/player-readability/pixel-night-1100x800.png"
+original_sha256 = "e4419e81b19b64ea1a6539585c63954382fdb4ff9abda42568a1f13e87ba39be"
+display_sha256 = "e4419e81b19b64ea1a6539585c63954382fdb4ff9abda42568a1f13e87ba39be"
+conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"
+
+[[images]]
+id = "current-anime"
+revision = "town-player-square-2026-10-09"
+source = "atelico-app-engine:proof/editor/player-readability"
+source_image = "media/player-readability/cel-night-1100x800.png"
+original_sha256 = "5da83570bf8aac129f01977589fafc11d6be580044086c35e2bbdb4b4d627d3d"
+display_sha256 = "5da83570bf8aac129f01977589fafc11d6be580044086c35e2bbdb4b4d627d3d"
+conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"
+
+[[images]]
+id = "current-pixel-day-control"
+revision = "town-player-square-2026-10-09"
+source = "atelico-app-engine:proof/editor/player-readability"
+source_image = "media/player-readability/pixel-day-1100x800.png"
+original_sha256 = "adc303a50d141135770e0b477472f1d0f5dbe96f829ecb0f61584ab7439f0997"
+display_sha256 = "adc303a50d141135770e0b477472f1d0f5dbe96f829ecb0f61584ab7439f0997"
+conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"
+
+[[images]]
+id = "current-cel-day-control"
+revision = "town-player-square-2026-10-09"
+source = "atelico-app-engine:proof/editor/player-readability"
+source_image = "media/player-readability/cel-day-1100x800.png"
+original_sha256 = "971e874f17adb9d293a8ff5762392634b5d3af099f2ac2b15820a11fe11845ab"
+display_sha256 = "971e874f17adb9d293a8ff5762392634b5d3af099f2ac2b15820a11fe11845ab"
+conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"

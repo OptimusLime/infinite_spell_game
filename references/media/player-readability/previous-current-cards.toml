@@ -1,0 +1,36 @@
+# Historical reel-v5 card metadata before the native town comparison.
+# Reviewed evidence, if any, remains in the unchanged append-only review journal.
+
+[[references]]
+id = "current-pixel"
+group = "current"
+title = "Current pixel render — stored reel at 3.000 s"
+creator = "Infinite Spell Game project"
+source_url = ""
+image = "media/current-pixel.png"
+study = "This stored frame gives most of its area to sky and moon; the town occupies the lower strip and the ground is cut off. Compare with Hyper Light Drifter wide combat and Tunic battlefield for visible traversable ground, player scale and separated threats. This is a framing comparison, not a live playability test."
+limits = "Extracted from reel-twin-moons-v5.mp4; stored offline render, not fresh live gameplay or approved artwork. Reel SHA256 cf8b689e8711ff97cbd2eea7a4caa6ee86a17544101da2f87f9199d532a81752."
+related_part = "game"
+kind = "current"
+source_image_url = ""
+attribution = "Reference only; artwork belongs to the credited creators and rights holders."
+image_kind = "Existing project reel frame"
+retrieved_at = "2026-10-08"
+revision = "reel-twin-moons-v5"
+
+[[references]]
+id = "current-anime"
+group = "current"
+title = "Current anime render — stored reel at 10.000 s"
+creator = "Infinite Spell Game project"
+source_url = ""
+image = "media/current-anime.png"
+study = "This stored frame is dominated by sky and a central tower, with a very large foreground head partly cut off. Ground, targets and aim are not visible. Compare with Tunic battlefield for camera coverage and FighterZ shadow planes for the separate shading question. This frame cannot establish current gameplay behavior."
+limits = "Extracted from reel-twin-moons-v5.mp4; stored offline render, not fresh live gameplay or approved artwork. Reel SHA256 cf8b689e8711ff97cbd2eea7a4caa6ee86a17544101da2f87f9199d532a81752."
+related_part = "game"
+kind = "current"
+source_image_url = ""
+attribution = "Reference only; artwork belongs to the credited creators and rights holders."
+image_kind = "Existing project reel frame"
+retrieved_at = "2026-10-08"
+revision = "reel-twin-moons-v5"
