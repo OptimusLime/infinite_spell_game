@@ -1,0 +1,18 @@
+{
+  "base_revision": "c34c5a255428f27739c4a88097d810966d9c5c47",
+  "scope": "task159 isolated shared Player presentation",
+  "files": {
+    "packages/spell-player/src/layout.rs": "e4591848828bb48da907380a7a9f55c6984538c17ed7603a1c280fb65867dc17",
+    "packages/spell-player/src/lib.rs": "096ac0ca3b7debd8fc78999094785f94a7a0c7ab6394ec28236e91fce7af2c81",
+    "packages/spell-player/src/session.rs": "54f138237b141a77ca2166358e87dec67d17c6cfcfd6b1d17e871a6596e1263e",
+    "packages/spell-player/lua/apps/spell_player.luau": "601819735754d4d5ed9a06780e30c4ec9381ef058d4d1d458e41c9dd325189d3",
+    "packages/spell-player/lua/nodes/spell_player.luau": "1e91c43d6d3cd51f8461056a3f16a59b5a4295526e73a979369ff69a5fe435b5",
+    "packages/spell-player/lua/spell_player/hud.luau": "c337cfecce93f0e03880984f8c06812089679e4789edd71f630a69ad7e44731f",
+    "crates/editor/tests/player_viewport.rs": "b80010d751d20b642004d960c1cc9a4e7977ec56c3c84834b996d41a299dd6fc",
+    "scenes/player-visuals-cel.scene.luau": "cef3c2e95d6fd0e80e8add10baf6aa349a6b0d42f885eecfd282c46e9fe5d0e2",
+    "scenes/player-visuals-pixel.scene.luau": "19fdedb97736a4fc2dfe770d3bac8b15f5785d2c02aa37c6f29b9ba0289e8bc6",
+    "packages/scene-3d/lua/nodes/scene_3d.luau": "ece6f7426e3af0c43236e112b505c264cf17d72c6cad5bef11392ce06f24f5b1",
+    "packages/scene-3d/src/lib.rs": "0645904b4836eff1587ff4a5b2e631c513078ccac1d3afa6a9f3f3ec3244f2bd",
+    "packages/scene-3d/src/world.rs": "59fbfc8801e1dcbba1f98ea80dfaaa59d4da706511d8bf1b4cbd2a984df0e870"
+  }
+}

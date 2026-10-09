@@ -1,0 +1,2873 @@
+{
+  "ai_requests": 0,
+  "art_acceptance": false,
+  "captures": [
+    {
+      "battlefield": {
+        "height": 838.0,
+        "width": 1600.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": 10.0,
+        "lens": [],
+        "look_x": -0.6,
+        "look_y": 2.6,
+        "look_z": -2.2,
+        "orthographic": false,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "the town at the look's own hour",
+        "time": 0.0,
+        "x": 7.09,
+        "y": 13.1,
+        "z": 14.28
+      },
+      "camera_path": "scene.player-visuals-cel.nodes.root/world/town/square.props",
+      "drawer": {
+        "height": 838.0,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "file": "cel-day-1600x960.png",
+      "grades": [
+        [
+          "scene.player-visuals-cel.nodes.root/world/look/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 1.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.3,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "cel-world",
+            "look": "looks/wind-waker-day.cube",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": true
+          }
+        ]
+      ],
+      "height": 960,
+      "hour": 10.0,
+      "hud": [
+        0.0,
+        838.0,
+        1600.0,
+        122.0
+      ],
+      "hud_area_fraction": 0.12708333134651184,
+      "state": {
+        "aim": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "bodies": [
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "actor",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "actor",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": false,
+            "health": 0.0,
+            "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+            "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+            "radius": 0.10000000149011612,
+            "shape": "body.bolt",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 5.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.699999988079071
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "front",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 2.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "side",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 1.7000000476837158,
+            "y": 0.5,
+            "z": 1.7000000476837158
+          }
+        ],
+        "cartridges": [
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "item_id": "amber",
+            "loaded": true,
+            "remaining": 20.0
+          },
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "item_id": "blue",
+            "loaded": false,
+            "remaining": 40.0
+          }
+        ],
+        "grids": [
+          {
+            "cells": 18,
+            "height": 3,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "pack",
+            "items": [
+              "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+            ],
+            "owner": "player",
+            "used_cells": 1,
+            "width": 6
+          }
+        ],
+        "inventory": {
+          "grids": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+          ],
+          "item_count": 3,
+          "items": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+          ],
+          "retired_count": 0
+        },
+        "items": [
+          {
+            "column": 0,
+            "definition": "fixture-cartridge",
+            "grid": "",
+            "height": 1,
+            "holder_id": "wand",
+            "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+            "holder_kind": "item",
+            "id": "amber",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "cartridge",
+            "width": 1
+          },
+          {
+            "column": 1,
+            "definition": "fixture-cartridge",
+            "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "blue",
+            "location_kind": "grid",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 1,
+            "slot": "",
+            "width": 1
+          },
+          {
+            "column": 0,
+            "definition": "fixture-wand",
+            "grid": "",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "wand",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "hand",
+            "width": 2
+          }
+        ],
+        "receipts": [
+          {
+            "after": 20.0,
+            "allocation": 20.0,
+            "before": 40.0,
+            "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "cartridge_id": "amber",
+            "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+            "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+            "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+            "tick": 0,
+            "wand_id": "wand"
+          }
+        ],
+        "selected": "bolt",
+        "session": "private-visuals",
+        "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "supply": {
+          "allocation": 20.0,
+          "can_cast": true,
+          "cartridges": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+          ],
+          "finished": [],
+          "instances": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+          ],
+          "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+          "owner": "player",
+          "reason": "",
+          "receipts": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+          ],
+          "selected_name": "engineering-bolt",
+          "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+          "selected_title": "Engineering bolt",
+          "total": 60.0,
+          "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+        },
+        "tick": 0,
+        "total": 60.0
+      },
+      "style": "cel",
+      "width": 1600
+    },
+    {
+      "battlefield": {
+        "height": 838.0,
+        "width": 1600.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": 1.0,
+        "lens": [],
+        "look_x": -0.6,
+        "look_y": 2.6,
+        "look_z": -2.2,
+        "orthographic": false,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "the town at the look's own hour",
+        "time": 0.0,
+        "x": 7.09,
+        "y": 13.1,
+        "z": 14.28
+      },
+      "camera_path": "scene.player-visuals-cel.nodes.root/world/town/square.props",
+      "drawer": {
+        "height": 838.0,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "file": "cel-night-1600x960.png",
+      "grades": [
+        [
+          "scene.player-visuals-cel.nodes.root/world/look/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 1.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.3,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "cel-world",
+            "look": "looks/wind-waker-day.cube",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": true
+          }
+        ]
+      ],
+      "height": 960,
+      "hour": 1.0,
+      "hud": [
+        0.0,
+        838.0,
+        1600.0,
+        122.0
+      ],
+      "hud_area_fraction": 0.12708333134651184,
+      "state": {
+        "aim": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "bodies": [
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "actor",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "actor",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": false,
+            "health": 0.0,
+            "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+            "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+            "radius": 0.10000000149011612,
+            "shape": "body.bolt",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 5.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.699999988079071
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "front",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 2.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "side",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 1.7000000476837158,
+            "y": 0.5,
+            "z": 1.7000000476837158
+          }
+        ],
+        "cartridges": [
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "item_id": "amber",
+            "loaded": true,
+            "remaining": 20.0
+          },
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "item_id": "blue",
+            "loaded": false,
+            "remaining": 40.0
+          }
+        ],
+        "grids": [
+          {
+            "cells": 18,
+            "height": 3,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "pack",
+            "items": [
+              "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+            ],
+            "owner": "player",
+            "used_cells": 1,
+            "width": 6
+          }
+        ],
+        "inventory": {
+          "grids": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+          ],
+          "item_count": 3,
+          "items": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+          ],
+          "retired_count": 0
+        },
+        "items": [
+          {
+            "column": 0,
+            "definition": "fixture-cartridge",
+            "grid": "",
+            "height": 1,
+            "holder_id": "wand",
+            "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+            "holder_kind": "item",
+            "id": "amber",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "cartridge",
+            "width": 1
+          },
+          {
+            "column": 1,
+            "definition": "fixture-cartridge",
+            "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "blue",
+            "location_kind": "grid",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 1,
+            "slot": "",
+            "width": 1
+          },
+          {
+            "column": 0,
+            "definition": "fixture-wand",
+            "grid": "",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "wand",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "hand",
+            "width": 2
+          }
+        ],
+        "receipts": [
+          {
+            "after": 20.0,
+            "allocation": 20.0,
+            "before": 40.0,
+            "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "cartridge_id": "amber",
+            "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+            "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+            "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+            "tick": 0,
+            "wand_id": "wand"
+          }
+        ],
+        "selected": "bolt",
+        "session": "private-visuals",
+        "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "supply": {
+          "allocation": 20.0,
+          "can_cast": true,
+          "cartridges": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+          ],
+          "finished": [],
+          "instances": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+          ],
+          "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+          "owner": "player",
+          "reason": "",
+          "receipts": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+          ],
+          "selected_name": "engineering-bolt",
+          "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+          "selected_title": "Engineering bolt",
+          "total": 60.0,
+          "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+        },
+        "tick": 0,
+        "total": 60.0
+      },
+      "style": "cel",
+      "width": 1600
+    },
+    {
+      "battlefield": {
+        "height": 636.0,
+        "width": 1100.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": 10.0,
+        "lens": [],
+        "look_x": -0.6,
+        "look_y": 2.6,
+        "look_z": -2.2,
+        "orthographic": false,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "the town at the look's own hour",
+        "time": 0.0,
+        "x": 7.09,
+        "y": 13.1,
+        "z": 14.28
+      },
+      "camera_path": "scene.player-visuals-cel.nodes.root/world/town/square.props",
+      "drawer": {
+        "height": 636.0,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "file": "cel-day-1100x800.png",
+      "grades": [
+        [
+          "scene.player-visuals-cel.nodes.root/world/look/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 1.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.3,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "cel-world",
+            "look": "looks/wind-waker-day.cube",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": true
+          }
+        ]
+      ],
+      "height": 800,
+      "hour": 10.0,
+      "hud": [
+        0.0,
+        636.0,
+        1100.0,
+        164.0
+      ],
+      "hud_area_fraction": 0.20499999821186066,
+      "state": {
+        "aim": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "bodies": [
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "actor",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "actor",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": false,
+            "health": 0.0,
+            "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+            "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+            "radius": 0.10000000149011612,
+            "shape": "body.bolt",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 5.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.699999988079071
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "front",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 2.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "side",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 1.7000000476837158,
+            "y": 0.5,
+            "z": 1.7000000476837158
+          }
+        ],
+        "cartridges": [
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "item_id": "amber",
+            "loaded": true,
+            "remaining": 20.0
+          },
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "item_id": "blue",
+            "loaded": false,
+            "remaining": 40.0
+          }
+        ],
+        "grids": [
+          {
+            "cells": 18,
+            "height": 3,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "pack",
+            "items": [
+              "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+            ],
+            "owner": "player",
+            "used_cells": 1,
+            "width": 6
+          }
+        ],
+        "inventory": {
+          "grids": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+          ],
+          "item_count": 3,
+          "items": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+          ],
+          "retired_count": 0
+        },
+        "items": [
+          {
+            "column": 0,
+            "definition": "fixture-cartridge",
+            "grid": "",
+            "height": 1,
+            "holder_id": "wand",
+            "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+            "holder_kind": "item",
+            "id": "amber",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "cartridge",
+            "width": 1
+          },
+          {
+            "column": 1,
+            "definition": "fixture-cartridge",
+            "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "blue",
+            "location_kind": "grid",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 1,
+            "slot": "",
+            "width": 1
+          },
+          {
+            "column": 0,
+            "definition": "fixture-wand",
+            "grid": "",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "wand",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "hand",
+            "width": 2
+          }
+        ],
+        "receipts": [
+          {
+            "after": 20.0,
+            "allocation": 20.0,
+            "before": 40.0,
+            "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "cartridge_id": "amber",
+            "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+            "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+            "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+            "tick": 0,
+            "wand_id": "wand"
+          }
+        ],
+        "selected": "bolt",
+        "session": "private-visuals",
+        "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "supply": {
+          "allocation": 20.0,
+          "can_cast": true,
+          "cartridges": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+          ],
+          "finished": [],
+          "instances": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+          ],
+          "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+          "owner": "player",
+          "reason": "",
+          "receipts": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+          ],
+          "selected_name": "engineering-bolt",
+          "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+          "selected_title": "Engineering bolt",
+          "total": 60.0,
+          "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+        },
+        "tick": 0,
+        "total": 60.0
+      },
+      "style": "cel",
+      "width": 1100
+    },
+    {
+      "battlefield": {
+        "height": 636.0,
+        "width": 1100.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": 1.0,
+        "lens": [],
+        "look_x": -0.6,
+        "look_y": 2.6,
+        "look_z": -2.2,
+        "orthographic": false,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "the town at the look's own hour",
+        "time": 0.0,
+        "x": 7.09,
+        "y": 13.1,
+        "z": 14.28
+      },
+      "camera_path": "scene.player-visuals-cel.nodes.root/world/town/square.props",
+      "drawer": {
+        "height": 636.0,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "file": "cel-night-1100x800.png",
+      "grades": [
+        [
+          "scene.player-visuals-cel.nodes.root/world/look/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 1.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.3,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "cel-world",
+            "look": "looks/wind-waker-day.cube",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": true
+          }
+        ]
+      ],
+      "height": 800,
+      "hour": 1.0,
+      "hud": [
+        0.0,
+        636.0,
+        1100.0,
+        164.0
+      ],
+      "hud_area_fraction": 0.20499999821186066,
+      "state": {
+        "aim": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "bodies": [
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "actor",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "actor",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": false,
+            "health": 0.0,
+            "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+            "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+            "radius": 0.10000000149011612,
+            "shape": "body.bolt",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 5.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.699999988079071
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "front",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 2.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "side",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 1.7000000476837158,
+            "y": 0.5,
+            "z": 1.7000000476837158
+          }
+        ],
+        "cartridges": [
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "item_id": "amber",
+            "loaded": true,
+            "remaining": 20.0
+          },
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "item_id": "blue",
+            "loaded": false,
+            "remaining": 40.0
+          }
+        ],
+        "grids": [
+          {
+            "cells": 18,
+            "height": 3,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "pack",
+            "items": [
+              "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+            ],
+            "owner": "player",
+            "used_cells": 1,
+            "width": 6
+          }
+        ],
+        "inventory": {
+          "grids": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+          ],
+          "item_count": 3,
+          "items": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+          ],
+          "retired_count": 0
+        },
+        "items": [
+          {
+            "column": 0,
+            "definition": "fixture-cartridge",
+            "grid": "",
+            "height": 1,
+            "holder_id": "wand",
+            "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+            "holder_kind": "item",
+            "id": "amber",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "cartridge",
+            "width": 1
+          },
+          {
+            "column": 1,
+            "definition": "fixture-cartridge",
+            "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "blue",
+            "location_kind": "grid",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 1,
+            "slot": "",
+            "width": 1
+          },
+          {
+            "column": 0,
+            "definition": "fixture-wand",
+            "grid": "",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "wand",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "hand",
+            "width": 2
+          }
+        ],
+        "receipts": [
+          {
+            "after": 20.0,
+            "allocation": 20.0,
+            "before": 40.0,
+            "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "cartridge_id": "amber",
+            "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+            "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+            "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+            "tick": 0,
+            "wand_id": "wand"
+          }
+        ],
+        "selected": "bolt",
+        "session": "private-visuals",
+        "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "supply": {
+          "allocation": 20.0,
+          "can_cast": true,
+          "cartridges": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+          ],
+          "finished": [],
+          "instances": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+          ],
+          "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+          "owner": "player",
+          "reason": "",
+          "receipts": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+          ],
+          "selected_name": "engineering-bolt",
+          "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+          "selected_title": "Engineering bolt",
+          "total": 60.0,
+          "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+        },
+        "tick": 0,
+        "total": 60.0
+      },
+      "style": "cel",
+      "width": 1100
+    },
+    {
+      "battlefield": {
+        "height": 838.0,
+        "width": 1600.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": 10.0,
+        "lens": [],
+        "look_x": 0.0,
+        "look_y": 0.0,
+        "look_z": 2.0,
+        "orthographic": true,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "",
+        "time": -1.0,
+        "x": 0.0,
+        "y": 10.0,
+        "z": 19.32
+      },
+      "camera_path": "scene.player-visuals-pixel.nodes.root/world/square.props",
+      "drawer": {
+        "height": 838.0,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "file": "pixel-day-1600x960.png",
+      "grades": [
+        [
+          "scene.player-visuals-pixel.nodes.root/world/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 0.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.0,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "pixel-world",
+            "look": "",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": false
+          }
+        ]
+      ],
+      "height": 960,
+      "hour": 10.0,
+      "hud": [
+        0.0,
+        838.0,
+        1600.0,
+        122.0
+      ],
+      "hud_area_fraction": 0.12708333134651184,
+      "state": {
+        "aim": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "bodies": [
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "actor",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "actor",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": false,
+            "health": 0.0,
+            "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+            "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+            "radius": 0.10000000149011612,
+            "shape": "body.bolt",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 5.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.699999988079071
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "front",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 2.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "side",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 1.7000000476837158,
+            "y": 0.5,
+            "z": 1.7000000476837158
+          }
+        ],
+        "cartridges": [
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "item_id": "amber",
+            "loaded": true,
+            "remaining": 20.0
+          },
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "item_id": "blue",
+            "loaded": false,
+            "remaining": 40.0
+          }
+        ],
+        "grids": [
+          {
+            "cells": 18,
+            "height": 3,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "pack",
+            "items": [
+              "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+            ],
+            "owner": "player",
+            "used_cells": 1,
+            "width": 6
+          }
+        ],
+        "inventory": {
+          "grids": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+          ],
+          "item_count": 3,
+          "items": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+          ],
+          "retired_count": 0
+        },
+        "items": [
+          {
+            "column": 0,
+            "definition": "fixture-cartridge",
+            "grid": "",
+            "height": 1,
+            "holder_id": "wand",
+            "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+            "holder_kind": "item",
+            "id": "amber",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "cartridge",
+            "width": 1
+          },
+          {
+            "column": 1,
+            "definition": "fixture-cartridge",
+            "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "blue",
+            "location_kind": "grid",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 1,
+            "slot": "",
+            "width": 1
+          },
+          {
+            "column": 0,
+            "definition": "fixture-wand",
+            "grid": "",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "wand",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "hand",
+            "width": 2
+          }
+        ],
+        "receipts": [
+          {
+            "after": 20.0,
+            "allocation": 20.0,
+            "before": 40.0,
+            "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "cartridge_id": "amber",
+            "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+            "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+            "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+            "tick": 0,
+            "wand_id": "wand"
+          }
+        ],
+        "selected": "bolt",
+        "session": "private-visuals",
+        "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "supply": {
+          "allocation": 20.0,
+          "can_cast": true,
+          "cartridges": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+          ],
+          "finished": [],
+          "instances": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+          ],
+          "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+          "owner": "player",
+          "reason": "",
+          "receipts": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+          ],
+          "selected_name": "engineering-bolt",
+          "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+          "selected_title": "Engineering bolt",
+          "total": 60.0,
+          "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+        },
+        "tick": 0,
+        "total": 60.0
+      },
+      "style": "pixel",
+      "width": 1600
+    },
+    {
+      "battlefield": {
+        "height": 838.0,
+        "width": 1600.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": 1.0,
+        "lens": [],
+        "look_x": 0.0,
+        "look_y": 0.0,
+        "look_z": 2.0,
+        "orthographic": true,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "",
+        "time": -1.0,
+        "x": 0.0,
+        "y": 10.0,
+        "z": 19.32
+      },
+      "camera_path": "scene.player-visuals-pixel.nodes.root/world/square.props",
+      "drawer": {
+        "height": 838.0,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "file": "pixel-night-1600x960.png",
+      "grades": [
+        [
+          "scene.player-visuals-pixel.nodes.root/world/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 0.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.0,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "pixel-world",
+            "look": "",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": false
+          }
+        ]
+      ],
+      "height": 960,
+      "hour": 1.0,
+      "hud": [
+        0.0,
+        838.0,
+        1600.0,
+        122.0
+      ],
+      "hud_area_fraction": 0.12708333134651184,
+      "state": {
+        "aim": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "bodies": [
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "actor",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "actor",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": false,
+            "health": 0.0,
+            "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+            "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+            "radius": 0.10000000149011612,
+            "shape": "body.bolt",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 5.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.699999988079071
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "front",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 2.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "side",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 1.7000000476837158,
+            "y": 0.5,
+            "z": 1.7000000476837158
+          }
+        ],
+        "cartridges": [
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "item_id": "amber",
+            "loaded": true,
+            "remaining": 20.0
+          },
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "item_id": "blue",
+            "loaded": false,
+            "remaining": 40.0
+          }
+        ],
+        "grids": [
+          {
+            "cells": 18,
+            "height": 3,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "pack",
+            "items": [
+              "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+            ],
+            "owner": "player",
+            "used_cells": 1,
+            "width": 6
+          }
+        ],
+        "inventory": {
+          "grids": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+          ],
+          "item_count": 3,
+          "items": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+          ],
+          "retired_count": 0
+        },
+        "items": [
+          {
+            "column": 0,
+            "definition": "fixture-cartridge",
+            "grid": "",
+            "height": 1,
+            "holder_id": "wand",
+            "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+            "holder_kind": "item",
+            "id": "amber",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "cartridge",
+            "width": 1
+          },
+          {
+            "column": 1,
+            "definition": "fixture-cartridge",
+            "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "blue",
+            "location_kind": "grid",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 1,
+            "slot": "",
+            "width": 1
+          },
+          {
+            "column": 0,
+            "definition": "fixture-wand",
+            "grid": "",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "wand",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "hand",
+            "width": 2
+          }
+        ],
+        "receipts": [
+          {
+            "after": 20.0,
+            "allocation": 20.0,
+            "before": 40.0,
+            "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "cartridge_id": "amber",
+            "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+            "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+            "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+            "tick": 0,
+            "wand_id": "wand"
+          }
+        ],
+        "selected": "bolt",
+        "session": "private-visuals",
+        "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "supply": {
+          "allocation": 20.0,
+          "can_cast": true,
+          "cartridges": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+          ],
+          "finished": [],
+          "instances": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+          ],
+          "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+          "owner": "player",
+          "reason": "",
+          "receipts": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+          ],
+          "selected_name": "engineering-bolt",
+          "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+          "selected_title": "Engineering bolt",
+          "total": 60.0,
+          "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+        },
+        "tick": 0,
+        "total": 60.0
+      },
+      "style": "pixel",
+      "width": 1600
+    },
+    {
+      "battlefield": {
+        "height": 636.0,
+        "width": 1100.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": 10.0,
+        "lens": [],
+        "look_x": 0.0,
+        "look_y": 0.0,
+        "look_z": 2.0,
+        "orthographic": true,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "",
+        "time": -1.0,
+        "x": 0.0,
+        "y": 10.0,
+        "z": 19.32
+      },
+      "camera_path": "scene.player-visuals-pixel.nodes.root/world/square.props",
+      "drawer": {
+        "height": 636.0,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "file": "pixel-day-1100x800.png",
+      "grades": [
+        [
+          "scene.player-visuals-pixel.nodes.root/world/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 0.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.0,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "pixel-world",
+            "look": "",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": false
+          }
+        ]
+      ],
+      "height": 800,
+      "hour": 10.0,
+      "hud": [
+        0.0,
+        636.0,
+        1100.0,
+        164.0
+      ],
+      "hud_area_fraction": 0.20499999821186066,
+      "state": {
+        "aim": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "bodies": [
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "actor",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "actor",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": false,
+            "health": 0.0,
+            "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+            "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+            "radius": 0.10000000149011612,
+            "shape": "body.bolt",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 5.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.699999988079071
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "front",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 2.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "side",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 1.7000000476837158,
+            "y": 0.5,
+            "z": 1.7000000476837158
+          }
+        ],
+        "cartridges": [
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "item_id": "amber",
+            "loaded": true,
+            "remaining": 20.0
+          },
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "item_id": "blue",
+            "loaded": false,
+            "remaining": 40.0
+          }
+        ],
+        "grids": [
+          {
+            "cells": 18,
+            "height": 3,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "pack",
+            "items": [
+              "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+            ],
+            "owner": "player",
+            "used_cells": 1,
+            "width": 6
+          }
+        ],
+        "inventory": {
+          "grids": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+          ],
+          "item_count": 3,
+          "items": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+          ],
+          "retired_count": 0
+        },
+        "items": [
+          {
+            "column": 0,
+            "definition": "fixture-cartridge",
+            "grid": "",
+            "height": 1,
+            "holder_id": "wand",
+            "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+            "holder_kind": "item",
+            "id": "amber",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "cartridge",
+            "width": 1
+          },
+          {
+            "column": 1,
+            "definition": "fixture-cartridge",
+            "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "blue",
+            "location_kind": "grid",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 1,
+            "slot": "",
+            "width": 1
+          },
+          {
+            "column": 0,
+            "definition": "fixture-wand",
+            "grid": "",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "wand",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "hand",
+            "width": 2
+          }
+        ],
+        "receipts": [
+          {
+            "after": 20.0,
+            "allocation": 20.0,
+            "before": 40.0,
+            "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "cartridge_id": "amber",
+            "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+            "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+            "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+            "tick": 0,
+            "wand_id": "wand"
+          }
+        ],
+        "selected": "bolt",
+        "session": "private-visuals",
+        "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "supply": {
+          "allocation": 20.0,
+          "can_cast": true,
+          "cartridges": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+          ],
+          "finished": [],
+          "instances": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+          ],
+          "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+          "owner": "player",
+          "reason": "",
+          "receipts": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+          ],
+          "selected_name": "engineering-bolt",
+          "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+          "selected_title": "Engineering bolt",
+          "total": 60.0,
+          "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+        },
+        "tick": 0,
+        "total": 60.0
+      },
+      "style": "pixel",
+      "width": 1100
+    },
+    {
+      "battlefield": {
+        "height": 636.0,
+        "width": 1100.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": 1.0,
+        "lens": [],
+        "look_x": 0.0,
+        "look_y": 0.0,
+        "look_z": 2.0,
+        "orthographic": true,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "",
+        "time": -1.0,
+        "x": 0.0,
+        "y": 10.0,
+        "z": 19.32
+      },
+      "camera_path": "scene.player-visuals-pixel.nodes.root/world/square.props",
+      "drawer": {
+        "height": 636.0,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "file": "pixel-night-1100x800.png",
+      "grades": [
+        [
+          "scene.player-visuals-pixel.nodes.root/world/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 0.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.0,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "pixel-world",
+            "look": "",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": false
+          }
+        ]
+      ],
+      "height": 800,
+      "hour": 1.0,
+      "hud": [
+        0.0,
+        636.0,
+        1100.0,
+        164.0
+      ],
+      "hud_area_fraction": 0.20499999821186066,
+      "state": {
+        "aim": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "bodies": [
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "actor",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "actor",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": false,
+            "health": 0.0,
+            "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+            "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+            "radius": 0.10000000149011612,
+            "shape": "body.bolt",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 5.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.699999988079071
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "front",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 0.0,
+            "y": 0.5,
+            "z": 2.0
+          },
+          {
+            "alive": true,
+            "dx": 0.0,
+            "dy": 0.0,
+            "dz": 1.0,
+            "has_health": true,
+            "health": 12.0,
+            "id": "side",
+            "instance": "",
+            "radius": 0.5,
+            "shape": "target",
+            "vx": 0.0,
+            "vy": 0.0,
+            "vz": 0.0,
+            "x": 1.7000000476837158,
+            "y": 0.5,
+            "z": 1.7000000476837158
+          }
+        ],
+        "cartridges": [
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "item_id": "amber",
+            "loaded": true,
+            "remaining": 20.0
+          },
+          {
+            "capacity": 40.0,
+            "definition": "fixture-cartridge",
+            "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "item_id": "blue",
+            "loaded": false,
+            "remaining": 40.0
+          }
+        ],
+        "grids": [
+          {
+            "cells": 18,
+            "height": 3,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "pack",
+            "items": [
+              "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+            ],
+            "owner": "player",
+            "used_cells": 1,
+            "width": 6
+          }
+        ],
+        "inventory": {
+          "grids": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+          ],
+          "item_count": 3,
+          "items": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+          ],
+          "retired_count": 0
+        },
+        "items": [
+          {
+            "column": 0,
+            "definition": "fixture-cartridge",
+            "grid": "",
+            "height": 1,
+            "holder_id": "wand",
+            "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+            "holder_kind": "item",
+            "id": "amber",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "cartridge",
+            "width": 1
+          },
+          {
+            "column": 1,
+            "definition": "fixture-cartridge",
+            "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "blue",
+            "location_kind": "grid",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 1,
+            "slot": "",
+            "width": 1
+          },
+          {
+            "column": 0,
+            "definition": "fixture-wand",
+            "grid": "",
+            "height": 1,
+            "holder_id": "player",
+            "holder_item": "",
+            "holder_kind": "entity",
+            "id": "wand",
+            "location_kind": "slot",
+            "owner": "player",
+            "rotatable": true,
+            "rotated": false,
+            "row": 0,
+            "slot": "hand",
+            "width": 2
+          }
+        ],
+        "receipts": [
+          {
+            "after": 20.0,
+            "allocation": 20.0,
+            "before": 40.0,
+            "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "cartridge_id": "amber",
+            "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+            "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+            "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+            "tick": 0,
+            "wand_id": "wand"
+          }
+        ],
+        "selected": "bolt",
+        "session": "private-visuals",
+        "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "supply": {
+          "allocation": 20.0,
+          "can_cast": true,
+          "cartridges": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+          ],
+          "finished": [],
+          "instances": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+          ],
+          "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+          "owner": "player",
+          "reason": "",
+          "receipts": [
+            "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+          ],
+          "selected_name": "engineering-bolt",
+          "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+          "selected_title": "Engineering bolt",
+          "total": 60.0,
+          "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+        },
+        "tick": 0,
+        "total": 60.0
+      },
+      "style": "pixel",
+      "width": 1100
+    }
+  ],
+  "comparison": "existing square cameras, hour 10 vs 1; exposure0; one pinned in-flight event",
+  "engineering_only": true,
+  "event": {
+    "aim": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "bodies": [
+      {
+        "alive": true,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dz": 1.0,
+        "has_health": true,
+        "health": 12.0,
+        "id": "actor",
+        "instance": "",
+        "radius": 0.5,
+        "shape": "actor",
+        "vx": 0.0,
+        "vy": 0.0,
+        "vz": 0.0,
+        "x": 0.0,
+        "y": 0.5,
+        "z": 0.0
+      },
+      {
+        "alive": true,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dz": 1.0,
+        "has_health": false,
+        "health": 0.0,
+        "id": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049/form",
+        "instance": "cast:74c19f99bb836a0e54ff4bc9c8c20d60588230c0d80b6428520bfef126ed3049",
+        "radius": 0.10000000149011612,
+        "shape": "body.bolt",
+        "vx": 0.0,
+        "vy": 0.0,
+        "vz": 5.0,
+        "x": 0.0,
+        "y": 0.5,
+        "z": 0.699999988079071
+      },
+      {
+        "alive": true,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dz": 1.0,
+        "has_health": true,
+        "health": 12.0,
+        "id": "front",
+        "instance": "",
+        "radius": 0.5,
+        "shape": "target",
+        "vx": 0.0,
+        "vy": 0.0,
+        "vz": 0.0,
+        "x": 0.0,
+        "y": 0.5,
+        "z": 2.0
+      },
+      {
+        "alive": true,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dz": 1.0,
+        "has_health": true,
+        "health": 12.0,
+        "id": "side",
+        "instance": "",
+        "radius": 0.5,
+        "shape": "target",
+        "vx": 0.0,
+        "vy": 0.0,
+        "vz": 0.0,
+        "x": 1.7000000476837158,
+        "y": 0.5,
+        "z": 1.7000000476837158
+      }
+    ],
+    "cartridges": [
+      {
+        "capacity": 40.0,
+        "definition": "fixture-cartridge",
+        "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+        "item_id": "amber",
+        "loaded": true,
+        "remaining": 20.0
+      },
+      {
+        "capacity": 40.0,
+        "definition": "fixture-cartridge",
+        "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+        "item_id": "blue",
+        "loaded": false,
+        "remaining": 40.0
+      }
+    ],
+    "grids": [
+      {
+        "cells": 18,
+        "height": 3,
+        "holder_id": "player",
+        "holder_item": "",
+        "holder_kind": "entity",
+        "id": "pack",
+        "items": [
+          "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+        ],
+        "owner": "player",
+        "used_cells": 1,
+        "width": 6
+      }
+    ],
+    "inventory": {
+      "grids": [
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+      ],
+      "item_count": 3,
+      "items": [
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+      ],
+      "retired_count": 0
+    },
+    "items": [
+      {
+        "column": 0,
+        "definition": "fixture-cartridge",
+        "grid": "",
+        "height": 1,
+        "holder_id": "wand",
+        "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+        "holder_kind": "item",
+        "id": "amber",
+        "location_kind": "slot",
+        "owner": "player",
+        "rotatable": true,
+        "rotated": false,
+        "row": 0,
+        "slot": "cartridge",
+        "width": 1
+      },
+      {
+        "column": 1,
+        "definition": "fixture-cartridge",
+        "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+        "height": 1,
+        "holder_id": "player",
+        "holder_item": "",
+        "holder_kind": "entity",
+        "id": "blue",
+        "location_kind": "grid",
+        "owner": "player",
+        "rotatable": true,
+        "rotated": false,
+        "row": 1,
+        "slot": "",
+        "width": 1
+      },
+      {
+        "column": 0,
+        "definition": "fixture-wand",
+        "grid": "",
+        "height": 1,
+        "holder_id": "player",
+        "holder_item": "",
+        "holder_kind": "entity",
+        "id": "wand",
+        "location_kind": "slot",
+        "owner": "player",
+        "rotatable": true,
+        "rotated": false,
+        "row": 0,
+        "slot": "hand",
+        "width": 2
+      }
+    ],
+    "receipts": [
+      {
+        "after": 20.0,
+        "allocation": 20.0,
+        "before": 40.0,
+        "cartridge": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+        "cartridge_id": "amber",
+        "instance": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439",
+        "request_id": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62:7",
+        "revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+        "tick": 0,
+        "wand_id": "wand"
+      }
+    ],
+    "selected": "bolt",
+    "session": "private-visuals",
+    "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+    "supply": {
+      "allocation": 20.0,
+      "can_cast": true,
+      "cartridges": [
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+      ],
+      "finished": [],
+      "instances": [
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.instances.636173743a37346331396639396262383336613065353466663462633963386332306436303538383233306330643830623634323835323062666566313236656433303439"
+      ],
+      "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+      "owner": "player",
+      "reason": "",
+      "receipts": [
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.receipts.72756e74696d652e7370656c6c5f706c617965722e73657373696f6e732e70363266636664666330656332383164343961356639653063383165396261636237356261643063336130393362613038666139343966333037323634336636323a37"
+      ],
+      "selected_name": "engineering-bolt",
+      "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+      "selected_title": "Engineering bolt",
+      "total": 60.0,
+      "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+    },
+    "tick": 0,
+    "total": 60.0
+  },
+  "fire_actions": 1,
+  "ordinary_draw_readbacks": 0,
+  "originals": [
+    {
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": -1.0,
+        "lens": [],
+        "look_x": -0.6,
+        "look_y": 2.6,
+        "look_z": -2.2,
+        "orthographic": false,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "the town at the look's own hour",
+        "time": 0.0,
+        "x": 7.09,
+        "y": 13.1,
+        "z": 14.28
+      },
+      "camera_path": "scene.player-visuals-cel.nodes.root/world/town/square.props",
+      "grades": [
+        [
+          "scene.player-visuals-cel.nodes.root/world/look/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 1.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.3,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "cel-world",
+            "look": "looks/wind-waker-day.cube",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": true
+          }
+        ]
+      ],
+      "style": "cel"
+    },
+    {
+      "camera": {
+        "dolly": 0.0,
+        "focus": {
+          "kind": "off"
+        },
+        "follow": "",
+        "fov": 42.0,
+        "hour": -1.0,
+        "lens": [],
+        "look_x": 0.0,
+        "look_y": 0.0,
+        "look_z": 2.0,
+        "orthographic": true,
+        "pan_x": 0.0,
+        "pan_z": 0.0,
+        "pixel": 0.0,
+        "reference": "",
+        "show": "",
+        "target": "",
+        "time": -1.0,
+        "x": 0.0,
+        "y": 10.0,
+        "z": 19.32
+      },
+      "camera_path": "scene.player-visuals-pixel.nodes.root/world/square.props",
+      "grades": [
+        [
+          "scene.player-visuals-pixel.nodes.root/world/grade.props",
+          {
+            "ao_radius": 1.2,
+            "ao_strength": 0.0,
+            "ao_threshold": 0.3,
+            "bloom": 0.0,
+            "bloom_threshold": 1.4,
+            "exposure": 0.0,
+            "graph": "pixel-world",
+            "look": "",
+            "look_strength": 1.0,
+            "output": "final",
+            "show": "",
+            "temperature": 0.0,
+            "tint": 0.0,
+            "tonemap": false
+          }
+        ]
+      ],
+      "style": "pixel"
+    }
+  ],
+  "physics": "Flat(floor), no town collision geometry; debug targets/projectiles, only actor uses authored hero",
+  "ready": {
+    "aim": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "bodies": [
+      {
+        "alive": true,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dz": 1.0,
+        "has_health": true,
+        "health": 12.0,
+        "id": "actor",
+        "instance": "",
+        "radius": 0.5,
+        "shape": "actor",
+        "vx": 0.0,
+        "vy": 0.0,
+        "vz": 0.0,
+        "x": 0.0,
+        "y": 0.5,
+        "z": 0.0
+      },
+      {
+        "alive": true,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dz": 1.0,
+        "has_health": true,
+        "health": 12.0,
+        "id": "front",
+        "instance": "",
+        "radius": 0.5,
+        "shape": "target",
+        "vx": 0.0,
+        "vy": 0.0,
+        "vz": 0.0,
+        "x": 0.0,
+        "y": 0.5,
+        "z": 2.0
+      },
+      {
+        "alive": true,
+        "dx": 0.0,
+        "dy": 0.0,
+        "dz": 1.0,
+        "has_health": true,
+        "health": 12.0,
+        "id": "side",
+        "instance": "",
+        "radius": 0.5,
+        "shape": "target",
+        "vx": 0.0,
+        "vy": 0.0,
+        "vz": 0.0,
+        "x": 1.7000000476837158,
+        "y": 0.5,
+        "z": 1.7000000476837158
+      }
+    ],
+    "cartridges": [
+      {
+        "capacity": 40.0,
+        "definition": "fixture-cartridge",
+        "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+        "item_id": "amber",
+        "loaded": true,
+        "remaining": 40.0
+      },
+      {
+        "capacity": 40.0,
+        "definition": "fixture-cartridge",
+        "item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+        "item_id": "blue",
+        "loaded": false,
+        "remaining": 40.0
+      }
+    ],
+    "grids": [
+      {
+        "cells": 18,
+        "height": 3,
+        "holder_id": "player",
+        "holder_item": "",
+        "holder_kind": "entity",
+        "id": "pack",
+        "items": [
+          "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565"
+        ],
+        "owner": "player",
+        "used_cells": 1,
+        "width": 6
+      }
+    ],
+    "inventory": {
+      "grids": [
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b"
+      ],
+      "item_count": 3,
+      "items": [
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.616d626572",
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.626c7565",
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+      ],
+      "retired_count": 0
+    },
+    "items": [
+      {
+        "column": 0,
+        "definition": "fixture-cartridge",
+        "grid": "",
+        "height": 1,
+        "holder_id": "wand",
+        "holder_item": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64",
+        "holder_kind": "item",
+        "id": "amber",
+        "location_kind": "slot",
+        "owner": "player",
+        "rotatable": true,
+        "rotated": false,
+        "row": 0,
+        "slot": "cartridge",
+        "width": 1
+      },
+      {
+        "column": 1,
+        "definition": "fixture-cartridge",
+        "grid": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.grids.7061636b",
+        "height": 1,
+        "holder_id": "player",
+        "holder_item": "",
+        "holder_kind": "entity",
+        "id": "blue",
+        "location_kind": "grid",
+        "owner": "player",
+        "rotatable": true,
+        "rotated": false,
+        "row": 1,
+        "slot": "",
+        "width": 1
+      },
+      {
+        "column": 0,
+        "definition": "fixture-wand",
+        "grid": "",
+        "height": 1,
+        "holder_id": "player",
+        "holder_item": "",
+        "holder_kind": "entity",
+        "id": "wand",
+        "location_kind": "slot",
+        "owner": "player",
+        "rotatable": true,
+        "rotated": false,
+        "row": 0,
+        "slot": "hand",
+        "width": 2
+      }
+    ],
+    "receipts": [],
+    "selected": "bolt",
+    "session": "private-visuals",
+    "source": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+    "supply": {
+      "allocation": 20.0,
+      "can_cast": true,
+      "cartridges": [
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+        "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.626c7565"
+      ],
+      "finished": [],
+      "instances": [],
+      "loaded": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.supply.cartridges.616d626572",
+      "owner": "player",
+      "reason": "",
+      "receipts": [],
+      "selected_name": "engineering-bolt",
+      "selected_revision": "600730a7dc55f0856fe971918180ff430bf9a5360758162db27297825be643fe",
+      "selected_title": "Engineering bolt",
+      "total": 80.0,
+      "wand": "runtime.spell_player.sessions.p62fcfdfc0ec281d49a5f9e0c81e9bacb75bad0c3a093ba08fa949f3072643f62.inventory.items.77616e64"
+    },
+    "tick": 0,
+    "total": 80.0
+  },
+  "visibility_limit": "Actual World and dock/drawer rectangles are disjoint. Camera geometry is unchanged; projected silhouettes and night readability still require the saved-image review."
+}

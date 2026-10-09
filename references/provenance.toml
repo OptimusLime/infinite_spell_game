@@ -432,3 +432,41 @@ source_image = "media/player-readability/cel-day-1100x800.png"
 original_sha256 = "971e874f17adb9d293a8ff5762392634b5d3af099f2ac2b15820a11fe11845ab"
 display_sha256 = "971e874f17adb9d293a8ff5762392634b5d3af099f2ac2b15820a11fe11845ab"
 conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"
+
+# Task159 reserved viewport, preserving both earlier current-card revisions above.
+
+[[images]]
+id = "current-pixel"
+revision = "town-player-reserved-viewport-2026-10-09"
+source = "atelico-app-engine@c606fa07b14721013b30000bb202c031f9d573fc:proof/editor/player-viewport"
+source_image = "media/player-viewport/pixel-night-1100x800.png"
+original_sha256 = "4cb1af8139ab726312234be9e1bc3c06f8f02638f6a036a90da3d3095a2b4139"
+display_sha256 = "4cb1af8139ab726312234be9e1bc3c06f8f02638f6a036a90da3d3095a2b4139"
+conversion = "Exact validated native PNG copy; prior baseline retained. See media/player-viewport/import.json."
+
+[[images]]
+id = "current-anime"
+revision = "town-player-reserved-viewport-2026-10-09"
+source = "atelico-app-engine@c606fa07b14721013b30000bb202c031f9d573fc:proof/editor/player-viewport"
+source_image = "media/player-viewport/cel-night-1100x800.png"
+original_sha256 = "88179707a5f286ea6063898254b5befc02a5b59e21caed131fa422c42e6c4a13"
+display_sha256 = "88179707a5f286ea6063898254b5befc02a5b59e21caed131fa422c42e6c4a13"
+conversion = "Exact validated native PNG copy; prior baseline retained. See media/player-viewport/import.json."
+
+[[images]]
+id = "current-pixel-day-control"
+revision = "town-player-reserved-viewport-2026-10-09"
+source = "atelico-app-engine@c606fa07b14721013b30000bb202c031f9d573fc:proof/editor/player-viewport"
+source_image = "media/player-viewport/pixel-day-1100x800.png"
+original_sha256 = "cfe10fbc7307a40786a9c4682cbe494a7fd2b361bc493ff1c2d8a3ad2517a3e4"
+display_sha256 = "cfe10fbc7307a40786a9c4682cbe494a7fd2b361bc493ff1c2d8a3ad2517a3e4"
+conversion = "Exact validated native PNG copy; prior baseline retained. See media/player-viewport/import.json."
+
+[[images]]
+id = "current-cel-day-control"
+revision = "town-player-reserved-viewport-2026-10-09"
+source = "atelico-app-engine@c606fa07b14721013b30000bb202c031f9d573fc:proof/editor/player-viewport"
+source_image = "media/player-viewport/cel-day-1100x800.png"
+original_sha256 = "501b90f5d95261b0bae5e020c5a4d1e700641e1a9b5f0c541537f16b35639325"
+display_sha256 = "501b90f5d95261b0bae5e020c5a4d1e700641e1a9b5f0c541537f16b35639325"
+conversion = "Exact validated native PNG copy; prior baseline retained. See media/player-viewport/import.json."
