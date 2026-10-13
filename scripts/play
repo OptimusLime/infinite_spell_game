@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# A launch shortcut over the engine CLI/control protocol. All game behavior stays in shared packages.
+# Launch only: all game state, authoring and controls belong to the shared packages.
 require 'net/http'
 require 'json'
 require 'digest'
@@ -7,16 +7,17 @@ require 'fileutils'
 require 'open3'
 if ARGV==['--help']
   puts 'Usage: ./scripts/play [--hidden]'
-  puts 'Open the finite casting study. Reuses this project’s host; never opens an agent session.'
-  puts 'ATELICO_APP may name the app-engine CLI. A fresh process starts a fresh inventory/world.'
+  puts 'Open the finite casting study; reuse its existing host without opening an agent session.'
+  puts 'ATELICO_APP may name the engine CLI. A fresh process starts a fresh inventory/world.'
+  puts 'A newly started host stays attached to this command; an existing host is retained.'
   exit
 end
 abort 'Use --help for usage.' unless ARGV.empty? || ARGV==['--hidden']
 project=File.realpath(File.join(__dir__,'..'))
 app=ENV.fetch('ATELICO_APP',File.expand_path('../atelico/atelico-app-engine/target/debug/app',project))
-abort "Build the app-engine CLI or set ATELICO_APP: #{app}" unless File.executable?(app)
-port_text=File.read(File.join(project,'atelico.toml'))[/\[host\]\s*\n(.*?)(?=\n\[|\z)/m,1]
-port=Integer(port_text[/^port\s*=\s*(\d+)/,1])
+abort "Build the engine CLI or set ATELICO_APP: #{app}" unless File.executable?(app)
+host=File.read(File.join(project,'atelico.toml'))[/\[host\]\s*\n(.*?)(?=\n\[|\z)/m,1]
+port=Integer(host[/^port\s*=\s*(\d+)/,1])
 expected="atelico-host-#{Digest::SHA256.hexdigest(project)[0,10]}"
 state_dir=File.join(project,'.atelico')
 FileUtils.mkdir_p(state_dir)
@@ -27,44 +28,42 @@ def read_state(port)
 rescue Errno::ECONNREFUSED
   nil
 end
+watcher=nil
 File.open(File.join(state_dir,'play-launch.lock'),'w') do |lock|
   abort 'A launch for this project is already in progress.' unless lock.flock(File::LOCK_EX|File::LOCK_NB)
   state=read_state(port)
+  log=File.join(state_dir,'play-launch.log')
   unless state
-    log=File.join(state_dir,'play-launch.log')
-    args=[app,'--project',project]
-    args<<'--hidden' if ARGV.include?('--hidden')
-    args<<'run'
     pending_path=File.join(state_dir,'play-start.json')
     pending=File.exist?(pending_path) ? JSON.parse(File.read(pending_path)) : nil
-    pending_pid=pending && pending['pid']
     running=false
-    if pending_pid
-      command,status=Open3.capture2('ps','-p',pending_pid.to_s,'-o','command=')
+    if pending && pending['pid']
+      command,status=Open3.capture2('ps','-p',pending['pid'].to_s,'-o','command=')
       running=status.success? && command.include?(app) && command.include?(project)
     end
-    child=running ? pending_pid : Process.spawn({'CARGO_BUILD_JOBS'=>'4'},*args,chdir:project,out:[log,'a'],err:[:child,:out])
     unless running
-      Process.detach(child)
+      args=[app,'--project',project];args<<'--hidden' if ARGV.include?('--hidden');args<<'run'
+      child=Process.spawn({'CARGO_BUILD_JOBS'=>'4'},*args,chdir:project,out:[log,'a'],err:[:child,:out])
+      watcher=Process.detach(child)
       File.write(pending_path,JSON.generate(pid:child,project:project,app:app)+"\n")
-    end
-    puts "Starting a fresh study; build/host log: #{log}"
-    deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+120
-    until state
-      abort "Host did not become ready; inspect #{log}. Do not launch another copy while the build is running." if Process.clock_gettime(Process::CLOCK_MONOTONIC)>deadline
-      sleep 0.25
-      state=read_state(port)
+      puts "Starting a fresh study; build/host log: #{log}"
     end
   end
-  executable=state.fetch('executable').fetch('path')
-  abort "Port #{port} belongs to a different project; no changes made." unless File.basename(executable)==expected
+  # A server can answer /state before its editor/executable identity has initialized.
+  deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+120
+  until state && state['pid'] && state['executable']
+    abort "Build/host exited; inspect #{log}." if watcher && !watcher.alive?
+    abort "Host not ready; inspect #{log}. A recorded pending build is reused on retry." if Process.clock_gettime(Process::CLOCK_MONOTONIC)>deadline
+    sleep 0.25
+    state=read_state(port)
+  end
+  abort "Port #{port} belongs to another project; no changes made." unless File.basename(state.fetch('executable').fetch('path'))==expected
   abort 'Host reports errors; inspect its existing session.' unless state['editor_error'].nil? && state['file_errors']=={}
-  # Selecting a view and enabling input does not equip, load, select or cast a spell.
   [['editor.ui.form','casting-study'],['editor.ui.doc','scenes/casting-study-cel-day.scene.luau'],['editor.run.playing','true']].each do |path,value|
-    ok=system(app,'--project',project,'set',path,value,out:File::NULL)
-    abort "Could not set #{path}; existing host retained." unless ok
+    abort "Could not set #{path}; existing host retained." unless system(app,'--project',project,'set',path,value,out:File::NULL)
   end
   puts "Casting study open on port #{port} (PID #{state.fetch('pid')})."
   puts 'Equipment / cartridges → Equip wand → Load amber; select a spell, Aim front, then Fire.'
   puts 'This study uses fixed targets. Movement/free aiming is the next implementation task.'
 end
+exit(watcher.value.exitstatus || 1) if watcher
