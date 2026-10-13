@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T14:20:04. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T14:54:20. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -176,7 +176,7 @@ Typed Cut, Shot, Source, Music and caption records describe a video edit indepen
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 174 | 🟡 doing | Bind Cut and Shot views through the typed Data layer | codex-coordinator |  |
+| 174 | 🟡 doing | Verify the shared sequencer in an installed editor | codex-coordinator |  |
 | 175 | ⚪ todo | Route sequencer edits through checked typed commands | codex-coordinator |  |
 | 176 | ⚪ todo | Make sequencer tracks and shot details readable in smaller windows | codex-coordinator |  |
 
