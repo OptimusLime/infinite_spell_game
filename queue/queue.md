@@ -1,23 +1,24 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T10:15:35. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T11:24:09. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-3 open / 32 total · 1 doing · 2 review · 29 done · 0 ready todos
+3 open / 33 total · 1 doing · 0 review · 30 done · 1 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-1 open / 10 total · 1 doing · 0 review · 9 done · 0 ready todos
+1 open / 11 total · 1 doing · 0 review · 10 done · 0 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Implemented dashboard, typed model, bindings and history are available for inspection; human acceptance remains tracked separately in task103.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 163 | 🟡 doing | Show one concrete next action and owner per project | codex-coordinator |  |
 | 96 | 🟢 done | Work Tracker: dashboard, catalog and history | codex-tracker |  |
 | 113 | 🟢 done | Organize parts and component relationships | codex-coordinator |  |
 
@@ -50,17 +51,17 @@ Rust Data schemas and checked store writes expose live object fields to Luau. Fi
 
 #### Dashboard and inspection (`tracker.dashboard`)
 
-1 open / 5 total · 1 doing · 0 review · 4 done · 0 ready todos
+0 open / 5 total · 0 doing · 0 review · 5 done · 0 ready todos
 
 Readable top-level areas, compact status summaries, drill-down part pages, relationships and a complete grouped task DAG. The overview stays useful without exposing every task at once.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 161 | 🟡 doing | Route grouped task dependencies around intervening cards | codex-coordinator |  |
-| 157 | 🟢 done | Keep every collapsed task group reachable and visible when fitting the graph | codex-coordinator |  |
 | 112 | 🟢 done | Compact dashboard and inspection | codex-dashboard |  |
 | 145 | 🟢 done | Make the task graph readable before expanding historical work | codex-coordinator |  |
 | 132 | 🟢 done | Keep task graph titles inside readable cards | codex-coordinator |  |
+| 157 | 🟢 done | Keep every collapsed task group reachable and visible when fitting the graph | codex-coordinator |  |
+| 161 | 🟢 done | Route grouped task dependencies around intervening cards | codex-coordinator |  |
 
 #### Activity and search (`tracker.history`)
 
@@ -94,23 +95,23 @@ Peer synchronization of authoritative shared editing state. Derived queue/storyb
 
 ### Tooling review and acceptance (`engine.review`)
 
-1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
+1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
 
 Implementation and technical validation precede a separate review of the working workspace with Paul. Content waits for explicit human acceptance.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 103 | 🔵 review | Review consolidated tooling with Paul | paul |  |
+| 103 | ⚪ todo | Review consolidated tooling with Paul | paul |  |
 
 ### Build, integration and verification (`engine.build`)
 
-1 open / 15 total · 0 doing · 1 review · 14 done · 0 ready todos
+1 open / 15 total · 0 doing · 0 review · 14 done · 1 ready todos
 
 Consolidation, repository hygiene, verified checkpoints and proof. Existing done statuses remain historical agent reports.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 34 | 🔵 review | Engine PR #2 and game PR #1 (bootstrap -> main): keep current, merge when Paul says | paul |  |
+| 34 | ⚪ todo | Check engine PR 2 and game PR 1 against current branches | codex-coordinator |  |
 | 72 | 🟢 done | Shared build broken: component_creatures unresolved in scene-3d | weather-agent |  |
 | 91 | 🟢 done | Shared build broken: paint-skia gpu.rs texture() signature mismatch (renderer step 5) | renderer-agent |  |
 | 93 | 🟢 done | Consolidate engine lanes and preserve all worktree/checkpoint history | codex-coordinator |  |
@@ -203,7 +204,7 @@ Content grounded in actual game design choices, reference comparisons and playab
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 114 | ⚪ todo | Agree the next r/AIGameDev demonstration and required capabilities | paul |  |
+| 114 | ⚪ todo | Draft the next post purpose from verified gameplay evidence | codex-coordinator |  |
 
 #### Storyboard drafts (`content.storyboard`)
 
@@ -214,7 +215,7 @@ Planned after: game.design, game.proof
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 105 | ⚪ todo | Review a new storyboard proposal after tooling and playable proof | paul |  |
+| 105 | ⚪ todo | Prepare a storyboard proposal for the agreed demonstration | codex-coordinator |  |
 | 16 | ⚫ dropped | Historical, unapproved content — Storyboard: real sketches for the 10 cards without engine pictures | storyboard-agent |  |
 | 8 | 🟢 done | Historical, unapproved content — Card 5 and card 7 sketches (forecast in-game, fire in the snow) | weather-agent |  |
 | 44 | 🟢 done | Historical, unapproved content — Storyboard round 10: re-judge card 13 (player wins climax) and the dud-spell / two-moons-make-fire yellows | storyboard-agent |  |
@@ -235,14 +236,14 @@ Planned after: content.storyboard, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 106 | ⚪ todo | Produce a reel from the approved storyboard proposal |  |  |
+| 106 | ⚪ todo | Produce a reel from the approved storyboard proposal | codex-coordinator |  |
 | 71 | ⚫ dropped | Historical, unapproved content — Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline | storyboard-agent |  |
 | 70 | ⚫ dropped | Historical, unapproved content — Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor | storyboard-agent |  |
 | 74 | ⚫ dropped | Historical, unapproved content — Reel v1: 30-45 s punchy twin-moon reel (day/night timelapse, pixel->ink switch, wicked weather, spell fusion, editor+Claude beat) rendered offline from real engine footage; storyboard/exports/reel-twin-moons-v1.mp4 + contact sheet | storyboard-agent |  |
 
 ## Infinite Spell Game (`game`)
 
-6 open / 52 total · 0 doing · 5 review · 43 done · 0 ready todos
+7 open / 53 total · 0 doing · 1 review · 43 done · 2 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -259,13 +260,13 @@ Confirmed rules and their source references; proposals and unresolved choices re
 
 ### Town and world structure (`game.world`)
 
-1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+1 open / 2 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Town layout, seed planting and shared scene structure.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 69 | 🔵 review | Review the historical seed-planting and house-growth concept | paul |  |
+| 69 | ⚪ todo | Review the historical seed-planting and house-growth concept | paul |  |
 | 79 | 🟢 done | Verify transforms and actor state remain shared when comparing render styles | codex-coordinator |  |
 
 ### Physical spell system (`game.magic`)
@@ -287,14 +288,14 @@ Spellcraft, input-driven casting, spell effects and the shared authoritative tow
 
 ### Wands and cartridge integration (`game.inventory`)
 
-1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+1 open / 2 total · 0 doing · 0 review · 1 done · 1 ready todos
 
 Game energy behavior composed from the shared Inventory and Equipment systems: physical cartridges, equipped wand loading/replacement, finite authored-spell debit, identity-aware HUD energy totals and mana-consuming expansion.
 Planned after: engine.equipment, engine.inventory, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 102 | 🔵 review | Choose how depleted inventory expanders handle occupied cells | paul |  |
+| 102 | ⚪ todo | Choose how depleted inventory expanders handle occupied cells | paul |  |
 | 101 | 🟢 done | Model finite physical energy cartridges as inventory items and sum them in the bottom HUD | codex-coordinator |  |
 
 ### Game HUD (`game.hud`)
@@ -327,13 +328,13 @@ Planned after: engine.review, game.design
 
 ### Pixel and ink/cel looks (`game.looks`)
 
-1 open / 12 total · 0 doing · 1 review · 10 done · 0 ready todos
+1 open / 12 total · 0 doing · 0 review · 10 done · 0 ready todos
 
 Readable lighting, shadows, authored shader looks and the switch between them.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 51 | 🔵 review | Review the historical automatic look-switch experiment | paul |  |
+| 51 | ⚪ todo | Review the historical automatic look-switch experiment | paul |  |
 | 54 | 🟢 done | Compare snowy cel grading while preserving the snow-free baseline | codex-coordinator |  |
 | 76 | 🟢 done | Verify independent shadow directions for mesh and sprite casters | codex-coordinator |  |
 | 48 | 🟢 done | Buildings float: base shading/shadow doesn't touch the ground (both looks) | shader-graph-agent |  |
@@ -374,14 +375,15 @@ Creature simulation, visibility, animation and polish across looks.
 
 ### Reference and moodboard decisions (`game.references`)
 
-1 open / 8 total · 0 doing · 1 review · 7 done · 0 ready todos
+2 open / 9 total · 0 doing · 0 review · 7 done · 1 ready todos
 
 Review existing candidate inputs and concept revisions into explicit In/Maybe/No/Future decisions, separate from storyboard and film production.
 Planned after: engine.references, engine.review
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 110 | 🔵 review | Review reference and moodboard decisions with existing candidate inputs | paul |  |
+| 110 | ⚪ todo | Review reference and moodboard decisions with existing candidate inputs | paul |  |
+| 164 | ⚪ todo | Prepare a three-frame battlefield framing comparison | codex-coordinator |  |
 
 #### Research pixel towns and battlefield environments (`game.references.pixel`)
 
@@ -452,13 +454,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-5 open / 52 total · 1 doing · 1 review · 47 done · 1 ready todos
+5 open / 52 total · 0 doing · 0 review · 47 done · 3 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-4 open / 34 total · 1 doing · 0 review · 30 done · 1 ready todos
+4 open / 34 total · 0 doing · 0 review · 30 done · 2 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -470,13 +472,13 @@ Native host and editor that can inspect, run and hot reload the software being b
 
 #### Renderer and performance (`engine.renderer`)
 
-3 open / 18 total · 1 doing · 0 review · 15 done · 0 ready todos
+3 open / 18 total · 0 doing · 0 review · 15 done · 1 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 23 | 🟡 doing | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
+| 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 25 | 🔴 blocked | Automate software checks and provision a separate Mac GPU gate | codex-coordinator |  |
 | 147 | 🔴 blocked | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
 | 50 | 🟢 done | Paul's Town tab at 16 fps: profile it and get it under 8 ms (pixel upscale/particles/HUD to GPU) | renderer-agent |  |
@@ -595,19 +597,19 @@ Reusable native controls, layout, typography and themes shared across app and ed
 
 ### Shared applets (`applets`)
 
-1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+1 open / 2 total · 0 doing · 0 review · 1 done · 1 ready todos
 
 Reusable components and UI kits consumed by game projects.
 
 #### Shared layout (`applets.layout`)
 
-1 open / 1 total · 0 doing · 1 review · 0 done · 0 ready todos
+1 open / 1 total · 0 doing · 0 review · 0 done · 1 ready todos
 
 Layout/text-measure caching and shared applet UI foundations.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 33 | 🔵 review | atelico-applets PR #27 (layout text-measure cache): merge decision | paul |  |
+| 33 | ⚪ todo | Check applets PR 27 against the current consolidated branch | codex-coordinator |  |
 
 #### Applet showcase (`applets.showcase`)
 
