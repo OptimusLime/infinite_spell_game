@@ -1060,3 +1060,25 @@ attribution = "Project-authored native scene and engineering fixture; no generat
 image_kind = "Native GPU engineering viewport correction, 1100 × 800"
 retrieved_at = "2026-10-09"
 revision = "town-player-reserved-viewport-2026-10-09"
+
+[[comparisons]]
+id = "battlefield-framing"
+title = "Battlefield framing: make space for the fight"
+question = "Which should guide our next camera test: A's flatter arena view or B's elevated miniature view?"
+recommendation = "Start with B's elevated framing and A's clear space around actors. Keep our pixel/cel direction; this does not adopt TUNIC's low-poly artwork or blur."
+next_step = "Capture the same town and spell at two wider camera scales. Check that the player, both targets and spell endpoint stay readable together."
+
+[[comparisons.items]]
+reference = "current-pixel-day-control"
+label = "Current — pixel town"
+observation = "Town props and the HUD crowd the combat area. These spheres are debug targets in a saved engineering test."
+
+[[comparisons.items]]
+reference = "hld-wide-combat"
+label = "A — Hyper Light Drifter"
+observation = "Broad, quiet ground separates a small player from a huge enemy. Study the space around the fight."
+
+[[comparisons.items]]
+reference = "tunic-battlefield"
+label = "B — TUNIC"
+observation = "Elevation exposes the floor, stairs and incoming beams together. Study framing rather than its low-poly style."

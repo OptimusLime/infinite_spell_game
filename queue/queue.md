@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T11:39:15. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T11:51:09. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -130,7 +130,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-3 open / 26 total · 0 doing · 0 review · 16 done · 0 ready todos
+4 open / 27 total · 1 doing · 0 review · 16 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -186,13 +186,14 @@ Render the authored cut with source footage, titles, narration, music and captio
 
 ### Reference and Concept Board (`engine.references`)
 
-0 open / 3 total · 0 doing · 0 review · 3 done · 0 ready todos
+1 open / 4 total · 1 doing · 0 review · 3 done · 0 ready todos
 
 A reusable comparison/review workspace for reference inputs, concept revisions and compatibility decisions across projects.
 Planned after: engine.tracker
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 166 | 🟡 doing | Add focused comparisons to the reusable Reference Board | codex-coordinator |  |
 | 107 | 🟢 done | Build reusable concept/reference-board review and comparison tooling | codex-coordinator |  |
 | 149 | 🟢 done | Open source pages and motion evidence directly from reference cards | codex-coordinator |  |
 | 128 | 🟢 done | Keep reference category controls compact so the images lead |  |  |
