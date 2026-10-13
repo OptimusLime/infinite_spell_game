@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-09T01:10:37. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T10:15:35. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -452,13 +452,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-4 open / 51 total · 1 doing · 1 review · 47 done · 0 ready todos
+5 open / 52 total · 1 doing · 1 review · 47 done · 1 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-3 open / 33 total · 1 doing · 0 review · 30 done · 0 ready todos
+4 open / 34 total · 1 doing · 0 review · 30 done · 1 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -497,12 +497,13 @@ Native GPU rendering, parity and frame budget.
 
 #### Runtime and hot reload (`engine.runtime`)
 
-0 open / 8 total · 0 doing · 0 review · 8 done · 0 ready todos
+1 open / 9 total · 0 doing · 0 review · 8 done · 1 ready todos
 
 Run app components and update them while the host remains open. Typed data bindings and shared layout are separate reusable dependencies.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 162 | ⚪ todo | Resolve relative project paths before launching a native host | codex-coordinator |  |
 | 57 | 🟢 done | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental | runtime-agent |  |
 | 58 | 🟢 done | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged | runtime-agent |  |
 | 59 | 🟢 done | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately | runtime-agent |  |
