@@ -1,12 +1,12 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T13:39:49. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T14:17:35. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-4 open / 35 total · 0 doing · 1 review · 31 done · 2 ready todos
+3 open / 35 total · 0 doing · 1 review · 32 done · 1 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
@@ -103,14 +103,14 @@ Peer synchronization of authoritative shared editing state. Derived queue/storyb
 
 ### Tooling review and acceptance (`engine.review`)
 
-2 open / 2 total · 0 doing · 0 review · 0 done · 1 ready todos
+1 open / 2 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Implementation and technical validation precede a separate review of the working workspace with Paul. Content waits for explicit human acceptance.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 103 | ⚪ todo | Review the integrated tooling walkthrough | paul |  |
-| 171 | ⚪ todo | Prepare one concrete tooling review with a runnable entry point | codex-coordinator |  |
+| 171 | 🟢 done | Prepare one concrete tooling review with a runnable entry point | codex-coordinator |  |
 
 ### Build, integration and verification (`engine.build`)
 
@@ -138,7 +138,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-3 open / 27 total · 0 doing · 0 review · 17 done · 0 ready todos
+6 open / 30 total · 0 doing · 0 review · 17 done · 1 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -156,18 +156,24 @@ Reusable storyboard authoring tool: hierarchical groups, relationships, paths an
 
 ### Video Sequencer (`engine.video`)
 
-0 open / 5 total · 0 doing · 0 review · 5 done · 0 ready todos
+3 open / 8 total · 0 doing · 0 review · 5 done · 1 ready todos
 
 Reusable video assembly and playback tool: source clips, timing, titles, narration, music and export. Individual edits are separate content artifacts.
 
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 176 | ⚪ todo | Make sequencer tracks and shot details readable in smaller windows | codex-coordinator |  |
+
 #### Timeline and cut model (`video.timeline`)
 
-0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+2 open / 3 total · 0 doing · 0 review · 1 done · 1 ready todos
 
 Typed Cut, Shot, Source, Music and caption records describe a video edit independently of its editor UI.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 174 | ⚪ todo | Bind Cut and Shot views through the typed Data layer | codex-coordinator |  |
+| 175 | ⚪ todo | Route sequencer edits through checked typed commands | codex-coordinator |  |
 | 78 | 🟢 done | Invalidate rendered shots after title placement, size or fade edits | codex-coordinator |  |
 
 #### Native playback (`video.player`)
@@ -494,13 +500,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-5 open / 53 total · 0 doing · 0 review · 48 done · 2 ready todos
+6 open / 54 total · 0 doing · 0 review · 48 done · 3 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-4 open / 35 total · 0 doing · 0 review · 31 done · 1 ready todos
+5 open / 36 total · 0 doing · 0 review · 31 done · 2 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -543,7 +549,7 @@ Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 169 | ⚪ todo | Test whether retaining the Inspector color picker reduces repaint cost | codex-coordinator |  |
+| 169 | ⚪ todo | Measure repaint cost with a retained Inspector color picker | codex-coordinator |  |
 
 #### Runtime and hot reload (`engine.runtime`)
 
@@ -565,12 +571,13 @@ Run app components and update them while the host remains open. Typed data bindi
 
 #### Editor interaction (`engine.editor`)
 
-0 open / 4 total · 0 doing · 0 review · 4 done · 0 ready todos
+1 open / 5 total · 0 doing · 0 review · 4 done · 1 ready todos
 
 Shared editor interaction correctness.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 177 | ⚪ todo | Refresh an active form when its typed layout definition changes | codex-coordinator |  |
 | 129 | 🟢 done | Show scene import failures when opening a document instead of silently displaying another scene |  |  |
 | 142 | 🟢 done | Redraw paused app scenes when viewport sizing changes | codex-coordinator |  |
 | 29 | 🟢 done | layout_matrix: welcome-modal 4 px spill | runtime-agent |  |
