@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T11:51:09. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T12:04:11. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -130,7 +130,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-4 open / 27 total · 1 doing · 0 review · 16 done · 0 ready todos
+3 open / 27 total · 0 doing · 0 review · 17 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -186,17 +186,24 @@ Render the authored cut with source footage, titles, narration, music and captio
 
 ### Reference and Concept Board (`engine.references`)
 
-1 open / 4 total · 1 doing · 0 review · 3 done · 0 ready todos
+0 open / 4 total · 0 doing · 0 review · 4 done · 0 ready todos
 
 A reusable comparison/review workspace for reference inputs, concept revisions and compatibility decisions across projects.
 Planned after: engine.tracker
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 166 | 🟡 doing | Add focused comparisons to the reusable Reference Board | codex-coordinator |  |
 | 107 | 🟢 done | Build reusable concept/reference-board review and comparison tooling | codex-coordinator |  |
 | 149 | 🟢 done | Open source pages and motion evidence directly from reference cards | codex-coordinator |  |
 | 128 | 🟢 done | Keep reference category controls compact so the images lead |  |  |
+
+#### Focused comparisons (`references.comparisons`)
+
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 166 | 🟢 done | Add focused comparisons to the reusable Reference Board | codex-coordinator |  |
 
 ### r/AIGameDev posts (`content.aigamedev`)
 
@@ -245,7 +252,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-7 open / 53 total · 1 doing · 1 review · 43 done · 1 ready todos
+8 open / 55 total · 0 doing · 2 review · 44 done · 1 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -377,7 +384,7 @@ Creature simulation, visibility, animation and polish across looks.
 
 ### Reference and moodboard decisions (`game.references`)
 
-2 open / 9 total · 1 doing · 0 review · 7 done · 0 ready todos
+3 open / 11 total · 0 doing · 1 review · 8 done · 0 ready todos
 
 Review existing candidate inputs and concept revisions into explicit In/Maybe/No/Future decisions, separate from storyboard and film production.
 Planned after: engine.references, engine.review
@@ -385,7 +392,9 @@ Planned after: engine.references, engine.review
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 110 | ⚪ todo | Review reference and moodboard decisions with existing candidate inputs | paul |  |
-| 164 | 🟡 doing | Prepare a three-frame battlefield framing comparison | codex-coordinator |  |
+| 167 | 🔵 review | Choose the framing for the next battlefield camera test | paul |  |
+| 168 | ⚪ todo | Capture matched camera tests for the selected battlefield framing | codex-coordinator |  |
+| 164 | 🟢 done | Prepare a three-frame battlefield framing comparison | codex-coordinator |  |
 
 #### Research pixel towns and battlefield environments (`game.references.pixel`)
 
@@ -456,13 +465,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-5 open / 52 total · 0 doing · 0 review · 47 done · 3 ready todos
+5 open / 52 total · 1 doing · 0 review · 47 done · 2 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-4 open / 34 total · 0 doing · 0 review · 30 done · 2 ready todos
+4 open / 34 total · 1 doing · 0 review · 30 done · 1 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -501,13 +510,13 @@ Native GPU rendering, parity and frame budget.
 
 #### Runtime and hot reload (`engine.runtime`)
 
-1 open / 9 total · 0 doing · 0 review · 8 done · 1 ready todos
+1 open / 9 total · 1 doing · 0 review · 8 done · 0 ready todos
 
 Run app components and update them while the host remains open. Typed data bindings and shared layout are separate reusable dependencies.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 162 | ⚪ todo | Resolve relative project paths before launching a native host | codex-coordinator |  |
+| 162 | 🟡 doing | Resolve relative project paths before launching a native host | codex-coordinator |  |
 | 57 | 🟢 done | Town frame: scene script rebuilds its full 831-sprite item tree to JSON every frame — make it incremental | runtime-agent |  |
 | 58 | 🟢 done | Town frame: HUD and scene layouts rebuilt from scratch every frame — reuse layout when unchanged | runtime-agent |  |
 | 59 | 🟢 done | Town frame: light probes re-baked every frame because walkers carry lights — bake only on change / dynamic lights separately | runtime-agent |  |
