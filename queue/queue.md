@@ -1,18 +1,18 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T12:34:51. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T12:56:10. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-5 open / 35 total · 1 doing · 0 review · 30 done · 2 ready todos
+4 open / 35 total · 0 doing · 1 review · 31 done · 2 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-2 open / 12 total · 1 doing · 0 review · 10 done · 0 ready todos
+1 open / 12 total · 0 doing · 1 review · 11 done · 0 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Implemented dashboard, typed model, bindings and history are available for inspection; human acceptance remains tracked separately in task103.
 
@@ -23,12 +23,12 @@ Understand what we are making, what is happening now, what is ready or blocked, 
 
 #### Clear next actions (`tracker.clarity`)
 
-2 open / 2 total · 1 doing · 0 review · 0 done · 0 ready todos
+1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 163 | 🟡 doing | Show one concrete next action and owner per project | codex-coordinator |  |
-| 165 | ⚪ todo | Review the next-action dashboard in use | paul |  |
+| 165 | 🔵 review | Review the next-action dashboard in use | paul |  |
+| 163 | 🟢 done | Show one concrete next action and owner per project | codex-coordinator |  |
 
 #### Work model (`tracker.model`)
 
