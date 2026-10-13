@@ -1,6 +1,16 @@
-> **Current design authority (2026-10-08):** Read [docs/design-direction.md](docs/design-direction.md) first. The current AI film sequence is unapproved as the game specification. Historical notes below are preserved; explicit current decisions take precedence.
+# Infinite Spell Game: start here
 
-# Infinite Spell Game: start here (updated 2026-10-07 evening)
+Read [the current design handoff](docs/design-direction.md#current-handoff) for confirmed requirements, implementation gaps and the next decision. [Playable casting](docs/playable-casting.md) describes the saved integration proof and its limits. The Work Tracker queue is authoritative for current task state.
+
+The next integration work is to update the game's shared package pins and provide a clear entry to its finite casting study, then connect movement and world aiming through reusable components. The existing app entry is a scaffold; the explicit study scenes live under `scenes/casting-study-*`. The recorded game process is no longer running, and its paid session was not a durable save.
+
+**The notes below are historical.** Their status table, running-process claims, Python queue instructions and proposed film/game mechanics do not override the current design handoff or current repository instructions. User quotations remain preserved as source material. The original AI storyboard is unapproved.
+
+Current queue command, from the app-engine checkout: `./target/debug/app queue next --who codex-coordinator --show 8`. Its project settings point to this repository's SQLite ledger and update `queue/queue.md` after changes. Use the native queue API/CLI for writes.
+
+---
+
+# Archived handoff — 2026-10-07
 
 ## The thrust
 Paul is building a game and, at the same time, the tools to make it and the video about it, all inside the Atelico app engine (Rust + Luau, hot reload, Claude in rmux panes). The game has two celestial cycles (two moons, or a sun and a moon) at different frequencies. Their forecast overlap makes the weather and decides which monsters rise from the ground. The world has two looks: a cosy 3D pixel-art town and a frozen, cel-shaded ink "other side". You plant a town seed anywhere in an infinite world and defend it. Everything (spells, buildings, NPCs, towns) is a spell made of sensors, effectors and an action, and spells and buildings fuse. The first deliverable is the AI game dev "day in the life" video, sketched in the engine's own Storyboard tab, and built from engine parts (the marketplace in use).
