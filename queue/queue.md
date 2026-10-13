@@ -1,25 +1,25 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T12:17:08. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T12:26:57. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-3 open / 34 total · 0 doing · 1 review · 31 done · 1 ready todos
+5 open / 35 total · 1 doing · 0 review · 30 done · 2 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-1 open / 12 total · 0 doing · 1 review · 11 done · 0 ready todos
+2 open / 12 total · 1 doing · 0 review · 10 done · 0 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Implemented dashboard, typed model, bindings and history are available for inspection; human acceptance remains tracked separately in task103.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 165 | 🔵 review | Review the next-action dashboard in use | paul |  |
-| 163 | 🟢 done | Show one concrete next action and owner per project | codex-coordinator |  |
+| 163 | 🟡 doing | Show one concrete next action and owner per project | codex-coordinator |  |
+| 165 | ⚪ todo | Review the next-action dashboard in use | paul |  |
 | 96 | 🟢 done | Work Tracker: dashboard, catalog and history | codex-tracker |  |
 | 113 | 🟢 done | Organize parts and component relationships | codex-coordinator |  |
 
@@ -96,13 +96,14 @@ Peer synchronization of authoritative shared editing state. Derived queue/storyb
 
 ### Tooling review and acceptance (`engine.review`)
 
-1 open / 1 total · 0 doing · 0 review · 0 done · 0 ready todos
+2 open / 2 total · 0 doing · 0 review · 0 done · 1 ready todos
 
 Implementation and technical validation precede a separate review of the working workspace with Paul. Content waits for explicit human acceptance.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 103 | ⚪ todo | Review consolidated tooling with Paul | paul |  |
+| 171 | ⚪ todo | Prepare one concrete tooling review with a runnable entry point | codex-coordinator |  |
 
 ### Build, integration and verification (`engine.build`)
 
@@ -252,19 +253,20 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-8 open / 55 total · 0 doing · 2 review · 44 done · 1 ready todos
+9 open / 56 total · 0 doing · 1 review · 44 done · 2 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
 ### Design and reference decisions (`game.design`)
 
-1 open / 2 total · 0 doing · 1 review · 1 done · 0 ready todos
+2 open / 3 total · 0 doing · 0 review · 1 done · 1 ready todos
 
 Confirmed rules and their source references; proposals and unresolved choices remain explicitly identified.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 97 | 🔵 review | Consolidate original game and Creature references into an explicit game-design source of truth | paul |  |
+| 97 | ⚪ todo | Consolidate original game and Creature references into an explicit game-design source of truth | paul |  |
+| 170 | ⚪ todo | Prepare the confirmed-rules summary and isolate actual unresolved game choices | codex-coordinator |  |
 | 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ | coordinator |  |
 
 ### Town and world structure (`game.world`)
