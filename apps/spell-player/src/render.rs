@@ -56,19 +56,10 @@ impl WorldPart for Body {
         self
     }
 }
+pub(crate) fn body(row: BodyView, aimed: &str) -> component_scene_3d::Item {
+    component_scene_3d::Item::part(Body { aimed: row.id == aimed, row })
+}
 pub fn publish(world: &str, session: &str, bodies: Vec<BodyView>, aimed: &str) {
-    component_scene_3d::hooks::set_items(
-        world,
-        session,
-        bodies
-            .into_iter()
-            .filter(|b| b.alive)
-            .map(|row| {
-                component_scene_3d::Item::part(Body {
-                    aimed: row.id == aimed,
-                    row,
-                })
-            })
-            .collect(),
-    );
+    component_scene_3d::hooks::set_items(world, session,
+        bodies.into_iter().filter(|b| b.alive).map(|b| body(b,aimed)).collect());
 }

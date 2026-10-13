@@ -3,19 +3,19 @@ entry = "lua/apps/spell_player.luau"
 kind = "app"
 lua = "Explicit authored-spell player: equip a physical wand, load finite cartridges, select, aim and fire. Typed Rust sessions survive view and clock changes."
 name = "spell-player"
-provides = ["apps.spell_player", "nodes.spell_player", "spell_player.hud", "spell_player.revision"]
+provides = ["apps.spell_player", "nodes.spell_player", "spell_player.hud", "spell_player.revision", "spell_player.capacity"]
 requires = ["ui-kit", "scene-3d", "spellcraft", "inventory-grid"]
 
 [package]
-data_types = ["SpellPlayer", "PlayerDashboard", "PlayerRequest", "PlayerUi", "PlayerKeyBinding", "PlayerRevisionRequest", "PlayerRevisionView", "SupplyView", "InventoryView", "EquipmentView"]
+data_types = ["SpellPlayer", "PlayerDashboard", "PlayerRequest", "PlayerUi", "PlayerKeyBinding", "PlayerLayout", "PlayerRect", "PlayerRevisionRequest", "PlayerRevisionView", "SupplyView", "InventoryView", "EquipmentView", "CapacityView", "ExpanderView", "FundingDebitView"]
 description = "Reusable caller-configured authored-spell player composing shared Inventory, Equipment and Casting, with explicit aim and physical projectiles. Engineering fixture values are unreviewed; sessions are process-local."
 keywords = ["spell", "player", "inventory", "equipment", "physics"]
 permissions = ["native-code", "files:project"]
 tests = ["cargo test --offline --quiet --lib"]
-version = "0.1.1"
+version = "0.1.4"
 
 [package.dependencies]
 inventory-grid = "^0.1"
-scene-3d = "^0.1"
-spellcraft = "^0.1"
+scene-3d = "^0.1.3"
+spellcraft = "^0.1.2"
 ui-kit = "^0.1.2"

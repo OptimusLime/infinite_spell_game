@@ -332,6 +332,44 @@ impl PlayerWorld {
         }
         Ok(())
     }
+    pub(crate) fn has_live_forms(&self, instance: &str) -> bool {
+        self.bodies
+            .values()
+            .any(|b| b.instance == instance && self.physics.read(b.physical).is_some())
+    }
+    /// Release only this cast's owned resources. Prior impulses/damage to other bodies are not undone.
+    pub(crate) fn release_instance(&mut self, instance: &str) {
+        let owned: std::collections::BTreeSet<_> = self
+            .bodies
+            .iter()
+            .filter(|(_, b)| b.instance == instance)
+            .map(|(id, b)| (id.clone(), b.physical))
+            .collect();
+        let ids: std::collections::BTreeSet<_> = owned.iter().map(|(_, id)| *id).collect();
+        for (id, physical) in &owned {
+            self.physics.contact(*physical);
+            self.bodies.remove(id);
+            self.physical.remove(physical);
+            self.contacts.remove(id);
+        }
+        self.contacts.retain(|_, target| {
+            !target
+                .as_ref()
+                .is_some_and(|t| owned.iter().any(|(id, _)| id == t))
+        });
+        self.physics.bodies.retain(|b| !ids.contains(&b.id));
+        self.aims.remove(instance);
+    }
+    #[cfg(test)]
+    pub(crate) fn resource_counts(&self) -> (usize, usize, usize, usize, usize) {
+        (
+            self.bodies.len(),
+            self.physics.bodies.len(),
+            self.physical.len(),
+            self.aims.len(),
+            self.contacts.len(),
+        )
+    }
     fn physical(&self, id: &str) -> Result<BodyId, String> {
         self.bodies
             .get(id)

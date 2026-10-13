@@ -35,8 +35,19 @@ File.open(File.join(state_dir,'play-launch.lock'),'w') do |lock|
     args=[app,'--project',project]
     args<<'--hidden' if ARGV.include?('--hidden')
     args<<'run'
-    child=Process.spawn({'CARGO_BUILD_JOBS'=>'4'},*args,chdir:project,out:[log,'a'],err:[:child,:out])
-    Process.detach(child)
+    pending_path=File.join(state_dir,'play-start.json')
+    pending=File.exist?(pending_path) ? JSON.parse(File.read(pending_path)) : nil
+    pending_pid=pending && pending['pid']
+    running=false
+    if pending_pid
+      command,status=Open3.capture2('ps','-p',pending_pid.to_s,'-o','command=')
+      running=status.success? && command.include?(app) && command.include?(project)
+    end
+    child=running ? pending_pid : Process.spawn({'CARGO_BUILD_JOBS'=>'4'},*args,chdir:project,out:[log,'a'],err:[:child,:out])
+    unless running
+      Process.detach(child)
+      File.write(pending_path,JSON.generate(pid:child,project:project,app:app)+"\n")
+    end
     puts "Starting a fresh study; build/host log: #{log}"
     deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+120
     until state

@@ -78,6 +78,8 @@ pub struct Session {
     inventory: InventoryBinding,
     equipment: atelico_equipment::binding::Binding,
     supply: SupplyBinding,
+    capacity: component_spellcraft::capacity_view::Binding,
+    capacity_seen: u64,
     controller: Option<Controller>,
     revision: crate::revision::Review,
     seen: u64,
@@ -104,6 +106,10 @@ impl Session {
             inventory.clone(),
         )?;
         let supply = SupplyBinding::new(format!("{root}.supply"), inventory.paths().clone())?;
+        let capacity = component_spellcraft::capacity_view::Binding::new(
+            format!("{root}.capacity"),
+            inventory.paths().clone(),
+        )?;
         Ok(Self {
             player,
             loaded,
@@ -113,6 +119,8 @@ impl Session {
             inventory,
             equipment,
             supply,
+            capacity,
+            capacity_seen: 0,
             controller: None,
             revision: Default::default(),
             seen: 0,
@@ -129,6 +137,9 @@ impl Session {
             source_error: String::new(),
         })
     }
+    pub(crate) fn visual_body_ids(&self) -> BTreeSet<String> {
+        self.loaded.config.bodies.iter().map(|b| b.id.clone()).collect()
+    }
     pub fn aimed_target(&self) -> &str {
         &self.aimed
     }
@@ -137,6 +148,9 @@ impl Session {
     }
     pub fn request_path(&self) -> String {
         format!("{}.request", self.root)
+    }
+    pub fn capacity_request_path(&self) -> String {
+        format!("{}.capacity_request", self.root)
     }
     pub fn revision_request_path(&self) -> String {
         format!("{}.revision_request", self.root)
@@ -152,6 +166,10 @@ impl Session {
         if s.type_of(&self.dashboard_path()).as_deref() != Some("PlayerDashboard") {
             self.equipment.install(s)?;
             self.supply.install(s)?;
+            if self.player.capacity().is_some() {
+                self.capacity.install(s)?;
+                bind::<PlayerCapacityRequest>(s, &self.capacity_request_path())?;
+            }
             bind::<PlayerDashboard>(s, &self.dashboard_path())?;
             bind::<PlayerRequest>(s, &self.request_path())?;
             bind::<crate::revision::PlayerRevisionRequest>(s, &self.revision_request_path())?;
@@ -169,6 +187,13 @@ impl Session {
                     sequence: self.seen,
                     ..Default::default()
                 },
+            )?;
+        }
+        if self.player.capacity().is_some() && s.object(&self.capacity_request_path()).is_none() {
+            write(
+                s,
+                &self.capacity_request_path(),
+                &PlayerCapacityRequest::default(),
             )?;
         }
         if s.object(&self.revision_request_path()).is_none() {
@@ -225,12 +250,16 @@ impl Session {
                 if r.command == Command::ToggleInventory {
                     ui.inventory_open = !ui.inventory_open;
                     if ui.inventory_open {
+                        ui.equipment_open = false;
                         ui.sources_open = false;
+                        ui.capacity_open = false;
                     }
                 } else {
                     ui.equipment_open = !ui.equipment_open;
                     if ui.equipment_open {
+                        ui.inventory_open = false;
                         ui.sources_open = false;
+                        ui.capacity_open = false;
                     }
                 }
                 write(s, &path, &ui)?;
@@ -383,6 +412,94 @@ impl Session {
         }
         Ok(())
     }
+    fn apply_capacity(&mut self, r: &PlayerCapacityRequest, s: &Store) -> Result<(), String> {
+        use component_spellcraft::{capacity, supply::Energy};
+        if r.expected_token != self.token {
+            return Err("Displayed player state changed; inspect capacity again".into());
+        }
+        let item = ItemId::new(&r.item_id).map_err(|e| e.to_string())?;
+        let source = ItemId::new(&r.source_id).map_err(|e| e.to_string())?;
+        let capacity = self.player.capacity().ok_or("Capacity is disabled")?;
+        let spec = capacity.spec(&item).ok_or("Unknown configured expander")?;
+        let inventory = self.player.inventory();
+        let request = capacity::Request {
+            id: format!("{}:capacity:{}", self.root, r.sequence),
+            operation: capacity::Operation::Activate,
+            item: item.clone(),
+            owner: self.player.equipment().owner().clone(),
+            expected_config: r.expected_config.clone(),
+            expected_location: inventory
+                .item(&item)
+                .ok_or("Expander missing")?
+                .location
+                .clone(),
+            expected_size: inventory.grid(&spec.grid).ok_or("Grid missing")?.size,
+            expected_revision: 0,
+            expected_paid_until: 0,
+            source,
+            expected_remaining: Energy::new(r.expected_remaining)?,
+            tick: self.player.world().tick(),
+        };
+        let prepared = self.player.prepare_capacity(request)?;
+        let projected = self.capacity.project(
+            capacity,
+            inventory,
+            self.player.casting().funding(),
+            self.player.world().tick(),
+            self.player.capacity_clock_running(),
+            Some(&prepared),
+        )?;
+        let mut supply = self.supply.project_with_history(
+            self.player.casting(),
+            inventory,
+            self.player.equipment(),
+            self.player.equipment_slot(),
+            self.player.selected(),
+            self.player.instances(),
+            self.player.finished(),
+        )?;
+        if !prepared.replayed() {
+            self.supply.pending_debit(&mut supply, prepared.debit())?;
+        }
+        let mut ops = self
+            .inventory
+            .operations(s, prepared.inventory(), prepared.changes())?;
+        ops.extend(self.supply.operations(s, &supply)?);
+        ops.extend(self.capacity.operations(s, &projected)?);
+        let receipt = self
+            .player
+            .commit_capacity_with(prepared, move |_| s.batch(ops, Origin::Host).map(|_| ()))?;
+        self.message=format!("Fixture expansion paid through world tick {}. One shared cartridge debit; no automatic renewal.",receipt.receipt.grant.paid_until);
+        Ok(())
+    }
+    fn advance_clock(&mut self, now: f64) -> Result<(), String> {
+        let elapsed = self
+            .last_clock
+            .filter(|last| now.is_finite() && now > *last)
+            .map(|last| now - last);
+        let observed = elapsed.is_some_and(|dt| dt <= 0.1);
+        if now.is_finite() {
+            if let Some(last) = self.last_clock {
+                self.accumulated += (now - last).clamp(0., 0.1);
+            }
+            self.last_clock = Some(now);
+            let dt = self.player.world().tick_seconds() as f64;
+            let mut steps = 0;
+            while self.accumulated >= dt && steps < 8 {
+                self.player.advance()?;
+                self.accumulated -= dt;
+                steps += 1;
+            }
+        }
+        if self.player.capacity().is_some() {
+            // Paused, backwards, absent or discontinuous clocks never authorize paid-space commands.
+            // The fixture neither bills wall-clock gaps nor resets its original grant boundary.
+            let tick =
+                (observed && self.player.world().tick() > 0).then(|| self.player.world().tick());
+            self.player.set_capacity_clock(tick)?;
+        }
+        Ok(())
+    }
     pub fn frame(&mut self, s: &Store, now: f64) -> Result<String, String> {
         self.frame_input(s, now, &BTreeSet::new())
     }
@@ -394,6 +511,9 @@ impl Session {
     ) -> Result<String, String> {
         self.ensure(s)?;
         self.source_check();
+        if self.player.capacity().is_some() {
+            self.advance_clock(now)?;
+        }
         let mut request = s
             .read::<PlayerRequest>(&self.request_path())
             .ok_or("invalid typed player request")?;
@@ -437,6 +557,19 @@ impl Session {
             }
             self.token = self.token.checked_add(1).ok_or("request token exhausted")?;
         }
+        if self.player.capacity().is_some() {
+            let r: PlayerCapacityRequest = s
+                .read(&self.capacity_request_path())
+                .ok_or("Invalid typed capacity request")?;
+            if r.sequence > self.capacity_seen {
+                self.capacity_seen = r.sequence;
+                self.error.clear();
+                if let Err(e) = self.apply_capacity(&r, s) {
+                    self.error = e;
+                }
+                self.token = self.token.checked_add(1).ok_or("Request token exhausted")?;
+            }
+        }
         let revision_request = s
             .read::<crate::revision::PlayerRevisionRequest>(&self.revision_request_path())
             .ok_or("invalid typed revision request")?;
@@ -459,11 +592,7 @@ impl Session {
         controller.refresh(s, &self.inventory, &candidate)?;
         let outcome =
             controller.handle_checked(s, &self.inventory, &mut candidate, &inv_req, |inv| {
-                self.player
-                    .equipment()
-                    .validate(inv)
-                    .map_err(|e| e.to_string())?;
-                self.player.casting().supply().validate(inv)
+                self.player.validate_inventory_candidate(inv)
             })?;
         if outcome.changed {
             self.player.edit_inventory(|inv| {
@@ -473,18 +602,8 @@ impl Session {
             })?;
             self.token = self.token.checked_add(1).ok_or("request token exhausted")?;
         }
-        if now.is_finite() {
-            if let Some(last) = self.last_clock {
-                self.accumulated += (now - last).clamp(0., 0.1);
-            }
-            self.last_clock = Some(now);
-            let dt = self.player.world().tick_seconds() as f64;
-            let mut steps = 0;
-            while self.accumulated >= dt && steps < 8 {
-                self.player.advance()?;
-                self.accumulated -= dt;
-                steps += 1;
-            }
+        if self.player.capacity().is_none() {
+            self.advance_clock(now)?;
         }
         self.publish(s)?;
         Ok(self.dashboard_path())
@@ -493,15 +612,31 @@ impl Session {
         self.equipment
             .publish(s, self.player.inventory(), self.player.equipment())
             .map_err(|e| e.to_string())?;
-        let supply = self.supply.project(
+        let mut supply = self.supply.project_with_history(
             self.player.casting(),
             self.player.inventory(),
             self.player.equipment(),
             self.player.equipment_slot(),
             self.player.selected(),
             self.player.instances(),
+            self.player.finished(),
         )?;
+        if let Err(reason) = self.player.capacity_admission() {
+            supply.dashboard.can_cast = false;
+            supply.dashboard.reason = reason;
+        }
         let mut ops = self.supply.operations(s, &supply)?;
+        if let Some(capacity) = self.player.capacity() {
+            let p = self.capacity.project(
+                capacity,
+                self.player.inventory(),
+                self.player.casting().funding(),
+                self.player.world().tick(),
+                self.player.capacity_clock_running(),
+                None,
+            )?;
+            ops.extend(self.capacity.operations(s, &p)?);
+        }
         let mut view = PlayerDashboard {
             title: self.loaded.config.title.clone(),
             description: self.loaded.config.description.clone(),
@@ -514,6 +649,16 @@ impl Session {
             inventory_interaction: Controller::view_path(&self.inventory),
             equipment: self.equipment.paths().dashboard(),
             supply: self.supply.dashboard(),
+            capacity: if self.player.capacity().is_some() {
+                self.capacity.dashboard()
+            } else {
+                String::new()
+            },
+            capacity_request: if self.player.capacity().is_some() {
+                self.capacity_request_path()
+            } else {
+                String::new()
+            },
             request: self.request_path(),
             revision_request: self.revision_request_path(),
             revision_review: self.revision_review_path(),

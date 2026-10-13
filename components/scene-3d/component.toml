@@ -14,7 +14,7 @@ description = "3D starter kit: scene nodes that each draw on their own and compo
 keywords = ["3d", "cel shading", "toon", "outline", "water", "sky", "island", "wind waker", "wgpu"]
 permissions = ["native-code", "gpu"]
 tests = ["cargo test --quiet"]
-version = "0.1.0"
+version = "0.1.3"
 
 [package.dependencies]
 ui-kit = "^0.1"

@@ -9,11 +9,17 @@
 //! slots, the last fusion, the creatures, recent hits, the buildings' spells); `spellcraft.spell(name)` a spell's
 //! definition; `spellcraft.fuse(first, second)` a fusion's.
 pub mod aim;
+pub mod lifecycle;
 pub mod player;
 pub mod player_world;
 pub mod casting;
+pub mod funding;
+pub mod capacity;
+pub mod capacity_view;
 pub mod supply;
 pub mod supply_view;
+pub mod authoring;
+pub mod authoring_view;
 pub mod definition;
 pub mod fusion;
 pub mod fx;
@@ -360,3 +366,12 @@ mod tests;
 
 #[cfg(test)]
 mod supply_tests;
+
+#[cfg(test)]
+mod authoring_tests;
+
+#[cfg(test)]
+mod funding_tests;
+
+#[cfg(test)]
+mod capacity_tests;

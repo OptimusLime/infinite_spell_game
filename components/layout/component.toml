@@ -17,7 +17,7 @@ is recorded per layer: inspect().overflow, which the editor's verify fails on.
 inspect().scrolls records typed ScrollRegion geometry per layer: id, visible rect, clamped offset/maximum, content scale and follow_end.
 hover = {background?, border_color?} applies while the pointer is over the node.
 button.on_press, node.on_pointer and input.bind/on_submit are what pointer input reaches.
-image: texture (asset path), texture_revision? (content revision; changes reload pixels and backend upload), atlas = {x0, y0, x1, y1}.
+image: texture (PNG or JPEG asset path), texture_revision? (content revision; changes reload pixels and backend upload), atlas = {x0, y0, x1, y1}.
 Nodes of other kinds are painted by whichever installed component draws them (e.g. face)."""
 name = "layout"
 provides = ["node", "text", "button", "input", "image"]
@@ -28,4 +28,4 @@ description = "Lays out and paints user-interface trees: flexbox rows and column
 keywords = ["ui", "layout", "flexbox", "widgets", "text", "buttons", "rendering"]
 permissions = ["native-code"]
 tests = ["cargo test --quiet"]
-version = "0.1.1"
+version = "0.1.4"

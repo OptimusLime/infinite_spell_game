@@ -39,6 +39,10 @@ source = "/Users/paul/.atelico/registry/store/be33d83c32a5942d0e26d0a8611eaa035c
 path = "components/editor-scene-view"
 source = "/Users/paul/.atelico/registry/store/ac797b2307dd21dee74c32dfbbabd73f0c260bd01f14c631d7c4d667a4499622"
 
+[components.editor-spells]
+path = "components/editor-spells"
+source = "/Users/paul/.atelico/registry/store/b2f029b07e317279a5a53cf04ce838ff44dc6a46788efc65a728153badc339ec"
+
 [components.editor-status]
 path = "components/editor-status"
 source = "/Users/paul/.atelico/registry/store/a92fbf84d4c6fa795f828ec4fd3520d8762a1299ac920d4fcbeb63b5b7c490a4"
@@ -53,23 +57,23 @@ source = "/Users/paul/.atelico/registry/store/680e2d6db7257287ccf5d84a707f37a937
 
 [components.layout]
 path = "components/layout"
-source = "/Users/paul/.atelico/registry/store/967c7267ef78a0b0fcd8137e1dd323295de774232a2c9e13f5577e5d6c982e37"
+source = "/Users/paul/.atelico/registry/store/afcdbc5719813b09365f216558d9ba141413f1e1200515ac831412a4e88c06e2"
 
 [components.node-graph]
 path = "components/node-graph"
-source = "/Users/paul/.atelico/registry/store/cba994d8d17d48471f4014c4572379ae6029bd91a72a5c89648223a206ac846e"
+source = "/Users/paul/.atelico/registry/store/a65a246471206c8b36f263182ea1ea5ecfa28106e1216a4a1c4a05c57ebb7d67"
 
 [components.scene-3d]
 path = "components/scene-3d"
-source = "/Users/paul/.atelico/registry/store/9f457d56f336fba79bd5ad9666b4948eea29d28cf28a4d4c73e1435796150199"
+source = "/Users/paul/.atelico/registry/store/58459db12c77907f1a3836bcce0beaaa1815fd27f1be717dc0fa6e9f537d0cbd"
 
 [components.shader-forge]
 path = "components/shader-forge"
-source = "/Users/paul/.atelico/registry/store/140701ad866f61035f36a2f3968ea23076af8b169a134ef2d526a81a7ccf6690"
+source = "/Users/paul/.atelico/registry/store/1fc89cd742b13d1db3e6f6de3dfeb90083091574279113c06c86b83fadf6d1bd"
 
 [components.spellcraft]
 path = "components/spellcraft"
-source = "/Users/paul/.atelico/registry/store/8fc70b0453183ff0bb1fd144c55db14e620bc8ceedc2b01f0116f3b46017f127"
+source = "/Users/paul/.atelico/registry/store/c3982665073c727bd9d7c0c276b17f422e31265643ca7efe86c96b9391981bd0"
 
 [components.ui-kit]
 path = "components/ui-kit"
@@ -77,7 +81,7 @@ source = "/Users/paul/.atelico/registry/store/74c6c7ae5dc98c300217b475b6c0b2a0d8
 
 [apps.spell-player]
 path = "apps/spell-player"
-source = "/Users/paul/.atelico/registry/store/27ae9f36d127a35daf85dfdf280cf0b5c295750b2b93401c144caf5e923857a7"
+source = "/Users/paul/.atelico/registry/store/4105f1321f590380f790c843002a0c310fe4553927d5e2a50f06ece981de162b"
 
 [settings.editor-queue]
 db = "queue/queue.db"

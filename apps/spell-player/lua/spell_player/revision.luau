@@ -7,7 +7,11 @@ function M.toggle(r)
     if not M.available() then return end
     local state = object(r.ui); if not state then return end
     state.sources_open = not state.sources_open
-    if state.sources_open then state.inventory_open,state.equipment_open = false,false end
+    if state.sources_open then
+        state.inventory_open,state.equipment_open = false,false
+        -- An older running producer can hot reload this UI before the optional fixture is built.
+        if data.schema("PlayerCapacityRequest") ~= nil then state.capacity_open = false end
+    end
 end
 function M.request(r)
     if not M.available() then return end

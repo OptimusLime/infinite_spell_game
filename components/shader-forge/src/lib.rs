@@ -5,20 +5,20 @@ pub mod check;
 pub mod compile;
 pub mod function;
 pub mod gpu;
+mod preview;
 
 use std::collections::BTreeMap;
 use std::sync::Mutex;
 
 use atelico_component::mlua::{self, Lua, LuaSerdeExt, Value as LuaValue};
-use atelico_component::tiny_skia::{FilterQuality, Pixmap, PixmapPaint};
-use atelico_component::{num, register, Component, Surface, Value};
+use atelico_component::{register, Component, Value};
 use atelico_graph::{Cache, Catalog, Graph};
 use atelico_timeline::Track;
 use serde_json::json;
 
 use compile::{compile, Expr};
 
-register!(Component { name: "shader-forge", lua: install, paint, inspect, ..Component::NONE });
+register!(Component { name: "shader-forge", lua: install, paint: preview::paint, draw: preview::draw, inspect, ..Component::NONE });
 
 /// Compile caches by graph name and target (the output, or a previewed node).
 static CACHES: Mutex<BTreeMap<String, Cache<Expr>>> = Mutex::new(BTreeMap::new());
@@ -26,8 +26,7 @@ static CACHES: Mutex<BTreeMap<String, Cache<Expr>>> = Mutex::new(BTreeMap::new()
 static RUNS: Mutex<BTreeMap<String, Value>> = Mutex::new(BTreeMap::new());
 /// The last compile that changed something, per graph and target: (the target's key, its summary).
 static LAST: Mutex<BTreeMap<String, (String, Value)>> = Mutex::new(BTreeMap::new());
-/// The last frame drawn per preview id: (wgsl hash, time, w, h) → pixels, so an unchanged frame is not redrawn.
-static FRAMES: Mutex<BTreeMap<String, (u64, u32, u32, u32, Pixmap)>> = Mutex::new(BTreeMap::new());
+
 
 fn inspect() -> Value {
     json!({ "runs": *RUNS.lock().unwrap() })
@@ -146,42 +145,6 @@ fn install(lua: &Lua) -> mlua::Result<()> {
         })?,
     )?;
     lua.globals().set("shader", s)
-}
-
-fn hash(s: &str) -> u64 {
-    use std::hash::{Hash, Hasher};
-    let mut h = std::collections::hash_map::DefaultHasher::new();
-    s.hash(&mut h);
-    h.finish()
-}
-
-/// `{kind = "shader_preview", id, wgsl, time, params?}`: the shader at `time` with its animated params,
-/// filling the node's box.
-fn paint(node: &Value, s: &mut Surface) -> bool {
-    if node.get("kind").and_then(Value::as_str) != Some("shader_preview") {
-        return false;
-    }
-    let Some(wgsl) = node.get("wgsl").and_then(Value::as_str) else { return true };
-    let id = node.get("id").and_then(Value::as_str).unwrap_or("preview").to_string();
-    let time = num(node, "time", s.time as f32);
-    let params: Vec<f32> = node.get("params").and_then(Value::as_array).map(|a| a.iter().filter_map(Value::as_f64).map(|v| v as f32).collect()).unwrap_or_default();
-    // at most 1 device pixel per logical pixel and 640 wide: a preview, not a render
-    let res = s.scale.min(1.0).max(0.5);
-    let (w, h) = (((s.rect.w * res) as u32).clamp(1, 640), ((s.rect.h * res) as u32).clamp(1, 640));
-    let key = (hash(&format!("{wgsl}{params:?}")), (time * 1000.0) as u32, w, h);
-    let mut frames = FRAMES.lock().unwrap();
-    let fresh = frames.get(&id).is_some_and(|f| (f.0, f.1, f.2, f.3) == key);
-    if !fresh {
-        let Ok(px) = gpu::render(wgsl, w, h, time, &params) else { return true };
-        let Some(mut pm) = Pixmap::new(w, h) else { return true };
-        pm.data_mut().copy_from_slice(&px);
-        frames.insert(id.clone(), (key.0, key.1, w, h, pm));
-    }
-    let pm = &frames[&id].4;
-    let t = s.transform().pre_scale(s.rect.w / w as f32, s.rect.h / h as f32);
-    let paint = PixmapPaint { quality: FilterQuality::Bilinear, ..Default::default() };
-    s.pixmap.draw_pixmap(0, 0, pm.as_ref(), &paint, t, s.clip);
-    true
 }
 
 #[cfg(test)]

@@ -6,6 +6,9 @@ use atelico_store::{Origin, Store};
 use component_spellcraft::supply_view::SupplyView;
 use std::{fs, path::PathBuf};
 fn fixture() -> (PathBuf, Store, Registry, String) {
+    fixture_config(include_str!("../fixtures/basic.player.toml"))
+}
+fn fixture_config(config: &str) -> (PathBuf, Store, Registry, String) {
     static NEXT: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
     let dir = std::env::temp_dir().join(format!(
         "spell-player-{}-{}",
@@ -14,11 +17,7 @@ fn fixture() -> (PathBuf, Store, Registry, String) {
     ));
     fs::create_dir_all(dir.join("players")).unwrap();
     fs::create_dir_all(dir.join("packages/spellcraft/fixtures")).unwrap();
-    fs::write(
-        dir.join("players/basic.player.toml"),
-        include_str!("../fixtures/basic.player.toml"),
-    )
-    .unwrap();
+    fs::write(dir.join("players/basic.player.toml"), config).unwrap();
     for (name, text) in [
         (
             "projectile-hit.spell.yaml",
@@ -393,5 +392,227 @@ fn exact_authored_revision_admission_preserves_finite_state_world_and_old_receip
         serde_json::to_value(r.sessions[&key].player.snapshot()).unwrap(),
         after
     );
+    fs::remove_dir_all(dir).unwrap();
+}
+
+fn capacity_view(
+    s: &Store,
+    r: &Registry,
+    key: &str,
+) -> component_spellcraft::capacity_view::CapacityView {
+    s.read(&view(s, r, key).capacity).unwrap()
+}
+fn expand(s: &Store, r: &mut Registry, key: &str, now: f64, remaining: f64, token: Option<u64>) {
+    use crate::view::PlayerCapacityRequest;
+    use component_spellcraft::capacity_view::ExpanderView;
+    let d = view(s, r, key);
+    let c = capacity_view(s, r, key);
+    let e: ExpanderView = s.read(&c.expanders[0]).unwrap();
+    let mut q: PlayerCapacityRequest = s.read(&d.capacity_request).unwrap();
+    q.sequence += 1;
+    q.item_id = e.item_id;
+    q.source_id = "amber".into();
+    q.expected_config = e.configuration;
+    q.expected_remaining = remaining;
+    q.expected_token = token.unwrap_or(d.token);
+    s.write(&d.capacity_request, &q, Origin::Gui).unwrap();
+    r.sessions.get_mut(key).unwrap().frame(s, now).unwrap();
+}
+#[test]
+fn fixture_capacity_is_explicit_atomic_and_visible_in_one_shared_account() {
+    use component_spellcraft::{
+        capacity_view::{ExpanderView, FundingDebitView, Phase},
+        funding::DebitPurpose,
+    };
+    let (dir, s, mut r, key) = fixture_config(include_str!("../fixtures/capacity.player.toml"));
+    let initial = r.sessions[&key].player.snapshot();
+    expand(&s, &mut r, &key, 0., 40., None);
+    assert!(view(&s, &r, &key).error.contains("clock stopped"));
+    assert_eq!(r.sessions[&key].player.snapshot(), initial);
+    command(&s, &mut r, &key, Command::Equip, "wand", 0.03);
+    command(&s, &mut r, &key, Command::Load, "amber", 0.06);
+    command(&s, &mut r, &key, Command::Select, "bolt", 0.09);
+    command(&s, &mut r, &key, Command::Aim, "front", 0.12);
+    command(&s, &mut r, &key, Command::Fire, "", 0.15);
+    assert_eq!(supply(&s, &r, &key).total, 60.);
+    expand(&s, &mut r, &key, 0.18, 40., None); // stale pre-cast source cannot spend
+    assert!(view(&s, &r, &key).error.contains("balance changed"));
+    assert_eq!(supply(&s, &r, &key).total, 60.);
+    expand(&s, &mut r, &key, 0.21, 20., Some(0));
+    assert!(view(&s, &r, &key).error.contains("state changed"));
+    let before = r.sessions[&key].player.snapshot();
+    let c = capacity_view(&s, &r, &key);
+    let grant_path = c.expanders[0].clone();
+    let reject = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(true));
+    let check = reject.clone();
+    s.rule(&format!("{grant_path}.revision"), move |v| {
+        if check.load(std::sync::atomic::Ordering::SeqCst) && v.as_u64().unwrap_or(0) > 0 {
+            Err("fixture rejects grant publication".into())
+        } else {
+            Ok(v.clone())
+        }
+    });
+    expand(&s, &mut r, &key, 0.24, 20., None);
+    assert!(view(&s, &r, &key).error.contains("publication"));
+    assert_eq!(r.sessions[&key].player.snapshot(), before);
+    let rejected: ExpanderView = s.read(&grant_path).unwrap();
+    assert_eq!(rejected.revision, 0);
+    assert_eq!(
+        s.get(&format!("{}.width", rejected.grid)).unwrap(),
+        serde_json::json!(6)
+    );
+    assert_eq!(supply(&s, &r, &key).total, 60.);
+    assert_eq!(capacity_view(&s, &r, &key).debits.len(), 1);
+    reject.store(false, std::sync::atomic::Ordering::SeqCst);
+    expand(&s, &mut r, &key, 0.27, 20., None);
+    assert!(
+        view(&s, &r, &key).error.is_empty(),
+        "{}",
+        view(&s, &r, &key).error
+    );
+    assert_eq!(supply(&s, &r, &key).total, 57.);
+    let grid = atelico_inventory::GridId::new("pack").unwrap();
+    assert_eq!(
+        r.sessions[&key]
+            .player
+            .inventory()
+            .grid(&grid)
+            .unwrap()
+            .size
+            .width
+            .get(),
+        8
+    );
+    let c = capacity_view(&s, &r, &key);
+    assert_eq!(c.debits.len(), 2);
+    let debit: FundingDebitView = s.read(&c.debits[1]).unwrap();
+    assert_eq!(debit.purpose, DebitPurpose::CapacityActivation);
+    assert_eq!((debit.before, debit.after), (20., 17.));
+    let e: ExpanderView = s.read(&c.expanders[0]).unwrap();
+    assert_eq!(e.phase, Phase::Paid);
+    assert_eq!(e.revision, 1);
+    // A duplicate transport sequence is consumed once; it cannot create another debit.
+    let paid = r.sessions[&key].player.snapshot();
+    r.sessions.get_mut(&key).unwrap().frame(&s, 0.28).unwrap();
+    assert_eq!(r.sessions[&key].player.snapshot(), paid);
+    // The aggregate also accepts an exact historical retry while stopped, without republishing
+    // or debiting. A transport duplicate alone would not exercise this domain boundary.
+    {
+        let player = &mut r.sessions.get_mut(&key).unwrap().player;
+        let request = player.capacity().unwrap().receipts()[0].request.clone();
+        let capacity_before = player.capacity().unwrap().snapshot();
+        player.set_capacity_clock(None).unwrap();
+        let replay = player.prepare_capacity(request).unwrap();
+        assert!(replay.replayed());
+        player
+            .commit_capacity_with(replay, |_| panic!("read-only replay published"))
+            .unwrap();
+        assert_eq!(player.snapshot(), paid);
+        assert_eq!(player.capacity().unwrap().snapshot(), capacity_before);
+    }
+    command(&s, &mut r, &key, Command::Fire, "", 0.30);
+    assert!(!view(&s, &r, &key).error.is_empty());
+    assert_eq!(supply(&s, &r, &key).total, 57.);
+    command(&s, &mut r, &key, Command::Load, "blue", 0.33);
+    command(&s, &mut r, &key, Command::Fire, "", 0.36);
+    assert_eq!(supply(&s, &r, &key).total, 37.);
+    assert_eq!(capacity_view(&s, &r, &key).debits.len(), 3);
+    let snapshot = r.sessions[&key].player.snapshot();
+    component_spellcraft::casting::Casting::restore(
+        r.sessions[&key].player.inventory(),
+        snapshot.1,
+    )
+    .unwrap();
+    fs::remove_dir_all(dir).unwrap();
+}
+#[test]
+fn capacity_fixture_expiry_preserves_occupied_space_and_locks_inventory_and_casting() {
+    use atelico_inventory::{GridId, ItemId, Location, Orientation};
+    use component_spellcraft::capacity_view::{ExpanderView, Phase};
+    let (dir, s, mut r, key) = fixture_config(
+        &include_str!("../fixtures/capacity.player.toml").replace("cadence = 120", "cadence = 6"),
+    );
+    expand(&s, &mut r, &key, 0.03, 40., None);
+    assert_eq!(supply(&s, &r, &key).total, 77.);
+    let session = r.sessions.get_mut(&key).unwrap();
+    let id = ItemId::new("blue").unwrap();
+    let from = session
+        .player
+        .inventory()
+        .item(&id)
+        .unwrap()
+        .location
+        .clone();
+    session
+        .player
+        .edit_inventory(|inv| {
+            inv.transfer(
+                &id,
+                &from,
+                Location::Grid {
+                    grid: GridId::new("pack").unwrap(),
+                    column: 7,
+                    row: 3,
+                    orientation: Orientation::Normal,
+                },
+            )
+        })
+        .unwrap();
+    session.frame(&s, 0.03).unwrap();
+    assert!(!session.player.capacity_clock_running());
+    assert!(session
+        .player
+        .edit_inventory::<()>(|_| panic!("stopped clock must reject before mutation"))
+        .is_err());
+    for now in [0.06, 0.09, 0.12, 0.15] {
+        r.sessions.get_mut(&key).unwrap().frame(&s, now).unwrap();
+    }
+    let c = capacity_view(&s, &r, &key);
+    let e: ExpanderView = s.read(&c.expanders[0]).unwrap();
+    assert_eq!(e.phase, Phase::PolicyRequired);
+    assert_eq!(e.overflow_items.len(), 1);
+    let preserved = r.sessions[&key].player.snapshot();
+    assert!(r.sessions[&key]
+        .player
+        .capacity_admission()
+        .unwrap_err()
+        .contains("policy required"));
+    assert_eq!(
+        r.sessions[&key]
+            .player
+            .inventory()
+            .grid(&GridId::new("pack").unwrap())
+            .unwrap()
+            .size
+            .width
+            .get(),
+        8
+    );
+    command(&s, &mut r, &key, Command::Equip, "wand", 0.18);
+    assert_eq!(r.sessions[&key].player.snapshot(), preserved);
+    assert!(view(&s, &r, &key).error.contains("policy required"));
+    fs::remove_dir_all(dir).unwrap();
+}
+#[test]
+fn capacity_production_remains_disabled_and_insufficient_payment_rolls_back() {
+    let base = include_str!("../fixtures/capacity.player.toml");
+    let (dir, s, mut r, key) =
+        fixture_config(&base.replace("activation_cost = 3.0", "activation_cost = 41.0"));
+    let initial = r.sessions[&key].player.snapshot();
+    expand(&s, &mut r, &key, 0.03, 40., None);
+    assert!(view(&s, &r, &key).error.contains("needs 41"));
+    assert_eq!(r.sessions[&key].player.snapshot(), initial);
+    assert!(capacity_view(&s, &r, &key).debits.is_empty());
+    let path = dir.join("players/basic.player.toml");
+    fs::write(
+        &path,
+        base.replace(r#"mode = "fixture_only""#, r#"mode = "disabled""#),
+    )
+    .unwrap();
+    assert!(crate::config::load(&path).and_then(|v| v.player()).is_err());
+    fs::remove_dir_all(dir).unwrap();
+    let (dir, s, r, key) = fixture();
+    assert!(view(&s, &r, &key).capacity.is_empty());
+    assert!(r.sessions[&key].player.capacity().is_none());
     fs::remove_dir_all(dir).unwrap();
 }

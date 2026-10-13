@@ -25,6 +25,19 @@ pub struct ReturnLocation {
     pub item: ItemId,
     pub location: Location,
 }
+#[derive(Debug, Default, Clone, Copy, Deserialize, PartialEq)]
+#[serde(rename_all = "snake_case")]
+pub enum CapacityMode {
+    #[default]
+    Disabled,
+    FixtureOnly,
+}
+#[derive(Debug, Default, Deserialize)]
+#[serde(default, deny_unknown_fields)]
+pub struct CapacityConfig {
+    pub mode: CapacityMode,
+    pub specs: Vec<component_spellcraft::capacity::Spec>,
+}
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
@@ -43,6 +56,8 @@ pub struct Config {
     pub returns: Vec<ReturnLocation>,
     #[serde(default)]
     pub keys: Vec<crate::view::PlayerKeyBinding>,
+    #[serde(default)]
+    pub capacity: CapacityConfig,
 }
 pub struct Loaded {
     pub config: Config,
@@ -173,12 +188,21 @@ impl Loaded {
         for s in self.spells.values() {
             world.validate_spell(s)?;
         }
-        Player::new(
+        let mut player = Player::new(
             c.inventory.clone(),
             c.equipment.clone(),
             Casting::new(Supply::restore(&c.inventory, c.supply.clone())?),
             world,
             c.equipment_slot.clone(),
-        )
+        )?;
+        match c.capacity.mode {
+            CapacityMode::Disabled if !c.capacity.specs.is_empty() => return Err("Capacity specs require an explicit fixture_only opt-in; production policy remains unselected".into()),
+            CapacityMode::Disabled => {},
+            CapacityMode::FixtureOnly => {
+                if c.capacity.specs.is_empty() { return Err("Capacity fixture needs explicit specs".into()); }
+                player.configure_capacity_fixture(c.capacity.specs.clone())?;
+            }
+        }
+        Ok(player)
     }
 }

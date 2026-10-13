@@ -11,3 +11,6 @@ atelico-paint-cpu.workspace = true
 fontdue = "0.9"
 taffy = "0.10"
 serde_json = "1"
+
+# PNG retains tiny-skia decoding; JPEG uses the existing bounded image codec.
+image = { version = "0.25", default-features = false, features = ["jpeg"] }

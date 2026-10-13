@@ -3,7 +3,7 @@ use crate::{
     casting::{AuthoredSpell, Casting},
     runtime::{Instance, Status},
 };
-use atelico_data::Data;
+use atelico_data::{Data, DataKind};
 use atelico_equipment::Equipment;
 use atelico_inventory::{view::Paths as InventoryPaths, Inventory, ItemId, SlotId};
 use atelico_store::{Op, Origin, Store};
@@ -26,6 +26,7 @@ pub struct SupplyView {
     pub reason: String,
     pub receipts: Vec<String>,
     pub instances: Vec<String>,
+    pub finished: Vec<String>,
 }
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, Data)]
 #[serde(default, deny_unknown_fields)]
@@ -51,13 +52,44 @@ pub struct ReceiptView {
     pub after: f64,
     pub tick: u64,
 }
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, DataKind)]
+#[serde(rename_all = "snake_case")]
+pub enum CastState {
+    #[default]
+    Running,
+    Completed,
+    Cancelled,
+    Exhausted,
+    Faulted,
+}
+impl From<Status> for CastState {
+    fn from(s: Status) -> Self {
+        match s {
+            Status::Running => Self::Running,
+            Status::Exhausted => Self::Exhausted,
+            Status::Faulted => Self::Faulted,
+        }
+    }
+}
+impl From<crate::lifecycle::TerminalStatus> for CastState {
+    fn from(s: crate::lifecycle::TerminalStatus) -> Self {
+        use crate::lifecycle::TerminalStatus as T;
+        match s {
+            T::Completed => Self::Completed,
+            T::Cancelled => Self::Cancelled,
+            T::Exhausted => Self::Exhausted,
+            T::Faulted => Self::Faulted,
+        }
+    }
+}
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, Data)]
 #[serde(default, deny_unknown_fields)]
 pub struct CastView {
     pub id: String,
     pub revision: String,
     pub title: String,
-    pub status: String,
+    #[data(choice)]
+    pub status: CastState,
     pub reason: String,
     pub initial: f64,
     pub remaining: f64,
@@ -66,6 +98,10 @@ pub struct CastView {
     pub rules: f64,
     pub effectors: f64,
     pub dissipation: f64,
+    pub terminal: bool,
+    pub ended_tick: u64,
+    /// Historical unspent transferred allocation; never included in available cartridge totals.
+    pub unused: f64,
 }
 /// Each map contains full safe Store paths, never nested records embedded inside dashboard fields.
 pub struct Projection {
@@ -111,6 +147,26 @@ impl Binding {
         equipment_slot: &SlotId,
         selected: Option<&AuthoredSpell>,
         instances: &[Instance],
+    ) -> Result<Projection, String> {
+        self.project_with_history(
+            casting,
+            inventory,
+            equipment,
+            equipment_slot,
+            selected,
+            instances,
+            &[],
+        )
+    }
+    pub fn project_with_history(
+        &self,
+        casting: &Casting,
+        inventory: &Inventory,
+        equipment: &Equipment,
+        equipment_slot: &SlotId,
+        selected: Option<&AuthoredSpell>,
+        instances: &[Instance],
+        finished: &[crate::lifecycle::TerminalCast],
     ) -> Result<Projection, String> {
         let supply = casting.supply();
         supply.validate(inventory)?;
@@ -211,12 +267,7 @@ impl Binding {
                     id: i.id.clone(),
                     revision: i.revision.clone(),
                     title: i.definition.title().into(),
-                    status: match i.status {
-                        Status::Running => "running",
-                        Status::Exhausted => "exhausted",
-                        Status::Faulted => "faulted",
-                    }
-                    .into(),
+                    status: i.status.into(),
                     reason: i.why.clone().unwrap_or_default(),
                     initial: i.initial,
                     remaining: i.energy,
@@ -225,9 +276,41 @@ impl Binding {
                     rules: *i.spent.get("rules").unwrap_or(&0.0),
                     effectors: *i.spent.get("effectors").unwrap_or(&0.0),
                     dissipation: *i.spent.get("dissipation").unwrap_or(&0.0),
+                    ..Default::default()
                 },
             );
             dashboard.instances.push(path);
+        }
+        for i in finished {
+            if !casting
+                .receipts()
+                .iter()
+                .any(|r| r.instance == i.id && &r.request.owner == equipment.owner())
+            {
+                continue;
+            }
+            let path = self.path("instances", &i.id);
+            rows.insert(
+                path.clone(),
+                CastView {
+                    id: i.id.clone(),
+                    revision: i.revision.clone(),
+                    title: i.title.clone(),
+                    status: i.status.into(),
+                    reason: i.reason.clone(),
+                    initial: i.initial,
+                    remaining: 0.,
+                    unused: i.unused,
+                    sensors: i.sensors,
+                    logic: i.logic,
+                    rules: i.rules,
+                    effectors: i.effectors,
+                    dissipation: i.dissipation,
+                    terminal: true,
+                    ended_tick: i.ended_tick,
+                },
+            );
+            dashboard.finished.push(path);
         }
         // An admission receipt is meaningful even before start or after a runtime instance is retired.
         for r in receipts.values_mut() {
@@ -241,6 +324,33 @@ impl Binding {
             receipts,
             instances: rows,
         })
+    }
+    /// Project one already-validated pending debit without copying the account/history or mutating it.
+    /// Capacity uses this alongside Inventory and grant operations in the same checked Store batch.
+    pub fn pending_debit(
+        &self,
+        projection: &mut Projection,
+        debit: &crate::funding::DebitReceipt,
+    ) -> Result<(), String> {
+        let path = self.cartridge(&debit.request.cartridge);
+        let row = projection
+            .cartridges
+            .get_mut(&path)
+            .ok_or("Payment source missing from this owner's projection")?;
+        if row.remaining != debit.before.get() {
+            return Err("Projected payment source changed".into());
+        }
+        row.remaining = debit.after.get();
+        projection.dashboard.total = projection.cartridges.values().map(|r| r.remaining).sum();
+        if projection.dashboard.loaded == path
+            && debit.after.get() < projection.dashboard.allocation
+            && projection.dashboard.can_cast
+        {
+            projection.dashboard.can_cast = false;
+            projection.dashboard.reason =
+                "Loaded cartridge cannot fund the selected allocation".into();
+        }
+        Ok(())
     }
     pub fn install(&self, store: &Store) -> Result<(), String> {
         if store.has(self.paths.root())

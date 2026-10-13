@@ -1,0 +1,6 @@
+title = "Casting study"
+description = "Finite wand cartridges and saved-spell controls. Fixed actor/aim targets; art and balance are unreviewed."
+mode = "play"
+docs = ["scenes/casting-study-cel-day.scene.luau"]
+[layout]
+center = ["scene-view"]

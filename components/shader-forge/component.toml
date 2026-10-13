@@ -15,4 +15,4 @@ description = "Shader Forge: shader node graphs (uv, time, scroll, noise, warp, 
 keywords = ["shader", "shader graph", "wgsl", "fire", "noise", "gpu", "material"]
 permissions = ["native-code", "gpu"]
 tests = ["cargo test --quiet"]
-version = "0.1.0"
+version = "0.1.1"

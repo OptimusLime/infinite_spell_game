@@ -410,3 +410,85 @@ fn scroll_geometry_uses_layout_ranges_clips_and_cached_or_fitted_coordinates() {
         assert_eq!((region.scale,region.maximum),(1.,400.));
     }
 }
+
+#[test]
+fn layer_lifecycle_retires_metadata_without_clearing_other_layers_or_layout_cache() {
+    let _one = one();
+    let button = |id: &str| json!({ "kind": "button", "id": id, "on_press": { "event": "route", "name": "bump" }, "style": { "width": 120, "height": 60, "background": "#376488" } });
+    let (before, _) = lay(button("old"), 120., 60., 150);
+    lay(button("other"), 120., 60., 151);
+    let cached = LAID.with_borrow(|cache| cache.keys().copied().collect::<Vec<_>>());
+    atelico_component::set_layer(150);
+    assert!(hit(10., 10.).is_some());
+    // Exercise the registered generic boundary, not the callback directly.
+    atelico_component::clear_layer(150);
+    assert!(hit(10., 10.).is_none());
+    let seen = inspect();
+    for category in ["layers", "scrolls", "overflow", "centring", "small", "elided", "unfilled", "settle"] {
+        assert!(seen[category].get("150").is_none(), "obsolete {category}");
+    }
+    assert_eq!(LAID.with_borrow(|cache| cache.keys().copied().collect::<Vec<_>>()), cached, "metadata retirement keeps layout caches");
+    atelico_component::set_layer(151);
+    assert!(hit(10., 10.).is_some(), "another window keeps its hit target");
+    assert_eq!(seen["layers"]["151"][0]["id"], "other");
+    let (after, _) = lay(button("old"), 120., 60., 150);
+    assert_eq!(before.data(), after.data(), "repainted pixels are unchanged");
+    atelico_component::set_layer(150);
+    assert!(hit(10., 10.).is_some(), "the current layer repopulates normally");
+}
+
+
+#[test]
+fn jpeg_pixels_intrinsic_size_revision_and_invalid_recovery() {
+    let _one = one();
+    let path = std::env::temp_dir().join(format!("atelico-layout-jpeg-{}.data", std::process::id()));
+    let jpeg = |color: [u8; 3]| {
+        let mut bytes = Vec::new();
+        image::codecs::jpeg::JpegEncoder::new_with_quality(&mut bytes, 100)
+            .encode(&color.repeat(32 * 24), 32, 24, image::ExtendedColorType::Rgb8).unwrap();
+        bytes
+    };
+    let node = |revision| json!({"kind":"node","style":{"width":100,"height":80,"align":"start"},"children":[
+        {"kind":"image","id":"jpeg","texture":path,"texture_revision":revision,"style":{"width":60,"shrink":0}}
+    ]});
+    std::fs::write(&path, jpeg([220, 40, 70])).unwrap();
+    let (first, boxes) = lay(node("red"), 100., 80., 98);
+    assert_eq!((rect(&boxes,"jpeg").w,rect(&boxes,"jpeg").h), (60.,45.), "JPEG intrinsic 4:3 ratio");
+    let close = |actual: [u8;3], expected: [u8;3]| assert!(actual.iter().zip(expected).all(|(a,b)| a.abs_diff(b)<=2), "{actual:?} != {expected:?}");
+    close(px(&first, 30, 20), [220,40,70]);
+    let first_id = IMAGES.with_borrow(|cache| {
+        let image=cache[&path].image.as_ref().unwrap();
+        assert!(image.data.chunks_exact(4).all(|p|p[3]==255), "JPEG RGBA is opaque and thus premultiplied");
+        image.id
+    });
+    std::fs::write(&path, jpeg([30,70,220])).unwrap();
+    let (cached, _) = lay(node("red"),100.,80.,98);
+    close(px(&cached,30,20),[220,40,70]);
+    let (second, _) = lay(node("blue"),100.,80.,98);
+    close(px(&second,30,20),[30,70,220]);
+    assert_ne!(first_id, IMAGES.with_borrow(|c|c[&path].image.as_ref().unwrap().id));
+    std::fs::write(&path,b"not an image").unwrap();
+    let (invalid, _) = lay(node("invalid"),100.,80.,98);
+    assert!(invalid.data().iter().all(|v|*v==0));
+    std::fs::write(&path,jpeg([220,40,70])).unwrap();
+    let (recovered, _) = lay(node("recovered"),100.,80.,98);
+    close(px(&recovered,30,20),[220,40,70]);
+    std::fs::remove_file(&path).unwrap();
+    IMAGES.with_borrow_mut(|cache|cache.remove(&path));
+}
+
+#[test]
+fn png_decoding_keeps_exact_premultiplied_bytes() {
+    let _one = one();
+    let path = std::env::temp_dir().join(format!("atelico-layout-alpha-{}.png",std::process::id()));
+    let mut png=Pixmap::new(7,5).unwrap();
+    png.fill(Color::from_rgba8(201,73,19,91));
+    let bytes=png.encode_png().unwrap();
+    let expected=Pixmap::decode_png(&bytes).unwrap();
+    std::fs::write(&path,&bytes).unwrap();
+    let (drawn,_)=lay(json!({"kind":"image","texture":path,"style":{"width":7,"height":5}}),7.,5.,99);
+    IMAGES.with_borrow(|cache|assert_eq!(cache[&path].image.as_ref().unwrap().data.as_ref(),expected.data()));
+    assert_eq!(drawn.data(),expected.data());
+    std::fs::remove_file(&path).unwrap();
+    IMAGES.with_borrow_mut(|cache|cache.remove(&path));
+}

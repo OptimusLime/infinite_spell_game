@@ -65,6 +65,7 @@ pub struct Frame {
     /// by whole texels itself); and the camera's lens stack.
     pub glide: bool,
     pub lens: Vec<atelico_render_3d::lens::LensEffect>,
+    pub focus: atelico_render_3d::focus::DepthFocus,
     pub eye: Vec3,
     pub time: f32,
     /// The shadow map's view: an orthographic box from the light (the sun, or the moon at night) over `reach`.
@@ -324,6 +325,12 @@ pub fn render(f: &Frame, w: u32, h: u32) -> Result<Vec<u8>, String> {
 /// scaled up to w x h without smoothing.
 pub fn render_in(view: &str, f: &Frame, w: u32, h: u32) -> Result<Vec<u8>, String> {
     let (w, h) = (w.max(1), h.max(1));
+    // Depth focus is one GPU implementation for both presentation and explicit capture. The old
+    // color-only CPU reference below remains unchanged when focus is disabled.
+    if f.focus.enabled() {
+        let on = render_texture_in(view, f, w, h)?.ok_or("Depth focus produced no texture")?;
+        return atelico_gpu::read_texture(atelico_gpu::gpu()?, &on.texture);
+    }
     let Some(p) = &f.pixel else {
         let mut picture = crate::render::render_in(view, &draw(f, w, h), w, h)?;
         atelico_render_3d::lens::apply(&f.lens, &mut picture, w, h);
@@ -349,7 +356,9 @@ pub fn render_in(view: &str, f: &Frame, w: u32, h: u32) -> Result<Vec<u8>, Strin
     d.uniforms.camera.inv_view_proj = vp.inverse().to_cols_array_2d();
     d.uniforms.post.grid = atelico_render_3d::pixel::grid(vp, rw, rh);
     let px = crate::render::render_in(view, &d, rw, rh)?;
-    Ok(if (rw, rh) == (w, h) { px } else { atelico_render_3d::pixel::upscale(&px, rw, rh, w, h) })
+    let mut picture = if (rw, rh) == (w, h) { px } else { atelico_render_3d::pixel::upscale(&px, rw, rh, w, h) };
+    atelico_render_3d::lens::apply(&f.lens, &mut picture, w, h);
+    Ok(picture)
 }
 
 /// A frame left on the GPU: its texture, and how it lays on the w x h picture `render_in` would have made: the part
@@ -363,40 +372,87 @@ pub struct OnGpu {
 }
 
 /// The frame drawn in `view` and left on the GPU, laid as `render_in` lays its picture (the pixel lens and pixel-art
-/// upscale as a nearest-texel part of the texture instead of a CPU copy): None when lens effects are to be applied
-/// to its pixels on the CPU.
+/// upscale as a nearest-texel part of the texture instead of a CPU copy). Ordered lens effects also stay on
+/// the GPU, after the full screen grid is materialized.
 pub fn render_texture_in(view: &str, f: &Frame, w: u32, h: u32) -> Result<Option<OnGpu>, String> {
-    if !f.lens.is_empty() {
-        return Ok(None);
+    use atelico_render_3d::{focus::GpuFocus, lens_gpu::GpuLens};
+    if f.focus.enabled() { f.focus.plane(f.view)?; }
+    let base = render_texture_base(view, f, w, h)?;
+    let on = base.color;
+    if f.lens.is_empty() && !f.focus.enabled() { return Ok(Some(on)); }
+    struct LensView {
+        size: (u32, u32),
+        effects: Option<GpuLens>,
+        focus: Option<GpuFocus>,
+        region: Option<atelico_gpu::region::NearestRegion>,
     }
+    type Key = (u32, String);
+    static LENSES: Mutex<std::collections::VecDeque<(Key, LensView)>> = Mutex::new(std::collections::VecDeque::new());
+    let size = (w.max(1), h.max(1));
+    let key = (atelico_component::layer(), view.to_string());
+    let mut views = LENSES.lock().unwrap();
+    let mut cached = views.iter().position(|(k, _)| k == &key).and_then(|i| views.remove(i)).map(|(_, v)| v);
+    if cached.as_ref().is_none_or(|v| v.size != size) {
+        cached = Some(LensView { size, effects: None, focus: None, region: None });
+    }
+    let mut cached = cached.expect("created or reused lens view");
+    // Both effects use the finished screen grid. Depth retains the matching source/destination
+    // transform so it reconstructs the same sampled surface point, including pixel-lens snapping.
+    let mut texture = if on.src == [0., 0., size.0 as f32, size.1 as f32] && on.dst == [0, 0, size.0, size.1] && (on.texture.width(), on.texture.height()) == size {
+        on.texture.clone()
+    } else {
+        if cached.region.is_none() { cached.region = Some(atelico_gpu::region::NearestRegion::new(size.0, size.1)?); }
+        cached.region.as_ref().unwrap().draw(&on.texture, on.src, on.dst)?
+    };
+    if f.focus.enabled() {
+        if cached.focus.is_none() { cached.focus = Some(GpuFocus::new(size.0, size.1)?); }
+        let depth = base.depth.as_ref().ok_or("World focus requires the rendered depth texture")?;
+        texture = cached.focus.as_mut().unwrap().apply(&texture, depth, base.mapping, f.view, &f.focus)?;
+    }
+    if !f.lens.is_empty() {
+        if cached.effects.is_none() { cached.effects = Some(GpuLens::new(size.0, size.1)?); }
+        texture = cached.effects.as_mut().unwrap().apply(&texture, &f.lens)?;
+    }
+    while views.len() >= 8 { views.pop_front(); }
+    views.push_back((key, cached));
+    Ok(Some(OnGpu { texture, src: [0., 0., size.0 as f32, size.1 as f32], dst: [0, 0, size.0, size.1], nearest: on.nearest }))
+}
+
+struct BasePicture {
+    color: OnGpu,
+    depth: Option<atelico_render_3d::render::DepthTexture>,
+    mapping: atelico_render_3d::focus::DepthMapping,
+}
+
+fn render_texture_base(view: &str, f: &Frame, w: u32, h: u32) -> Result<BasePicture, String> {
+    use atelico_render_3d::focus::{DepthMapping, PixelSampling};
     let (w, h) = (w.max(1), h.max(1));
+    let render = |d: &Draw, rw, rh| -> Result<_, String> {
+        if f.focus.enabled() {
+            let textures = crate::render::render_texture_with_depth(view, d, rw, rh)?;
+            Ok((textures.color, Some(textures.depth)))
+        } else {
+            Ok((crate::render::render_texture(view, d, rw, rh)?, None))
+        }
+    };
     let Some(p) = &f.pixel else {
-        let texture = crate::render::render_texture(view, &draw(f, w, h), w, h)?;
-        return Ok(Some(OnGpu { texture, src: [0.0, 0.0, w as f32, h as f32], dst: [0, 0, w, h], nearest: false }));
+        let (texture, depth) = render(&draw(f, w, h), w, h)?;
+        return Ok(BasePicture { color: OnGpu { texture, src: [0., 0., w as f32, h as f32], dst: [0, 0, w, h], nearest: false }, depth, mapping: DepthMapping::full(w, h) });
     };
     if f.orthographic {
-        // the pixel lens (Lens::picture): texel (x + origin) / scale at each picture pixel x of the art's area
         let (vp, grid, lens) = atelico_render_3d::pixel::Lens::of(f.view, p.texels_per_metre, p.resolution, w, h, f.glide);
         let (tw, th) = lens.texels;
         let mut d = draw(f, tw, th);
         d.uniforms.camera.view_proj = vp.to_cols_array_2d();
         d.uniforms.camera.inv_view_proj = vp.inverse().to_cols_array_2d();
         d.uniforms.post.grid = grid;
-        let texture = crate::render::render_texture(view, &d, tw, th)?;
-        // A later editor pixel pass amplifies this small preview. Materialize its discrete sample
-        // grid first; stretching the original art directly would bypass Lens::picture's downsample.
+        let (texture, depth) = render(&d, tw, th)?;
+        let mapping = DepthMapping { source: lens.source(), destination: lens.destination(), sampling: PixelSampling::Centers };
         if lens.size.0 < lens.art.0 || lens.size.1 < lens.art.1 {
-            static PREVIEWS: Mutex<Option<HashMap<(u32, String), atelico_gpu::region::NearestRegion>>> = Mutex::new(None);
-            let mut cache = PREVIEWS.lock().unwrap();
-            let cache = cache.get_or_insert_with(HashMap::new);
-            let key = (atelico_component::layer(), view.to_string());
-            if cache.get(&key).is_none_or(|target| target.size() != (w, h)) {
-                cache.insert(key.clone(), atelico_gpu::region::NearestRegion::new(w, h)?);
-            }
-            let texture = cache[&key].draw(&texture, lens.source(), lens.destination())?;
-            return Ok(Some(OnGpu { texture, src: [0.0, 0.0, w as f32, h as f32], dst: [0, 0, w, h], nearest: true }));
+            let texture = pixel_target_in(view, w, h, |target| target.draw(&texture, lens.source(), lens.destination()))?;
+            return Ok(BasePicture { color: OnGpu { texture, src: [0., 0., w as f32, h as f32], dst: [0, 0, w, h], nearest: true }, depth, mapping });
         }
-        return Ok(Some(OnGpu { texture, src: lens.source(), dst: lens.destination(), nearest: true }));
+        return Ok(BasePicture { color: OnGpu { texture, src: lens.source(), dst: lens.destination(), nearest: true }, depth, mapping });
     }
     let (rw, rh) = (p.resolution.0.min(w).max(1), p.resolution.1.min(h).max(1));
     let mut d = draw(f, rw, rh);
@@ -404,8 +460,30 @@ pub fn render_texture_in(view: &str, f: &Frame, w: u32, h: u32) -> Result<Option
     d.uniforms.camera.view_proj = vp.to_cols_array_2d();
     d.uniforms.camera.inv_view_proj = vp.inverse().to_cols_array_2d();
     d.uniforms.post.grid = atelico_render_3d::pixel::grid(vp, rw, rh);
-    let texture = crate::render::render_texture(view, &d, rw, rh)?;
-    Ok(Some(OnGpu { texture, src: [0.0, 0.0, rw as f32, rh as f32], dst: [0, 0, w, h], nearest: true }))
+    let (texture, depth) = render(&d, rw, rh)?;
+    let mapping = DepthMapping { source: [0., 0., rw as f32, rh as f32], destination: [0, 0, w, h], sampling: PixelSampling::LeadingEdges };
+    let texture = if (rw, rh) == (w, h) { texture } else {
+        pixel_target_in(view, w, h, |target| target.draw_leading_pixels(&texture, [0, 0, rw, rh], [0, 0, w, h]))?
+    };
+    Ok(BasePicture { color: OnGpu { texture, src: [0., 0., w as f32, h as f32], dst: [0, 0, w, h], nearest: true }, depth, mapping })
+}
+
+/// Bounded per-view storage for the intermediate pixel grid, shared by small orthographic previews
+/// and perspective upscaling. Sampling remains the caller's explicit choice.
+fn pixel_target_in(view: &str, w: u32, h: u32, draw: impl FnOnce(&atelico_gpu::region::NearestRegion) -> Result<atelico_gpu::wgpu::Texture, String>) -> Result<atelico_gpu::wgpu::Texture, String> {
+    type Key = (u32, String);
+    static PIXELS: Mutex<std::collections::VecDeque<(Key, atelico_gpu::region::NearestRegion)>> = Mutex::new(std::collections::VecDeque::new());
+    let key = (atelico_component::layer(), view.to_string());
+    let mut views = PIXELS.lock().unwrap();
+    let mut target = views.iter().position(|(k, _)| k == &key).and_then(|i| views.remove(i)).map(|(_, v)| v);
+    if target.as_ref().is_none_or(|target| target.size() != (w, h)) {
+        target = Some(atelico_gpu::region::NearestRegion::new(w, h)?);
+    }
+    let target = target.expect("created or reused pixel target");
+    let texture = draw(&target)?;
+    while views.len() >= 8 { views.pop_front(); }
+    views.push_back((key, target));
+    Ok(texture)
 }
 
 /// The World's environment at `t` seconds of play, derived from its TimeOfDay, Sky, Palettes and Looks (the
@@ -572,7 +650,7 @@ pub fn frame(world: &World, all: &[Item], camera: Option<&Camera>, pose: Option<
             extra.extend(sphere.iter().map(|v| Vertex { pos: (at + (Vec3::from(v.pos) - centre) * 0.8).into(), material: slot, ..*v }));
         }
     }
-    Frame { built, world: world.clone(), moment, sea, floats, hulls, extra, grade, looks, view_proj, view: camera_view, orthographic, glide, lens, eye, time, light_view_proj, light2_view_proj, ambient, probes, lamps, listed, look_strength, materials: table.slots, pixel: None }
+    Frame { built, world: world.clone(), moment, sea, floats, hulls, extra, grade, looks, view_proj, view: camera_view, orthographic, glide, lens, focus: camera.as_ref().map(|c| c.focus.clone()).unwrap_or_default(), eye, time, light_view_proj, light2_view_proj, ambient, probes, lamps, listed, look_strength, materials: table.slots, pixel: None }
 }
 
 /// The probe grid for this world at this hour (baked, cached by geometry and hour).

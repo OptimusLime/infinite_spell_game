@@ -21,6 +21,7 @@ pub mod props;
 pub mod scene_file;
 // a scene drawn through a look graph, for the Shader Preview panel
 pub mod look_preview;
+mod picture;
 pub mod stills;
 pub use component_water::sdf;
 /// The swell and boats on it (water's and island-props' own, under the old path).
@@ -47,7 +48,7 @@ use component_rock_generation as _;
 
 pub use nodes::{Boat, Camera, Character, Dock, Grade, Hut, Item, Palette, Plant, Rgb, Rock, Sea, Sky, Terrain, World};
 
-register!(Component { name: "scene-3d", lua: install, paint, ..Component::NONE });
+register!(Component { name: "scene-3d", lua: install, paint, draw, ..Component::NONE });
 
 /// `{kind = "scene_3d", id, world, items = [{type, ...props}], camera?, time?}`: what a World node builds.
 #[derive(Deserialize)]
@@ -84,12 +85,6 @@ fn list<'de, D: serde::Deserializer<'de>>(d: D) -> Result<Vec<Item>, D::Error> {
         Value::Object(m) if m.is_empty() => Ok(Vec::new()),
         other => Err(D::Error::custom(format!("items: a list, not {other}"))),
     }
-}
-
-/// A World's last picture: its pixels, or (when the host composites GPU pictures) its texture, never read back.
-enum Picture {
-    Pixels(Pixmap),
-    Gpu(world::OnGpu),
 }
 
 /// A JSON value hashed (the change detection of a World's node: its items, camera, time, look).
@@ -150,14 +145,13 @@ fn items_of(id: &str, v: Option<&Value>) -> Result<(u64, std::sync::Arc<Vec<Item
     Ok((key, items))
 }
 
-/// The last frame drawn per node id, so an unchanged frame is not redrawn.
-static FRAMES: Mutex<BTreeMap<String, (u64, Picture)>> = Mutex::new(BTreeMap::new());
+#[derive(PartialEq)]
+struct FrameKey { root: std::path::PathBuf, layer: u32, id: String, revision: u64, gpu: bool }
+impl picture::ViewKey for FrameKey { fn same_view(&self, other:&Self)->bool { self.root==other.root && self.layer==other.layer && self.id==other.id && self.gpu==other.gpu } }
+static FRAMES: Mutex<picture::Cache<FrameKey>> = Mutex::new(picture::Cache::new());
+struct Prepared { picture: std::sync::Arc<picture::Picture>, place: Placement, pixel_art: bool }
 
-fn paint(node: &Value, s: &mut Surface) -> bool {
-    if node.get("kind").and_then(Value::as_str) != Some("scene_3d") {
-        return false;
-    }
-    let source = format!("scene_3d {}", node.get("id").and_then(Value::as_str).unwrap_or("?"));
+fn prepare(node: &Value, rect: atelico_component::Rect, scale: f32, time: f64, gpu: bool) -> Result<Prepared, String> {
     let parsed = PaintNode::deserialize(node).map_err(|e| e.to_string()).and_then(|mut n| {
         let (key, items) = match &n.kept {
             // (a Luau number: whole, but a float in JSON)
@@ -171,16 +165,10 @@ fn paint(node: &Value, s: &mut Surface) -> bool {
         n.items = all;
         Ok((n, key))
     });
-    let (n, items_key) = match parsed {
-        Ok(n) => n,
-        Err(e) => {
-            atelico_component::error(&source, e);
-            return true;
-        }
-    };
-    let time = n.camera.as_ref().filter(|c| c.time >= 0.0).map(|c| c.time as f32).or(n.time).unwrap_or(s.time as f32);
+    let (n, items_key) = parsed?;
+    let time = n.camera.as_ref().filter(|c| c.time >= 0.0).map(|c| c.time as f32).or(n.time).unwrap_or(time as f32);
     let pixel_art = n.pixel.is_some_and(|p| p > 1.0);
-    let place = Placement::of(s.rect, s.scale, pixel_art);
+    let place = Placement::of(rect, scale, pixel_art);
     let (w, h) = place.size;
     let (items, extras, driven) = hooks::driven(&n.id, &n.items);
     // a grid of light probes baked in the background draws once it is ready
@@ -195,14 +183,15 @@ fn paint(node: &Value, s: &mut Surface) -> bool {
             k.hash(&mut hs);
             hash_value(v, &mut hs);
         }
-        (format!("{:?}", hooks::pose(&n.id)), driven, baked, time.to_bits(), w, h).hash(&mut hs);
+        (format!("{:?}", hooks::pose(&n.id)), driven, baked, time.to_bits(), w, h, rect.w.to_bits(), rect.h.to_bits()).hash(&mut hs);
         hs.finish()
     };
     let mut frames = FRAMES.lock().unwrap();
-    if frames.get(&n.id).is_none_or(|f| f.0 != key) {
+    let cache_key = FrameKey { root: picture::project_root(), layer: atelico_component::layer(), id: n.id.clone(), revision: key, gpu };
+    let picture = frames.get_or_render(cache_key, || {
         let mut frame = world::frame(&n.world, &items, n.camera.as_ref(), hooks::pose(&n.id), &extras, time, w as f32 / h as f32);
         // pixel art at the scene's own resolution over the pixel size, whatever this surface is scaled to
-        frame.pixel = world::pixel_look(&items, n.camera.as_ref(), n.pixel.unwrap_or(1.0), s.rect.w, s.rect.h);
+        frame.pixel = world::pixel_look(&items, n.camera.as_ref(), n.pixel.unwrap_or(1.0), rect.w, rect.h);
         let light = if frame.moment.sun.y > -0.05 { frame.moment.sun } else { frame.moment.moon };
         // (the ground of the World's items, found again only when they change: not every playing frame)
         let mut ground = {
@@ -218,92 +207,82 @@ fn paint(node: &Value, s: &mut Surface) -> bool {
             }
         };
         ground.colliders.extend(frame.built.canopies.iter().map(|(c, r, _)| hooks::Collider::Ball { centre: *c, radius: *r }));
-        hooks::remember(&n.id, hooks::Seen { items: n.items.clone(), ground, light: frame.moment.tint.light, shadow: frame.moment.tint.shadow, towards_light: light, aspect: w as f32 / h.max(1) as f32 });
+        let seen = hooks::Seen { items: n.items.clone(), ground, light: frame.moment.tint.light, shadow: frame.moment.tint.shadow, towards_light: light, aspect: w as f32 / h.max(1) as f32 };
         // (on the GPU, the picture stays there when the host can show it as it is: no readback)
-        let drawn = match atelico_component::overlay::enabled() {
-            true => world::render_texture_in(&n.id, &frame, w, h).and_then(|t| match t {
-                Some(t) => Ok(Picture::Gpu(t)),
-                None => world::render_in(&n.id, &frame, w, h).and_then(|px| pixels_of(&px, w, h)).map(Picture::Pixels),
-            }),
-            false => world::render_in(&n.id, &frame, w, h).and_then(|px| pixels_of(&px, w, h)).map(Picture::Pixels),
-        };
-        let picture = match drawn {
-            Ok(p) => p,
-            Err(e) => {
-                atelico_component::error(&source, e);
-                return true;
-            }
-        };
-        atelico_component::clear(&source);
-        frames.insert(n.id.clone(), (key, picture));
-    }
-    let (sw, sh) = (s.rect.w * s.scale, s.rect.h * s.scale);
-    let fits = (sw - w as f32).abs() < 1.5 && (sh - h as f32).abs() < 1.5;
-    if let Picture::Gpu(on) = &frames[&n.id].1 {
-        // shown under the frame where the picture would have been copied or stretched to, in whole device pixels: the
-        // picture's place, and the texture's part within it (pixel art: its lens, by nearest texel, black round it)
-        let (x0, y0) = ((s.rect.x * s.scale).round() as i32, (s.rect.y * s.scale).round() as i32);
-        let at = if fits || pixel_art { [x0, y0, w as i32, h as i32] } else { [x0, y0, ((s.rect.x + s.rect.w) * s.scale).round() as i32 - x0, ((s.rect.y + s.rect.h) * s.scale).round() as i32 - y0] };
-        let (fx, fy) = (at[2] as f32 / w as f32, at[3] as f32 / h as f32);
-        let d = on.dst;
-        let dst = [at[0] + (d[0] as f32 * fx).round() as i32, at[1] + (d[1] as f32 * fy).round() as i32, (d[2] as f32 * fx).round() as i32, (d[3] as f32 * fy).round() as i32];
-        let (tw, th) = (on.texture.width() as f32, on.texture.height() as f32);
-        let src = [on.src[0] / tw, on.src[1] / th, on.src[2] / tw, on.src[3] / th];
-        if atelico_component::overlay::enabled() {
-            if dst != at {
-                // (the bars round the art, as the CPU picture has them)
-                if let Some(r) = atelico_component::tiny_skia::Rect::from_xywh(at[0] as f32, at[1] as f32, at[2] as f32, at[3] as f32) {
-                    let black = atelico_component::tiny_skia::Paint { shader: atelico_component::tiny_skia::Shader::SolidColor(atelico_component::tiny_skia::Color::BLACK), ..Default::default() };
-                    s.pixmap.fill_rect(r, &black, atelico_component::tiny_skia::Transform::identity(), s.clip);
-                }
-            }
-            if atelico_component::overlay::offer_part(s.pixmap, s.clip, &on.texture, src, dst, on.nearest) {
-                return true;
+        if gpu {
+            if let Some(on) = world::render_texture_in(&n.id, &frame, w, h)? {
+                let mut picture = picture::Picture::snapshot(on, w, h)?;
+                picture.seen = Some(seen);
+                return Ok(picture);
             }
         }
-        // (not taken here, a picture the host does not collect for: read back once and laid as the CPU lays it)
-        let read = atelico_gpu::gpu().and_then(|g| atelico_gpu::read_texture(g, &on.texture)).and_then(|px| pixels_of(&lay_out(&px, on, w, h), w, h));
-        match read {
-            Ok(pm) => frames.get_mut(&n.id).expect("drawn").1 = Picture::Pixels(pm),
-            Err(e) => {
-                atelico_component::error(&source, e);
-                return true;
-            }
-        }
-    }
-    let Picture::Pixels(pm) = &frames[&n.id].1 else { return true };
-    // a picture drawn at the size it shows (within a pixel: its size is the rect's at the surface's scale, rounded
-    // down) is copied in at whole screen pixels instead of resampled, the most of a playing 3D scene's paint
-    if fits {
-        copy_in(s.pixmap, ((s.rect.x * s.scale).round() as i32, (s.rect.y * s.scale).round() as i32), pm, s.clip);
-        return true;
-    }
-    // pixel art keeps its blocks: drawn one picture pixel to one screen pixel
-    let quality = if pixel_art { FilterQuality::Nearest } else { FilterQuality::Bilinear };
-    s.pixmap.draw_pixmap(0, 0, pm.as_ref(), &PixmapPaint { quality, ..Default::default() }, place.transform, s.clip);
-    true
+        let mut picture = world::render_in(&n.id, &frame, w, h).and_then(|px| pixels_of(&px, w, h)).map(picture::Picture::pixels_only)?;
+        picture.seen = Some(seen);
+        Ok(picture)
+    })?;
+    // A cache hit can follow another project or capture using the same hook id.
+    // Restore the pictured scene's typed ground/light, not the last producer's state.
+    if let Some(seen) = &picture.seen { hooks::remember(&n.id, seen.clone()); }
+    Ok(Prepared { picture, place, pixel_art })
 }
 
-/// A frame read back from the GPU (`on`'s texture, RGBA8) laid on its w x h picture as `world::render_in` lays it:
-/// the part `src` at `dst`, by nearest texel when `nearest` (each picture pixel takes the texel under its centre: the
-/// pixel lens's whole-number upscale exactly), black outside it.
-fn lay_out(px: &[u8], on: &world::OnGpu, w: u32, h: u32) -> Vec<u8> {
-    let (tw, th) = (on.texture.width(), on.texture.height());
-    if on.dst == [0, 0, w, h] && on.src == [0.0, 0.0, tw as f32, th as f32] && (tw, th) == (w, h) {
-        return px.to_vec();
+fn source(node: &Value) -> String { format!("scene_3d {}", node.get("id").and_then(Value::as_str).unwrap_or("?")) }
+fn paint(node: &Value, s: &mut Surface) -> bool {
+    if node.get("kind").and_then(Value::as_str) != Some("scene_3d") { return false; }
+    let result = prepare(node, s.rect, s.scale, s.time, atelico_component::overlay::enabled()).and_then(|p| p.paint(s));
+    match result { Ok(()) => atelico_component::clear(&source(node)), Err(e) => atelico_component::error(&source(node), e) }
+    true
+}
+fn draw(node: &Value, on: &mut atelico_component::On) -> bool {
+    if node.get("kind").and_then(Value::as_str) != Some("scene_3d") { return false; }
+    let result = prepare(node, on.rect, on.canvas.scale(), on.time, true).and_then(|p| p.draw(on));
+    match result { Ok(()) => atelico_component::clear(&source(node)), Err(e) => atelico_component::error(&source(node), e) }
+    true
+}
+impl Prepared {
+    fn fits(&self, rect: atelico_component::Rect, scale: f32) -> bool {
+        (rect.w * scale - self.place.size.0 as f32).abs() < 1.5 && (rect.h * scale - self.place.size.1 as f32).abs() < 1.5
     }
-    let mut out: Vec<u8> = [0, 0, 0, 255].repeat((w * h) as usize);
-    let [dx, dy, dw, dh] = on.dst;
-    let [sx, sy, sw, sh] = on.src;
-    for y in dy..(dy + dh).min(h) {
-        let ty = ((sy + (y - dy) as f32 * sh / dh as f32 + 0.5 * sh / dh as f32).floor() as u32).min(th - 1);
-        for x in dx..(dx + dw).min(w) {
-            let tx = ((sx + (x - dx) as f32 * sw / dw as f32 + 0.5 * sw / dw as f32).floor() as u32).min(tw - 1);
-            let (s, d) = (((ty * tw + tx) * 4) as usize, ((y * w + x) * 4) as usize);
-            out[d..d + 4].copy_from_slice(&px[s..s + 4]);
+    fn paint(&self, s: &mut Surface) -> Result<(), String> {
+        let (w, h) = self.place.size;
+        let fits = self.fits(s.rect, s.scale);
+        if let Some(on) = &self.picture.gpu {
+            if atelico_component::overlay::enabled() {
+                let (x0, y0) = ((s.rect.x * s.scale).round() as i32, (s.rect.y * s.scale).round() as i32);
+                let at = if fits || self.pixel_art { [x0, y0, w as i32, h as i32] } else { [x0, y0, ((s.rect.x + s.rect.w) * s.scale).round() as i32 - x0, ((s.rect.y + s.rect.h) * s.scale).round() as i32 - y0] };
+                let (fx, fy) = (at[2] as f32 / w as f32, at[3] as f32 / h as f32);
+                let d = on.art;
+                let dst = [at[0] + (d[0] as f32 * fx).round() as i32, at[1] + (d[1] as f32 * fy).round() as i32, (d[2] as f32 * fx).round() as i32, (d[3] as f32 * fy).round() as i32];
+                if dst != at {
+                    if let Some(r) = atelico_component::tiny_skia::Rect::from_xywh(at[0] as f32, at[1] as f32, at[2] as f32, at[3] as f32) {
+                        let black = atelico_component::tiny_skia::Paint { shader: atelico_component::tiny_skia::Shader::SolidColor(atelico_component::tiny_skia::Color::BLACK), ..Default::default() };
+                        s.pixmap.fill_rect(r, &black, atelico_component::tiny_skia::Transform::identity(), s.clip);
+                    }
+                }
+                let src = [d[0] as f32 / w as f32, d[1] as f32 / h as f32, d[2] as f32 / w as f32, d[3] as f32 / h as f32];
+                if atelico_component::overlay::offer_part(s.pixmap, s.clip, &on.texture, src, dst, on.nearest) { return Ok(()); }
+            }
         }
+        let pm = self.picture.pixels()?;
+        if fits { copy_in(s.pixmap, ((s.rect.x * s.scale).round() as i32, (s.rect.y * s.scale).round() as i32), &pm, s.clip); }
+        else { s.pixmap.draw_pixmap(0, 0, pm.as_ref().as_ref(), &PixmapPaint { quality: if self.pixel_art { FilterQuality::Nearest } else { FilterQuality::Bilinear }, ..Default::default() }, self.place.transform, s.clip); }
+        Ok(())
     }
-    out
+    fn draw(&self, on: &mut atelico_component::On) -> Result<(), String> {
+        let scale = on.canvas.scale();
+        let transform = if self.fits(on.rect, scale) { atelico_component::tiny_skia::Transform::from_translate((on.rect.x * scale).round(), (on.rect.y * scale).round()) } else { self.place.transform };
+        let filter = if self.pixel_art { atelico_component::atelico_paint::Filter::Nearest } else { atelico_component::atelico_paint::Filter::Bilinear };
+        if let Some(gpu) = &self.picture.gpu {
+            if on.canvas.draw_texture(&gpu.texture, transform, filter, 1.) { return Ok(()); }
+        }
+        // The editor's offscreen scene can use a raster Canvas even when its window is GPU-backed.
+        // Offer the retained texture to that surface's collector before materializing CPU pixels.
+        // This also preserves the Surface path's rounded placement, pixel bars and clip coverage.
+        if let Some((pixmap, clip)) = on.canvas.legacy(on.rect) {
+            return self.paint(&mut Surface { pixmap, clip, scale, rect: on.rect, assets: on.assets, time: on.time });
+        }
+        self.picture.draw(on.canvas, transform, filter)
+    }
 }
 
 /// RGBA8 rows (w x h) as a picture.

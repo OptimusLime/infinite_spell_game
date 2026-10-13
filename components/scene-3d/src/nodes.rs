@@ -336,6 +336,9 @@ pub struct Camera {
     #[data(list)]
     #[serde(deserialize_with = "list_or_empty")]
     pub lens: Vec<atelico_render_3d::lens::LensEffect>,
+    /// Optional artistic focal plane using actual scene depth, applied before the cosmetic lens stack.
+    #[data(choice)]
+    pub focus: atelico_render_3d::focus::DepthFocus,
     pub show: String,
 }
 
@@ -356,7 +359,7 @@ fn list_or_empty<'de, D: serde::Deserializer<'de>, T: Deserialize<'de>>(d: D) ->
 
 impl Default for Camera {
     fn default() -> Self {
-        Self { x: 0.0, y: 4.0, z: 18.0, look_x: 0.0, look_y: 1.0, look_z: 0.0, fov: 42.0, reference: String::new(), target: String::new(), time: -1.0, hour: -1.0, pixel: 0.0, orthographic: false, pan_x: 0.0, pan_z: 0.0, dolly: 0.0, follow: String::new(), lens: Vec::new(), show: String::new() }
+        Self { x: 0.0, y: 4.0, z: 18.0, look_x: 0.0, look_y: 1.0, look_z: 0.0, fov: 42.0, reference: String::new(), target: String::new(), time: -1.0, hour: -1.0, pixel: 0.0, orthographic: false, pan_x: 0.0, pan_z: 0.0, dolly: 0.0, follow: String::new(), lens: Vec::new(), focus: Default::default(), show: String::new() }
     }
 }
 

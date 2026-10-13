@@ -117,3 +117,25 @@ fn the_glow_renders_bright_in_its_middle_and_dark_at_its_corners() {
         assert!(luma(&px, w, h, (0.0, 0.05), (0.0, 0.05)) < 0.08, "t={t}: corner");
     }
 }
+
+#[test]
+fn rejected_graph_edit_keeps_its_last_good_source_for_both_presenters() {
+    let (mut graph, catalog) = (graph(), catalog());
+    let name = "canvas-last-good-regression";
+    let valid = crate::compile_summary(name, &graph, &catalog, None, &[]);
+    assert_eq!(valid["ok"], true);
+    graph.nodes.get_mut("turbulence").unwrap().ty = "missing-node-type".into();
+    let invalid = crate::compile_summary(name, &graph, &catalog, None, &[]);
+    assert_eq!(invalid["ok"], false);
+    assert!(invalid["error"].as_str().is_some_and(|s| !s.is_empty()));
+    assert_eq!(invalid["last_good"]["wgsl"], valid["wgsl"]);
+    assert_eq!(invalid["last_good"]["slots"], valid["slots"]);
+}
+
+#[test]
+fn malformed_shader_is_rejected_without_poisoning_the_gpu_cache() {
+    assert!(gpu::render_texture("this is not WGSL", 4, 4, 0., &[]).is_err());
+    let (graph, catalog) = (graph(), catalog());
+    let compiled = compile(&graph, &catalog, None, &[], &mut Cache::<Expr>::default()).unwrap();
+    assert!(gpu::render_texture(&compiled.wgsl, 4, 4, 0., &[]).is_ok());
+}

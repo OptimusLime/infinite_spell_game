@@ -8,6 +8,8 @@ use glam::{vec2, Vec3};
 
 use crate::nodes::{Item, Rgb, Terrain};
 pub use atelico_render_3d::part::{Deck, Drive, Extra};
+mod owned;
+pub use owned::{DriveError, DriveLease, Resolution, VisualDrive, VisualStatus, WorldView};
 
 /// Where a camera is: eye, the point it looks at, vertical field of view in degrees.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -36,7 +38,8 @@ pub struct Seen {
 struct Hooks {
     extras: HashMap<String, Vec<Extra>>,
     items: HashMap<String, HashMap<String, Vec<Item>>>,
-    drives: HashMap<String, HashMap<String, Drive>>,
+    drives: HashMap<WorldView, HashMap<String, Drive>>,
+    owned: owned::Registry,
     poses: HashMap<String, Pose>,
     seen: HashMap<String, Seen>,
 }
@@ -75,20 +78,41 @@ pub fn set_pose(world: &str, pose: Option<Pose>) {
 
 /// Drive the Character named `name` in the World at `world` (None: back to standing where its node puts it). Its
 /// look stays the node's: outfit, headwear, colours and scale are edited in the scene, not here.
+fn painted_world(world: &str) -> WorldView {
+    let view = atelico_component::app_view().unwrap_or(atelico_component::AppView { id: 0, layer: atelico_component::layer() });
+    WorldView { app: view.id, layer: view.layer, path: world.into() }
+}
+
 pub fn drive(world: &str, name: &str, drive: Option<Drive>) {
+    // Legacy paint callbacks still use their current paint layer. A deliberate owned lease wins;
+    // unrelated legacy operation is unchanged, including returning to the authored placement.
+    let _ = try_drive(&painted_world(world), name, drive);
+}
+
+/// Checked legacy operation: an explicit lease cannot be overwritten or cleared by another controller.
+pub fn try_drive(view: &WorldView, name: &str, drive: Option<Drive>) -> Result<(), DriveError> {
     let mut h = hooks().lock().unwrap();
-    let drives = h.drives.entry(world.into()).or_default();
+    if let Some(owner) = h.owned.claim(view, name, None) {
+        return Err(DriveError::Conflict { part: name.into(), owner });
+    }
+    let drives = h.drives.entry(view.clone()).or_default();
     match drive {
         Some(d) => drives.insert(name.into(), d),
         None => drives.remove(name),
     };
+    Ok(())
 }
 
 /// The World's things with its driven Characters taken out and what packages added put in, its extras with those Characters added where they are
 /// driven to, and what changes the picture: the extras' placements and the drives.
 pub(crate) fn driven(world: &str, items: &[Item]) -> (Vec<Item>, Vec<Extra>, String) {
-    let h = hooks().lock().unwrap();
-    let drives = h.drives.get(world);
+    driven_in(&painted_world(world), items)
+}
+
+fn driven_in(view: &WorldView, items: &[Item]) -> (Vec<Item>, Vec<Extra>, String) {
+    let world = &view.path;
+    let mut h = hooks().lock().unwrap();
+    let drives = h.drives.get(view);
     let mut extras = h.extras.get(world).cloned().unwrap_or_default();
     let added: Vec<&Item> = h.items.get(world).into_iter().flat_map(|m| m.values().flatten()).collect();
     let mut kept = Vec::with_capacity(items.len() + added.len());
@@ -108,7 +132,9 @@ pub(crate) fn driven(world: &str, items: &[Item]) -> (Vec<Item>, Vec<Extra>, Str
     key.sort();
     key.extend(extras.iter().map(|e| format!("{:?}", e.transform)));
     key.extend(added.iter().map(|i| format!("{i:?}")));
-    (kept, extras, key.concat())
+    let mut key = key.concat();
+    h.owned.resolve(view, &mut kept, &mut extras, &mut key);
+    (kept, extras, key)
 }
 
 /// What the World at `world` last drew.

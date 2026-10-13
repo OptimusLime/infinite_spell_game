@@ -5,6 +5,7 @@ version = "0.1.0"
 license = "Commercial"
 
 [dependencies]
+atelico-paint-cpu.workspace = true
 atelico-component.workspace = true
 atelico-graph.workspace = true
 atelico-timeline.workspace = true

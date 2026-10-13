@@ -2,6 +2,9 @@
 //! rules, dependency-ordered runs with a cache per graph) and the `graph_wires` node kind: cables painted with
 //! tiny-skia (Luau cannot draw paths), each a polyline at right angles with rounded elbows (`points`) or a bezier
 //! between its ends, and a dot where a bundle splits (`dots`). The canvas itself is Luau: `ui.node_graph`.
+pub mod routing;
+mod routing_lua;
+
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 use std::sync::Mutex;
@@ -10,12 +13,13 @@ use atelico_data::file::{self, FileError};
 use atelico_timeline::TimelineFile;
 
 use atelico_component::mlua::{self, Function, Lua, LuaSerdeExt, Value as LuaValue};
-use atelico_component::tiny_skia::{self, Color, LineCap, Paint, PathBuilder, Stroke, StrokeDash};
-use atelico_component::{color, num, register, Component, Surface, Value};
+use atelico_component::atelico_paint::{Paint, Stroke};
+use atelico_component::tiny_skia::{self, Color, LineCap, PathBuilder};
+use atelico_component::{color, num, register, Component, On, Surface, Value};
 use atelico_graph::{run, Cache, Catalog, Graph, Halt};
 use serde_json::json;
 
-register!(Component { name: "node-graph", lua: install, paint, inspect, ..Component::NONE });
+register!(Component { name: "node-graph", lua: install, paint, draw, inspect, ..Component::NONE });
 
 /// Each graph's cache, by the name its runs pass.
 /// Luau evaluators return Luau values, so this is the one run whose outputs are JSON: the Luau boundary.
@@ -87,6 +91,7 @@ pub fn load_into(root: &Path, path: &Path, name: &str) -> Result<(Graph, Option<
 
 fn install(lua: &Lua) -> mlua::Result<()> {
     let g = lua.create_table()?;
+    routing_lua::install(lua, &g)?;
     // graph.save(path, graph, timeline?) and graph.load(path, name) → ok, error ("file:line: ...")
     g.set(
         "save",
@@ -218,10 +223,17 @@ pub fn elbows(pts: &[(f32, f32)], r: f32) -> Option<tiny_skia::Path> {
     pb.finish()
 }
 
+/// Painted on a CPU picture: the same drawing, on a CPU canvas over it (and its clip).
 fn paint(node: &Value, s: &mut Surface) -> bool {
+    let mut c = atelico_paint_cpu::CpuCanvas::new(&mut *s.pixmap, s.scale, s.clip);
+    draw(node, &mut On { canvas: &mut c, rect: s.rect, assets: s.assets, time: s.time })
+}
+
+/// Drawn through the paint interface (any backend).
+fn draw(node: &Value, on: &mut On) -> bool {
     match node.get("kind").and_then(Value::as_str) {
-        Some("graph_wires") => wires(node, s),
-        Some("graph_grid") => grid(node, s),
+        Some("graph_wires") => wires(node, on),
+        Some("graph_grid") => grid(node, on),
         _ => return false,
     }
     true
@@ -230,7 +242,7 @@ fn paint(node: &Value, s: &mut Surface) -> bool {
 /// The canvas's grid (`graph_grid`): lines every `cell` graph px, placed by the view (`x`, `y`, `zoom`: screen =
 /// graph * zoom + offset, from the canvas's corner), a `major_color` one every `major` cells; one px wide, or two
 /// for a major line (logical px). Cells under 6 px on screen are left out (too dense to read); the major lines stay.
-fn grid(node: &Value, s: &mut Surface) {
+fn grid(node: &Value, s: &mut On) {
     // (painted in the canvas's own space: `transform` places it)
     let r = atelico_component::Rect { x: 0.0, y: 0.0, w: s.rect.w, h: s.rect.h };
     let (ox, oy, zoom) = (num(node, "x", 0.0), num(node, "y", 0.0), num(node, "zoom", 1.0).max(0.01));
@@ -268,12 +280,12 @@ fn grid(node: &Value, s: &mut Surface) {
     }
     for (pb, c, width) in [(minor, minor_c, 1.0), (majors, major_c, 2.0)] {
         if let Some(path) = pb.finish() {
-            s.pixmap.stroke_path(&path, &paint_of(c), &Stroke { width, ..Stroke::default() }, transform, s.clip);
+            s.canvas.stroke_path(&path, &Paint::Solid(c), &Stroke { width, ..Stroke::default() }, transform, true);
         }
     }
 }
 
-fn wires(node: &Value, s: &mut Surface) {
+fn wires(node: &Value, s: &mut On) {
     let transform = s.transform();
     let zoom = num(node, "zoom", 1.0);
     let corner = num(node, "corner", 8.0) * zoom;
@@ -294,32 +306,26 @@ fn wires(node: &Value, s: &mut Surface) {
         let c = color(w, "color").unwrap_or(Color::WHITE);
         let mut stroke = Stroke { width, line_cap: LineCap::Butt, ..Stroke::default() };
         if w.get("dash").and_then(Value::as_bool) == Some(true) {
-            stroke.dash = StrokeDash::new(vec![6.0 * zoom, 5.0 * zoom], 0.0);
+            stroke.dash = Some((vec![6.0 * zoom, 5.0 * zoom], 0.0));
         }
         if w.get("glow").and_then(Value::as_bool) == Some(true) {
             let mut halo = c;
             halo.set_alpha(0.28);
             let wide = Stroke { width: width * 3.5, line_cap: LineCap::Round, ..Stroke::default() };
-            s.pixmap.stroke_path(&path, &paint_of(halo), &wide, transform, s.clip);
+            s.canvas.stroke_path(&path, &Paint::Solid(halo), &wide, transform, true);
         }
-        s.pixmap.stroke_path(&path, &paint_of(c), &stroke, transform, s.clip);
+        s.canvas.stroke_path(&path, &Paint::Solid(c), &stroke, transform, true);
     }
     // a split's dot, in the first cable's color, a little wider than a cable
     let dot = node.get("wires").and_then(Value::as_array).and_then(|w| w.first()).and_then(|w| color(w, "color")).unwrap_or(Color::BLACK);
     for d in node.get("dots").and_then(Value::as_array).into_iter().flatten() {
         let Some((x, y)) = point(d) else { continue };
         if let Some(circle) = PathBuilder::from_circle(x, y, 3.5 * zoom.max(0.5)) {
-            s.pixmap.fill_path(&circle, &paint_of(dot), tiny_skia::FillRule::Winding, transform, s.clip);
+            s.canvas.fill_path(&circle, &Paint::Solid(dot), transform, true);
         }
     }
 }
 
-fn paint_of(c: Color) -> Paint<'static> {
-    let mut p = Paint::default();
-    p.set_color(c);
-    p.anti_alias = true;
-    p
-}
 
 #[cfg(test)]
 mod tests {

@@ -19,7 +19,7 @@ use taffy::{Overflow, Point};
 
 use text::{Fonts, TextSpec};
 
-register!(Component { name: "layout", paint, hit, inspect, ..Component::NONE });
+register!(Component { name: "layout", paint, hit, clear_layer, inspect, ..Component::NONE });
 
 const KINDS: [&str; 5] = ["node", "text", "button", "input", "image"];
 
@@ -97,6 +97,12 @@ struct Laid {
     tree: TaffyTree<Leaf>,
     root: NodeId,
     own: HashMap<NodeId, u64>,
+}
+
+// Retire only what was painted. Geometry/font/image caches remain reusable, and other
+// windows keep their own metadata until their complete layer is replaced.
+fn clear_layer(layer: u32) {
+    PAINTED.lock().unwrap().remove(&layer);
 }
 
 fn hit(x: f32, y: f32) -> Option<Hit> {
@@ -535,9 +541,7 @@ fn image(node: &Value, assets: &[PathBuf]) -> Option<(PathBuf, Rect)> {
     let revision = node.get("texture_revision").and_then(Value::as_str).unwrap_or("");
     let (w, h) = IMAGES.with_borrow_mut(|images| {
         if images.get(&path).is_none_or(|cached| cached.revision != revision) {
-            let image = std::fs::read(&path).ok().and_then(|bytes| Pixmap::decode_png(&bytes).ok()).map(|pm| {
-                Image { id: images_read(), width: pm.width(), height: pm.height(), data: pm.data().into() }
-            });
+            let image = std::fs::read(&path).ok().and_then(|bytes| decode_image(&bytes));
             images.insert(path.clone(), CachedImage { revision: revision.into(), image });
         }
         images.get(&path)?.image.as_ref().map(|p| (p.width as f32, p.height as f32))
@@ -545,6 +549,21 @@ fn image(node: &Value, assets: &[PathBuf]) -> Option<(PathBuf, Rect)> {
     let atlas: Vec<f32> = node.get("atlas").and_then(Value::as_array).map(|a| a.iter().filter_map(Value::as_f64).map(|v| v as f32).collect()).unwrap_or_default();
     let r = if atlas.len() == 4 { Rect { x: atlas[0], y: atlas[1], w: atlas[2] - atlas[0], h: atlas[3] - atlas[1] } } else { Rect { x: 0.0, y: 0.0, w, h } };
     Some((path, r))
+}
+
+/// Keep PNG on the existing tiny-skia decoder: its premultiplied bytes are part of the
+/// renderer contract. JPEG is opaque, so decoded RGBA is already valid premultiplied data.
+/// Explicit format and default decoder limits avoid enabling unrelated image formats here.
+fn decode_image(bytes: &[u8]) -> Option<Image> {
+    if let Ok(pm) = Pixmap::decode_png(bytes) {
+        return Some(Image { id: images_read(), width: pm.width(), height: pm.height(), data: pm.data().into() });
+    }
+    if !bytes.starts_with(&[0xff, 0xd8]) {
+        return None;
+    }
+    let rgba = image::ImageReader::with_format(std::io::Cursor::new(bytes), image::ImageFormat::Jpeg)
+        .decode().ok()?.into_rgba8();
+    Some(Image { id: images_read(), width: rgba.width(), height: rgba.height(), data: rgba.into_raw().into() })
 }
 
 /// A fresh id for each image read.
@@ -828,7 +847,7 @@ impl Painter<'_> {
             json!({ "kind": "pointer", "action": a })
         } else if kind(node) == "input" {
             let bind = node.get("bind").or(node.get("id")).cloned().unwrap_or(Value::Null);
-            json!({ "kind": "input", "bind": bind, "on_submit": node.get("on_submit").cloned().unwrap_or(Value::Null) })
+            json!({ "kind": "input", "bind": bind, "value": node.get("value").cloned().unwrap_or(Value::Null), "on_submit": node.get("on_submit").cloned().unwrap_or(Value::Null) })
         } else {
             return;
         };

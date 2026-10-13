@@ -32,7 +32,7 @@ fn at(column: u16) -> Location {
         orientation: Orientation::Normal,
     }
 }
-fn fixture() -> (Inventory, Equipment, Supply) {
+pub(super) fn fixture() -> (Inventory, Equipment, Supply) {
     let mut inv = Inventory::new();
     inv.add_grid(Grid {
         id: GridId::new("pack").unwrap(),
@@ -108,14 +108,14 @@ fn fixture() -> (Inventory, Equipment, Supply) {
         .unwrap();
     (inv, eq, supply)
 }
-fn spell() -> AuthoredSpell {
+pub(super) fn spell() -> AuthoredSpell {
     AuthoredSpell::new(AuthoredSource {
         definition: include_str!("../../../spells/wind.spell.yaml").into(),
         brain: None,
     })
     .unwrap()
 }
-fn request(casting: &Casting, spell: &AuthoredSpell, id: &str, source: &str) -> CastRequest {
+pub(super) fn request(casting: &Casting, spell: &AuthoredSpell, id: &str, source: &str) -> CastRequest {
     CastRequest {
         aim: crate::aim::Aim::new([0.0, 1.0, 0.0], [0.0, 0.0, 1.0]).unwrap(),
         id: id.into(),
@@ -824,7 +824,13 @@ fn player_aimed_miss_depletion_and_explicit_cartridge_replacement() {
         p.casting().supply().total(p.inventory(), &owner()).unwrap(),
         energy(5.0)
     );
-    assert_eq!(p.instances().len(), 3);
+    assert_eq!(p.instances().len(), 1);
+    assert_eq!(p.finished().len(), 2);
+    assert!(p
+        .finished()
+        .iter()
+        .all(|i| i.status == crate::lifecycle::TerminalStatus::Exhausted));
+    assert_eq!(p.casting().receipts().len(), 3);
 }
 
 #[test]
@@ -839,4 +845,286 @@ fn funded_token_retains_aim_independently_of_receipt_copy() {
         crate::aim::Aim::new([12.0, 1.0, 0.0], [1.0, 0.0, 0.0]).unwrap();
     assert_eq!(admission.funded.unwrap().aim(), expected);
     assert_eq!(casting.receipts()[0].request.aim, expected);
+}
+
+fn lifecycle_conserved(t: &crate::lifecycle::TerminalCast) {
+    assert!(
+        (t.initial - t.unused - t.spent_total()).abs() < 1e-8,
+        "terminal allocation is fully accounted: {t:?}"
+    );
+}
+#[test]
+fn lifecycle_expiry_retires_runtime_and_owned_resources_without_rewriting_admission() {
+    use crate::lifecycle::TerminalStatus;
+    let mut p = player_fixture();
+    let baseline = p.world().resource_counts();
+    p.select(spell()).unwrap();
+    let r = player_request(&p, "expires", [-1., 0., 0.]);
+    let receipt = p.fire(r.clone()).unwrap();
+    let ledger = p.snapshot();
+    for _ in 0..359 {
+        p.advance().unwrap();
+    }
+    assert_eq!(
+        p.instances().len(),
+        1,
+        "a still-live owned form keeps the cast active"
+    );
+    p.advance().unwrap();
+    assert!(p.instances().is_empty());
+    assert_eq!(p.finished().len(), 1);
+    let done = &p.finished()[0];
+    assert_eq!(done.status, TerminalStatus::Completed);
+    assert_eq!(done.ended_tick, 360);
+    assert!(done.unused > 0.);
+    lifecycle_conserved(done);
+    assert_eq!(
+        p.world().resource_counts(),
+        baseline,
+        "physics, contact and aim storage must be released"
+    );
+    let terminal = done.clone();
+    for _ in 0..200 {
+        p.advance().unwrap();
+    }
+    assert_eq!(p.snapshot(), ledger);
+    assert_eq!(p.finished(), &[terminal]);
+    assert_eq!(
+        p.fire(r).unwrap(),
+        receipt,
+        "immutable retry returns receipt without restarting terminal work"
+    );
+    assert!(p.instances().is_empty());
+    assert_eq!(p.world().resource_counts(), baseline);
+}
+fn self_spell(tick: &str, brain: Option<&str>) -> AuthoredSpell {
+    AuthoredSpell::new(AuthoredSource { definition: format!(
+        "version: 1\nname: lifecycle-self\nkind: spell\nmana: {{source: wand, allocation: 20}}\ncontainer: field\nphases:\n  on_start:\n    - {{id: self, use: body.self, output: self}}\n{tick}"), brain: brain.map(str::to_string) }).unwrap()
+}
+#[test]
+fn lifecycle_one_shot_completes_but_future_sensor_and_self_work_remain_active() {
+    use crate::lifecycle::TerminalStatus;
+    let mut p = player_fixture();
+    let baseline = p.world().resource_counts();
+    p.select(self_spell("", None)).unwrap();
+    let r = player_request(&p, "one-shot", [0., 0., 1.]);
+    p.fire(r).unwrap();
+    assert!(p.instances().is_empty());
+    assert_eq!(p.finished()[0].status, TerminalStatus::Completed);
+    assert_eq!(p.finished()[0].unused, 20.);
+    lifecycle_conserved(&p.finished()[0]);
+    assert_eq!(
+        p.world().resource_counts(),
+        baseline,
+        "body.self is borrowed, never removed"
+    );
+    p.select(self_spell("  on_tick:\n    - {id: sensor, use: sense.nearby, target: self, output: seen, every: 120, params: {radius: 0.1}}\n    - {id: warm, use: effect.warm, target: seen, every: 120}\n", None)).unwrap();
+    let r = player_request(&p, "continuous", [0., 0., 1.]);
+    let receipt = p.fire(r).unwrap();
+    for _ in 0..240 {
+        p.advance().unwrap();
+    }
+    assert_eq!(
+        p.instances().len(),
+        1,
+        "empty observations and a waiting cadence are not completion"
+    );
+    assert_eq!(p.instances()[0].spent["sensors"], 0.36);
+    let ledger = p.snapshot();
+    let terminal = p
+        .cancel(&receipt.instance, &receipt.request.expected_revision)
+        .unwrap()
+        .clone();
+    assert_eq!(terminal.status, TerminalStatus::Cancelled);
+    lifecycle_conserved(&terminal);
+    assert_eq!(p.world().resource_counts(), baseline);
+    assert_eq!(p.snapshot(), ledger);
+}
+#[test]
+fn lifecycle_cancel_is_explicit_revision_checked_and_does_not_undo_effects_or_refund() {
+    use crate::lifecycle::TerminalStatus;
+    let mut p = player_fixture();
+    p.select(
+        AuthoredSpell::new(AuthoredSource {
+            definition: include_str!("../fixtures/projectile-hit.spell.yaml").into(),
+            brain: None,
+        })
+        .unwrap(),
+    )
+    .unwrap();
+    let r = player_request(&p, "cancel-after-contact", [0., 0., 1.]);
+    let receipt = p.fire(r.clone()).unwrap();
+    for _ in 0..22 {
+        p.advance().unwrap();
+    }
+    let health = p
+        .world()
+        .bodies()
+        .into_iter()
+        .find(|b| b.id == "aimed-target")
+        .unwrap()
+        .health;
+    assert!(health < 10.);
+    let ledger = p.snapshot();
+    let effects = p.world().effects().to_vec();
+    assert!(p.cancel(&receipt.instance, "wrong revision").is_err());
+    assert_eq!(p.instances().len(), 1);
+    let done = p
+        .cancel(&receipt.instance, &receipt.request.expected_revision)
+        .unwrap()
+        .clone();
+    assert_eq!(done.status, TerminalStatus::Cancelled);
+    lifecycle_conserved(&done);
+    assert!(p.instances().is_empty());
+    assert_eq!(
+        p.cancel(&receipt.instance, &receipt.request.expected_revision)
+            .unwrap(),
+        &done
+    );
+    assert!(p
+        .cancel("unknown", &receipt.request.expected_revision)
+        .is_err());
+    for _ in 0..30 {
+        p.advance().unwrap();
+    }
+    assert_eq!(
+        p.world()
+            .bodies()
+            .into_iter()
+            .find(|b| b.id == "aimed-target")
+            .unwrap()
+            .health,
+        health
+    );
+    assert_eq!(p.world().effects(), effects);
+    assert_eq!(p.snapshot(), ledger);
+    assert_eq!(p.fire(r).unwrap(), receipt);
+    assert!(p.instances().is_empty());
+    assert_eq!(p.finished(), &[done]);
+}
+#[test]
+fn lifecycle_exhaustion_keeps_existing_dissipation_and_fault_keeps_unused_allocation() {
+    use crate::lifecycle::TerminalStatus;
+    let mut p = player_fixture();
+    let baseline = p.world().resource_counts();
+    let mut src = spell().source().clone();
+    src.definition = src.definition.replace("allocation: 20", "allocation: 2.05");
+    p.select(AuthoredSpell::new(src).unwrap()).unwrap();
+    let r = player_request(&p, "exhaust-on-launch", [0., 0., 1.]);
+    p.fire(r).unwrap();
+    assert!(p.instances().is_empty());
+    let t = &p.finished()[0];
+    assert_eq!(t.status, TerminalStatus::Exhausted);
+    assert_eq!(t.unused, 0.);
+    assert!((t.dissipation - 0.05).abs() < 1e-8);
+    lifecycle_conserved(t);
+    assert_eq!(p.world().resource_counts(), baseline);
+    p.select(self_spell("  on_tick:\n    - {id: see, use: sense.nearby, target: self, output: seen}\n    - {id: fail, use: logic.lua, input: seen}\n",Some("return {decide=function(ctx) error('authored failure') end}"))).unwrap();
+    let r = player_request(&p, "fault-after-admission", [0., 0., 1.]);
+    p.fire(r).unwrap();
+    let ledger = p.snapshot();
+    p.advance().unwrap();
+    assert!(p.instances().is_empty());
+    let t = &p.finished()[1];
+    assert_eq!(t.status, TerminalStatus::Faulted);
+    assert!(t.reason.contains("authored failure"));
+    assert!(t.unused > 0.);
+    assert_eq!(t.dissipation, 0.);
+    lifecycle_conserved(t);
+    assert_eq!(p.snapshot(), ledger);
+    assert_eq!(p.world().resource_counts(), baseline);
+}
+#[test]
+fn lifecycle_projection_retains_terminal_receipt_links_and_checked_accounting() {
+    let mut p = player_fixture();
+    p.select(spell()).unwrap();
+    let r = player_request(&p, "typed-terminal", [-1., 0., 0.]);
+    let receipt = p.fire(r).unwrap();
+    let inv = atelico_inventory::binding::Binding::new("lifecycle.inventory").unwrap();
+    let binding = supply_view::Binding::new("lifecycle.supply", inv.paths().clone()).unwrap();
+    let store = Store::default();
+    binding.install(&store).unwrap();
+    let project = |p: &crate::player::Player| {
+        binding
+            .project_with_history(
+                p.casting(),
+                p.inventory(),
+                p.equipment(),
+                p.equipment_slot(),
+                p.selected(),
+                p.instances(),
+                p.finished(),
+            )
+            .unwrap()
+    };
+    binding.publish(&store, &project(&p)).unwrap();
+    let before = store
+        .read::<supply_view::SupplyView>(&binding.dashboard())
+        .unwrap();
+    let path = before.instances[0].clone();
+    p.cancel(&receipt.instance, &receipt.request.expected_revision)
+        .unwrap();
+    binding.publish(&store, &project(&p)).unwrap();
+    let after = store
+        .read::<supply_view::SupplyView>(&binding.dashboard())
+        .unwrap();
+    assert!(after.instances.is_empty());
+    assert_eq!(after.finished, vec![path.clone()]);
+    assert_eq!(before.total, after.total);
+    let row = store.read::<supply_view::CastView>(&path).unwrap();
+    assert!(row.terminal);
+    assert_eq!(row.remaining, 0.);
+    assert!(row.unused > 0.);
+    assert!(
+        (row.initial
+            - row.unused
+            - row.sensors
+            - row.logic
+            - row.rules
+            - row.effectors
+            - row.dissipation)
+            .abs()
+            < 1e-8
+    );
+    let receipt = store
+        .read::<supply_view::ReceiptView>(&after.receipts[0])
+        .unwrap();
+    assert_eq!(
+        receipt.instance, path,
+        "terminal accounting remains linked from immutable admission evidence"
+    );
+    assert!(store
+        .set(
+            &format!("{path}.status"),
+            serde_json::json!("invented"),
+            atelico_store::Origin::Gui
+        )
+        .is_err());
+}
+
+#[test]
+fn lifecycle_expiry_before_a_due_sensor_completes_without_spurious_fault() {
+    let mut p = player_fixture();
+    let baseline = p.world().resource_counts();
+    let spell = AuthoredSpell::new(AuthoredSource {
+        definition: "version: 1\nname: expired-sensor\nkind: spell\nshape: orb\nelement: wind\nmana: {source: wand, allocation: 20}\ncontainer: field\nphases:\n  on_start:\n    - {id: form, use: body.orb, output: body}\n  on_tick:\n    - {id: see, use: sense.nearby, target: body, output: seen, every: 120, params: {radius: 0.1}}\n".into(),
+        brain: None,
+    }).unwrap();
+    p.select(spell).unwrap();
+    let request = player_request(&p, "expires-on-sample", [-1., 0., 0.]);
+    p.fire(request).unwrap();
+    let ledger = p.snapshot();
+    for _ in 0..359 {
+        p.advance().unwrap();
+    }
+    assert_eq!(p.instances().len(), 1);
+    p.advance().unwrap();
+    assert!(p.instances().is_empty());
+    let terminal = &p.finished()[0];
+    assert_eq!(terminal.status, crate::lifecycle::TerminalStatus::Completed);
+    assert_eq!(terminal.ended_tick, 360);
+    assert_eq!(terminal.sensors, 0.36);
+    lifecycle_conserved(terminal);
+    assert_eq!(p.snapshot(), ledger);
+    assert_eq!(p.world().resource_counts(), baseline);
 }
