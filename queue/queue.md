@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T13:16:41. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T13:20:46. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -264,7 +264,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-10 open / 58 total · 0 doing · 2 review · 45 done · 2 ready todos
+10 open / 58 total · 1 doing · 2 review · 45 done · 1 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -474,7 +474,7 @@ Planned after: engine.references, engine.review
 
 ### Playable interaction proof (`game.proof`)
 
-2 open / 3 total · 0 doing · 0 review · 1 done · 1 ready todos
+2 open / 3 total · 1 doing · 0 review · 1 done · 0 ready todos
 
 Prove authored-spell finite cartridge debit and camera readability after tooling acceptance and the reviewed game baseline; this is not new reel content.
 Planned after: engine.review, game.camera, game.design, game.inventory, game.magic
@@ -485,11 +485,11 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 #### Playable spellcasting loop (`game.playable`)
 
-2 open / 2 total · 0 doing · 0 review · 0 done · 1 ready todos
+2 open / 2 total · 1 doing · 0 review · 0 done · 0 ready todos
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 172 | ⚪ todo | Update the game's shared casting packages and launch the finite study | codex-coordinator |  |
+| 172 | 🟡 doing | Update the game's shared casting packages and launch the finite study | codex-coordinator |  |
 | 173 | ⚪ todo | Connect shared movement and world aiming to the finite Player | codex-coordinator |  |
 
 ## Shared Platform and Components (`engine`)
