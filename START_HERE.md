@@ -2,7 +2,9 @@
 
 Read [the current design handoff](docs/design-direction.md#current-handoff) for confirmed requirements, implementation gaps and the next decision. [Playable casting](docs/playable-casting.md) describes the saved integration proof and its limits. The Work Tracker queue is authoritative for current task state.
 
-The next integration work is to update the game's shared package pins and provide a clear entry to its finite casting study, then connect movement and world aiming through reusable components. The existing app entry is a scaffold; the explicit study scenes live under `scenes/casting-study-*`. The recorded game process is no longer running, and its paid session was not a durable save.
+Run `./scripts/play` from this checkout to open the finite casting study. It reuses this project's existing host and never starts an agent session. The game now installs shared Player **0.1.4**, Spellcraft **0.1.2**, scene-3d **0.1.3**, layout **0.1.4** and native spell editor **0.1.0**. `app/main.luau` delegates to the shared Player; game-owned scenes/configuration supply its inputs.
+
+**Next action (173): connect shared movement and pointer/world aiming to the authoritative finite Player.** The current study has a fixed actor and named targets. The [new native integration evidence](/Users/paul/coding/atelico/atelico-app-engine/proof/game-player-upgrade/game/live-handoff.json) records a fresh game process, six paid casts and 20 remaining energy at handoff. A restart begins a new fixture inventory/world; it does not recover the old session. No art, camera, balance or storyboard has been accepted by this check.
 
 **The notes below are historical.** Their status table, running-process claims, Python queue instructions and proposed film/game mechanics do not override the current design handoff or current repository instructions. User quotations remain preserved as source material. The original AI storyboard is unapproved.
 
