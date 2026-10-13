@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+# A launch shortcut over the engine CLI/control protocol. All game behavior stays in shared packages.
+require 'net/http'
+require 'json'
+require 'digest'
+require 'fileutils'
+require 'open3'
+if ARGV==['--help']
+  puts 'Usage: ./scripts/play [--hidden]'
+  puts 'Open the finite casting study. Reuses this project’s host; never opens an agent session.'
+  puts 'ATELICO_APP may name the app-engine CLI. A fresh process starts a fresh inventory/world.'
+  exit
+end
+abort 'Use --help for usage.' unless ARGV.empty? || ARGV==['--hidden']
+project=File.realpath(File.join(__dir__,'..'))
+app=ENV.fetch('ATELICO_APP',File.expand_path('../atelico/atelico-app-engine/target/debug/app',project))
+abort "Build the app-engine CLI or set ATELICO_APP: #{app}" unless File.executable?(app)
+port_text=File.read(File.join(project,'atelico.toml'))[/\[host\]\s*\n(.*?)(?=\n\[|\z)/m,1]
+port=Integer(port_text[/^port\s*=\s*(\d+)/,1])
+expected="atelico-host-#{Digest::SHA256.hexdigest(project)[0,10]}"
+state_dir=File.join(project,'.atelico')
+FileUtils.mkdir_p(state_dir)
+def read_state(port)
+  response=Net::HTTP.start('127.0.0.1',port,open_timeout:1,read_timeout:3){|h|h.get('/state')}
+  raise 'Unexpected control-server response' unless response.code=='200'
+  JSON.parse(response.body)
+rescue Errno::ECONNREFUSED
+  nil
+end
+File.open(File.join(state_dir,'play-launch.lock'),'w') do |lock|
+  abort 'A launch for this project is already in progress.' unless lock.flock(File::LOCK_EX|File::LOCK_NB)
+  state=read_state(port)
+  unless state
+    log=File.join(state_dir,'play-launch.log')
+    args=[app,'--project',project]
+    args<<'--hidden' if ARGV.include?('--hidden')
+    args<<'run'
+    child=Process.spawn({'CARGO_BUILD_JOBS'=>'4'},*args,chdir:project,out:[log,'a'],err:[:child,:out])
+    Process.detach(child)
+    puts "Starting a fresh study; build/host log: #{log}"
+    deadline=Process.clock_gettime(Process::CLOCK_MONOTONIC)+120
+    until state
+      abort "Host did not become ready; inspect #{log}. Do not launch another copy while the build is running." if Process.clock_gettime(Process::CLOCK_MONOTONIC)>deadline
+      sleep 0.25
+      state=read_state(port)
+    end
+  end
+  executable=state.fetch('executable').fetch('path')
+  abort "Port #{port} belongs to a different project; no changes made." unless File.basename(executable)==expected
+  abort 'Host reports errors; inspect its existing session.' unless state['editor_error'].nil? && state['file_errors']=={}
+  # Selecting a view and enabling input does not equip, load, select or cast a spell.
+  [['editor.ui.form','casting-study'],['editor.ui.doc','scenes/casting-study-cel-day.scene.luau'],['editor.run.playing','true']].each do |path,value|
+    ok=system(app,'--project',project,'set',path,value,out:File::NULL)
+    abort "Could not set #{path}; existing host retained." unless ok
+  end
+  puts "Casting study open on port #{port} (PID #{state.fetch('pid')})."
+  puts 'Equipment / cartridges → Equip wand → Load amber; select a spell, Aim front, then Fire.'
+  puts 'This study uses fixed targets. Movement/free aiming is the next implementation task.'
+end
