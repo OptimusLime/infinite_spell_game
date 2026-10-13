@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T14:17:35. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T14:20:04. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -138,7 +138,7 @@ Consolidation, repository hygiene, verified checkpoints and proof. Existing done
 
 ## Content (`content`)
 
-6 open / 30 total · 0 doing · 0 review · 17 done · 1 ready todos
+6 open / 30 total · 1 doing · 0 review · 17 done · 0 ready todos
 
 Reference decisions, storyboards and video editing tools, plus the posts and videos made with them. Approved content goals explain which capabilities we build next. Existing historical film drafts remain unapproved.
 Planned after: engine.review
@@ -156,25 +156,29 @@ Reusable storyboard authoring tool: hierarchical groups, relationships, paths an
 
 ### Video Sequencer (`engine.video`)
 
-3 open / 8 total · 0 doing · 0 review · 5 done · 1 ready todos
+3 open / 8 total · 1 doing · 0 review · 5 done · 0 ready todos
 
 Reusable video assembly and playback tool: source clips, timing, titles, narration, music and export. Individual edits are separate content artifacts.
 
-| # | State | Task | Owner | Legacy group |
-|---|---|---|---|---|
-| 176 | ⚪ todo | Make sequencer tracks and shot details readable in smaller windows | codex-coordinator |  |
-
 #### Timeline and cut model (`video.timeline`)
 
-2 open / 3 total · 0 doing · 0 review · 1 done · 1 ready todos
+0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
 
 Typed Cut, Shot, Source, Music and caption records describe a video edit independently of its editor UI.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 174 | ⚪ todo | Bind Cut and Shot views through the typed Data layer | codex-coordinator |  |
-| 175 | ⚪ todo | Route sequencer edits through checked typed commands | codex-coordinator |  |
 | 78 | 🟢 done | Invalidate rendered shots after title placement, size or fade edits | codex-coordinator |  |
+
+#### Typed sequencer editing (`video.typed`)
+
+3 open / 3 total · 1 doing · 0 review · 0 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 174 | 🟡 doing | Bind Cut and Shot views through the typed Data layer | codex-coordinator |  |
+| 175 | ⚪ todo | Route sequencer edits through checked typed commands | codex-coordinator |  |
+| 176 | ⚪ todo | Make sequencer tracks and shot details readable in smaller windows | codex-coordinator |  |
 
 #### Native playback (`video.player`)
 
