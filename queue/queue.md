@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T12:15:29. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T12:17:08. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -465,13 +465,13 @@ Planned after: engine.review, game.camera, game.design, game.inventory, game.mag
 
 ## Shared Platform and Components (`engine`)
 
-4 open / 52 total · 0 doing · 0 review · 48 done · 2 ready todos
+5 open / 53 total · 0 doing · 0 review · 48 done · 2 ready todos
 
 The app engine and reusable building blocks shared by our tools and game. Repository location is implementation metadata; this area describes their purpose.
 
 ### App Engine (`engine.app`)
 
-3 open / 34 total · 0 doing · 0 review · 31 done · 1 ready todos
+4 open / 35 total · 0 doing · 0 review · 31 done · 1 ready todos
 
 Native host and editor that can inspect, run and hot reload the software being built. Renderer, runtime and editor interaction are separate components of this project.
 
@@ -483,12 +483,13 @@ Native host and editor that can inspect, run and hot reload the software being b
 
 #### Renderer and performance (`engine.renderer`)
 
-3 open / 18 total · 0 doing · 0 review · 15 done · 1 ready todos
+4 open / 19 total · 0 doing · 0 review · 15 done · 1 ready todos
 
 Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 169 | ⚪ todo | Test whether retaining the Inspector color picker reduces repaint cost | codex-coordinator |  |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 25 | 🔴 blocked | Automate software checks and provision a separate Mac GPU gate | codex-coordinator |  |
 | 147 | 🔴 blocked | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
