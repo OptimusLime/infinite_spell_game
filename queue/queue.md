@@ -1,24 +1,25 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T11:24:09. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T11:39:15. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
 ## Working Together (`working`)
 
-3 open / 33 total · 1 doing · 0 review · 30 done · 1 ready todos
+3 open / 34 total · 0 doing · 1 review · 31 done · 1 ready todos
 
 Plan, coordinate, inspect and review our work while building the tools we use. Work Tracker and AI sessions are projects in their own right.
 
 ### Work Tracker (`engine.tracker`)
 
-1 open / 11 total · 1 doing · 0 review · 10 done · 0 ready todos
+1 open / 12 total · 0 doing · 1 review · 11 done · 0 ready todos
 
 Understand what we are making, what is happening now, what is ready or blocked, and what needs review. A catalog of concrete parts connects to a grouped task DAG and searchable history. Implemented dashboard, typed model, bindings and history are available for inspection; human acceptance remains tracked separately in task103.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 163 | 🟡 doing | Show one concrete next action and owner per project | codex-coordinator |  |
+| 165 | 🔵 review | Review the next-action dashboard in use | paul |  |
+| 163 | 🟢 done | Show one concrete next action and owner per project | codex-coordinator |  |
 | 96 | 🟢 done | Work Tracker: dashboard, catalog and history | codex-tracker |  |
 | 113 | 🟢 done | Organize parts and component relationships | codex-coordinator |  |
 
@@ -243,7 +244,7 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-7 open / 53 total · 0 doing · 1 review · 43 done · 2 ready todos
+7 open / 53 total · 1 doing · 1 review · 43 done · 1 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
@@ -375,7 +376,7 @@ Creature simulation, visibility, animation and polish across looks.
 
 ### Reference and moodboard decisions (`game.references`)
 
-2 open / 9 total · 0 doing · 0 review · 7 done · 1 ready todos
+2 open / 9 total · 1 doing · 0 review · 7 done · 0 ready todos
 
 Review existing candidate inputs and concept revisions into explicit In/Maybe/No/Future decisions, separate from storyboard and film production.
 Planned after: engine.references, engine.review
@@ -383,7 +384,7 @@ Planned after: engine.references, engine.review
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 110 | ⚪ todo | Review reference and moodboard decisions with existing candidate inputs | paul |  |
-| 164 | ⚪ todo | Prepare a three-frame battlefield framing comparison | codex-coordinator |  |
+| 164 | 🟡 doing | Prepare a three-frame battlefield framing comparison | codex-coordinator |  |
 
 #### Research pixel towns and battlefield environments (`game.references.pixel`)
 
