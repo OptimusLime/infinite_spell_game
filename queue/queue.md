@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T12:56:10. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T13:14:31. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -264,20 +264,20 @@ Planned after: content.storyboard, game.design
 
 ## Infinite Spell Game (`game`)
 
-9 open / 56 total · 0 doing · 1 review · 44 done · 2 ready todos
+10 open / 58 total · 0 doing · 2 review · 45 done · 2 ready todos
 
 The game and its physical spell rules. Paul defines the design; reel suggestions are not approved mechanics.
 
 ### Design and reference decisions (`game.design`)
 
-2 open / 3 total · 0 doing · 0 review · 1 done · 1 ready todos
+1 open / 3 total · 0 doing · 1 review · 2 done · 0 ready todos
 
 Confirmed rules and their source references; proposals and unresolved choices remain explicitly identified.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 97 | ⚪ todo | Review confirmed rules and unresolved game choices | paul |  |
-| 170 | ⚪ todo | Prepare the confirmed-rules summary and isolate actual unresolved game choices | codex-coordinator |  |
+| 97 | 🔵 review | Check the game-rules summary for omissions | paul |  |
+| 170 | 🟢 done | Prepare the confirmed-rules summary and isolate actual unresolved game choices | codex-coordinator |  |
 | 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ | coordinator |  |
 
 ### Town and world structure (`game.world`)
@@ -305,7 +305,7 @@ Spellcraft, input-driven casting, spell effects and the shared authoritative tow
 | 18 | 🟢 done | Spell core: port creature studio spellcraft into the engine, point item-synthesis fusion at it | game-ui-agent |  |
 | 19 | ⚫ dropped | On-device fusion (cards 10-11 can't be filmed without it) | game-ui-agent |  |
 | 85 | 🟢 done | One shared town per scene: spellcraft owns the simulation; the HUD, SpellFx and packages/creatures read the same town (no drift) | codex-coordinator |  |
-| 109 | 🟢 done | Implement authored-spell select, aim and fire interaction | codex-coordinator |  |
+| 109 | 🟢 done | Implement saved-spell selection and named-target firing | codex-coordinator |  |
 | 156 | 🟢 done | Connect authoritative casting bodies to the existing town presentation | codex-coordinator |  |
 
 ### Wands and cartridge integration (`game.inventory`)
@@ -474,14 +474,23 @@ Planned after: engine.references, engine.review
 
 ### Playable interaction proof (`game.proof`)
 
-0 open / 1 total · 0 doing · 0 review · 1 done · 0 ready todos
+2 open / 3 total · 0 doing · 0 review · 1 done · 1 ready todos
 
 Prove authored-spell finite cartridge debit and camera readability after tooling acceptance and the reviewed game baseline; this is not new reel content.
 Planned after: engine.review, game.camera, game.design, game.inventory, game.magic
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 104 | 🟢 done | Verify authored-spell finite cartridge debit and readable camera | codex-coordinator |  |
+| 104 | 🟢 done | Verify finite game-project casting with fixed aim targets | codex-coordinator |  |
+
+#### Playable spellcasting loop (`game.playable`)
+
+2 open / 2 total · 0 doing · 0 review · 0 done · 1 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 172 | ⚪ todo | Update the game's shared casting packages and launch the finite study | codex-coordinator |  |
+| 173 | ⚪ todo | Connect shared movement and world aiming to the finite Player | codex-coordinator |  |
 
 ## Shared Platform and Components (`engine`)
 
@@ -575,9 +584,9 @@ Typed Rust spell definitions, validated cartridge composition over generic Inven
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
+| 138 | 🟢 done | Define and account for funded spell instance completion | codex-coordinator |  |
 | 127 | 🟢 done | Reusable finite cartridge and authored casting core |  |  |
 | 130 | 🟢 done | Admit an explicitly reviewed authored spell revision without resetting player state | codex-coordinator |  |
-| 138 | 🟢 done | Define and account for funded spell instance completion | codex-coordinator |  |
 
 #### Spell authoring (`spellcraft.authoring`)
 
