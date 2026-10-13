@@ -3,3 +3,6 @@
 target/
 queue/queue.db-wal
 queue/queue.db-shm
+
+# Native spell editor advisory locks contain no authored data.
+*.spell.yaml.lock
