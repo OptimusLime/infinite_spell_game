@@ -1,6 +1,6 @@
 # Queue
 
-Snapshot of queue.db, 2026-10-13T12:26:57. Edit through `app queue` (or `queue/q.py`), not this file.
+Snapshot of queue.db, 2026-10-13T12:34:51. Edit through `app queue` (or `queue/q.py`), not this file.
 
 Object prerequisites describe planning order. Task dependencies control claims. Recorded done is not new user acceptance.
 
@@ -18,10 +18,17 @@ Understand what we are making, what is happening now, what is ready or blocked, 
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 163 | 🟡 doing | Show one concrete next action and owner per project | codex-coordinator |  |
-| 165 | ⚪ todo | Review the next-action dashboard in use | paul |  |
 | 96 | 🟢 done | Work Tracker: dashboard, catalog and history | codex-tracker |  |
 | 113 | 🟢 done | Organize parts and component relationships | codex-coordinator |  |
+
+#### Clear next actions (`tracker.clarity`)
+
+2 open / 2 total · 1 doing · 0 review · 0 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 163 | 🟡 doing | Show one concrete next action and owner per project | codex-coordinator |  |
+| 165 | ⚪ todo | Review the next-action dashboard in use | paul |  |
 
 #### Work model (`tracker.model`)
 
@@ -102,7 +109,7 @@ Implementation and technical validation precede a separate review of the working
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 103 | ⚪ todo | Review consolidated tooling with Paul | paul |  |
+| 103 | ⚪ todo | Review the integrated tooling walkthrough | paul |  |
 | 171 | ⚪ todo | Prepare one concrete tooling review with a runnable entry point | codex-coordinator |  |
 
 ### Build, integration and verification (`engine.build`)
@@ -212,20 +219,25 @@ Planned after: engine.tracker
 
 Content grounded in actual game design choices, reference comparisons and playable evidence. Content goals inform build priorities; no historical storyboard narrative has been approved.
 
+#### First game-development post (`content.first-post`)
+
+3 open / 3 total · 0 doing · 0 review · 0 done · 0 ready todos
+
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 114 | ⚪ todo | Draft the next post purpose from verified gameplay evidence | codex-coordinator |  |
+| 105 | ⚪ todo | Prepare a storyboard proposal for the agreed demonstration | codex-coordinator |  |
+| 106 | ⚪ todo | Produce a reel from the approved storyboard proposal | codex-coordinator |  |
 
 #### Storyboard drafts (`content.storyboard`)
 
-1 open / 11 total · 0 doing · 0 review · 6 done · 0 ready todos
+0 open / 10 total · 0 doing · 0 review · 6 done · 0 ready todos
 
 Authored shot sequence, dialogue, sketches and unresolved narrative calls.
 Planned after: game.design, game.proof
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 105 | ⚪ todo | Prepare a storyboard proposal for the agreed demonstration | codex-coordinator |  |
 | 16 | ⚫ dropped | Historical, unapproved content — Storyboard: real sketches for the 10 cards without engine pictures | storyboard-agent |  |
 | 8 | 🟢 done | Historical, unapproved content — Card 5 and card 7 sketches (forecast in-game, fire in the snow) | weather-agent |  |
 | 44 | 🟢 done | Historical, unapproved content — Storyboard round 10: re-judge card 13 (player wins climax) and the dud-spell / two-moons-make-fire yellows | storyboard-agent |  |
@@ -239,14 +251,13 @@ Planned after: game.design, game.proof
 
 #### Video edits (`content.reel`)
 
-1 open / 4 total · 0 doing · 0 review · 0 done · 0 ready todos
+0 open / 3 total · 0 doing · 0 review · 0 done · 0 ready todos
 
 Demonstration cuts and source footage. Historical agent outputs require review against the confirmed game design.
 Planned after: content.storyboard, game.design
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 106 | ⚪ todo | Produce a reel from the approved storyboard proposal | codex-coordinator |  |
 | 71 | ⚫ dropped | Historical, unapproved content — Reel v1: punchy 30-45 s AI-gamedev video from real engine footage (twin-moon day/night, pixel to ink switch, wicked weather, spell fusion, live graph edit), rendered offline | storyboard-agent |  |
 | 70 | ⚫ dropped | Historical, unapproved content — Animatic: render the 15-card storyboard as a timed video in the engine (real scene captures + narration TTS), playable inside the editor | storyboard-agent |  |
 | 74 | ⚫ dropped | Historical, unapproved content — Reel v1: 30-45 s punchy twin-moon reel (day/night timelapse, pixel->ink switch, wicked weather, spell fusion, editor+Claude beat) rendered offline from real engine footage; storyboard/exports/reel-twin-moons-v1.mp4 + contact sheet | storyboard-agent |  |
@@ -265,7 +276,7 @@ Confirmed rules and their source references; proposals and unresolved choices re
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 97 | ⚪ todo | Consolidate original game and Creature references into an explicit game-design source of truth | paul |  |
+| 97 | ⚪ todo | Review confirmed rules and unresolved game choices | paul |  |
 | 170 | ⚪ todo | Prepare the confirmed-rules summary and isolate actual unresolved game choices | codex-coordinator |  |
 | 36 | 🟢 done | START_HERE.md: update with today's state and point to queue/ | coordinator |  |
 
@@ -394,9 +405,16 @@ Planned after: engine.references, engine.review
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
 | 110 | ⚪ todo | Review reference and moodboard decisions with existing candidate inputs | paul |  |
+| 164 | 🟢 done | Prepare a three-frame battlefield framing comparison | codex-coordinator |  |
+
+#### Readable battlefield (`game.battlefield`)
+
+2 open / 2 total · 0 doing · 1 review · 0 done · 0 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
 | 167 | 🔵 review | Choose the framing for the next battlefield camera test | paul |  |
 | 168 | ⚪ todo | Capture matched camera tests for the selected battlefield framing | codex-coordinator |  |
-| 164 | 🟢 done | Prepare a three-frame battlefield framing comparison | codex-coordinator |  |
 
 #### Research pixel towns and battlefield environments (`game.references.pixel`)
 
@@ -491,7 +509,6 @@ Native GPU rendering, parity and frame budget.
 
 | # | State | Task | Owner | Legacy group |
 |---|---|---|---|---|
-| 169 | ⚪ todo | Test whether retaining the Inspector color picker reduces repaint cost | codex-coordinator |  |
 | 23 | ⚪ todo | GPU renderer: identical-pixels test both backends + 8 ms frame-budget test | codex-coordinator |  |
 | 25 | 🔴 blocked | Automate software checks and provision a separate Mac GPU gate | codex-coordinator |  |
 | 147 | 🔴 blocked | Compose host annotations and embedded previews from owned native frames | codex-coordinator |  |
@@ -510,6 +527,14 @@ Native GPU rendering, parity and frame budget.
 | 158 | 🟢 done | Remove secondary-light receiver self-shadow pattern on flat mesh ground | codex-coordinator |  |
 | 37 | 🟢 done | Editor perf patch rounds (damage, caches, meter, scroll, one window, storyboard tab) |  |  |
 | 41 | 🟢 done | Renderer research (4 lanes + recommendation: Skia Ganesh on wgpu Metal) |  |  |
+
+##### Responsive Inspector (`renderer.inspector`)
+
+1 open / 1 total · 0 doing · 0 review · 0 done · 1 ready todos
+
+| # | State | Task | Owner | Legacy group |
+|---|---|---|---|---|
+| 169 | ⚪ todo | Test whether retaining the Inspector color picker reduces repaint cost | codex-coordinator |  |
 
 #### Runtime and hot reload (`engine.runtime`)
 
