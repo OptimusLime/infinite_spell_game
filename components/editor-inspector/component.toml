@@ -1,0 +1,14 @@
+lua = "An editor part: require('editor_parts.inspector') returns {name, slot, order, render}; the editor shell places it."
+name = "editor-inspector"
+provides = ["editor_parts.inspector"]
+requires = ["editor-panels"]
+
+[package]
+data_types = ["editor part (luau)"]
+description = "Inspector panel for the editor: properties of the selected scene and node, resolution presets, and the theme's colors with a color picker."
+keywords = ["inspector", "properties", "theme", "colors", "color picker"]
+permissions = []
+version = "0.1.0"
+
+[package.dependencies]
+editor-panels = "^0.1"

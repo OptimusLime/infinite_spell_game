@@ -1,0 +1,14 @@
+# A creature that digs under walls (the orange moon's brood): unseen while it is underground, so shadows cannot
+# catch it there.
+version: 1
+name: digger
+title: Digger
+kind: creature
+mana: {source: moon, allocation: 40}
+container: seed
+phases:
+  on_start:
+    - {id: me, use: body.self, output: me}
+    - {id: life, use: vital.health, target: me, params: {max: 3, on_zero: vanish}}
+  on_tick:
+    - {id: go, use: move.toward, target: me, params: {speed: 0.9, way: dig}}

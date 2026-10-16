@@ -1,0 +1,5 @@
+title = "Maybe — lens comparison; battlefield stays visible"
+spoken = ""
+shown = "Compare the same battlefield and gameplay event with enough context to read scale, caster, target and threats. The small/big scale goal is requested. Exact tilt, focus, field of view and blur are still choices."
+action = "Design review only; not a film shot."
+sketch_note = "Maybe parameters; broader battlefield readability is In. Concept isg-tilt-lens-study@6de09b740274176202f137949848ebdaaedaf0e4b085135abbeafe9ea31ba160. Source: concepts/library and docs/design-direction.md. Media attribution: storyboard/sketches/design-review/README.md. Pinned inputs are not verified compatibility. This off-path card has no film narration; its default work status is unrelated to the design decision."

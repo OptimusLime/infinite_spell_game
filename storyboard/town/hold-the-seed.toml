@@ -1,0 +1,6 @@
+title = "The seed holds"
+spoken = "Then diggers surface right by the seed, just outside the tower's shadow, and its ring is almost empty. I cast wind into the tower to make the shadow move. The model invents a shadow that turns like a lighthouse beam. The last digger burns a step from the seed, and then the moons part."
+shown = "Orange diggers burst up beside the seed, just outside the tower's shadow; the ring drains to a sliver. A held beat on the player turning to the tower and casting wind into it. Its spell entry rewrites live (a new name; effect \"sweep\" added) and its burning shadow turns round the seed like a lighthouse beam. Each digger it crosses goes up in flames (hit-stop, shake); the last burns a step from the seed and the ring stops draining at its last sliver. Only then do the moons slide apart above, the night's reward."
+status = "todo"
+sketch = "sketches/hold-the-seed.png"
+sketch_note = "The finish: the lighthouse beam sweeping round the seed on its last sliver as the moons part."

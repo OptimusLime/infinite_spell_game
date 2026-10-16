@@ -1,0 +1,36 @@
+resolved: component layout 0.1.1
+  component layout 0.1.1
+fetched component layout@0.1.1: sha256 967c7267ef78… verified, http://127.0.0.1:8830/blobs in 5 ms (175 KB)
+native code changed (layout, node-graph, scene-3d, shader-forge, spell-player, spellcraft): building the host
+warning: value assigned to `x` is never read
+   --> /Users/paul/coding/atelico/atelico-app-engine/packages/pixel-sprites/src/atlas.rs:123:10
+    |
+123 |     let (mut x, mut y, mut shelf) = (0u32, 0u32, 0u32);
+    |          ^^^^^ this value is reassigned later and never used
+...
+133 |         (x, y, shelf) = (0, y + shelf, 0);
+    |          - `x` is overwritten here before the previous value is read
+    |
+    = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: `component-pixel-sprites` (lib) generated 1 warning
+warning: unused variable: `seed`
+  --> /Users/paul/coding/atelico/atelico-app-engine/components/spellcraft/src/fx.rs:72:13
+   |
+72 |         let seed = n as u32 * 7919;
+   |             ^^^^ help: if this is intentional, prefix it with an underscore: `_seed`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `t`
+   --> /Users/paul/coding/atelico/atelico-app-engine/components/spellcraft/src/fx.rs:122:27
+    |
+122 | pub fn sprites(fx: &[Fx], t: f32, ground: atelico_render_3d::part::Ground, scale: f32, look: &str) -> Vec<component_particles::Spri...
+    |                           ^ help: if this is intentional, prefix it with an underscore: `_t`
+
+warning: `component-spellcraft` (lib) generated 2 warnings (run `cargo fix --lib -p component-spellcraft` to apply 2 suggestions)
+   Compiling atelico-host-c8d028fcbd v0.1.0 (/Users/paul/coding/infinite_spell_game/.atelico/host)
+    Finished `dev` profile [optimized + debuginfo] target(s) in 0.90s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+built in 1s

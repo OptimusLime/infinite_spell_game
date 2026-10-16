@@ -1,0 +1,63 @@
+# Particle effect nodes (packages/particles, linked into the engine through scene-3d, which ships this catalog): an
+# `emitter` is one emitter (its spawner, where and how its particles start, and how they change over their life);
+# the emitters wired into the `effect` node are the effect. An effect graph (graphs/<name>.graph.yaml, types
+# particles) is what the fire package's Explosion draws, read again when the file changes. Run by the graph core in
+# the particle style (particles::graph); each node's body previews it alone at the playhead
+# (lua/graph_renderers/particles.luau), the effect node the whole.
+name: particles
+categories:
+  - {name: emitter, color: "#ff9a4a"}
+  - {name: output, color: "#ef5b5b"}
+types:
+  - name: emitter
+    title: Emitter
+    category: emitter
+    doc: "Particles: when they are born (spawn, at, until, count), where (shape, radius) and how they leave (cone about up, speed; outward from the middle), how long they live and how big they are (grown from grow.x of their size to all of it at grow.y of their life, to shrink at the end), what they look like (cells; colours c0 at birth, c1..c3 at t1..t3, c4 at death, linear; black: unused), how they move (gravity down, drag, spin, stretched along their flight) and how they go (whole until dissolve.x of their life, eaten to dissolve.y; or fade: faded out by opacity over their last fade.x seconds, each a little early or late, growing by fade.y of their size and drifting apart as they go). trail: that many more sprites where it was, trail_gap seconds apart (a tongue along its arc). flicker: size and brightness waver that share, fast (a burning flake). refract: drawn as the picture behind it, bent and wavering by that share of its size (a heat haze). glow: unlit; flat: laid on the ground."
+    outputs: [{name: emitter, type: any}]
+    params:
+      - {name: spawn, kind: one_of, default: burst, choices: [burst, stream, rate]}
+      - {name: at, kind: number, default: 0, min: 0, max: 10}
+      - {name: until, kind: number, default: 0.3, min: 0, max: 10}
+      - {name: count, kind: number, default: 8, min: 0, max: 200}
+      - {name: rate, kind: number, default: 10, min: 0, max: 200}
+      - {name: shape, kind: one_of, default: point, choices: [point, ball, ring, disc]}
+      - {name: radius, kind: number, default: 0, min: 0, max: 5}
+      - {name: cone, kind: number, default: 0.4, min: 0, max: 3.2}
+      - {name: speed, kind: vec2, default: [1.0, 2.0]}
+      - {name: outward, kind: vec2, default: [0.0, 0.0]}
+      - {name: life, kind: vec2, default: [1.0, 1.5]}
+      - {name: size, kind: vec2, default: [0.5, 0.8]}
+      - {name: grow, kind: vec2, default: [1.0, 0.0]}
+      - {name: shrink, kind: number, default: 1, min: 0, max: 4}
+      - {name: cells, kind: one_of, default: puff, choices: [puff, plain, jet, star, spark]}
+      - {name: c0, kind: hdr, default: [1.0, 1.0, 1.0]}
+      - {name: c1, kind: hdr, default: [0.0, 0.0, 0.0]}
+      - {name: c2, kind: hdr, default: [0.0, 0.0, 0.0]}
+      - {name: c3, kind: hdr, default: [0.0, 0.0, 0.0]}
+      - {name: c4, kind: hdr, default: [0.0, 0.0, 0.0]}
+      - {name: t1, kind: number, default: 0.25, min: 0, max: 1}
+      - {name: t2, kind: number, default: 0.5, min: 0, max: 1}
+      - {name: t3, kind: number, default: 0.75, min: 0, max: 1}
+      - {name: gravity, kind: number, default: 0, min: -30, max: 30}
+      - {name: drag, kind: number, default: 0, min: 0, max: 10}
+      - {name: spin, kind: vec2, default: [0.0, 0.0]}
+      - {name: stretch, kind: number, default: 0, min: 0, max: 6}
+      - {name: dissolve, kind: vec2, default: [1.0, 0.0]}
+      - {name: fade, kind: vec2, default: [0.0, 0.0]}
+      - {name: trail, kind: number, default: 0, min: 0, max: 24}
+      - {name: trail_gap, kind: number, default: 0.03, min: 0.005, max: 0.3}
+      - {name: glow, kind: bool, default: false}
+      - {name: flat, kind: bool, default: false}
+      - {name: upright, kind: bool, default: false}
+      - {name: flicker, kind: number, default: 0, min: 0, max: 1}
+      - {name: refract, kind: number, default: 0, min: 0, max: 1}
+      - {name: seed, kind: number, default: 1, min: 0, max: 999}
+    renderer: preview
+  - name: effect
+    title: Effect
+    category: output
+    doc: "The effect: every emitter wired into it, drawn together from its start."
+    inputs: [{name: e1, type: any}, {name: e2, type: any}, {name: e3, type: any}, {name: e4, type: any}, {name: e5, type: any}, {name: e6, type: any}, {name: e7, type: any}, {name: e8, type: any}]
+    gathers: true
+    outputs: [{name: effect, type: any}]
+    renderer: preview

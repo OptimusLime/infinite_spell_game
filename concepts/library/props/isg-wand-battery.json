@@ -1,0 +1,35 @@
+{
+  "id": "isg-wand-battery",
+  "kind": "prop",
+  "name": "Wand and finite battery",
+  "description": "The wand has a limited energy-storage/supply role; crafting and firing selected spells draw from a finite source.",
+  "parent": null,
+  "world": {
+    "id": "isg-world",
+    "revision": "26924568365d55509723c4044b2eb8f4ee3046820650efc67a462a02afdbda0b"
+  },
+  "transform": null,
+  "invariants": {
+    "cast_transfer": "At admission, debit the caster and credit one independent cast once. Disconnecting the source does not reclaim transferred mana.",
+    "physical_energy": "Storage and energy flow must be legible; the wand may combine caster and reservoir in one object."
+  },
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.state": "In",
+    "open.capacity": "Exact capacity, units, thresholds and tariffs remain open.",
+    "open.refill": "Replace, refill or externally feed: mechanism and rate remain open; no free automatic refill.",
+    "source.contract": "SPELL_STRUCTURE.md, finite caster-to-instance transfer settled from user clarifications."
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

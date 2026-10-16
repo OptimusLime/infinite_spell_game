@@ -1,0 +1,18 @@
+# Game-owned authored study derived from the reusable engineering example. Not accepted balance or final spell design.
+version: 1
+name: casting-study-push
+title: Directed push study
+kind: spell
+shape: orb
+element: wind
+mana: {source: wand, allocation: 20}
+container: field
+phases:
+  on_start:
+    - {id: form, use: body.orb, output: form}
+    - {id: launch, use: motion.launch, target: form, params: {speed: 5}}
+  on_contact:
+    target: form
+    every: 1
+    steps:
+      - {id: push, use: force.push, target: event.other, params: {strength: 3}}

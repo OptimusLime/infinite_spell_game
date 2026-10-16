@@ -1,0 +1,97 @@
+{
+  "engine_base_commit": "9a9ed686d14e8d8d409ea2ddd63917ff57957f65",
+  "capture_test": "crates/editor/tests/player_readability.rs",
+  "command": "cargo test --target-dir /tmp/atelico-orientation-target --offline -j4 -p atelico-editor --test player_readability -- --nocapture --test-threads=1",
+  "outcome": "1 passed; 0 failed; native runtime6.26s",
+  "capture": "native GPU full frames; explicit final-frame screenshot readback, no readbacks during ordinary drawing; no image edits",
+  "source_sha256": {
+    "crates/editor/tests/player_readability.rs": "02840ac29d9f06ce95a9183aab27770e93439d6eb653861b4bcf91269cdca5b6",
+    "crates/editor/tests/common/mod.rs": "1f9931c8396bede435f6ba5ed22128d816ccc0c86cea56d51722ee540f72a249",
+    "scenes/player-visuals-cel.scene.luau": "cef3c2e95d6fd0e80e8add10baf6aa349a6b0d42f885eecfd282c46e9fe5d0e2",
+    "scenes/player-visuals-pixel.scene.luau": "19fdedb97736a4fc2dfe770d3bac8b15f5785d2c02aa37c6f29b9ba0289e8bc6",
+    "scenes/parts/moon-town/town.scene.luau": "a2564e5731d3fed73984b381e901d77d3dc1f2fe1bbc33766e5bfbe70e03d067",
+    "scenes/parts/ink-world/look.scene.luau": "fe6063698aece3422c915845ef57fe5ed6128b2941912cb0d2a5a8794ca29777",
+    "scenes/parts/pixel/moon-town.scene.luau": "76dc69a704e18e6a2d4e1dc8e0e88adc3bae51b60771cc970c0c6a26240516eb",
+    "players/basic.player.toml": "7d8d1459cae72058cb9261bd248ffcf9a8d4cf4473d582b1daa143521c504af2",
+    "packages/spellcraft/fixtures/projectile-hit.spell.yaml": "921a05a6ffce8205cc580d1cf31b27d1eb4268c18b70055ffeb5f63aaecd5832",
+    "packages/spellcraft/fixtures/projectile-push.spell.yaml": "9ed9ee87beaea358499f430567ddbe3da8d7d9fac9904ab451778a2f58790899",
+    "packages/spell-player/src/session.rs": "a05fc5be208f014cd8888c349684591780d63d7da7740f17922dc12937fdd015",
+    "packages/spell-player/src/render.rs": "9d237ec1d7e85ff7ad6d9e340503fa9b1bbfe90b5411a7db4b1fd418ed31ad66",
+    "packages/spell-player/src/visuals.rs": "d82f99dd30049c86c253fe5f57054583294520ce80a0e2df2e80293c2fc888d6",
+    "packages/spell-player/lua/spell_player/hud.luau": "32db9448db68079404e2d0875c6af5b118fa4bf5509a6da074a7ee149051ab55",
+    "packages/scene-3d/src/world.rs": "59fbfc8801e1dcbba1f98ea80dfaaa59d4da706511d8bf1b4cbd2a984df0e870",
+    "packages/scene-3d/src/nodes.rs": "dc01481111d18b06e0900c99821d9f8eb5383b33a6f7409ad3ff68f2b9ef04d2",
+    "packages/scene-3d/src/lib.rs": "0645904b4836eff1587ff4a5b2e631c513078ccac1d3afa6a9f3f3ec3244f2bd",
+    "packages/scene-3d/src/hooks.rs": "b376db8af72cef674bfb07e27c67735636cdd8ec721ac3beecf871a8bed71f3b",
+    "crates/render-3d/src/world.wgsl": "5e05c3c3e44907612d3a2cf5cab5e6b0d8619f40a3c3ef34f8bf270ce9fb5255",
+    "graphs/cel-world.graph.yaml": "c6190772143b1de415e3f91905b2b7686738100ade34878c440b8ba35d7800bd",
+    "graphs/pixel-world.graph.yaml": "ddffa989e5a46ada7e8a0269d82d220e42f19a586bdebfc0deb92e275e8e59a5",
+    "looks/wind-waker-day.cube": "947bda69723e16be16dd303c09f29b9d6649e009e15cc36b1e368d334f630c43",
+    "assets/sprites/pixel-island.sprites.toml": "6c5f413cba9c0ff26b12e3ab8073637c6c25a1d49ffb6470732f78b653766500",
+    "packages/pixel-sprites/src/atlas.rs": "136bf96fcfcd765510946d0ab6653c2de3550a5be0f48568ea2f5fab7c334805",
+    "packages/pixel-sprites/src/lib.rs": "0a7a6fb6f2dd57443aed44118c0ed966c007492aeef2c808309cae41dd7b0e57",
+    "packages/pixel-sprites/src/parts.rs": "354d519e65d6f07b65e2923a2138888e2e3ec373655d0ff75fbb36c494824b0e",
+    "packages/pixel-sprites/src/sheet.rs": "683c8d28ab993282dc2ba625e76bfd3c780dfc90faeb623996f1c871e1788ecd",
+    "packages/pixel-sprites/src/sprites.wgsl": "9879c053c66cab7069f85d3dcefaf49217d8e4c29ac7a9ef3a51cd897fae22f0",
+    "packages/sky/src/bin/moon-forecast.rs": "05c8558d020a9617197bb007a81e8e979a9c4cdfae28d248716735aae1238f86",
+    "packages/sky/src/lib.rs": "f8eb7f33469eb67d1c6aabc8a4ab46d4aa72277955fffac67c6b4d35a25c1c35",
+    "packages/sky/src/sky.wgsl": "6dfc10034ed8bf5a51a372dd5fe67612d76dddb7c2fdd9d7fbd48ed19377e944",
+    "packages/sky/src/twin.rs": "09c7b82d35c03f5faa53717da6e36fa7bdc20f3e79b0fbc6ea8c59ed2defa479",
+    "packages/world-looks/src/lib.rs": "5b4d00769872ccc705ac4630ca704f7b72eaf1f3d7e470b3c62010488a5bc467"
+  },
+  "images_sha256": {
+    "cel-day-1100x800.png": "971e874f17adb9d293a8ff5762392634b5d3af099f2ac2b15820a11fe11845ab",
+    "cel-day-1600x960.png": "9e05dab11e1e14cb28cf13bd40b3a178ec795ce6d36367a4763685015da7e95f",
+    "cel-night-1100x800.png": "5da83570bf8aac129f01977589fafc11d6be580044086c35e2bbdb4b4d627d3d",
+    "cel-night-1600x960.png": "1e1dba10eb0c0a5cff09d6b233d37761a4eda1f47db79d7f4d46fd52aa51f2f1",
+    "pixel-day-1100x800.png": "adc303a50d141135770e0b477472f1d0f5dbe96f829ecb0f61584ab7439f0997",
+    "pixel-day-1600x960.png": "9cc7c75285d3c1e612acf1fe0dfcbbeb8f2de0fcdcd1a5502a937f2b428e25d8",
+    "pixel-night-1100x800.png": "e4419e81b19b64ea1a6539585c63954382fdb4ff9abda42568a1f13e87ba39be",
+    "pixel-night-1600x960.png": "79929d7ff78f308fc399aa2442288480ce0bb63f391146e1c1d89b1d121bb2d6"
+  },
+  "reference_candidates": {
+    "sos-tod-day": {
+      "creator": "Sabotage Studio",
+      "source_url": "https://seaofstarsgame.co/",
+      "source_image_url": "https://seaofstarsgame.co/wp-content/uploads/2024/03/tod2024-076.png",
+      "attribution": "\u00a9 Sabotage Studio. Official media assets.",
+      "image": "media/sos-tod-day.png",
+      "retrieved_at": "2026-10-08",
+      "image_sha256": "b32767a3cbd4785d05b9cfb7eccc76856a850044ca391a3d3060d6ab09f261c8"
+    },
+    "sos-tod-night": {
+      "creator": "Sabotage Studio",
+      "source_url": "https://seaofstarsgame.co/",
+      "source_image_url": "https://seaofstarsgame.co/wp-content/uploads/2024/03/tod2024-026.png",
+      "attribution": "\u00a9 Sabotage Studio. Official media assets.",
+      "image": "media/sos-tod-night.png",
+      "retrieved_at": "2026-10-08",
+      "image_sha256": "5efc581a77f7fbc18f3af6d9ac45fd3906efdc373a87557279ebbc0a2428a03f"
+    },
+    "hld-wide-combat": {
+      "creator": "Heart Machine",
+      "source_url": "https://www.heartmachine.com/hyper-light-drifter",
+      "source_image_url": "https://images.squarespace-cdn.com/content/v1/619478d0d2aca04773e62fb7/ace7d9ae-ccaa-4164-a45d-f55d3b459fd7/STORE_ScreenShot_16.png",
+      "attribution": "\u00a9 Heart Machine, Inc. Official screenshots.",
+      "image": "media/hld-wide-combat.png",
+      "retrieved_at": "2026-10-08",
+      "image_sha256": "7743a9b5d832e9d4760489f0cc8830d2a3c8c2b00a248b9591d93af2557989f2"
+    },
+    "tunic-battlefield": {
+      "creator": "TUNIC Team",
+      "source_url": "https://store.steampowered.com/app/553420/",
+      "source_image_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553420/ss_5fc49d3c5fa34b0d0e6b6a5621f9062bec7ac4d7.1920x1080.jpg?t=1783359656",
+      "attribution": "Reference only; artwork belongs to the credited creators and rights holders.",
+      "image": "media/tunic-battlefield.png",
+      "retrieved_at": "2026-10-08",
+      "image_sha256": "3789c34271d89a68ac53e12652468efdd024e1cae9eefdb487aff1c9fb576161"
+    }
+  },
+  "validation_sha256": "78dec6923a5a285f4361c2e266cf670cbceb825995b1b9df2ebb800721930bbf",
+  "limits": [
+    "Visual comparison candidates, not approval.",
+    "Camera and time controls are within each existing style, not a palette-only cross-style test.",
+    "No proof of traversal or through-building visibility.",
+    "One pinned launch event, not continuous motion evidence."
+  ]
+}

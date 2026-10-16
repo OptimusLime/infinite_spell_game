@@ -1,0 +1,26 @@
+# Material presets: how each kind of surface takes the light. A scene's Material nodes redefine one by name; a
+# node's colour sets the albedo. roughness, metallic and specular feed the stylized PBR lighting (GGX, Fresnel),
+# which is then cut into toon bands; response is the diffuse gain, lit_cap the brightest a lit face may get
+# (display value), wrap how far light wraps round the terminator, rim the Fresnel rim's strength.
+
+# Grown plants' presets: leaves and bark.
+
+[[material]]
+name = "leaf"
+albedo = "#3faa3a"
+roughness = 0.6
+specular = 0.15
+response = 0.9
+lit_cap = 0.82
+wrap = 0.35
+rim = 0.4
+pattern = { kind = "leaf" }
+
+[[material]]
+name = "bark"
+albedo = "#8a6a44"
+roughness = 0.9
+specular = 0.0
+response = 0.8
+lit_cap = 0.7
+rim = 0.25

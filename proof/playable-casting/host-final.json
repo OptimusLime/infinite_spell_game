@@ -1,0 +1,84 @@
+{
+  "agent": {
+    "attached": false,
+    "status": "Open the terminal or send a request to start this session"
+  },
+  "boot": 1791497516.630937,
+  "claude": "button",
+  "components": [
+    "editor-console",
+    "editor-inspector",
+    "editor-panels",
+    "editor-project",
+    "editor-scene-tree",
+    "editor-scene-view",
+    "editor-status",
+    "editor-toolbar",
+    "inventory-grid",
+    "layout",
+    "node-graph",
+    "scene-3d",
+    "shader-forge",
+    "spellcraft",
+    "ui-kit"
+  ],
+  "doc": "scenes/casting-study-cel-day.scene.luau",
+  "editor_error": null,
+  "file_errors": {},
+  "focus": "scene",
+  "fps": 0,
+  "frame": true,
+  "frame_ms": 7.2092695236206055,
+  "meter": {
+    "capable": 138.71031188964844,
+    "max": 9.991665840148926,
+    "ms": 7.2092695236206055,
+    "redraws": 0
+  },
+  "mode": "play",
+  "panels": {
+    "scene": [
+      0.0,
+      0.0,
+      1600.0,
+      960.0
+    ]
+  },
+  "pid": 5119,
+  "playing": true,
+  "rev": 4877,
+  "scene": "casting-study-cel-day",
+  "scene_rect": [
+    0.0,
+    48.0,
+    1600.0,
+    912.0
+  ],
+  "theme": {
+    "colors": {
+      "accent": "#4c8dff",
+      "background": "#111317",
+      "border": "#2e333c",
+      "button": "#353b46",
+      "confirm": "#2fb36b",
+      "confirm_pressed": "#5fd592",
+      "danger": "#ef5f5f",
+      "header": "#20242b",
+      "muted": "#8b929e",
+      "on_accent": "#ffffff",
+      "on_confirm": "#ffffff",
+      "panel": "#1a1d23",
+      "play": "#35c486",
+      "pressed": "#4c5462",
+      "raised": "#2a2f38",
+      "text": "#e1e4ea",
+      "viewport": "#0c0d10"
+    },
+    "file": "editor/theme.toml"
+  },
+  "window": "main",
+  "windows": [
+    "main"
+  ],
+  "zoom": 1.0
+}

@@ -1,0 +1,472 @@
+retrieved_at = "2026-10-08"
+review_state = "All new candidates are Unreviewed. Only explicit human review may choose a disposition."
+
+[[images]]
+id = "eastward-day-material"
+source = "https://eastwardgame.com/media/"
+source_image = "https://eastwardgame.com/wp-content/uploads/2023/10/eastward-features-8.jpg"
+original_sha256 = "b65849e41399448eb4f0af145006f8cc8fecc9e23263981f8ff7bade3deebf32"
+display_sha256 = "b65849e41399448eb4f0af145006f8cc8fecc9e23263981f8ff7bade3deebf32"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "eastward-night-lights"
+source = "https://eastwardgame.com/media/"
+source_image = "https://eastwardgame.com/wp-content/uploads/2024/06/Octopia-5_NightTown.jpg"
+original_sha256 = "ec0b02c7d80dbb6563d2ce7629696e202cbd579e4022dcd1c216c4dd5cfe338b"
+display_sha256 = "ec0b02c7d80dbb6563d2ce7629696e202cbd579e4022dcd1c216c4dd5cfe338b"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "sos-tod-day"
+source = "https://seaofstarsgame.co/"
+source_image = "https://seaofstarsgame.co/wp-content/uploads/2024/03/tod2024-076.png"
+original_sha256 = "b32767a3cbd4785d05b9cfb7eccc76856a850044ca391a3d3060d6ab09f261c8"
+display_sha256 = "b32767a3cbd4785d05b9cfb7eccc76856a850044ca391a3d3060d6ab09f261c8"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "sos-tod-night"
+source = "https://seaofstarsgame.co/"
+source_image = "https://seaofstarsgame.co/wp-content/uploads/2024/03/tod2024-026.png"
+original_sha256 = "5efc581a77f7fbc18f3af6d9ac45fd3906efdc373a87557279ebbc0a2428a03f"
+display_sha256 = "5efc581a77f7fbc18f3af6d9ac45fd3906efdc373a87557279ebbc0a2428a03f"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "sos-dark-readability"
+source = "https://sabotagestudio.com/presskits/sea-of-stars/"
+source_image = "https://sabotagestudio.com/wp-content/uploads/2022/03/Story-7-launch.png"
+original_sha256 = "4f21bafa58b42ea31088199f51a6dc377f07a55d92be773d1d694c2b9796e9e9"
+display_sha256 = "4f21bafa58b42ea31088199f51a6dc377f07a55d92be773d1d694c2b9796e9e9"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "sos-day-depth"
+source = "https://sabotagestudio.com/presskits/sea-of-stars/"
+source_image = "https://sabotagestudio.com/wp-content/uploads/2022/03/World-12-launch.png"
+original_sha256 = "b5b74b4e5f31bad58cede800514fea8d76bc224cd24d931728ec56cdcc06831e"
+display_sha256 = "b5b74b4e5f31bad58cede800514fea8d76bc224cd24d931728ec56cdcc06831e"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "hld-dark-fire"
+source = "https://www.heartmachine.com/hyper-light-drifter"
+source_image = "https://images.squarespace-cdn.com/content/v1/619478d0d2aca04773e62fb7/ca748b72-996b-451e-a35e-0f636d63f5d9/STORE_ScreenShot_01.png"
+original_sha256 = "7ad364822baf9dd21ece88e2b312bfb1300b09c0e4ff04d41c922e2f74856b1f"
+display_sha256 = "7ad364822baf9dd21ece88e2b312bfb1300b09c0e4ff04d41c922e2f74856b1f"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "hld-wide-combat"
+source = "https://www.heartmachine.com/hyper-light-drifter"
+source_image = "https://images.squarespace-cdn.com/content/v1/619478d0d2aca04773e62fb7/ace7d9ae-ccaa-4164-a45d-f55d3b459fd7/STORE_ScreenShot_16.png"
+original_sha256 = "7743a9b5d832e9d4760489f0cc8830d2a3c8c2b00a248b9591d93af2557989f2"
+display_sha256 = "7743a9b5d832e9d4760489f0cc8830d2a3c8c2b00a248b9591d93af2557989f2"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "replaced-depth"
+source = "https://playreplaced.com/"
+source_image = "https://playreplaced.com/wp-content/uploads/REPLACED_Screenshot_01.jpg"
+original_sha256 = "bc4a30c87dde39d1ba2e73f38903cb11cd639837d478d49b39aecb68f24fd7a2"
+display_sha256 = "bc4a30c87dde39d1ba2e73f38903cb11cd639837d478d49b39aecb68f24fd7a2"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "replaced-dark-shaft"
+source = "https://playreplaced.com/"
+source_image = "https://playreplaced.com/wp-content/uploads/REPLACED_Screenshot_04.jpg"
+original_sha256 = "586a5ac1025816caa83e9f8eedb01ccd9b3a527de836f8c4c0ff0132cc2a1262"
+display_sha256 = "586a5ac1025816caa83e9f8eedb01ccd9b3a527de836f8c4c0ff0132cc2a1262"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "kingdom-moon"
+source = "https://kingdomthegame.com/kingdom-two-crowns/"
+source_image = "https://kingdomthegame.com/wp-content/uploads/2026/08/k_tc-Dead-Lands-8.webp"
+original_sha256 = "179d6b0c270e41988c7b883be6ed5df5c573e4539399794ce00ec6f0d12ca7da"
+display_sha256 = "179d6b0c270e41988c7b883be6ed5df5c573e4539399794ce00ec6f0d12ca7da"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "kingdom-dusk"
+source = "https://kingdomthegame.com/kingdom-two-crowns/"
+source_image = "https://kingdomthegame.com/wp-content/uploads/2026/08/k_tc-Dead-Lands-4.webp"
+original_sha256 = "bc20b4edae729957bf5299577797d4a0120720d9232300d39dbda93a765e069c"
+display_sha256 = "bc20b4edae729957bf5299577797d4a0120720d9232300d39dbda93a765e069c"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "fighterz-shadows"
+source = "https://store.steampowered.com/app/678950/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/678950/ss_23da24c6bfb4ef8af767aee077d0cc146892153a.1920x1080.jpg?t=1776898545"
+original_sha256 = "6e9378132ef55c4a29511bc94f7e4c05cd543b47868874c84803460ff9bcd464"
+display_sha256 = "cc8812c0869333dbd76a776343136e15f0c77e16cd52a87845ca87cbe07e4105"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "kakarot-charge"
+source = "https://store.steampowered.com/app/851850/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/851850/ss_bfda57d08727dd5281892e13b594121b897ea407.1920x1080.jpg?t=1769139697"
+original_sha256 = "c0f623c5fd47a3ab3b5deca0c5a60fc2c93c6d93486f072a2a5b1d73bd6afcd6"
+display_sha256 = "3cd874af02e93e3b9c71649a30389f1f1b558283907dcd2281ab080528cb5116"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "strive-shadow"
+source = "https://www.arcsystemworks.com/game/guilty-gear-strive-nintendo-switch-edition/"
+source_image = "https://www.arcsystemworks.com/wp-content/uploads/2024/08/GGST-NSW-Story-Mode-1.png"
+original_sha256 = "c23325660d9fb1c102cf01214ed8ef6222577e85e16095d323e2ffa1ca0296c0"
+display_sha256 = "c23325660d9fb1c102cf01214ed8ef6222577e85e16095d323e2ffa1ca0296c0"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "ninokuni-materials"
+source = "https://store.steampowered.com/app/798460/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/798460/ss_927a350f64c6e2be8a35df3e64e2110a6d725be4.1920x1080.jpg?t=1771958172"
+original_sha256 = "81b469f2dca49ce0c8864587b9fbfc33d876826f30310fdad16e02aa07fb7f6c"
+display_sha256 = "20f023d96baac75348fe9fcc02ddb251b5ecfd7df4bf90f6ae607f2eea3d40b5"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "noita-material-cast"
+source = "https://noitagame.com/press/"
+source_image = "https://noitagame.com/press/images/screenshot_002.jpg"
+original_sha256 = "30380391b16662cd1042413cb3c19667e38d524cb0592804d42c3c4ed2c00fe2"
+display_sha256 = "c843aaef3a684c1ef0444de21a47f7eb4c2cf63ae7d537e1a360877d71081459"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "wizard-spell-selection"
+source = "https://wizardoflegend.com/press/wizard_of_legend/index.html"
+source_image = "https://wizardoflegend.com/press/wizard_of_legend/images/Wizard_of_Legend_SCREENSHOT2.png"
+original_sha256 = "7fa4e5edbc1477308f1a9dd571d78bfebfe1e63357fba703bf198abcf1947a3c"
+display_sha256 = "7fa4e5edbc1477308f1a9dd571d78bfebfe1e63357fba703bf198abcf1947a3c"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "magicka-direction"
+source = "https://store.steampowered.com/app/42910/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/42910/ss_514e6d7484e979f1879b59b4a1443d52bfde7cb1.1920x1080.jpg?t=1726497076"
+original_sha256 = "5c31b8646e575708a34cfdce45d2a220b493ad5b37f02010715e86026703d623"
+display_sha256 = "73e1ef8c9ea0b77e476876926f61f6ae0c9faa7e8848ad86d3e42409c1ca2358"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "fighterz-aura"
+source = "https://store.steampowered.com/app/678950/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/678950/ss_1702e9bc7ba4ce2dce2555c8d63612aafb5c757a.1920x1080.jpg?t=1776898545"
+original_sha256 = "3f3cd94ab91f82d777234396f41145bc4816cea409ef4d4a3f01526e52b095e6"
+display_sha256 = "ccdde87af212044a4735da0b5021847101f3874ac619b921ea7349575731dba0"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "kakarot-large-magic"
+source = "https://store.steampowered.com/app/851850/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/851850/ss_98935e58c3a3fcbe51b09c64cf2945427132ff2d.1920x1080.jpg?t=1769139697"
+original_sha256 = "d3511a7d9fe0298935ae414c70b061686ab843525b2c51a64aaecd063b7b9cd8"
+display_sha256 = "31d1cbf39c390a68dcd573873c2fa8a21ba94c75cbb26e561c5dff0de965da41"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "wizard-shape-vocabulary"
+source = "https://wizardoflegend.com/press/wizard_of_legend/index.html"
+source_image = "https://wizardoflegend.com/press/wizard_of_legend/images/Wizard_of_Legend_SCREENSHOT1.png"
+original_sha256 = "d801fa5f7f598b28ccac2f81efbc48d065e0f2cb9b8b158a5811e001f020c546"
+display_sha256 = "d801fa5f7f598b28ccac2f81efbc48d065e0f2cb9b8b158a5811e001f020c546"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "noita-rune-scale"
+source = "https://noitagame.com/press/"
+source_image = "https://noitagame.com/press/images/screenshot_000.jpg"
+original_sha256 = "0dae0b00cc5c149215444f85b436ff0c5887803914df36609da7d72f1a9a3dbd"
+display_sha256 = "11bbede1757bc4c1216a106ebeed0aa37ff01d4c1f15d833b52ddc49202958b2"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "re4-case"
+source = "https://static.capcom.com/manuals/re4/RE4_GC_DMNL_EN.pdf"
+source_image = "https://static.capcom.com/manuals/re4/RE4_GC_DMNL_EN.pdf"
+original_sha256 = "e959a4974fb826d04db26ac3548d7d5ef148db7a0d5b22cbbf3d00461e53ba65"
+display_sha256 = "e959a4974fb826d04db26ac3548d7d5ef148db7a0d5b22cbbf3d00461e53ba65"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "backpack-grid"
+source = "https://store.steampowered.com/app/1970580/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1970580/ss_34b2c0a700a0b3486233b5d73d0643433593975e.1920x1080.jpg?t=1771527569"
+original_sha256 = "96af85e143d9f84ea8ac86ef4c75792d6afa455ae3b4d48af4226260911be7fc"
+display_sha256 = "7e22016a700ceea161f3101e79157a58d7558d459cad1bf196f90349d7d73fd8"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "dredge-grid"
+source = "https://store.steampowered.com/app/1562430/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/ss_b60f2ff50997c5da29fcd783770053263aac26c0.1920x1080.jpg?t=1780479732"
+original_sha256 = "43cc8ba020fdc1d31ec5614bbc2fcdcf9eaed8e2b2f592f6a79b7026589646c1"
+display_sha256 = "2ea3268b65d832347a91864e8dab8f6997fdd3cbbf1d716ce2d6acefea329dec"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "wizard-spell-ui"
+source = "https://wizardoflegend.com/press/wizard_of_legend/index.html"
+source_image = "https://wizardoflegend.com/press/wizard_of_legend/images/Wizard_of_Legend_SCREENSHOT2.png"
+original_sha256 = "7fa4e5edbc1477308f1a9dd571d78bfebfe1e63357fba703bf198abcf1947a3c"
+display_sha256 = "7fa4e5edbc1477308f1a9dd571d78bfebfe1e63357fba703bf198abcf1947a3c"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "magicka-key-hints"
+source = "https://store.steampowered.com/app/42910/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/42910/ss_514e6d7484e979f1879b59b4a1443d52bfde7cb1.1920x1080.jpg?t=1726497076"
+original_sha256 = "5c31b8646e575708a34cfdce45d2a220b493ad5b37f02010715e86026703d623"
+display_sha256 = "73e1ef8c9ea0b77e476876926f61f6ae0c9faa7e8848ad86d3e42409c1ca2358"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "links-diorama"
+source = "https://www.nintendo.com/en-gb/News/2019/October/Discover-what-graphic-refining-director-Yoshiki-Haruhana-aimed-for-with-the-visual-style-of-The-Legend-of-Zelda-Link-s-Awakening--1656228.html"
+source_image = "https://www.nintendo.com/eu/media/images/08_content_images/games_6/nintendo_switch_7/nswitch_thelegendofzeldalinksawakening/CI_NSwitch_LinksAwakeningBlog3_03.jpg"
+original_sha256 = "97dcb60e57a76504979e102642535632a1c04bb00eaac774a2acb2bbb76801e6"
+display_sha256 = "0534d6bbe9e1fcd47dce3ec6809ff5ae1c53e14ac5e160b15f0033bcdbd6a227"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "tunic-battlefield"
+source = "https://store.steampowered.com/app/553420/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553420/ss_5fc49d3c5fa34b0d0e6b6a5621f9062bec7ac4d7.1920x1080.jpg?t=1783359656"
+original_sha256 = "8788a029e6ee350395d06dd82b3f641b3a275a98ab2913c53532288d975885eb"
+display_sha256 = "3789c34271d89a68ac53e12652468efdd024e1cae9eefdb487aff1c9fb576161"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "octopath-focus"
+source = "https://store.steampowered.com/app/921570/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/921570/ss_d9c13a8f046e48ae57a2f2d6d134850410fe4932.1920x1080.jpg?t=1785812096"
+original_sha256 = "b2f5d2f1cc6f90a5ccb3b43bb02c0cfea88f4acd89c3765ec363309b05ac917c"
+display_sha256 = "7cb9d7cec521ce0c4073427f3f1dd5cb522c489168d26adf28d2dfaa86d82ef3"
+conversion = "FFmpeg PNG format conversion; no crop, resize or recolouring"
+
+[[images]]
+id = "current-pixel"
+revision = "reel-twin-moons-v5"
+source = ""
+source_image = ""
+original_sha256 = "285b1ccb93816d5ea5ddce01c111ff5ea4b709050c1f52e5987821e26af8a72a"
+display_sha256 = "285b1ccb93816d5ea5ddce01c111ff5ea4b709050c1f52e5987821e26af8a72a"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "current-anime"
+revision = "reel-twin-moons-v5"
+source = ""
+source_image = ""
+original_sha256 = "8d4f58b95fe6a44b81b74cc141030d9e6009e46e737698a959748f9d45be47e6"
+display_sha256 = "8d4f58b95fe6a44b81b74cc141030d9e6009e46e737698a959748f9d45be47e6"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "historical-moon"
+source = ""
+source_image = ""
+original_sha256 = "dcef5f501ea6b693ceb62ae261cd994d0e34d3cf34d8ade3b059fda16956c041"
+display_sha256 = "dcef5f501ea6b693ceb62ae261cd994d0e34d3cf34d8ade3b059fda16956c041"
+conversion = "PNG byte copy"
+
+[[images]]
+id = "noita-projectile-impact"
+source = "https://store.steampowered.com/app/881100/"
+source_image = "references/media/motion/noita-projectile-impact-frames.jpg"
+original_sha256 = "b18c8d5faa0615556226ea1dda8f910888d5f1c8f22ab5693a881e0fc0d2df7b"
+display_sha256 = "00147e8258a897a48e6c20bdecd17313c1effd3ae096d724c8eb818efc8c0e34"
+conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."
+
+[[images]]
+id = "wizard-wind-area"
+source = "https://store.steampowered.com/app/445980/"
+source_image = "references/media/motion/wizard-wind-area-frames.jpg"
+original_sha256 = "a5f93330975fbb6425d66c4eedb1f228c9841027a0460559046365ab7a8fb2c2"
+display_sha256 = "0d4864a1960cdbaa3421828f16903dce2b949f7cb186cb8fad8ba0d602960840"
+conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."
+
+[[images]]
+id = "fighterz-charge-beam"
+source = "https://store.steampowered.com/app/678950/"
+source_image = "references/media/motion/fighterz-charge-beam-frames.jpg"
+original_sha256 = "4c02eca458c83a5562d183f02c7cbe35fadf5cc694a234e352b0950368be466d"
+display_sha256 = "7e029e2e1876acadff41c8c52b93871d9aabedff540db1d92549473a9e24d566"
+conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."
+
+[[images]]
+id = "noita-residual-material"
+source = "https://store.steampowered.com/app/881100/"
+source_image = "references/media/motion/noita-residual-material-frames.jpg"
+original_sha256 = "1846f5cf159031b831ab1663a4a85a3cb5f5b63539513c11bcae5330d896de2c"
+display_sha256 = "7bbfef504f5418c8be27fc928ad62211541c25617acf7e27f039b205ecea9078"
+conversion = "JPEG study strip decoded to PNG for native renderer; no resize or crop. Original frame-sampling provenance in motion-study.toml."
+
+[[images]]
+id = "casting-focus-cel-off"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-cel-1600x960-off.png"
+original_sha256 = "04099fbe997f182e4f71c3718293fff2010fb5e337bed32d78a9fda0d8e8672b"
+display_sha256 = "04099fbe997f182e4f71c3718293fff2010fb5e337bed32d78a9fda0d8e8672b"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-cel-mild"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-cel-1600x960-world-plane.png"
+original_sha256 = "6042b4ca4c416128a770681646f5dcc173057a61cdf31dbc3ed487c78fb9c167"
+display_sha256 = "6042b4ca4c416128a770681646f5dcc173057a61cdf31dbc3ed487c78fb9c167"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-cel-stress"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-cel-1600x960-stress24-world-plane.png"
+original_sha256 = "5deb03d3842b5df0df1623a058b6ed6f6f955ef39356a9f0d15e3033b0c5a068"
+display_sha256 = "5deb03d3842b5df0df1623a058b6ed6f6f955ef39356a9f0d15e3033b0c5a068"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-pixel-off"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-pixel-1100x800-off.png"
+original_sha256 = "206d9026e470e56981a7a5bbf2d66cab0d530864905a98d90a4e97d67cfddc82"
+display_sha256 = "206d9026e470e56981a7a5bbf2d66cab0d530864905a98d90a4e97d67cfddc82"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-pixel-mild"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-pixel-1100x800-world-plane.png"
+original_sha256 = "d8260f0c8c78a9a4c7d7cfb1cc547414ae32b9b4c4e9580791c20516dc101852"
+display_sha256 = "d8260f0c8c78a9a4c7d7cfb1cc547414ae32b9b4c4e9580791c20516dc101852"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "casting-focus-pixel-stress"
+source = "atelico-app-engine@ca3b6bd0:proof/editor/casting-focus"
+source_image = "in-flight-pixel-1100x800-stress24-world-plane.png"
+original_sha256 = "5a0fa7cc7f8a96f9bdfedfd5244329329542267151f0c2eba2db3e024bcf113b"
+display_sha256 = "5a0fa7cc7f8a96f9bdfedfd5244329329542267151f0c2eba2db3e024bcf113b"
+conversion = "Exact PNG byte copy; no resampling, recoloring or compositing"
+
+[[images]]
+id = "mystralia-saved-spells"
+source = "https://store.steampowered.com/app/529660/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/529660/ss_bd3d4fcc3552efe2781ebe50b6b01a9b497f14a7.1920x1080.jpg?t=1786456220"
+original_sha256 = "a03f4972548ca52ed4c988831731de3e68656881756ac7033906e9c71a938999"
+display_sha256 = "a03f4972548ca52ed4c988831731de3e68656881756ac7033906e9c71a938999"
+conversion = "Unmodified downloaded bytes"
+
+[[images]]
+id = "mystralia-spell-editor"
+source = "https://store.steampowered.com/app/529660/"
+source_image = "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/529660/ss_53a3aca4c6affbcbc4e4ea479b187d8586c4c48c.1920x1080.jpg?t=1786456220"
+original_sha256 = "9546cc4df688c88194e1b133e90e183ae41dd0454dd048fb884cfe2921171f57"
+display_sha256 = "9546cc4df688c88194e1b133e90e183ae41dd0454dd048fb884cfe2921171f57"
+conversion = "Unmodified downloaded bytes"
+
+[[images]]
+id = "mystralia-authoring-cost"
+source = "https://www.gamedeveloper.com/design/creative-process-of-a-procedural-spell-crafting-system"
+source_image = "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/bltb368d5b87e4154c2/650e9d8b47b2f15f50ab40d0/Spellsystem.png/?disable=upscale&quality=100&width=1600"
+original_sha256 = "c6d246891c75aa036645b601bb0ae842b120f759b8494cd71b4d767ce5aa66fb"
+display_sha256 = "c6d246891c75aa036645b601bb0ae842b120f759b8494cd71b4d767ce5aa66fb"
+conversion = "Unmodified downloaded bytes"
+
+[[images]]
+id = "mystralia-authoring-motion"
+source = "https://store.steampowered.com/app/529660/"
+source_image = "https://video.akamai.steamstatic.com/store_trailers/529660/102461/939ac53aeccbae004c69a7b360e04e754fdd74ae/1751298001/hls_264_master.m3u8?t=1503521574"
+original_sha256 = "abb3030bfe0a5e54503595058d05d31b7d071ce3ada105835d7b189d23d699ec"
+display_sha256 = "895366e922908b0239b6d725f6a097862a41f483fc5e3b6465eab8114279aea4"
+conversion = "Exact source frames750,765,780,795,810,825,840,849,855 resized384x216 and tiled3x3; original hash refers to720p video rendition"
+
+[[images]]
+id = "fictorum-rune-assignment"
+source = "https://fictorum.com/blog/2016/01/11/fictorum-update-9-spell-shaping-system-runes-quests-and-ai-improvements/"
+source_image = "https://fictorum.com/blog/wp-content/uploads/2016/01/FictorumUpdatedRuneSet.png"
+original_sha256 = "d87b414267102554d26e027cdf3d351f900427dbfd615944df1c9d7f50ad3d72"
+display_sha256 = "d87b414267102554d26e027cdf3d351f900427dbfd615944df1c9d7f50ad3d72"
+conversion = "Unmodified downloaded bytes"
+
+# Native town comparison: repeated current IDs below name a new revision; prior reel bytes are preserved.
+
+[[images]]
+id = "current-pixel"
+revision = "town-player-square-2026-10-09"
+source = "atelico-app-engine:proof/editor/player-readability"
+source_image = "media/player-readability/pixel-night-1100x800.png"
+original_sha256 = "e4419e81b19b64ea1a6539585c63954382fdb4ff9abda42568a1f13e87ba39be"
+display_sha256 = "e4419e81b19b64ea1a6539585c63954382fdb4ff9abda42568a1f13e87ba39be"
+conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"
+
+[[images]]
+id = "current-anime"
+revision = "town-player-square-2026-10-09"
+source = "atelico-app-engine:proof/editor/player-readability"
+source_image = "media/player-readability/cel-night-1100x800.png"
+original_sha256 = "5da83570bf8aac129f01977589fafc11d6be580044086c35e2bbdb4b4d627d3d"
+display_sha256 = "5da83570bf8aac129f01977589fafc11d6be580044086c35e2bbdb4b4d627d3d"
+conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"
+
+[[images]]
+id = "current-pixel-day-control"
+revision = "town-player-square-2026-10-09"
+source = "atelico-app-engine:proof/editor/player-readability"
+source_image = "media/player-readability/pixel-day-1100x800.png"
+original_sha256 = "adc303a50d141135770e0b477472f1d0f5dbe96f829ecb0f61584ab7439f0997"
+display_sha256 = "adc303a50d141135770e0b477472f1d0f5dbe96f829ecb0f61584ab7439f0997"
+conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"
+
+[[images]]
+id = "current-cel-day-control"
+revision = "town-player-square-2026-10-09"
+source = "atelico-app-engine:proof/editor/player-readability"
+source_image = "media/player-readability/cel-day-1100x800.png"
+original_sha256 = "971e874f17adb9d293a8ff5762392634b5d3af099f2ac2b15820a11fe11845ab"
+display_sha256 = "971e874f17adb9d293a8ff5762392634b5d3af099f2ac2b15820a11fe11845ab"
+conversion = "Exact native PNG byte copy; no resampling, recoloring or compositing. Source/validation hashes: media/player-readability/source-hashes.json"
+
+# Task159 reserved viewport, preserving both earlier current-card revisions above.
+
+[[images]]
+id = "current-pixel"
+revision = "town-player-reserved-viewport-2026-10-09"
+source = "atelico-app-engine@c606fa07b14721013b30000bb202c031f9d573fc:proof/editor/player-viewport"
+source_image = "media/player-viewport/pixel-night-1100x800.png"
+original_sha256 = "4cb1af8139ab726312234be9e1bc3c06f8f02638f6a036a90da3d3095a2b4139"
+display_sha256 = "4cb1af8139ab726312234be9e1bc3c06f8f02638f6a036a90da3d3095a2b4139"
+conversion = "Exact validated native PNG copy; prior baseline retained. See media/player-viewport/import.json."
+
+[[images]]
+id = "current-anime"
+revision = "town-player-reserved-viewport-2026-10-09"
+source = "atelico-app-engine@c606fa07b14721013b30000bb202c031f9d573fc:proof/editor/player-viewport"
+source_image = "media/player-viewport/cel-night-1100x800.png"
+original_sha256 = "88179707a5f286ea6063898254b5befc02a5b59e21caed131fa422c42e6c4a13"
+display_sha256 = "88179707a5f286ea6063898254b5befc02a5b59e21caed131fa422c42e6c4a13"
+conversion = "Exact validated native PNG copy; prior baseline retained. See media/player-viewport/import.json."
+
+[[images]]
+id = "current-pixel-day-control"
+revision = "town-player-reserved-viewport-2026-10-09"
+source = "atelico-app-engine@c606fa07b14721013b30000bb202c031f9d573fc:proof/editor/player-viewport"
+source_image = "media/player-viewport/pixel-day-1100x800.png"
+original_sha256 = "cfe10fbc7307a40786a9c4682cbe494a7fd2b361bc493ff1c2d8a3ad2517a3e4"
+display_sha256 = "cfe10fbc7307a40786a9c4682cbe494a7fd2b361bc493ff1c2d8a3ad2517a3e4"
+conversion = "Exact validated native PNG copy; prior baseline retained. See media/player-viewport/import.json."
+
+[[images]]
+id = "current-cel-day-control"
+revision = "town-player-reserved-viewport-2026-10-09"
+source = "atelico-app-engine@c606fa07b14721013b30000bb202c031f9d573fc:proof/editor/player-viewport"
+source_image = "media/player-viewport/cel-day-1100x800.png"
+original_sha256 = "501b90f5d95261b0bae5e020c5a4d1e700641e1a9b5f0c541537f16b35639325"
+display_sha256 = "501b90f5d95261b0bae5e020c5a4d1e700641e1a9b5f0c541537f16b35639325"
+conversion = "Exact validated native PNG copy; prior baseline retained. See media/player-viewport/import.json."

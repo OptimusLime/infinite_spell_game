@@ -1,0 +1,45 @@
+name: Fire
+types: shader
+nodes:
+  uv: {type: uv, x: 0, y: 0}
+  time: {type: time, x: 0, y: 220, params: {speed: 0.96}}
+  p: {type: center_uv, x: 240, y: 0}
+  flow: {type: fire_flow, x: 480, y: 0, params: {flow: 0.28}}
+  shape: {type: fire_shape, x: 720, y: -260, params: {width: 0.72, height: 0.94}}
+  density: {type: fire_density, x: 720, y: 180, params: {frequency: 3.4}}
+  heat: {type: fire_heat, x: 960, y: 0}
+  erosion: {type: fire_erosion, x: 1200, y: 0, params: {amount: 0.58, core: 0.34}}
+  core: {type: fire_core, x: 1440, y: 180}
+  palette: {type: fire_palette, x: 1680, y: 0}
+  fragments: {type: fire_fragments, x: 1920, y: 0, params: {rate: 4}}
+  glow: {type: fire_glow, x: 2160, y: 0, params: {intensity: 0.055}}
+  out: {type: alpha_output, x: 2400, y: 0, params: {mode: clip}}
+edges:
+  p:uv: uv:uv
+  flow:p: p:p
+  flow:t: time:t
+  shape:p: flow:p
+  density:p: flow:p
+  density:t: time:t
+  heat:depth: shape:depth
+  heat:h: shape:h
+  heat:density: density:value
+  erosion:p: flow:p
+  erosion:t: time:t
+  erosion:heat: heat:heat
+  erosion:h: shape:h
+  erosion:envelope: shape:mask
+  core:heat: erosion:heat
+  core:mask: erosion:mask
+  core:threshold: erosion:threshold
+  palette:heat: erosion:heat
+  palette:core: core:core
+  palette:threshold: erosion:threshold
+  fragments:color: palette:color
+  fragments:mask: erosion:mask
+  glow:rgba: fragments:rgba
+  out:rgba: glow:rgba
+groups:
+  motion: {label: Motion, members: [uv, time, p, flow]}
+  field: {label: One heat field, members: [shape, density, heat, erosion, core]}
+  colour: {label: Colour, members: [palette, fragments, glow, out]}

@@ -1,0 +1,15 @@
+[package]
+name = "component-shader-forge"
+edition = "2021"
+version = "0.1.0"
+license = "Commercial"
+
+[dependencies]
+atelico-component.workspace = true
+atelico-graph.workspace = true
+atelico-timeline.workspace = true
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }
+atelico-gpu.workspace = true
+naga = { version = "27", features = ["wgsl-in"] }
+serde_yaml_ng = "0.10"

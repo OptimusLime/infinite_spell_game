@@ -1,0 +1,43 @@
+{
+  "id": "isg-battlefield-night",
+  "kind": "environment",
+  "name": "Battlefield — night variant",
+  "description": "Separate night comparison of the same battlefield identity and rules; dark atmosphere with readable local light and action.",
+  "parent": {
+    "id": "isg-battlefield",
+    "revision": "861e7d951deb5064717d9831318b10d068df1e1c9b6a7fc215044ce1d500e773"
+  },
+  "world": {
+    "id": "isg-world",
+    "revision": "26924568365d55509723c4044b2eb8f4ee3046820650efc67a462a02afdbda0b"
+  },
+  "transform": {
+    "operation": "design_variant",
+    "goal": "Separate night comparison of the same battlefield identity and rules; dark atmosphere with readable local light and action.",
+    "changes": [],
+    "preserve": [
+      "Accepted game rules and cited compatibility pins."
+    ],
+    "avoid": []
+  },
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.state": "In",
+    "open.lighting": "Exact palette, moon contribution and light intensity remain open.",
+    "variant.identity": "isg-battlefield",
+    "variant.phase": "night"
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

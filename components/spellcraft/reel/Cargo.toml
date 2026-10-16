@@ -1,0 +1,14 @@
+[package]
+name = "spellcraft-reel"
+edition = "2021"
+version = "0.1.0"
+license = "Commercial"
+
+# spell-reel: the spells' effects rendered offscreen from the real town, one still (or clip) per punch moment, for
+# judging the look and for the video's shots. Its own crate: it needs scene-3d, which already depends on spellcraft.
+[dependencies]
+component-spellcraft = { path = "../../../components/spellcraft" }
+component-scene-3d = { path = "../../../components/scene-3d" }
+component-weather = { path = "../../../components/weather" }
+clap = { version = "4", features = ["derive"] }
+serde_json = "1"

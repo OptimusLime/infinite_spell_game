@@ -1,0 +1,19 @@
+# The video's one linear path: card ids (the card file's path under storyboard/, without .toml) in play order.
+title = "Infinite Spell Game"
+cards = [
+  "world/pixel/night-town",
+  "making/parts",
+  "town/seed-planted",
+  "making/agents",
+  "sky/forecast",
+  "world/cel/frozen-ink",
+  "sky/monsters-rise",
+  "town/shadow-defence",
+  "sky/fire-in-snow",
+  "spells/fusion-arrives",
+  "spells/cast-order",
+  "spells/fuse-building",
+  "town/rooftop-wall",
+  "town/hold-the-seed",
+  "world/pixel/morning-after",
+]

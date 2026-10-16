@@ -1,0 +1,5 @@
+Paul editor (7878), scenes/town.scene.luau, after restart on runtime batch (d0d8ee6..574c9c8):
+paused: 8.0 ms, 0 draws/s
+playing (3 readings, 2 s apart): 10 ms / 11 ms / 12 ms per frame, 29-30 draws/s
+before today: 52-83 ms paused (evidence/2026-10-07/town-tab-hud-weather-grounded-houses-17ms.png shows 17 ms after first fixes)
+read with: app get runtime.scene

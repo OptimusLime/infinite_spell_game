@@ -1,0 +1,140 @@
+# Engineering fixture only. Capacities, dimensions, costs and target geometry are unreviewed test inputs.
+title = "Spell player · unreviewed engineering fixture"
+description = "Explicit authored selection, physical wand/cartridge custody and finite energy. In-memory session; no durable world save."
+actor = "actor"
+equipment_slot = "hand"
+muzzle_offset = 0.7
+floor = 0.0
+
+[[spells]]
+id = "bolt"
+definition = "../packages/spellcraft/fixtures/projectile-hit.spell.yaml"
+[[spells]]
+id = "orb"
+definition = "../packages/spellcraft/fixtures/projectile-push.spell.yaml"
+
+[inventory]
+retired_items = []
+[[inventory.grids]]
+id = "pack"
+holder = { kind = "entity", id = "player" }
+size = { width = 6, height = 3 }
+
+[[inventory.items]]
+item = { id = "wand", definition = "fixture-wand", footprint = { size = { width = 2, height = 1 }, rotatable = true } }
+location = { kind = "grid", grid = "pack", column = 0, row = 0, orientation = "normal" }
+
+[[inventory.items]]
+item = { id = "amber", definition = "fixture-cartridge", footprint = { size = { width = 1, height = 1 }, rotatable = true } }
+location = { kind = "grid", grid = "pack", column = 0, row = 1, orientation = "normal" }
+
+[[inventory.items]]
+item = { id = "blue", definition = "fixture-cartridge", footprint = { size = { width = 1, height = 1 }, rotatable = true } }
+location = { kind = "grid", grid = "pack", column = 1, row = 1, orientation = "normal" }
+
+[equipment]
+owner = "player"
+[[equipment.slots]]
+id = "hand"
+title = "Wand hand"
+accepts = { kind = "definitions", definitions = ["fixture-wand"] }
+
+[[supply.wands]]
+item = "wand"
+cartridge_slot = "cartridge"
+accepts = ["fixture-cartridge"]
+
+[[supply.cartridges]]
+item = "amber"
+capacity = 40.0
+remaining = 40.0
+[[returns]]
+item = "amber"
+location = { kind = "grid", grid = "pack", column = 0, row = 1, orientation = "normal" }
+
+[[supply.cartridges]]
+item = "blue"
+capacity = 40.0
+remaining = 40.0
+[[returns]]
+item = "blue"
+location = { kind = "grid", grid = "pack", column = 1, row = 1, orientation = "normal" }
+
+[world]
+tick_seconds = 0.016666667
+[[world.forms]]
+shape = "bolt"
+radius = 0.1
+mass = 0.3
+lifetime_ticks = 180
+[[world.forms]]
+shape = "orb"
+radius = 0.15
+mass = 0.5
+lifetime_ticks = 180
+
+[[bodies]]
+id = "actor"
+role = "actor"
+position = [0.0, 0.5, 0.0]
+radius = 0.5
+mass = 1.0
+health = 12.0
+
+[[bodies]]
+id = "front"
+role = "target"
+position = [0.0, 0.5, 2.0]
+radius = 0.5
+mass = 1.0
+health = 12.0
+
+[[bodies]]
+id = "side"
+role = "target"
+position = [1.7, 0.5, 1.7]
+radius = 0.5
+mass = 1.0
+health = 12.0
+
+# Explicit engineering-fixture bindings. Caller IDs determine selection and aim; no cycling/nearest target.
+[[keys]]
+key = "1"
+command = "select"
+spell_id = "bolt"
+[[keys]]
+key = "2"
+command = "select"
+spell_id = "orb"
+[[keys]]
+key = "Q"
+command = "aim"
+target_id = "front"
+[[keys]]
+key = "E"
+command = "aim"
+target_id = "side"
+[[keys]]
+key = "Space"
+command = "fire"
+[[keys]]
+key = "W"
+command = "equip"
+item_id = "wand"
+[[keys]]
+key = "A"
+command = "load"
+item_id = "amber"
+[[keys]]
+key = "B"
+command = "load"
+item_id = "blue"
+[[keys]]
+key = "U"
+command = "unload"
+[[keys]]
+key = "I"
+command = "toggle_inventory"
+[[keys]]
+key = "G"
+command = "toggle_equipment"

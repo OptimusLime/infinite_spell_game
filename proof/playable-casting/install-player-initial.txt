@@ -1,0 +1,126 @@
+resolved: app spell-player 0.1.0 /   inventory-grid ^0.1 → inventory-grid 0.1.0 /     ui-kit → ui-kit 0.1.0 (installed) /   scene-3d ^0.1 → scene-3d 0.1.0 /     ui-kit ^0.1 → ui-kit 0.1.0 (installed) /   spellcraft ^0.1 → spellcraft 0.1.0 /   ui-kit ^0.1.2 → ui-kit 0.1.2 /     layout ^0.1 → layout 0.1.0 (installed)
+  app spell-player 0.1.0
+    inventory-grid ^0.1 → inventory-grid 0.1.0
+      ui-kit → ui-kit 0.1.0 (installed)
+    scene-3d ^0.1 → scene-3d 0.1.0
+      ui-kit ^0.1 → ui-kit 0.1.0 (installed)
+    spellcraft ^0.1 → spellcraft 0.1.0
+    ui-kit ^0.1.2 → ui-kit 0.1.2
+      layout ^0.1 → layout 0.1.0 (installed)
+fetched component inventory-grid@0.1.0: sha256 680e2d6db725… verified, http://127.0.0.1:8830/blobs in 1 ms (2 KB)
+fetched component scene-3d@0.1.0: sha256 9f457d56f336… verified, http://127.0.0.1:8830/blobs in 4 ms (69 KB)
+fetched component spellcraft@0.1.0: sha256 8fc70b045318… verified, http://127.0.0.1:8830/blobs in 4 ms (59 KB)
+spellcraft: added 9 files to the project
+cached component ui-kit@0.1.2: sha256 74c6c7ae5dc9… verified, from the local store (293 KB)
+fetched app spell-player@0.1.0: sha256 3ecb667d3e73… verified, http://127.0.0.1:8830/blobs in 3 ms (22 KB)
+native code changed (layout, node-graph, scene-3d, shader-forge, spell-player, spellcraft): building the host
+     Locking 41 packages to latest compatible versions
+      Adding anstream v1.0.0
+      Adding anstyle v1.0.14
+      Adding anstyle-parse v1.0.0
+      Adding anstyle-query v1.1.5
+      Adding anstyle-wincon v3.0.11
+      Adding atelico-equipment v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/equipment)
+      Adding atelico-items v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/items)
+      Adding atelico-render-3d v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/render-3d)
+      Adding clap v4.6.7
+      Adding clap_builder v4.6.7
+      Adding clap_derive v4.6.7
+      Adding clap_lex v1.1.1
+      Adding clr_random v0.1.1
+      Adding colorchoice v1.0.5
+      Adding component-arrow v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/arrow)
+      Adding component-creatures v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/creatures)
+      Adding component-fire v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/fire)
+      Adding component-founding v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/founding)
+      Adding component-island-props v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/island-props)
+      Adding component-markov-junior v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/markov-junior)
+      Adding component-moon-town v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/moon-town)
+      Adding component-particles v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/particles)
+      Adding component-pixel-sprites v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/pixel-sprites)
+      Adding component-plant-generation v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/plant-generation)
+      Adding component-rock-generation v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/rock-generation)
+      Adding component-scene-3d v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/scene-3d)
+      Adding component-sky v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/sky)
+      Adding component-spell-player v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/spell-player)
+      Adding component-spellcraft v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/spellcraft)
+      Adding component-terrain-generation v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/terrain-generation)
+      Adding component-toon-character v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/toon-character)
+      Adding component-water v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/water)
+      Adding component-weather v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/weather)
+      Adding component-world-looks v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/world-looks)
+      Adding glam v0.29.3
+      Adding is_terminal_polyfill v1.70.2
+      Adding markov-junior v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/markov-junior)
+      Adding once_cell_polyfill v1.70.2
+      Adding rand_core v0.9.5
+      Adding strsim v0.11.1
+      Adding utf8parse v0.2.2
+   Compiling atelico-component v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/component)
+   Compiling ureq v2.12.1
+   Compiling atelico-equipment v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/equipment)
+   Compiling atelico-config v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/config)
+   Compiling atelico-render-3d v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/render-3d)
+   Compiling component-shader-forge v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/shader-forge)
+   Compiling component-particles v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/particles)
+   Compiling component-markov-junior v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/markov-junior)
+   Compiling component-fire v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/fire)
+   Compiling component-water v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/water)
+   Compiling component-pixel-sprites v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/pixel-sprites)
+   Compiling component-sky v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/sky)
+   Compiling atelico-registry v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/registry)
+warning: value assigned to `x` is never read
+   --> /Users/paul/coding/atelico/atelico-app-engine/packages/pixel-sprites/src/atlas.rs:123:10
+    |
+123 |     let (mut x, mut y, mut shelf) = (0u32, 0u32, 0u32);
+    |          ^^^^^ this value is reassigned later and never used
+...
+133 |         (x, y, shelf) = (0, y + shelf, 0);
+    |          - `x` is overwritten here before the previous value is read
+    |
+    = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+   Compiling component-weather v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/weather)
+warning: `component-pixel-sprites` (lib) generated 1 warning
+   Compiling component-spellcraft v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/spellcraft)
+   Compiling component-moon-town v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/moon-town)
+   Compiling component-founding v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/founding)
+warning: unused variable: `seed`
+  --> /Users/paul/coding/atelico/atelico-app-engine/components/spellcraft/src/fx.rs:72:13
+   |
+72 |         let seed = n as u32 * 7919;
+   |             ^^^^ help: if this is intentional, prefix it with an underscore: `_seed`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `t`
+   --> /Users/paul/coding/atelico/atelico-app-engine/components/spellcraft/src/fx.rs:122:27
+    |
+122 | pub fn sprites(fx: &[Fx], t: f32, ground: atelico_render_3d::part::Ground, scale: f32, look: &str) -> Vec<component_particles::Spri...
+    |                           ^ help: if this is intentional, prefix it with an underscore: `_t`
+
+   Compiling atelico-search v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/search)
+   Compiling component-creatures v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/creatures)
+   Compiling component-arrow v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/arrow)
+   Compiling component-island-props v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/island-props)
+   Compiling component-terrain-generation v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/terrain-generation)
+   Compiling component-plant-generation v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/plant-generation)
+   Compiling component-rock-generation v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/rock-generation)
+   Compiling component-world-looks v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/world-looks)
+   Compiling component-toon-character v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/packages/toon-character)
+   Compiling atelico-render v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/render)
+   Compiling component-scene-3d v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/scene-3d)
+   Compiling atelico-host-c8d028fcbd v0.1.0 (/Users/paul/coding/infinite_spell_game/.atelico/host)
+   Compiling atelico-queue v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/queue)
+   Compiling component-video v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/video)
+warning: `component-spellcraft` (lib) generated 2 warnings (run `cargo fix --lib -p component-spellcraft` to apply 2 suggestions)
+   Compiling atelico-script v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/script)
+   Compiling atelico-editor v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/editor)
+   Compiling component-spell-player v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/spell-player)
+   Compiling atelico-agent v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/agent)
+   Compiling component-layout v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/layout)
+   Compiling component-node-graph v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/node-graph)
+    Finished `dev` profile [optimized + debuginfo] target(s) in 43.54s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+built in 44s

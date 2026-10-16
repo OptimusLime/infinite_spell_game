@@ -1,0 +1,5 @@
+title = "Order matters"
+spoken = "Order matters. Fire then wind: a wall of flame. Wind then fire: a fireball."
+shown = "Big, readable order: the two spell icons pop above the player's head one after the other. Fire then wind: a wall of flame rises across the street and stops a line of creatures. Wind then fire: a fireball arcs into a crowd and bursts. Each result's typed entry flashes for half a second."
+status = "todo"
+sketch = "sketches/cast-order.png"

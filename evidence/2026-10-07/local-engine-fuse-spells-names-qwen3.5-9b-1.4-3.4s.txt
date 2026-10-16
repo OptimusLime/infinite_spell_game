@@ -1,0 +1,13 @@
+# spells.rs's fusion request (rules, the built spell in words, the pair's schema) sent to the local engine on :8187,
+# model in-memory::Qwen/Qwen3.5-9B-Q4_K_M, temperature 0.7; every reply is a legal Choice (shape and element fixed by
+# cast order). 2026-10-07.
+fire->wind seed 7: { "shape": "wall", "element": "wind", "carrier": "fire", "name": "Blazing Curtain" } in 2.6s
+fire->wind seed 8: { "shape": "wall", "element": "wind", "carrier": "fire", "name": "Gale Rampart" } in 2.3s
+wind->fire seed 7: { "shape": "orb", "element": "fire", "carrier": "wind", "name": "Whirling Ember" } in 3.1s
+wind->fire seed 8: { "shape": "orb", "element": "fire", "carrier": "wind", "name": "Whirl Ember" } in 3.0s
+fire->fire seed 7: { "shape": "wall", "element": "fire", "carrier": null, "name": "Warmth" } in 2.9s
+fire->fire seed 8: { "shape": "wall", "element": "fire", "carrier": null, "name": "Warm Glow" } in 2.2s
+wind->wind seed 7: { "shape": "orb", "element": "wind", "carrier": null, "name": "Zephyr" } in 2.4s
+wind->wind seed 8: { "shape": "orb", "element": "wind", "carrier": null, "name": "Zephyr" } in 1.8s
+# The first prompt (parts only) gave "Whirling Ember Wall" for an orb and real-spell names for duds; the shipped
+# prompt describes the built spell and the dud rule.

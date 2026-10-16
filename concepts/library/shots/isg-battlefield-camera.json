@@ -1,0 +1,38 @@
+{
+  "id": "isg-battlefield-camera",
+  "kind": "shot",
+  "name": "Battlefield framing",
+  "description": "Widen the view enough to understand the battlefield and contrast small and large forms.",
+  "parent": null,
+  "world": {
+    "id": "isg-world",
+    "revision": "26924568365d55509723c4044b2eb8f4ee3046820650efc67a462a02afdbda0b"
+  },
+  "transform": null,
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.state": "In",
+    "open.parameters": "Framing, field of view, camera height, focus and tilt values remain open."
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [
+    {
+      "role": "environment",
+      "concept": {
+        "id": "isg-battlefield",
+        "revision": "861e7d951deb5064717d9831318b10d068df1e1c9b6a7fc215044ce1d500e773"
+      }
+    }
+  ],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

@@ -1,0 +1,18 @@
+# Game-owned authored study derived from the reusable engineering example. Not accepted balance or final spell design.
+version: 1
+name: casting-study-bolt
+title: Directed bolt revision
+kind: spell
+shape: bolt
+element: wind
+mana: {source: wand, allocation: 10}
+container: field
+phases:
+  on_start:
+    - {id: form, use: body.bolt, output: form}
+    - {id: launch, use: motion.launch, target: form, params: {speed: 5}}
+  on_contact:
+    target: form
+    every: 1
+    steps:
+      - {id: push, use: effect.damage, target: event.other, params: {amount: 3}}

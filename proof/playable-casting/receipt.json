@@ -1,0 +1,486 @@
+{
+  "task": 104,
+  "result": "Technical integration verified; human art/gameplay acceptance remains open",
+  "project": "/Users/paul/coding/infinite_spell_game",
+  "live_host": {
+    "port": 7890,
+    "pid": 5119,
+    "binary": "/tmp/atelico-orientation-target/debug/atelico-host-c8d028fcbd",
+    "binary_sha256": "64882eb712f40a5096441d3e9632fd7b9399370aaa2fdb359e7432835f7e7a0d",
+    "linked": [
+      "layout",
+      "node-graph",
+      "scene-3d",
+      "shader-forge",
+      "spell-player",
+      "spellcraft"
+    ],
+    "agent_started": false,
+    "session": "casting-study",
+    "canonical_config": "/Users/paul/coding/infinite_spell_game/players/casting-study.player.toml"
+  },
+  "source_ownership": {
+    "game": [
+      "players/casting-study.player.toml",
+      "spells/casting-study/bolt.spell.yaml",
+      "spells/casting-study/push.spell.yaml",
+      "scenes/casting-study-*.scene.luau"
+    ],
+    "shared": "spell-player + Inventory + Equipment + Spellcraft Rust/Data, generic inventory_grid and scene-3d; no game-specific UI runtime"
+  },
+  "packages": [
+    {
+      "name": "editor-console",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "6efa9a6032c76d9917e2fbc69b1d3963168d251089fbffd4d3d0725c06b90656",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git",
+      "by": "app-editor"
+    },
+    {
+      "name": "editor-inspector",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "4a5e8f9bf696b500dad91cbb5c8454f2e3646db3df03eb03600d45011490e1b6",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git",
+      "by": "app-editor"
+    },
+    {
+      "name": "editor-panels",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "85573281ca561cbd80c2588dc246c49b8e400d0597df3862c2c6d4e78888b16b",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git",
+      "by": "app-editor"
+    },
+    {
+      "name": "editor-project",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "1c3c45a2f705f56ac04a34ede107e7a02d6a13c0dd6ef21f8ce3176d4ac0254f",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git",
+      "by": "app-editor"
+    },
+    {
+      "name": "editor-scene-tree",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "be33d83c32a5942d0e26d0a8611eaa035c76a01a67874e6f8ea14c2c1dd9a97d",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git",
+      "by": "app-editor"
+    },
+    {
+      "name": "editor-scene-view",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "ac797b2307dd21dee74c32dfbbabd73f0c260bd01f14c631d7c4d667a4499622",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git",
+      "by": "app-editor"
+    },
+    {
+      "name": "editor-status",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "a92fbf84d4c6fa795f828ec4fd3520d8762a1299ac920d4fcbeb63b5b7c490a4",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git",
+      "by": "app-editor"
+    },
+    {
+      "name": "editor-toolbar",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "aa228bfd6f1712d22a5161b8723d64cf370ddf5f46eeda3abf4e1d1f34646df8",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git",
+      "by": "app-editor"
+    },
+    {
+      "name": "inventory-grid",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "680e2d6db7257287ccf5d84a707f37a93729db834553fc2754e6e2f9d0d31b7d",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git"
+    },
+    {
+      "name": "layout",
+      "kind": "component",
+      "version": "0.1.1",
+      "hash": "967c7267ef78a0b0fcd8137e1dd323295de774232a2c9e13f5577e5d6c982e37",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git"
+    },
+    {
+      "name": "node-graph",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "cba994d8d17d48471f4014c4572379ae6029bd91a72a5c89648223a206ac846e",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git"
+    },
+    {
+      "name": "scene-3d",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "9f457d56f336fba79bd5ad9666b4948eea29d28cf28a4d4c73e1435796150199",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git"
+    },
+    {
+      "name": "shader-forge",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "140701ad866f61035f36a2f3968ea23076af8b169a134ef2d526a81a7ccf6690",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git"
+    },
+    {
+      "name": "spell-player",
+      "kind": "app",
+      "version": "0.1.1",
+      "hash": "27ae9f36d127a35daf85dfdf280cf0b5c295750b2b93401c144caf5e923857a7",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git"
+    },
+    {
+      "name": "spellcraft",
+      "kind": "component",
+      "version": "0.1.0",
+      "hash": "8fc70b0453183ff0bb1fd144c55db14e620bc8ceedc2b01f0116f3b46017f127",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git"
+    },
+    {
+      "name": "ui-kit",
+      "kind": "component",
+      "version": "0.1.2",
+      "hash": "74c6c7ae5dc98c300217b475b6c0b2a0d828ed00dc9902d1544c66f9c6f2ada2",
+      "source": "registry+file:///Users/paul/.atelico/remote/index.git"
+    }
+  ],
+  "proof": {
+    "initial_total": 80,
+    "select_equip_load_aim_total": 80,
+    "first_cast_total": 60,
+    "first_contact_front_health": 9,
+    "preview_and_admit_total": 60,
+    "old_receipt_retained": true,
+    "old_revision": "cfb78b9714d1dc5bc1b0c649f0c24cb40b3e88ea7a65b3f1d62a3afd25909c7c",
+    "admitted_revision": "73ccc9ef36c8022ad1bab4be459d454af7511cb65ace1b2cfe097e38a00eaded",
+    "subsequent_cast_total": 50,
+    "depleted_amber_total": 40,
+    "depleted_attempt_added_receipt": false,
+    "replacement_changed_total": false,
+    "push_cast_total": 20,
+    "final_receipt_allocations": [
+      20,
+      10,
+      10,
+      20
+    ],
+    "final_physical_cartridges": [
+      {
+        "capacity": 40,
+        "definition": "study-cartridge",
+        "item": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.616d626572",
+        "item_id": "amber",
+        "loaded": false,
+        "remaining": 0
+      },
+      {
+        "capacity": 40,
+        "definition": "study-cartridge",
+        "item": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.626c7565",
+        "item_id": "blue",
+        "loaded": true,
+        "remaining": 20
+      }
+    ],
+    "same_session_all_four_views": true,
+    "same_four_receipt_ids_all_views": true,
+    "script_upgrade_same_pid": true,
+    "script_upgrade_same_total": true,
+    "script_upgrade_same_receipt_ids": true
+  },
+  "captures": {
+    "wide": [
+      1600,
+      960
+    ],
+    "narrow": [
+      1100,
+      800
+    ],
+    "source": "Actual native window framebuffers through control API, visually inspected. Not OS desktop screenshots.",
+    "video": {
+      "file": "finite-casting-1100x800.mp4",
+      "fps": 30,
+      "frames": 390,
+      "duration_seconds": 13,
+      "codec": "h264",
+      "audio": false,
+      "process": "Continuous one-step/one-frame native capture; no cuts or inferred speedup. Visible FPS badge is engine draw capacity, not recording FPS.",
+      "source_package": "spell-player0.1.0 cel rendering before HUD-only0.1.1 update"
+    }
+  },
+  "hud_fix": {
+    "existing_engine_boundary": "style.crisp on shared HUD root",
+    "native_regression": "proof/editor/spell-player/pixel-hud-proof.json in engine",
+    "package_version": "0.1.1",
+    "pixel_panels_inspected": [
+      "main controls",
+      "Inventory",
+      "Equipment",
+      "Sources"
+    ]
+  },
+  "limits": [
+    "Graybox actor/targets/projectiles and explicit provisional capacities, dimensions, costs and camera values; no approval of art, balance or game feel.",
+    "Fixed actor and explicit named target aiming. No walking, ground-mouse aim, worldgeneration, fusion or automatic fire.",
+    "Authored file was saved externally, then previewed/admitted through native UI. Native authoring is separate task135.",
+    "Finite session survives view/time/script reload changes in this process. Restart does not restore a durable physical world save.",
+    "Expired physical bodies can leave funded instances recorded running with unused allocation. Completion/cancel/dissipation and cleanup contract is task138; no implicit refund.",
+    "Native packages build against this engine checkout; lock pins identify package bytes but do not freeze every shared engine crate.",
+    "Four comparison documents do not approve an in-game look-switch mechanic."
+  ],
+  "files": {
+    "after-player-ui-upgrade.json": {
+      "sha256": "3d2803c5830a84f56bc9c92a180cf5471fa36ed761783a70d07ca0653a8497f5",
+      "bytes": 17367
+    },
+    "before-player-ui-upgrade.json": {
+      "sha256": "aeffcec976df2c27143644afe1f55bf8db36b7ff7adcdf1b8b0e70b0f581fb09",
+      "bytes": 17367
+    },
+    "before-upgrade-host.json": {
+      "sha256": "f3bde1bfddac0d650f4f402cfcbdd0c14000f8c8fc981fad99e8b059af5d4cd7",
+      "bytes": 1676
+    },
+    "bolt-admitted.spell.yaml": {
+      "sha256": "8272547b357e7eb391288b509fecf91b0395f757408584219ae3e2db702c7002",
+      "bytes": 553
+    },
+    "bolt-before.spell.yaml": {
+      "sha256": "cb7d842a8effab9650d376d3a1eb6f685e8f4f2f6f62fbd0d6810e268df28368",
+      "bytes": 550
+    },
+    "capture_control.py": {
+      "sha256": "7f0235d440c5e184c8c21260f026792e62c2049b0c3a7a6639fdda4475a42282",
+      "bytes": 2120
+    },
+    "capture_motion.py": {
+      "sha256": "e65b1f9d14775a852bc3c163989509cc5ed19752c2067645613be9ee65bfcf35",
+      "bytes": 1877
+    },
+    "contact-1100x800.png": {
+      "sha256": "a958ff50886091cd050132677bf82dfcace57a4b3c6767e531b0b4e5f634fc02",
+      "bytes": 210434
+    },
+    "contact-1600x960.png": {
+      "sha256": "0aec7fff143d59773627dbf8d58383b3ce8eef55c5e1b0f88c9cbc981b1fdff7",
+      "bytes": 233198
+    },
+    "depleted-replaced-and-push.json": {
+      "sha256": "1032afb30907144d24ab8b1de60ce97c4d3b2a00141d835c8f83dfccc44d1bfa",
+      "bytes": 17366
+    },
+    "equipment-1100x800.png": {
+      "sha256": "711062427c9da393f535fff474dbbef9684b9d3b8491149330d3480be3bd2b5c",
+      "bytes": 259020
+    },
+    "final-live-1600x960.png": {
+      "sha256": "3e6e7afcf93ac8682d7d1d05dc8ec63eb08663a0a9e3d3a8b21dc4833a0b79ad",
+      "bytes": 232655
+    },
+    "final-live.json": {
+      "sha256": "8357b4c6b90a2b3b72cfae7b9acdcd1df0beabd4b1a451743dea22efaedffe84",
+      "bytes": 17367
+    },
+    "finite-casting-1100x800.mp4": {
+      "sha256": "406731d292c93599ca5aef4f25d718933bad2ee0d6c51612f57c1140e817b47f",
+      "bytes": 216519
+    },
+    "first-cast.json": {
+      "sha256": "e8f709d2a579fc4b1942f44c759ff2ffad1afc4a197d7266e2aba8229012fd9b",
+      "bytes": 9430
+    },
+    "first-contact.json": {
+      "sha256": "58a16246f030a7925d8676b18a0ad0d576e05a651fcda7d7b1974f13a7fedeba",
+      "bytes": 9468
+    },
+    "host-final.json": {
+      "sha256": "ba1a0d438e6b96c185ac2498e8bec11a2558cb1d35f401f1ca16cfb308e31d3d",
+      "bytes": 1675
+    },
+    "initial-1600x960.png": {
+      "sha256": "996c60e2ca7482f8117b48fc7f05c73a59cccea914b24fc9b712f8d7fcaf0f7f",
+      "bytes": 226930
+    },
+    "initial.json": {
+      "sha256": "9eec54580119b4f05eae891f8b932c85c5d5d2cfdb17d243f4765e8c7b05533a",
+      "bytes": 6497
+    },
+    "install-editor-recipe.txt": {
+      "sha256": "3c3aa309de913d04ca836e4cf18f50cff0dc9add3ecc33c78afb865c365c5c28",
+      "bytes": 1877
+    },
+    "install-player-initial.txt": {
+      "sha256": "cc6a5788e8e50c94ec3d27f0a04194beda7d8e2d3df002f953d3744307e32c8d",
+      "bytes": 10095
+    },
+    "install-shader.txt": {
+      "sha256": "fd22e310ff237f2e5eef6da2e87b745751261f7dfff5256cd2e35e9cadf2462a",
+      "bytes": 1648
+    },
+    "inventory-1100x800.png": {
+      "sha256": "0850e6f1334d75839d2184a20e5827a4cbd1f866d4e6e3d0671dc868fbacca33",
+      "bytes": 242139
+    },
+    "motion-000.json": {
+      "sha256": "67e38b30a7b568c911d2f6cef968dd87402242353ab6b9e702debc511282be41",
+      "bytes": 12070
+    },
+    "motion-035.json": {
+      "sha256": "c73af41b8deeff58e7e7884900cb62266391bdaafc8c80c8f1613e8a8fc06c27",
+      "bytes": 14699
+    },
+    "motion-080.json": {
+      "sha256": "a53f1cd19b95de07477c57806f3ed12c92864b357a3343bff03ac56dca4f7007",
+      "bytes": 14771
+    },
+    "motion-160.json": {
+      "sha256": "0854254a2aa664b5aafb150d64b30c2b71e2eaeef15ef63f6e5162a5b567bc4f",
+      "bytes": 14687
+    },
+    "motion-255.json": {
+      "sha256": "6c4baec173f9321cd4c5e2c345e9f3c3053d661a4cdf10cef4cff5fa2f112476",
+      "bytes": 17345
+    },
+    "motion-389.json": {
+      "sha256": "1032afb30907144d24ab8b1de60ce97c4d3b2a00141d835c8f83dfccc44d1bfa",
+      "bytes": 17366
+    },
+    "motion-receipt.json": {
+      "sha256": "abe494a9305707ad578aec690336490e7bed4adeabbe854e80a425247e81a896",
+      "bytes": 3063
+    },
+    "pixel-equipment-1100x800.png": {
+      "sha256": "a45c817787044f3204b438b6f2a76667e76ba7aed9e028b8597aaf5ee347efb2",
+      "bytes": 254462
+    },
+    "pixel-inventory-1100x800.png": {
+      "sha256": "393b364277246b47257aa60fdb11737f516e53b3418c465d0edf99ab1326d13d",
+      "bytes": 242964
+    },
+    "pixel-panel-diagnostic.png": {
+      "sha256": "f1c2b80b47097b5f48c116419b51ff45d8c619b5867f0c16a20193f1cd5f8b02",
+      "bytes": 321117
+    },
+    "pixel-sources-1100x800.png": {
+      "sha256": "508acf30c4f7df09d2522f08cee627a0633f9b5b84038a53eb3d60f38c99ea2a",
+      "bytes": 301882
+    },
+    "publication-initial.txt": {
+      "sha256": "cc88395c85a616ac38dbf2eb3fb8418e780b41cd73e34a4b465d3a47f78d12a5",
+      "bytes": 849
+    },
+    "publication-layout.txt": {
+      "sha256": "8900d7683f9859f2fd2d3380f7908ab0e74f4eef2a497ae594adcdc99caec85a",
+      "bytes": 184
+    },
+    "publication-player-0.1.1.txt": {
+      "sha256": "d3ea750e4cd00042f5715c818320d718a9269df42eee0c1846439d4697a2f03b",
+      "bytes": 252
+    },
+    "publication-shader.txt": {
+      "sha256": "2eed59b8cab5a5ebc451e09bcffaab2ce51aaeacbc8a47a22cad62d24b421cfc",
+      "bytes": 187
+    },
+    "ready-1600x960.png": {
+      "sha256": "51d431bd17a039a58b25635a9128a1a91d2ccbc8b65d3d19bb3a75c2b53b180b",
+      "bytes": 237313
+    },
+    "ready.json": {
+      "sha256": "62e71f7885da14764d77849e0a5539289afb1219822304f184e82d03d8bd91b6",
+      "bytes": 6831
+    },
+    "revision-admitted-1100x800.png": {
+      "sha256": "5812ff072a195759ddfd39e6e362252864e029b3ee5fab9f844a11bd12318d35",
+      "bytes": 321896
+    },
+    "revision-admitted.json": {
+      "sha256": "fee33abc4ba2321a5caea53aaa3897336b4be5bce7a26c30c5ea51c7a7f99265",
+      "bytes": 9473
+    },
+    "revision-diagnostic-1100x800.png": {
+      "sha256": "1d696d17ae359549de73e5d41696d35a42eda3fb0bd6a57d246ee9f3bbff9242",
+      "bytes": 255430
+    },
+    "revision-next-cast-1100x800.png": {
+      "sha256": "5f039e503e4a6ad9470a8ea5785547b4370125c3642b01e28f17e465a55970f4",
+      "bytes": 210859
+    },
+    "revision-next-cast.json": {
+      "sha256": "f493199463881241209f27220bf6c9beb81fb92a6f0da4c83c7bb2154db59c76",
+      "bytes": 12093
+    },
+    "revision-preview-1100x800.png": {
+      "sha256": "499802c7545c4c1ed2837ab892fc2ed513528ae2e73dfc98ce4103cf9ec5c82a",
+      "bytes": 330100
+    },
+    "revision-preview.json": {
+      "sha256": "9a274dea19dabc651e907c493672d16b5f0bf4587ad84cc73ee05a1a24083381",
+      "bytes": 9651
+    },
+    "scene-final.json": {
+      "sha256": "63b4d2007e482fa78f965d1df382f8780232809a10424ba8b6812d737383b2b0",
+      "bytes": 1793
+    },
+    "shell-upgrade.json": {
+      "sha256": "37ce24046994d27d14f76b91af93baa6a3f41835eae3ed2ba7131f84cf43695c",
+      "bytes": 3783
+    },
+    "upgrade-layout.txt": {
+      "sha256": "5f742d5dfbaaadb202e423ed6a734ac834969b904906eefb5369750582e6d212",
+      "bytes": 2103
+    },
+    "upgrade-player.txt": {
+      "sha256": "bbbbbd4db258a14917423b634eaccb8593aa38aec8164cd190f30d547f9939c2",
+      "bytes": 735
+    },
+    "view-cel-day-1100x800.png": {
+      "sha256": "894e552163c68ec7015b4c7f108b3ae997fb340c4e0fede6e08a9c92cc2b2f05",
+      "bytes": 209831
+    },
+    "view-cel-day.json": {
+      "sha256": "f68c3ce09b28b0aec5af1438ca303989d706e5e67345be3a2a672822b60d7469",
+      "bytes": 17367
+    },
+    "view-cel-night-1100x800.png": {
+      "sha256": "56f88f97ad50c32d697ad44408573051a7e8c0edabf0aab577bf621412c00e6c",
+      "bytes": 204400
+    },
+    "view-cel-night.json": {
+      "sha256": "5b64d12dd9ff2ceedd621188e7abbf7a3ab40dc40cdccb992606ade20a3e8e68",
+      "bytes": 17367
+    },
+    "view-pixel-day-1100x800.png": {
+      "sha256": "7323267c009493eea72647c9c5c12751c7c6fa67616fc3e944515b8eaa2ae155",
+      "bytes": 200198
+    },
+    "view-pixel-day.json": {
+      "sha256": "770bdf91ff2edfc10fd46f4e69e50c4d2da5b44a8e228b58b51ab5fb4168af08",
+      "bytes": 17367
+    },
+    "view-pixel-night-1100x800.png": {
+      "sha256": "64bded001f99887aa302a474bb53d99ceecf75d917a3a920ef45e65a8b3a3740",
+      "bytes": 197043
+    },
+    "view-pixel-night.json": {
+      "sha256": "c3be364c58144382b2813788fe814b9cd5a736755b720012546eaf5c5d8a2bf9",
+      "bytes": 17367
+    },
+    "view-preservation.json": {
+      "sha256": "4c87132e6b65bc3ffd9bca3f19443860e99f48571dd88a87875ed70c097ad279",
+      "bytes": 743
+    }
+  },
+  "source_commits": {
+    "shared_player_pixel_hud": "176604d0",
+    "explicit_registry_refresh": "cd55cd22",
+    "authored_revision_admission": "1d6b7953",
+    "native_apps_discovery": "6e07936b"
+  }
+}

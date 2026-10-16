@@ -1,0 +1,20 @@
+data = ["nodes.scene_3d"]
+lua = """
+World (scenes): a 3D viewport drawing the Sky, Sea, Terrain, Plant, Rock, Hut, Dock and Boat nodes under it,
+cel-shaded on the GPU, through a Camera it holds, circling, or on the isolation stage (ground disc, turntable).
+scene_3d.snapshot(world, items, w, h, time, file, camera?)   -- a still at an exact time
+scene_3d.height_at(terrain, x, z)                           -- the ground's height, for walking on it"""
+name = "scene-3d"
+provides = ["scene_3d", "nodes.scene_3d", "height_at", "graph_types.particles", "graph_renderers.particles"]
+requires = ["ui-kit"]
+
+[package]
+data_types = ["World", "Camera", "TimeOfDay", "Sky", "Palette", "Look", "Grade", "PixelArt", "Sea", "Terrain", "Material", "Plant", "Rock", "Grown", "Swatch", "Hut", "Dock", "Boat", "Campfire", "Fire", "Explosion", "ParticleEffect", "Bomb", "Arrow", "Character", "Sprite", "Walker", "Tiles", "Meadow", "Street", "Plaza", "House", "Well", "Lantern", "TownSeed", "Weather", "Creatures", "SpellFx", "Founding", "CreatureModel"]
+description = "3D starter kit: scene nodes that each draw on their own and compose by instancing: World (3D viewport, isolation stage), Sky with sun, moon and day/night palettes, Sea with swell and foam, Terrain, grown Plants and Rocks, Hut, Dock, Boats; cel-shaded offscreen with wgpu into the scene view; every value is typed scene data edited live."
+keywords = ["3d", "cel shading", "toon", "outline", "water", "sky", "island", "wind waker", "wgpu"]
+permissions = ["native-code", "gpu"]
+tests = ["cargo test --quiet"]
+version = "0.1.3"
+
+[package.dependencies]
+ui-kit = "^0.1"

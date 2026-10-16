@@ -1,0 +1,18 @@
+# Fire, caught from the flakes that fall when the moons align. Shape: a wall of flame on the ground; element: fire,
+# which sets alight what crosses it.
+version: 1
+name: fire
+title: Fire
+kind: spell
+shape: wall
+element: fire
+mana: {source: wand, allocation: 20}
+container: field
+phases:
+  on_start:
+    - {id: form, use: body.wall, output: form, params: {length: 7}}
+  on_contact:
+    target: form
+    every: 1
+    steps:
+      - {id: burn, use: effect.burn, target: event.other, params: {per_second: 1.5, seconds: 3}}

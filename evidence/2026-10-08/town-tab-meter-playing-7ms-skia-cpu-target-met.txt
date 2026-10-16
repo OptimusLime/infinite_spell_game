@@ -1,0 +1,4 @@
+Paul editor 7878, scenes/town.scene.luau, renderer skia-cpu, playing, after restart on 34f6d64/e70fa2e/b27d887 (HUD panel caching):
+8 / 7 / 7 / 7 ms per frame, 29-30 draws/s
+target 8 ms: met
+read with app get runtime.scene (screen locked, no window capture possible)

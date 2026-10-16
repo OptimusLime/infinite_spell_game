@@ -1,0 +1,23 @@
+lua = """
+local ng = require("ui.node_graph")
+local st = ng.new("graph.fire", "route_name", { catalog = "graph_types.shader", selection = "editor.ui.graph_node" })
+routes.route_name = function(self, r) ng.pointer(st, r) end
+ng.view(st, { look, renderers, run, width?, height? })   -- the canvas: typed nodes, custom renderers, wires, groups
+graph.check(g, catalog) / graph.can_connect(g, catalog, "a:out", "b:in") / graph.order(g)
+graph.run(name, g, catalog, eval?, targets?)   -- dependency order, per-node cache, status per node
+graph.route({ nodes = { { id, rect = { x, y, w, h } } }, edges = { { id, from, to } } })
+  -- typed geometry-only routing; returns { bounds, routes = { { id, points, badge, leader } } }
+  -- stable caller IDs, obstacle-aware routes and count-label bounds; no task or approval semantics
+Graphs live in the store at graph.<name> (files *.graph.yaml); node catalogs at graph_types.<name>
+(components/<c>/nodes/<name>.nodes.yaml). Every edit is a store.set on the graph."""
+name = "node-graph"
+provides = ["ui.node_graph", "graph", "graph.route", "graph_wires"]
+requires = ["layout", "ui-kit"]
+
+[package]
+data_types = ["graph (nodes, edges, groups)", "node catalog"]
+description = "Node-graph canvas and engine: typed node classes from a catalog, custom per-node renderers, bezier wires, collapsible groups, pan and zoom; dependency-ordered runs with per-node caching. The same component draws a shader graph in the editor and a skill tree in a game."
+keywords = ["node graph", "graph editor", "dag", "wires", "shader graph", "skill tree", "visual scripting"]
+permissions = ["native-code"]
+tests = ["cargo test --quiet"]
+version = "0.1.2"

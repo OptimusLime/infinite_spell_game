@@ -1,0 +1,26 @@
+[
+  {
+    "view": "cel-day",
+    "root": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517",
+    "total": 20,
+    "receipt_count": 4
+  },
+  {
+    "view": "cel-night",
+    "root": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517",
+    "total": 20,
+    "receipt_count": 4
+  },
+  {
+    "view": "pixel-day",
+    "root": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517",
+    "total": 20,
+    "receipt_count": 4
+  },
+  {
+    "view": "pixel-night",
+    "root": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517",
+    "total": 20,
+    "receipt_count": 4
+  }
+]

@@ -1,0 +1,14 @@
+lua = "An editor part: require('editor_parts.status') returns {name, slot, order, render}; the editor shell places it."
+name = "editor-status"
+provides = ["editor_parts.status"]
+requires = ["editor-panels"]
+
+[package]
+data_types = ["editor part (luau)"]
+description = "Status bar for the editor: edit or play mode, the scene shown, captions and the MCP port."
+keywords = ["status bar", "mode", "footer"]
+permissions = []
+version = "0.1.0"
+
+[package.dependencies]
+editor-panels = "^0.1"

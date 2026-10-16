@@ -1,0 +1,43 @@
+title = "Visual direction: research conclusions to test"
+status = "Unreviewed proposal"
+
+[lens]
+visual_references = ["links-diorama", "tunic-battlefield", "octopath-focus"]
+source_url = "https://dev.epicgames.com/documentation/en-us/unreal-engine/cinematic-depth-of-field-in-unreal-engine"
+source_note = "Epic separates field of view/focal length, focus distance and aperture: framing and blur need distinct controls. Its examples vary one parameter while holding the others fixed. This is depth-of-field guidance, not proof that the cited games use a physically tilted lens."
+proposal = "First compare a wider elevated camera with blur disabled; then test a tilted world-space focus plane and limited foreground/background blur without changing framing. Keep actors, aim point, projectiles and hazardous ground inside a sharp combat region."
+review_checks = ["Player and intended target fit together in frame", "Incoming threats remain identifiable at the edge", "Small actor and large magic both readable", "Pixel contours survive post-processing", "UI stays sharp", "Offer an effect-off comparison", "No focus pumping while aiming"]
+tilt_primary_source = "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-pc-lens-advantage-what-you-see-is-what-youll-get"
+tilt_source_note = "Nikon separates lens tilt changing the focal plane from shift correcting perspective. A miniature-looking band in an image alone does not establish tilted-plane geometry."
+depth_implementation_source = "https://developer.nvidia.com/gpugems/gpugems3/part-iv-image-effects/chapter-28-practical-post-process-depth-field"
+depth_source_note = "The primary implementation discussion distinguishes depth gather/scatter and layer methods, including foreground bleeding and missing hidden-background limitations. The engine comparison must expose those limits instead of treating any blur as physical optics."
+implementation_status = "Task108 delivered six close/wide/screen-space-band captures. Task140 separately implements a depth-based geometric focus plane in equivalent camera/world coordinates, with 24 pinned-event captures and six board comparisons using off, mild and stress settings. It uses one depth layer, cannot reconstruct hidden backgrounds or independently focus transparent particles, and is not a physical lens model. Task141 keeps the cosmetic ordered lens effects on GPU with exact four-mode World parity. No parameter or style is approved; production focus remains off."
+
+[cel]
+visual_references = ["fighterz-shadows", "kakarot-charge", "strive-shadow", "ninokuni-materials"]
+source_url = "https://www.unrealengine.com/developer-interviews/cyberconnect2-shares-how-its-artists-faithfully-recreated-the-dragon-ball-z-universe-in-3d"
+source_note = "CyberConnect2 describes cel shading, painterly world textures and artist control of shadows/highlights. Its aura work used drawn reference. The practical study is deliberately shaped lighting, not adding an indiscriminate outline and calling it anime."
+additional_primary_source = "https://www.gdcvault.com/play/1022031/Guilty-Gear-Xrd-s-Art"
+proposal = "Compare two or three large shadow values, deliberate contour weight, and a restricted emissive palette on the same actor and spell. Test the result at the actual gameplay distance before close-up footage."
+implementation_status = "No new renderer style or model is accepted by this research."
+
+[casting]
+visual_references = ["noita-material-cast", "wizard-spell-selection", "magicka-direction"]
+noita_footage = "https://www.youtube.com/watch?v=0cDkmQ0F0Jw"
+noita_footage_source = "https://noitagame.com/press/"
+wizard_footage = "https://www.youtube.com/watch?v=sI4Wh1Z065w"
+wizard_footage_source = "https://wizardoflegend.com/press/wizard_of_legend/index.html"
+footage_status = "Official press-kit links retained. Primary Steam trailer excerpts and exact frame observations now live in motion-study.toml; input latency and simulation timing are not inferred from edited footage."
+confirmed_game_contract = "Craft a persistent spell object; select and aim/fire it with an equipped wand. Generic grid Inventory owns cartridge items. Equipment owns equipped wand. Loaded cartridge energy and SUM of carried cartridge energy are separate observable values. Finite physical energy, no assumed recharge."
+proposal = "Test select → aim → fire → visible energy deduction → empty loaded cartridge → replace from inventory → fire. Show the control hints and the reason firing is unavailable."
+
+[effects]
+visual_references = ["fighterz-aura", "kakarot-large-magic", "wizard-shape-vocabulary", "noita-rune-scale"]
+proposal = "Review anticipation, launch, travel, impact and residual material effect separately. Every spell needs distinct silhouette and effect radius readable without colour alone. Large magic must not erase the target, player, or incoming attack."
+next_evidence = "Four exact-frame motion studies and local clips are delivered in motion-study.toml. Task104 now supplies finite authored-spell game captures using graybox projectiles. Task75 retains readable effect presentation and comparison work; external footage does not prove our implementation."
+
+[ui]
+visual_references = ["re4-case", "backpack-grid", "dredge-grid", "wizard-spell-ui", "magicka-key-hints"]
+confirmed_boundaries = ["Generic Inventory owns items and grid occupancy", "Equipment owns equipped items", "Wand loads a physical cartridge item", "HUD reads energy from game systems", "Inventory total is SUM of carried cartridges", "Magical inventory expansion consumes energy"]
+proposal = "Inventory shows item footprints and remaining capacity. Equipment shows the equipped wand separately. Bottom HUD shows selected spell and fire input, loaded cartridge power, and total carried power as distinct labelled quantities."
+not_inferred = "The reference games do not implement our cartridge contract; their regeneration, cooldown, item-combination and inventory-as-equipment rules are not adopted."

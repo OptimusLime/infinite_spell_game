@@ -1,0 +1,82 @@
+# The camera move over each card's picture in the animatic (make-card-moves.py), keyed by the shot id in
+# infinite-spell-game-animatic.cut.toml. The picture itself is the shot's first `shows` entry in the cut.
+#   push: zoom from 1 to `zoom` toward `to`        pull: zoom from `zoom` back to 1, out of `from`
+#   pan:  held at `zoom`, the centre from `from` to `to`        clip: the picture is a video, retimed to the shot
+# Points are fractions of the picture (x right, y down). Every move eases in and out over the whole shot.
+
+[move.night-town]
+kind = "clip"
+
+[move.parts]
+kind = "push"
+to = [0.55, 0.45]
+zoom = 1.15
+
+[move.seed-planted]
+kind = "push"
+to = [0.5, 0.62]
+zoom = 1.18
+
+[move.agents]
+kind = "pan"
+from = [0.38, 0.5]
+to = [0.62, 0.5]
+zoom = 1.2
+
+[move.forecast]
+kind = "push"
+to = [0.42, 0.6]
+zoom = 1.2
+
+[move.frozen-ink]
+kind = "pan"
+from = [0.32, 0.5]
+to = [0.68, 0.5]
+zoom = 1.3
+
+[move.monsters-rise]
+kind = "pan"
+from = [0.36, 0.55]
+to = [0.64, 0.55]
+zoom = 1.2
+
+[move.shadow-defence]
+kind = "push"
+to = [0.5, 0.55]
+zoom = 1.18
+
+[move.fire-in-snow]
+kind = "pull"
+from = [0.5, 0.45]
+zoom = 1.2
+
+[move.fusion-arrives]
+kind = "push"
+to = [0.58, 0.42]
+zoom = 1.2
+
+[move.cast-order]
+kind = "push"
+to = [0.5, 0.5]
+zoom = 1.12
+
+[move.fuse-building]
+kind = "push"
+to = [0.53, 0.28]
+zoom = 1.3
+
+[move.rooftop-wall]
+kind = "pan"
+from = [0.36, 0.42]
+to = [0.64, 0.42]
+zoom = 1.25
+
+[move.hold-the-seed]
+kind = "push"
+to = [0.6, 0.72]
+zoom = 1.2
+
+[move.morning-after]
+kind = "pull"
+from = [0.5, 0.6]
+zoom = 1.18

@@ -1,0 +1,14 @@
+lua = "An editor part: require('editor_parts.toolbar') returns {name, slot, order, render}; the editor shell places it."
+name = "editor-toolbar"
+provides = ["editor_parts.toolbar"]
+requires = ["editor-panels"]
+
+[package]
+data_types = ["editor part (luau)"]
+description = "Editor toolbar with scene tabs and the Play/Stop runtime control: pick which scene to show and run it live or stop it back to edit mode."
+keywords = ["toolbar", "play", "stop", "run", "scenes"]
+permissions = []
+version = "0.1.0"
+
+[package.dependencies]
+editor-panels = "^0.1"

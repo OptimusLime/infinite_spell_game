@@ -1,0 +1,18 @@
+lua = "An editor part: require('editor_parts.console') returns {name, slot, order, render}; the editor shell places it."
+name = "editor-console"
+provides = ["editor_parts.console"]
+requires = ["editor-panels"]
+
+[package]
+data_types = ["editor part (luau)"]
+description = "Console panel for the editor: host, file, scene and engine log lines as they happen."
+keywords = ["console", "log", "output", "messages"]
+permissions = []
+version = "0.1.0"
+
+[package.dependencies]
+editor-panels = "^0.1"
+
+[package.dependencies.ai]
+optional = true
+version = "^0.1"

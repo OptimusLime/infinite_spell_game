@@ -1,0 +1,143 @@
+[colors]
+accent = "#4c8dff"
+background = "#111317"
+border = "#2e333c"
+button = "#353b46"
+confirm = "#2fb36b"
+confirm_pressed = "#5fd592"
+danger = "#ef5f5f"
+header = "#20242b"
+muted = "#8b929e"
+on_accent = "#ffffff"
+on_confirm = "#ffffff"
+panel = "#1a1d23"
+play = "#35c486"
+pressed = "#4c5462"
+raised = "#2a2f38"
+text = "#e1e4ea"
+viewport = "#0c0d10"
+
+[graph]
+canvas = "#fdf8ef"
+cell = 24.0
+danger = "#c0392b"
+grid = "#f1e8d7"
+grid_major = "#e6d8bd"
+group = "#f4ecdc"
+header = "#ffd780"
+ink = "#1a1100"
+major = 5.0
+muted = "#807a6f"
+node = "#ffffff"
+ok = "#0096aa"
+outline = 2.0
+radius = 2.0
+selected = "#aa96ff"
+
+[graph.families]
+capture = "#ffd780"
+color = "#ffb000"
+edit = "#ffb000"
+game = "#0096aa"
+input = "#0096aa"
+mask = "#c0b6a3"
+math = "#e6dece"
+motion = "#ffd780"
+output = "#1a1100"
+pattern = "#aa96ff"
+voice = "#aa96ff"
+
+[graph.types]
+color = "#ffb000"
+float = "#807a6f"
+rgba = "#ffb000"
+vec2 = "#aa96ff"
+
+[looks.dark]
+bold = "fonts/Roobert-SemiBold.ttf"
+display = "fonts/AtelicoTypeKern-Black.ttf"
+radius = 6.0
+text = "fonts/Roobert-Regular.ttf"
+
+[looks.dark.colors]
+accent = "#aa96ff"
+background = "#120e07"
+border = "#3d3320"
+button = "#43381f"
+confirm = "#4cc38a"
+confirm_pressed = "#86e0b3"
+danger = "#ff6a4d"
+header = "#211a0d"
+muted = "#b3a78f"
+on_accent = "#120e07"
+on_confirm = "#120e07"
+panel = "#1a1509"
+play = "#ffb000"
+pressed = "#5e4f2d"
+raised = "#2c2414"
+text = "#fdf8ef"
+viewport = "#0c0904"
+
+[looks.dark.graph]
+canvas = "#120e07"
+grid = "#1c160b"
+grid_major = "#2a2212"
+group = "#211a0d"
+ink = "#e8dcc4"
+muted = "#b3a78f"
+node = "#1a1509"
+
+[looks.dark.graph.families]
+output = "#e8dcc4"
+
+[looks.light]
+bold = "fonts/Roobert-SemiBold.ttf"
+text = "fonts/Roobert-Regular.ttf"
+
+[looks.light.colors]
+accent = "#aa96ff"
+background = "#fdf8ef"
+border = "#1a1100"
+button = "#e6dac2"
+confirm = "#1f8a4c"
+confirm_pressed = "#35b36a"
+danger = "#c0392b"
+header = "#f4ecdc"
+muted = "#5c5446"
+on_accent = "#1a1100"
+on_confirm = "#fdf8ef"
+panel = "#fdf8ef"
+play = "#ffb000"
+pressed = "#d4c3a2"
+raised = "#efe5d0"
+text = "#1a1100"
+viewport = "#f4ecdc"
+
+[metrics]
+claude_clearance = 120.0
+flash = 0.2
+font_size = 27.0
+gap = 8.0
+radius = 5.0
+small = 22.0
+
+[slides]
+accent = "#ffb000"
+background = "#fdf8ef"
+band = 13.0
+body = 4.6
+card = "#fdf8ef"
+cars = ["slides/car.png", "slides/car-orange.png", "slides/car-teal.png", "slides/car-coral.png"]
+display = "fonts/AtelicoTypeKern-Black.ttf"
+figure = 16.0
+heading = 7.0
+ink = "#1a1100"
+margin = 7.0
+shadow = 0.93
+step_fade = 0.35
+street = "#a39782"
+strong = "fonts/Roobert-SemiBold.ttf"
+text = "fonts/Roobert-Regular.ttf"
+title = 11.0
+violet = "#aa96ff"
+world = "fonts/AtelicoWorld-White.otf"

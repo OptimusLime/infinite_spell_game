@@ -1,0 +1,6 @@
+title = "Two moons, two shadows"
+spoken = ""
+shown = "4 s, no text. Close on the watchtower at night, slow push in: two shadows at once, one per moon, each tinted the other moon's colour."
+status = "todo"
+sketch = "sketches/world/two-shadows.png"
+sketch_note = "Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/."

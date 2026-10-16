@@ -1,0 +1,8 @@
+resolved: app spell-player 0.1.1 /   inventory-grid ^0.1 → inventory-grid 0.1.0 (installed) /   scene-3d ^0.1 → scene-3d 0.1.0 (installed) /   spellcraft ^0.1 → spellcraft 0.1.0 (installed) /   ui-kit ^0.1.2 → ui-kit 0.1.2 (installed)
+  app spell-player 0.1.1
+    inventory-grid ^0.1 → inventory-grid 0.1.0 (installed)
+    scene-3d ^0.1 → scene-3d 0.1.0 (installed)
+    spellcraft ^0.1 → spellcraft 0.1.0 (installed)
+    ui-kit ^0.1.2 → ui-kit 0.1.2 (installed)
+fetched app spell-player@0.1.1: sha256 27ae9f36d127… verified, http://127.0.0.1:8830/blobs in 3 ms (22 KB)
+native code already linked into this host (layout, node-graph, scene-3d, shader-forge, spell-player, spellcraft): loaded live, no build, no restart

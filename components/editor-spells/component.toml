@@ -1,0 +1,16 @@
+lua = "Native saved-spell authoring over typed Rust drafts, validated catalog commands and explicit conflict-checked saves."
+name = "editor-spells"
+provides = ["editor_parts.spells"]
+requires = ["ui-kit", "layout", "spellcraft"]
+
+[package]
+data_types = ["SpellAuthoringDashboard", "SpellAuthoringUi", "SpellAuthoringRequest"]
+description = "A compact spell-definition editor: ordered phases, one selected step, catalog parameters and explicit save. Editing never casts or changes a running Player's admitted revision."
+keywords = ["spells", "authoring", "editor", "catalog"]
+permissions = ["files:project"]
+version = "0.1.0"
+
+[package.dependencies]
+layout = "^0.1.2"
+spellcraft = "^0.1.1"
+ui-kit = "^0.1.2"

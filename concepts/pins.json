@@ -1,0 +1,70 @@
+{
+  "isg-world": {
+    "id": "isg-world",
+    "revision": "26924568365d55509723c4044b2eb8f4ee3046820650efc67a462a02afdbda0b"
+  },
+  "isg-wand-battery": {
+    "id": "isg-wand-battery",
+    "revision": "47d22a9e50c24d28b84e91da13e33da490b2b5ea9b40f49ec04285ca91dc9913"
+  },
+  "isg-battlefield": {
+    "id": "isg-battlefield",
+    "revision": "861e7d951deb5064717d9831318b10d068df1e1c9b6a7fc215044ce1d500e773"
+  },
+  "isg-battlefield-day": {
+    "id": "isg-battlefield-day",
+    "revision": "d376ad409665bec31d6a2621be431770876999494b2c4e6893c858e43faee5cf"
+  },
+  "isg-battlefield-night": {
+    "id": "isg-battlefield-night",
+    "revision": "df54d0379027e6561feae831c43e31b4d7e97d1367d27b913e269ff25a5e1e32"
+  },
+  "isg-pixel-look": {
+    "id": "isg-pixel-look",
+    "revision": "c8f616a75795ef947b182b79df2fecff3737efe4c8aa0f84c352ad76f19f6033"
+  },
+  "isg-anime-look": {
+    "id": "isg-anime-look",
+    "revision": "ff9878b2ecbba5527d6c9570ab9dfde8bde777605c9ae90053589faa986f8f12"
+  },
+  "isg-voxel-look": {
+    "id": "isg-voxel-look",
+    "revision": "4a7a15b8e73621579c1a240540bcf67bcecabbd4f25011921aae77cbbd5c38b8"
+  },
+  "isg-battlefield-camera": {
+    "id": "isg-battlefield-camera",
+    "revision": "66388b109e7b4fba3f99bcfe7bc5c1353b4fe6ab22e05246915ee08119a64f59"
+  },
+  "isg-tilt-lens-study": {
+    "id": "isg-tilt-lens-study",
+    "revision": "6de09b740274176202f137949848ebdaaedaf0e4b085135abbeafe9ea31ba160"
+  },
+  "isg-octopath-reference": {
+    "id": "isg-octopath-reference",
+    "revision": "895dff394d6182dcb48554b429d3d668377907042de4235624121797d0666aea"
+  },
+  "isg-dbz-reference": {
+    "id": "isg-dbz-reference",
+    "revision": "ae25fa9f2563abc83cedf97c1e52c853c41c9e56472fcba9fb5e72d4c2a198bb"
+  },
+  "isg-moon-clearing-reference": {
+    "id": "isg-moon-clearing-reference",
+    "revision": "d24a49237e94cb29a4fbe1a48124d8112977e82cfaea1eb3a48f025f59b4f25d"
+  },
+  "isg-pixel-day": {
+    "id": "isg-pixel-day",
+    "revision": "bbe5e33f1689a1293e117cd054361ddff0e17b21a92b0d7a4d2a86bffb80c565"
+  },
+  "isg-anime-day": {
+    "id": "isg-anime-day",
+    "revision": "24af2a7ab91bac7f242fde713aea13dd3bb4b5aa0ad7d23af20a06fc3cd43bb1"
+  },
+  "isg-pixel-night": {
+    "id": "isg-pixel-night",
+    "revision": "6467a03b6fbbf3faa35dbbd803c40562ce39ac9c2803466847d78238bb7d95de"
+  },
+  "isg-anime-night": {
+    "id": "isg-anime-night",
+    "revision": "8c0561c80a2646eb1337e7536311bd87b6e549ca53fb252ac052933cacd727fc"
+  }
+}

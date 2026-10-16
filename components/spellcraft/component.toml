@@ -1,0 +1,22 @@
+lua = """
+Reusable typed spell definitions: ordered start/tick/contact phases, catalog components, handles, containers,
+finite energy allocation and mana-metered optional Luau brains. Native authoring edits validated drafts and
+saves exact source revisions explicitly. Player admits saved definitions, aims and fires using physical
+cartridges from shared Inventory and Equipment; editing and scene rendering do not fund casts.
+Legacy town simulation and cast-order fusion remain optional compatibility APIs for historical scenes,
+not the confirmed authored-spell gameplay rule.
+  spellcraft.town({key, t, purple, orange, fire, autoplay}) -> legacy town projection
+  spellcraft.spell(name) -> a definition; spellcraft.fuse(first, second) -> legacy fused definition
+"""
+name = "spellcraft"
+project_files = ["spells/wind.spell.yaml", "spells/fire.spell.yaml", "spells/watchtower.spell.yaml", "spells/watchtower.lua", "spells/climber.spell.yaml", "spells/digger.spell.yaml", "spells/town-seed.spell.yaml", "spells/fusion.toml", "spells/town.toml"]
+provides = ["spellcraft", "scene:SpellFx"]
+
+[package]
+data_types = ["SpellDefinition (spells/*.spell.yaml)", "Names (spells/fusion.toml)", "TownConfig (spells/town.toml)"]
+description = "Typed spell definitions, validated native authoring drafts, finite physical cartridge casting and accounted spell lifecycles. Optional legacy town and fusion adapters preserve historical scenes."
+keywords = ["spells", "spellcraft", "magic", "fusion", "mana", "sensors", "effectors", "tower defense", "town seed", "creatures"]
+permissions = ["native-code"]
+tests = ["cargo test --quiet"]
+title = "Spellcraft"
+version = "0.1.2"

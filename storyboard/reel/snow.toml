@@ -1,0 +1,5 @@
+title = "Snow"
+spoken = ""
+shown = "2.5 s, no text. Ink square, heavy snow under the purple moon."
+status = "todo"
+sketch_note = "Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/."

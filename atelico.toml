@@ -1,0 +1,92 @@
+[host]
+port = 7890
+width = 1600
+height = 960
+app = "app/main.luau"
+
+[agent]
+session = "atelico-infinite_spell_game"
+command = "claude"
+codex_command = "codex"
+resume = "new"
+drawer = 520
+
+[registry]
+sources = []
+index = "file:///Users/paul/.atelico/remote/index.git"
+
+[components.editor-console]
+path = "components/editor-console"
+source = "/Users/paul/.atelico/registry/store/6efa9a6032c76d9917e2fbc69b1d3963168d251089fbffd4d3d0725c06b90656"
+
+[components.editor-inspector]
+path = "components/editor-inspector"
+source = "/Users/paul/.atelico/registry/store/4a5e8f9bf696b500dad91cbb5c8454f2e3646db3df03eb03600d45011490e1b6"
+
+[components.editor-panels]
+path = "components/editor-panels"
+source = "/Users/paul/.atelico/registry/store/85573281ca561cbd80c2588dc246c49b8e400d0597df3862c2c6d4e78888b16b"
+
+[components.editor-project]
+path = "components/editor-project"
+source = "/Users/paul/.atelico/registry/store/1c3c45a2f705f56ac04a34ede107e7a02d6a13c0dd6ef21f8ce3176d4ac0254f"
+
+[components.editor-scene-tree]
+path = "components/editor-scene-tree"
+source = "/Users/paul/.atelico/registry/store/be33d83c32a5942d0e26d0a8611eaa035c76a01a67874e6f8ea14c2c1dd9a97d"
+
+[components.editor-scene-view]
+path = "components/editor-scene-view"
+source = "/Users/paul/.atelico/registry/store/ac797b2307dd21dee74c32dfbbabd73f0c260bd01f14c631d7c4d667a4499622"
+
+[components.editor-spells]
+path = "components/editor-spells"
+source = "/Users/paul/.atelico/registry/store/b2f029b07e317279a5a53cf04ce838ff44dc6a46788efc65a728153badc339ec"
+
+[components.editor-status]
+path = "components/editor-status"
+source = "/Users/paul/.atelico/registry/store/a92fbf84d4c6fa795f828ec4fd3520d8762a1299ac920d4fcbeb63b5b7c490a4"
+
+[components.editor-toolbar]
+path = "components/editor-toolbar"
+source = "/Users/paul/.atelico/registry/store/aa228bfd6f1712d22a5161b8723d64cf370ddf5f46eeda3abf4e1d1f34646df8"
+
+[components.inventory-grid]
+path = "components/inventory-grid"
+source = "/Users/paul/.atelico/registry/store/680e2d6db7257287ccf5d84a707f37a93729db834553fc2754e6e2f9d0d31b7d"
+
+[components.layout]
+path = "components/layout"
+source = "/Users/paul/.atelico/registry/store/afcdbc5719813b09365f216558d9ba141413f1e1200515ac831412a4e88c06e2"
+
+[components.node-graph]
+path = "components/node-graph"
+source = "/Users/paul/.atelico/registry/store/a65a246471206c8b36f263182ea1ea5ecfa28106e1216a4a1c4a05c57ebb7d67"
+
+[components.scene-3d]
+path = "components/scene-3d"
+source = "/Users/paul/.atelico/registry/store/58459db12c77907f1a3836bcce0beaaa1815fd27f1be717dc0fa6e9f537d0cbd"
+
+[components.shader-forge]
+path = "components/shader-forge"
+source = "/Users/paul/.atelico/registry/store/1fc89cd742b13d1db3e6f6de3dfeb90083091574279113c06c86b83fadf6d1bd"
+
+[components.spellcraft]
+path = "components/spellcraft"
+source = "/Users/paul/.atelico/registry/store/c3982665073c727bd9d7c0c276b17f422e31265643ca7efe86c96b9391981bd0"
+
+[components.ui-kit]
+path = "components/ui-kit"
+source = "/Users/paul/.atelico/registry/store/74c6c7ae5dc98c300217b475b6c0b2a0d828ed00dc9902d1544c66f9c6f2ada2"
+
+[apps.spell-player]
+path = "apps/spell-player"
+source = "/Users/paul/.atelico/registry/store/4105f1321f590380f790c843002a0c310fe4553927d5e2a50f06ece981de162b"
+
+[settings.editor-queue]
+db = "queue/queue.db"
+snapshot = "queue/queue.md"
+
+[editor]
+dir = "editor"
+requires = ["layout", "ui-kit", "shader-forge"]

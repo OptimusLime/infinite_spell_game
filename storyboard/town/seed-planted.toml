@@ -1,0 +1,5 @@
+title = "Planting the seed"
+spoken = "The one rule no part has, Claude writes: you plant a seed, and the town grows around it. If the seed breaks, the town is gone. You start with one spell: wind."
+shown = "Clock: 10:00. Claude's pane shows one new file, seed.luau, being written. Then in the game: the player presses a glowing seed into open ground; the first houses grow up around it. The seed keeps pulsing at the town's centre with a ring that shows its health; one spell slot at the screen's edge holds a wind icon."
+status = "todo"
+sketch = "sketches/seed-planted.png"

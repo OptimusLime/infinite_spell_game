@@ -1,0 +1,243 @@
+version = 1
+retrieved_at = "2026-10-08"
+review_state = "Unreviewed research evidence; no game-design decision or acceptance is implied."
+purpose = "Task 119: motion evidence for authored spell presentation, supplementing the prior still-image study."
+clock = "Absolute time from frame zero of the official Steam video-only 720p rendition. Noita and Wizard decode at 60/1; FighterZ at 30000/1001. Use decoded frame indices, not HLS master metadata (which advertised 30 fps for all). End frames are exclusive."
+inspection = "Inspected chronological overview sheets, dense sequence sheets, exact adjacent launch/cut-boundary frames and every final 3x3 sample strip. These are frame observations of trailer motion, not playtests or measurements of input latency."
+asset_transform = "ffmpeg decoded-frame trim with setpts=PTS-STARTPTS; silent H.264 CRF20 at source resolution/cadence, no speed change. Strips: nine selected source frames, each scaled to384x216 and tiled3x3 row-major; no generated imagery, labels, color grading or compositing of effects."
+constraint = "Review references only. Existing game constraints remain: authored persistent spells, equipped wand, finite physical cartridges, Inventory/Equipment separation; no inferred regeneration, cooldown, autocast or fusion mechanics."
+rights = "Publisher footage excerpts retain their original owners. Local research/reference use does not grant rights to redistribute them as game or promotional content."
+
+[[sources]]
+id = "noita"
+title = "Noita"
+creator = "Nolla Games"
+source_page = "https://store.steampowered.com/app/881100/"
+api_source = "https://store.steampowered.com/api/appdetails?appids=881100&l=english"
+official_press_page = "https://noitagame.com/press/"
+movie_id = 256804553
+movie_title = "Noita - 1.0 Launch Trailer"
+master_url = "https://video.akamai.steamstatic.com/store_trailers/881100/318644/b853dbe56ac169124a412e8ce28bac0b89558f33/1750592906/hls_264_master.m3u8?t=1602783173"
+rendition_url = "https://video.akamai.steamstatic.com/store_trailers/881100/318644/b853dbe56ac169124a412e8ce28bac0b89558f33/1750592906/hls_264_1_video.m3u8"
+download_sha256 = "990ce7e5f494a8b23a1e456db13fc28fb1ed83e772bddfcef3c4e573759de262"
+width = 1280
+height = 720
+decoded_frame_rate = "60/1"
+source_duration_seconds = 110.0
+full_trailer_in_repository = false
+
+[[sources]]
+id = "wizard"
+title = "Wizard of Legend"
+creator = "Contingent99"
+source_page = "https://store.steampowered.com/app/445980/"
+api_source = "https://store.steampowered.com/api/appdetails?appids=445980&l=english"
+official_press_page = "https://wizardoflegend.com/press/wizard_of_legend/index.html"
+movie_id = 256716903
+movie_title = "Wizard of Legend Launch Trailer"
+master_url = "https://video.akamai.steamstatic.com/store_trailers/445980/162949/a5a54459c82a8a2d3185fcf4154eb14df2c82ed4/1750531722/hls_264_master.m3u8?t=1526402113"
+rendition_url = "https://video.akamai.steamstatic.com/store_trailers/445980/162949/a5a54459c82a8a2d3185fcf4154eb14df2c82ed4/1750531722/hls_264_1_video.m3u8"
+download_sha256 = "ca9f40f20dedfad1afa50ce321574c4a4633db3098a67792f6c5c2534cb2538f"
+width = 1280
+height = 720
+decoded_frame_rate = "60/1"
+source_duration_seconds = 49.983008
+full_trailer_in_repository = false
+
+[[sources]]
+id = "fighterz"
+title = "DRAGON BALL FighterZ"
+creator = "Arc System Works / Bandai Namco Entertainment"
+source_page = "https://store.steampowered.com/app/678950/"
+api_source = "https://store.steampowered.com/api/appdetails?appids=678950&l=english"
+official_press_page = ""
+movie_id = 256827862
+movie_title = "DRAGON BALL FighterZ - Launch Trailer - ESRB v2"
+master_url = "https://video.akamai.steamstatic.com/store_trailers/678950/357373/e1b71f39c11612c99ee255ab2636b24c945bcdc4/1750570157/hls_264_master.m3u8?t=1617023563"
+rendition_url = "https://video.akamai.steamstatic.com/store_trailers/678950/357373/e1b71f39c11612c99ee255ab2636b24c945bcdc4/1750570157/hls_264_1_video.m3u8"
+download_sha256 = "db298a27565619aaea3c41e701f1fcce5fe329a060e0b37b98ae64483f9c7d43"
+width = 1280
+height = 720
+decoded_frame_rate = "30000/1001"
+source_duration_seconds = 81.481
+full_trailer_in_repository = false
+
+[[moments]]
+id = "noita-projectile-impact"
+title = "Traveling trace, local burst, falling residue"
+source_id = "noita"
+clip = "media/motion/noita-projectile-impact.mp4"
+strip = "media/motion/noita-projectile-impact-frames.jpg"
+clip_sha256 = "e8b450f1fce388103c398c4d1d86863f33304dd7e8b229f733a74198fa7c893a"
+strip_sha256 = "b18c8d5faa0615556226ea1dda8f910888d5f1c8f22ab5693a881e0fc0d2df7b"
+start_frame = 0
+end_frame_exclusive = 57
+start_seconds = 0.0
+end_seconds_exclusive = 0.95
+clip_duration_seconds = 0.95
+sample_frames_row_major = [0, 6, 12, 18, 24, 30, 36, 45, 54]
+sample_seconds_row_major = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.75, 0.9]
+phases = ["travel", "impact", "residue"]
+continuity = "One continuous opening shot; next trailer shot begins at source frame 57 (00:00.950), excluded."
+not_shown = "The trailer starts with emission already visible. Input, anticipation, charging and the true first launch frame are not shown. The next cut prevents a full residue-lifetime measurement."
+review_question = "Can an authored spell retain a narrow readable travel cue, a local impact silhouette and separately moving material residue at the wider game camera?"
+limits = "No spell name, exact projectile speed, damage radius, mana cost, cast latency or material identity can be established from this excerpt."
+
+[[moments.observations]]
+phase = "travel"
+first_sample_frame = 0
+last_sample_frame = 18
+first_sample_seconds = 0.000000
+last_sample_seconds = 0.300000
+observed = "A narrow bright orange/yellow jagged trace advances diagonally from near the purple figure toward the upper-right target area. A thinner blue-white diagonal trace is also visible; this is a multi-effect scene, not an isolated spell test."
+
+[[moments.observations]]
+phase = "impact"
+first_sample_frame = 24
+last_sample_frame = 30
+first_sample_seconds = 0.400000
+last_sample_seconds = 0.500000
+observed = "A pale green/yellow circular burst appears at the upper-right end while the orange trace is still visible behind it. Location and shape separate the impact from the narrow traveling trace."
+
+[[moments.observations]]
+phase = "residue"
+first_sample_frame = 36
+last_sample_frame = 54
+first_sample_seconds = 0.600000
+last_sample_seconds = 0.900000
+observed = "The long orange trace fades while orange particles remain and descend near the impact site. The actor moves down/left and remains distinct from this residue."
+
+[[moments]]
+id = "wizard-wind-area"
+title = "Circular wind area grows, overlaps targets, then thins"
+source_id = "wizard"
+clip = "media/motion/wizard-wind-area.mp4"
+strip = "media/motion/wizard-wind-area-frames.jpg"
+clip_sha256 = "f2cb1f08cd24483b50a64bc392e925c3f47dbafcd9205c96e6310efa389471f4"
+strip_sha256 = "a5f93330975fbb6425d66c4eedb1f228c9841027a0460559046365ab7a8fb2c2"
+start_frame = 675
+end_frame_exclusive = 774
+start_seconds = 11.25
+end_seconds_exclusive = 12.9
+clip_duration_seconds = 1.65
+sample_frames_row_major = [699, 708, 717, 726, 735, 744, 753, 762, 771]
+sample_seconds_row_major = [11.65, 11.8, 11.95, 12.1, 12.25, 12.4, 12.55, 12.7, 12.85]
+phases = ["area_onset", "sustained_area", "dissipation"]
+continuity = "Continuous gameplay shot with camera movement; no montage cut within source frames 675–773 (11.250–12.883)."
+not_shown = "The clip begins with a separate yellow/white electrical effect already active. Input and individual caster ownership are not visible; do not infer a charge time from that preceding effect."
+review_question = "Can area magic communicate its footprint with translucent contour/motion while keeping targets and incoming attacks legible?"
+limits = "The apparent footprint is visual evidence, not a measured collision/hit radius. Damage numbers, nearby effects, camera motion and animation timing do not establish the game simulation rules."
+
+[[moments.observations]]
+phase = "before_area"
+first_sample_frame = 699
+last_sample_frame = 708
+first_sample_seconds = 11.650000
+last_sample_seconds = 11.800000
+observed = "Several white target flashes and numeric labels overlap the red-cloaked figure; a separate blue-cloaked figure is lower on the screen. Broad wind bands have not yet formed in these samples."
+
+[[moments.observations]]
+phase = "area"
+first_sample_frame = 717
+last_sample_frame = 735
+first_sample_seconds = 11.950000
+last_sample_seconds = 12.250000
+observed = "Pale curved bands encircle the red figure and broaden into a circular vortex. Floor tiles remain visible through the bands, while white hit silhouettes/numbers obscure some character detail."
+
+[[moments.observations]]
+phase = "dissipation"
+first_sample_frame = 744
+last_sample_frame = 762
+first_sample_seconds = 12.400000
+last_sample_seconds = 12.700000
+observed = "The circular bands extend left, then become sparse curling arcs while figures and camera continue moving. By frame 771 (12.850) the broad wind ring is absent."
+
+[[moments]]
+id = "fighterz-charge-beam"
+title = "Visible buildup, forward release and beam-contact punctuation"
+source_id = "fighterz"
+clip = "media/motion/fighterz-charge-beam.mp4"
+strip = "media/motion/fighterz-charge-beam-frames.jpg"
+clip_sha256 = "8dad46dc36fda717cd03e940cf45a2c443c7cc227c56c53a9c037addc560ed7e"
+strip_sha256 = "4c02eca458c83a5562d183f02c7cbe35fadf5cc694a234e352b0950368be466d"
+start_frame = 878
+end_frame_exclusive = 926
+start_seconds = 29.295933
+end_seconds_exclusive = 30.897533
+clip_duration_seconds = 1.6016
+sample_frames_row_major = [878, 884, 890, 896, 902, 903, 908, 917, 925]
+sample_seconds_row_major = [29.295933, 29.496133, 29.696333, 29.896533, 30.096733, 30.1301, 30.296933, 30.597233, 30.864167]
+phases = ["visible_buildup", "launch", "beam_contact"]
+continuity = "One displayed attack across cinematic camera/pose changes; next unrelated trailer shot begins at frame 926 (30.897533), excluded. Treat it as animation presentation evidence rather than a fixed-camera gameplay timing test."
+not_shown = "No player input, start of held charge, resource debit or recovery is visible. Cinematic camera changes and impact presentation prevent measuring gameplay cast latency or travel speed."
+review_question = "How much charged-magic spectacle can be retained while preserving the target silhouette and wider battlefield view?"
+limits = "This 2.5D fighting-game cinematic is a shape/contrast comparison only; its framing, hitstop, attack timing and combat rules are not an approved design for the game."
+
+[[moments.observations]]
+phase = "visible_buildup"
+first_sample_frame = 884
+last_sample_frame = 896
+first_sample_seconds = 29.496133
+last_sample_seconds = 29.896533
+observed = "Blue/cyan arcs surround the elevated orange-clad fighter as a bright concentration forms near the hands. Close framing and a translucent circular envelope make the buildup visually distinct from the later beam."
+
+[[moments.observations]]
+phase = "launch_to_contact"
+first_sample_frame = 902
+last_sample_frame = 903
+first_sample_seconds = 30.096733
+last_sample_seconds = 30.130100
+observed = "At frame 902 (30.096733) a round bright white/cyan front is at the fighter; the next frame, 903 (30.130100), shows the extended white/cyan beam overlapping the lower-left opponent with yellow/orange radial impact spikes. These adjacent trailer frames bracket a visual transition, not a measured input-to-hit interval."
+
+[[moments.observations]]
+phase = "beam_contact"
+first_sample_frame = 908
+last_sample_frame = 925
+first_sample_seconds = 30.296933
+last_sample_seconds = 30.864167
+observed = "A saturated white core, cyan ragged border and warm radial spikes separate beam from contact punctuation. Much of the opponent is covered. The camera changes framing as the beam continues; the following cut prevents observing recovery."
+
+[[moments]]
+id = "noita-residual-material"
+title = "Glowing material remains on terrain and spills downward"
+source_id = "noita"
+clip = "media/motion/noita-residual-material.mp4"
+strip = "media/motion/noita-residual-material-frames.jpg"
+clip_sha256 = "5502c6847de9824ae3ea03b7a88c85caab35ee088217f378fa81ba3790e12040"
+strip_sha256 = "1846f5cf159031b831ab1663a4a85a3cb5f5b63539513c11bcae5330d896de2c"
+start_frame = 2904
+end_frame_exclusive = 3000
+start_seconds = 48.4
+end_seconds_exclusive = 50.0
+clip_duration_seconds = 1.6
+sample_frames_row_major = [2904, 2916, 2928, 2940, 2952, 2964, 2976, 2988, 2999]
+sample_seconds_row_major = [48.4, 48.6, 48.8, 49.0, 49.2, 49.4, 49.6, 49.8, 49.983333]
+phases = ["residual_material", "terrain_interaction"]
+continuity = "Continuous gameplay shot with camera tracking; source frames 2904–2999 (48.400–49.983). The material is already present before the saved excerpt."
+not_shown = "Creation/launch and first contact are outside the selected sequence. Exact material identity, conservation rules and total lifetime cannot be established visually."
+review_question = "Can spell impact produce readable residual world material that persists independently of the equipped wand or player?"
+limits = "The clip does not prove which pixels burn, dissolve or conserve energy. Do not infer a physical simulation implementation or cartridge recharge from appearance."
+
+[[moments.observations]]
+phase = "terrain_interaction"
+first_sample_frame = 2904
+last_sample_frame = 2928
+first_sample_seconds = 48.400000
+last_sample_seconds = 48.800000
+observed = "Bright orange material occupies the right ledge and vertical face; the purple figure moves away through the open space. The glow follows the terrain rather than remaining centered on the actor."
+
+[[moments.observations]]
+phase = "residual_material"
+first_sample_frame = 2940
+last_sample_frame = 2964
+first_sample_seconds = 49.000000
+last_sample_seconds = 49.400000
+observed = "An illuminated horizontal band persists across the ledge with a dense downward mass at its right edge as the actor continues moving. The emission lights a local region of otherwise dark terrain."
+
+[[moments.observations]]
+phase = "flow"
+first_sample_frame = 2976
+last_sample_frame = 2999
+first_sample_seconds = 49.600000
+last_sample_seconds = 49.983333
+observed = "Bright particles descend through the vertical gap as the camera follows the figure downward. Glowing material still marks the ledge above; the final frame does not establish when it disappears."

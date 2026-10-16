@@ -1,0 +1,153 @@
+{
+  "root": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517",
+  "dashboard": {
+    "aim_x": 0,
+    "aim_y": 0,
+    "aim_z": 0,
+    "aimed_target": "",
+    "bodies": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.6163746f72",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.66726f6e74",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.73696465"
+    ],
+    "config": "/Users/paul/coding/infinite_spell_game/players/casting-study.player.toml",
+    "description": "Explicit authored selection, physical wand/cartridge custody and finite energy. In-memory session; no durable world save.",
+    "equipment": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.equipment.dashboard",
+    "error": "",
+    "has_aim": false,
+    "inventory": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.dashboard",
+    "inventory_interaction": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.interaction",
+    "inventory_request": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.request",
+    "keys": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.31",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.32",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.51",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.45",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.5370616365",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.57",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.41",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.42",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.55",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.49",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.keys.47"
+    ],
+    "message": "Equip a wand, load a cartridge, select a spell, aim, then fire.",
+    "request": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.request",
+    "revision_request": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.revision_request",
+    "revision_review": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.revision_review",
+    "selected_spell": "",
+    "session": "casting-study",
+    "source_changed": false,
+    "source_error": "",
+    "spells": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.spells.626f6c74",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.spells.6f7262"
+    ],
+    "supply": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.dashboard",
+    "targets": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.66726f6e74",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.bodies.73696465"
+    ],
+    "tick": 21,
+    "title": "Infinite Spell \u00b7 playable study (unreviewed)",
+    "token": 1,
+    "ui": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.ui",
+    "wands": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.77616e64"
+    ]
+  },
+  "supply": {
+    "allocation": 0,
+    "can_cast": false,
+    "cartridges": [
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.cartridges.616d626572",
+      "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.supply.cartridges.626c7565"
+    ],
+    "instances": [],
+    "loaded": "",
+    "owner": "player",
+    "reason": "Select an authored spell revision",
+    "receipts": [],
+    "selected_name": "",
+    "selected_revision": "",
+    "selected_title": "",
+    "total": 80,
+    "wand": ""
+  },
+  "receipts": [],
+  "instances": [],
+  "cartridges": [
+    {
+      "capacity": 40,
+      "definition": "study-cartridge",
+      "item": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.616d626572",
+      "item_id": "amber",
+      "loaded": false,
+      "remaining": 40
+    },
+    {
+      "capacity": 40,
+      "definition": "study-cartridge",
+      "item": "runtime.spell_player.sessions.p9c7126a49113293886bb017404fb6d0edbc8c4573e9226fcd1a0c091285c9517.inventory.items.626c7565",
+      "item_id": "blue",
+      "loaded": false,
+      "remaining": 40
+    }
+  ],
+  "bodies": [
+    {
+      "alive": true,
+      "dx": 0,
+      "dy": 0,
+      "dz": 1,
+      "has_health": true,
+      "health": 12,
+      "id": "actor",
+      "instance": "",
+      "radius": 0.5,
+      "shape": "actor",
+      "vx": 0,
+      "vy": 0,
+      "vz": 0,
+      "x": 0,
+      "y": 0.5,
+      "z": 0
+    },
+    {
+      "alive": true,
+      "dx": 0,
+      "dy": 0,
+      "dz": 1,
+      "has_health": true,
+      "health": 12,
+      "id": "front",
+      "instance": "",
+      "radius": 0.5,
+      "shape": "target",
+      "vx": 0,
+      "vy": 0,
+      "vz": 0,
+      "x": 0,
+      "y": 0.5,
+      "z": 2
+    },
+    {
+      "alive": true,
+      "dx": 0,
+      "dy": 0,
+      "dz": 1,
+      "has_health": true,
+      "health": 12,
+      "id": "side",
+      "instance": "",
+      "radius": 0.5,
+      "shape": "target",
+      "vx": 0,
+      "vy": 0,
+      "vz": 0,
+      "x": 1.7000000476837158,
+      "y": 0.5,
+      "z": 1.7000000476837158
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "operation": "Explicit standard engine SHELL upgrade of historical game bootstrap",
+  "source_commit": "eaf7a8d2f4bcd16896766ac89d39715055270dae",
+  "source_list": "crates/cli/src/registry.rs::SHELL",
+  "gameplay_logic": "No game-specific UI or business logic added; this copies the same maintained shell as app init.",
+  "files": [
+    {
+      "file": "main.luau",
+      "before": "c0f5f6061b4d26ee702c0685747e3ed6ab2d5585749b5025b28f692ee7d95383",
+      "after": "8f415e8cf549663963acfbe47ded65c48aaee5611de15f17f55c5ec92cdac11f",
+      "changed": true
+    },
+    {
+      "file": "shell.luau",
+      "before": "0c15cd381e6400fb751267ac9043ae345e096ebae614c0ba87d71fd15f0b0011",
+      "after": "0c15cd381e6400fb751267ac9043ae345e096ebae614c0ba87d71fd15f0b0011",
+      "changed": false
+    },
+    {
+      "file": "welcome.luau",
+      "before": "1ef2cbca0358bedfdca3a8b2d93d3badc9200f321f990a00040981771cb49e5a",
+      "after": "c5c1daaf1509116f91a1f5ba85e3e011f7d06060ba25459d0544f845c7ca28f6",
+      "changed": true
+    },
+    {
+      "file": "chat.luau",
+      "before": "23ccf37e61e6fd86b406031846ea99266a6e8849fb0ff7fb1ad690783d9342d2",
+      "after": "ca6034880c32fa21455211dfaa3a6bd505f7e29db942b0a68f89816b028dbe4e",
+      "changed": true
+    },
+    {
+      "file": "session_model.luau",
+      "before": null,
+      "after": "5005da00363d5e1d3dec5e6bead601d4703549e2da71607f991d589b9b89a61f",
+      "changed": true
+    },
+    {
+      "file": "proposal.luau",
+      "before": "5a18b38de97391a2dcf2aaca3d5a0b89ae30abe14fc37a3ba0be69f84007de8b",
+      "after": "5a18b38de97391a2dcf2aaca3d5a0b89ae30abe14fc37a3ba0be69f84007de8b",
+      "changed": false
+    },
+    {
+      "file": "store.luau",
+      "before": "6169c08e8ee7c82a58d132101910ded1fde85101d2b4923bf7058c426331c079",
+      "after": "6169c08e8ee7c82a58d132101910ded1fde85101d2b4923bf7058c426331c079",
+      "changed": false
+    },
+    {
+      "file": "kit.luau",
+      "before": "e114f11b5ed87349c58f94fdb93ca86eb80df9574743c8a691e6001a0179bc48",
+      "after": "060b47122206283062b69ca02e2c29808e220eaf69741eacebcf52a8f021060a",
+      "changed": true
+    },
+    {
+      "file": "color.luau",
+      "before": "e97d195a50631a73244b244d79ca65707f4d8a5379e0f39da705cf1ba5f7d1dc",
+      "after": "e97d195a50631a73244b244d79ca65707f4d8a5379e0f39da705cf1ba5f7d1dc",
+      "changed": false
+    },
+    {
+      "file": "theme.toml",
+      "before": "02a9881284892ef68b49b9d84a9845b25d9da0530a7d6bf5c11e637ed79c98bb",
+      "after": "02a9881284892ef68b49b9d84a9845b25d9da0530a7d6bf5c11e637ed79c98bb",
+      "changed": false
+    },
+    {
+      "file": "modes.toml",
+      "before": "bdde1502383316a362a2d3ab8defb3d00507465cbd11755c6d0eaa27b6546daa",
+      "after": "bdde1502383316a362a2d3ab8defb3d00507465cbd11755c6d0eaa27b6546daa",
+      "changed": false
+    },
+    {
+      "file": "slides/car.png",
+      "before": "2aa8af5f2fb67d963c9464c7608f21d48a1c277458934da118015c02e7aa7512",
+      "after": "2aa8af5f2fb67d963c9464c7608f21d48a1c277458934da118015c02e7aa7512",
+      "changed": false
+    },
+    {
+      "file": "slides/car-orange.png",
+      "before": "9c5774d8170286b5577492e46bfc50e7ffc70d1fc763ea3f1c5b01a717e3ecf7",
+      "after": "9c5774d8170286b5577492e46bfc50e7ffc70d1fc763ea3f1c5b01a717e3ecf7",
+      "changed": false
+    },
+    {
+      "file": "slides/car-teal.png",
+      "before": "36c48a73ecdf89140fc93b64c3f0eeddfd68ad3b36f96a63807118de18f776fe",
+      "after": "36c48a73ecdf89140fc93b64c3f0eeddfd68ad3b36f96a63807118de18f776fe",
+      "changed": false
+    },
+    {
+      "file": "slides/car-coral.png",
+      "before": "1b4af3f5c9f4436b556f938b5ded736b659d43fc45e7ba531c0dcac06cddb844",
+      "after": "1b4af3f5c9f4436b556f938b5ded736b659d43fc45e7ba531c0dcac06cddb844",
+      "changed": false
+    }
+  ]
+}

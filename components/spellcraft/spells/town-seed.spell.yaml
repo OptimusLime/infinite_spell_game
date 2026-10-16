@@ -1,0 +1,15 @@
+# The town's heart. Health 24; every creature that reaches it takes 0.08 a second (six at the seed break it in under a minute); at zero the action is "fall": the
+# town is gone (Paul: "if that seed gets blown up, then everybody dies").
+version: 1
+name: town-seed
+title: Town seed
+kind: seed
+mana: {source: seed, allocation: 40}
+container: seed
+phases:
+  on_start:
+    - {id: heart, use: body.self, output: heart}
+    - {id: life, use: vital.health, target: heart, params: {max: 24, on_zero: fall}}
+  on_tick:
+    - {id: touched, use: sense.nearby, target: heart, output: at_seed, every: 20, params: {radius: 1.2}}
+    - {id: hurt, use: vital.drain, target: heart, input: at_seed, every: 20, params: {per_body: 0.08}}

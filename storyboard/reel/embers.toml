@@ -1,0 +1,5 @@
+title = "Embers"
+spoken = ""
+shown = "2.5 s, no text. Pixel street under the orange moon: embers drifting up, heat haze bending the houses behind."
+status = "todo"
+sketch_note = "Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/."

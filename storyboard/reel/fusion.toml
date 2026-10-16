@@ -1,0 +1,5 @@
+title = "Spells fuse"
+spoken = ""
+shown = "6 s. Fire then fire: a sad little glow, its name types in, \"Hearthglow\" (2 s). Then fire then wind: the two icons snap together above the hero's head, a Wall of Flame rips across the street and its name types in letter by letter, \"Wall of Flame\" (4 s)."
+status = "todo"
+sketch_note = "Reel v1 shot: rendered offline from the engine (render-path / render-scene on a project-copy hidden host) into storyboard/reel/clips/."

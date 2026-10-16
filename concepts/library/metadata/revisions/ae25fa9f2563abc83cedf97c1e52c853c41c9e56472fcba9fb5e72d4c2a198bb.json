@@ -1,0 +1,40 @@
+{
+  "id": "isg-dbz-reference",
+  "kind": "style",
+  "name": "Sparking! ZERO — effect reference candidate",
+  "description": "Candidate broad energy silhouette, light-dark separation and rocks as scale cues; not an approved camera target.",
+  "parent": {
+    "id": "isg-anime-look",
+    "revision": "ff9878b2ecbba5527d6c9570ab9dfde8bde777605c9ae90053589faa986f8f12"
+  },
+  "world": null,
+  "transform": {
+    "operation": "design_variant",
+    "goal": "Candidate broad energy silhouette, light-dark separation and rocks as scale cues; not an approved camera target.",
+    "changes": [],
+    "preserve": [
+      "Accepted game rules and cited compatibility pins."
+    ],
+    "avoid": []
+  },
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "Dragon Ball Z influence is user-requested; this exact screenshot is assistant-selected.",
+    "decision.date": "2026-10-08",
+    "decision.state": "Maybe",
+    "reference.avoid": "Do not copy its close framing into battlefield play.",
+    "reference.borrow": "Energy silhouette, light-dark strata and spatial scale.",
+    "source.url": "https://www.bandainamcoent.com/games/dragon-ball-sparking-zero/media"
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

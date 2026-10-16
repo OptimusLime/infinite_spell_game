@@ -1,0 +1,14 @@
+lua = "An editor part: require('editor_parts.project') returns {name, slot, order, render}; the editor shell places it."
+name = "editor-project"
+provides = ["editor_parts.project"]
+requires = ["editor-panels"]
+
+[package]
+data_types = ["editor part (luau)"]
+description = "Project panel for the editor: the project directory as a live file tree that follows files being added, removed and renamed."
+keywords = ["files", "project", "directory", "file tree", "explorer"]
+permissions = []
+version = "0.1.0"
+
+[package.dependencies]
+editor-panels = "^0.1"

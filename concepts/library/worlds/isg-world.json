@@ -1,0 +1,37 @@
+{
+  "id": "isg-world",
+  "kind": "world",
+  "name": "Infinite Spell Game",
+  "description": "Physical magic, spell crafting and firing, finite stored mana, a readable battlefield, and two visual treatments.",
+  "parent": null,
+  "world": null,
+  "transform": null,
+  "invariants": {
+    "accounting": "Sensing, rules, executed logic and effects consume their declared energy costs. Sleeping execution is not charged as active work.",
+    "magic": "Mana is physical energy: harnessed, stored and released. A cast has a finite funded budget.",
+    "presentation": "Pixel world and anime-style cel shading are both requested. Voxel world is excluded; world rules and rendering style remain separate.",
+    "supply": "No unlimited automatically recharging mana. Capacity and replenishment mechanics are not fixed by this baseline."
+  },
+  "overrides": {},
+  "traits": {
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.state": "In",
+    "source.history": "Historical dark/brooding moon landscapes and MarkovJunior are relevant inheritance; no-sun lore and intelligent materials are not selected here.",
+    "source.settled": "/Users/paul/coding/creatures/creature_3d_studio/docs/research/magical_physics/SPELL_STRUCTURE.md"
+  },
+  "avoid": [
+    "Voxel-world presentation",
+    "Unlimited automatic mana regeneration",
+    "Treating the existing AI storyboard as approved game design"
+  ],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

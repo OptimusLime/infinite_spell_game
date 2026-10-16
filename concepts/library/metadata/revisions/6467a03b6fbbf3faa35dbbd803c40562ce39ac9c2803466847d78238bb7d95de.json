@@ -1,0 +1,63 @@
+{
+  "id": "isg-pixel-night",
+  "kind": "scene",
+  "name": "Pixel battlefield — night",
+  "description": "Compatibility baseline for pixel presentation in the night variant; not a rendered or accepted result.",
+  "parent": null,
+  "world": {
+    "id": "isg-world",
+    "revision": "26924568365d55509723c4044b2eb8f4ee3046820650efc67a462a02afdbda0b"
+  },
+  "transform": null,
+  "invariants": {},
+  "overrides": {},
+  "traits": {
+    "acceptance.camera": "Compare same battlefield and gameplay event; keep caster, target and relevant threats readable.",
+    "acceptance.energy": "The same physical-energy and cast-transfer rules apply in both looks.",
+    "compatibility.verification": "Unverified; pinned inputs identify what must be checked together.",
+    "decision.basis": "User direction, 2026-10-08",
+    "decision.date": "2026-10-08",
+    "decision.state": "In",
+    "variant.identity": "isg-battlefield",
+    "variant.look": "pixel",
+    "variant.phase": "night"
+  },
+  "avoid": [],
+  "tags": [
+    "infinite-spell-game",
+    "design-review"
+  ],
+  "influences": [],
+  "links": [
+    {
+      "role": "environment",
+      "concept": {
+        "id": "isg-battlefield-night",
+        "revision": "df54d0379027e6561feae831c43e31b4d7e97d1367d27b913e269ff25a5e1e32"
+      }
+    },
+    {
+      "role": "style",
+      "concept": {
+        "id": "isg-pixel-look",
+        "revision": "c8f616a75795ef947b182b79df2fecff3737efe4c8aa0f84c352ad76f19f6033"
+      }
+    },
+    {
+      "role": "prop",
+      "concept": {
+        "id": "isg-wand-battery",
+        "revision": "47d22a9e50c24d28b84e91da13e33da490b2b5ea9b40f49ec04285ca91dc9913"
+      }
+    },
+    {
+      "role": "shot",
+      "concept": {
+        "id": "isg-battlefield-camera",
+        "revision": "66388b109e7b4fba3f99bcfe7bc5c1353b4fe6ab22e05246915ee08119a64f59"
+      }
+    }
+  ],
+  "references": [],
+  "notes": "Design decision is separate from task completion, asset selection and implementation evidence. Reference images are on the off-path design-review board; no selected image anchor is asserted."
+}

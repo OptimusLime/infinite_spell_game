@@ -1,0 +1,20 @@
+resolved: component shader-forge 0.1.0 /   node-graph → node-graph 0.1.0 /     layout → layout 0.1.0 (installed) /     ui-kit → ui-kit 0.1.0 (installed)
+  component shader-forge 0.1.0
+    node-graph → node-graph 0.1.0
+      layout → layout 0.1.0 (installed)
+      ui-kit → ui-kit 0.1.0 (installed)
+cached component node-graph@0.1.0: sha256 cba994d8d17d… verified, from the local store (19 KB)
+cached component shader-forge@0.1.0: sha256 140701ad866f… verified, from the local store (25 KB)
+shader-forge: added 2 files to the project
+native code changed (layout, node-graph, shader-forge): building the host
+     Locking 3 packages to latest compatible versions
+      Adding atelico-graph v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/crates/graph)
+      Adding component-node-graph v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/node-graph)
+      Adding component-shader-forge v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/shader-forge)
+   Compiling atelico-host-c8d028fcbd v0.1.0 (/Users/paul/coding/infinite_spell_game/.atelico/host)
+   Compiling component-shader-forge v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/shader-forge)
+   Compiling component-node-graph v0.1.0 (/Users/paul/coding/atelico/atelico-app-engine/components/node-graph)
+    Finished `dev` profile [optimized + debuginfo] target(s) in 4.04s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+built in 4s

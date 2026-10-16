@@ -1,0 +1,5 @@
+title = "Parts, not code"
+spoken = "Nine a.m. I'm Paul, and I make the Atelico editor. I ask Claude for a pixel town under two moons. It doesn't write a renderer: it installs five parts from the Atelico marketplace that are built to fit together, so adding the camera doesn't break the sky."
+shown = "A clock in the corner: 9:00. The Atelico editor with one Claude pane. Typed: \"a cosy pixel town under two moons, purple and orange\". The marketplace panel opens; five tiles (Pixel world, Moon town, Sky, Ink world, Camera path) tick and install in about two seconds, and the scene view takes over the frame: the town running, the camera craning down from the moons."
+status = "todo"
+sketch_note = "Capture on the shoot day: the editor with one Claude pane, the marketplace panel, five parts installing, the scene view starting. Needs the install flow from the marketplace (not built yet)."

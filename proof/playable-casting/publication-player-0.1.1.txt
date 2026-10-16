@@ -1,0 +1,5 @@
+  test: cargo test --offline --quiet --lib
+published app spell-player 0.1.1 (native, 22 KB, sha256 27ae9f36d127a35d) in 13.5s
+  luau: 4 files compile
+  entry: lua/apps/spell_player.luau
+  cargo test --offline --quiet --lib: ok in 13.3s, 4 tests passed
