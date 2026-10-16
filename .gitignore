@@ -6,3 +6,6 @@ queue/queue.db-shm
 
 # Native spell editor advisory locks contain no authored data.
 *.spell.yaml.lock
+
+# Durable local checkpoints and review intermediates.
+.local/
