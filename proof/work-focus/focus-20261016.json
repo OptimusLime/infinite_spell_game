@@ -1,0 +1,180 @@
+{
+  "date": "2026-10-16",
+  "scope": [
+    "cc.d1: Mock gameplay video",
+    "cc.d2: Playable spell-chain prototype",
+    "cc.d3: AI-assisted visual improvement"
+  ],
+  "before": {
+    "open": 50,
+    "total": 211
+  },
+  "after": {
+    "total": 212,
+    "open": 49,
+    "onIce": 36,
+    "focused": 13,
+    "doing": []
+  },
+  "retained": [
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    192,
+    195,
+    196,
+    197,
+    198,
+    199
+  ],
+  "frozen": [
+    23,
+    25,
+    33,
+    34,
+    51,
+    69,
+    75,
+    97,
+    102,
+    103,
+    105,
+    106,
+    110,
+    114,
+    147,
+    165,
+    167,
+    168,
+    169,
+    173,
+    174,
+    175,
+    176,
+    177,
+    179,
+    180,
+    181,
+    182,
+    183,
+    193,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "superseded": [
+    200,
+    211
+  ],
+  "added": [
+    212
+  ],
+  "next": {
+    "task": 192,
+    "title": "Improve one character's shape against the meadow reference",
+    "owner": "codex"
+  },
+  "dependencyChanges": [
+    {
+      "change": "removed",
+      "task": 192,
+      "on_task": 193
+    },
+    {
+      "change": "removed",
+      "task": 192,
+      "on_task": 200
+    },
+    {
+      "change": "removed",
+      "task": 195,
+      "on_task": 193
+    },
+    {
+      "change": "removed",
+      "task": 196,
+      "on_task": 193
+    },
+    {
+      "change": "removed",
+      "task": 197,
+      "on_task": 193
+    },
+    {
+      "change": "removed",
+      "task": 198,
+      "on_task": 193
+    },
+    {
+      "change": "removed",
+      "task": 199,
+      "on_task": 193
+    },
+    {
+      "change": "added",
+      "task": 212,
+      "on_task": 192
+    }
+  ],
+  "preservationChecks": [
+    {
+      "check_name": "original task IDs missing",
+      "failures": 0
+    },
+    {
+      "check_name": "original events changed or missing",
+      "failures": 0
+    },
+    {
+      "check_name": "original object events changed or missing",
+      "failures": 0
+    },
+    {
+      "check_name": "original object IDs missing",
+      "failures": 0
+    },
+    {
+      "check_name": "settled tasks changed",
+      "failures": 0
+    }
+  ],
+  "ledgerCounts": [
+    {
+      "name": "before_tasks",
+      "count": 211
+    },
+    {
+      "name": "after_tasks",
+      "count": 212
+    },
+    {
+      "name": "before_events",
+      "count": 1593
+    },
+    {
+      "name": "after_events",
+      "count": 1693
+    },
+    {
+      "name": "before_object_events",
+      "count": 719
+    },
+    {
+      "name": "after_object_events",
+      "count": 735
+    }
+  ],
+  "errors": [],
+  "notes": [
+    "No task or original event deleted. All originally done/dropped task rows unchanged.",
+    "Task211 recording retained and linked from canonical task185; no visual acceptance or completion inferred.",
+    "Task212 uses the same character/captures as192 and existing skills/research; it does not create duplicate art.",
+    "No application implementation changed. No Git commit made by the queue-focus agent."
+  ]
+}
